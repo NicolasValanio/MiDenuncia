@@ -1,5 +1,5 @@
 import React from "react";
-import '../hojasDeEstilo/RegistroUsuario.css'
+import '../hojasDeEstilo/registroUsuario.css'
 
 function RegistroUsuario() {
     return (
