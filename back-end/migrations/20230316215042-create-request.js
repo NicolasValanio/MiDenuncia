@@ -37,10 +37,22 @@ module.exports = {
         type: Sequelize.TINYINT
       },
       type_request_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+
+          model:'types_requests',
+          key:'id'
+          
+        }
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+
+          model:'users',
+          key:'id'
+          
+        }
       },
       createdAt: {
         allowNull: false,

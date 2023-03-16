@@ -13,7 +13,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       request_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+
+          model:'requests',
+          key:'id'
+          
+        }
       },
       createdAt: {
         allowNull: false,

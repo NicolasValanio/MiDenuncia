@@ -34,10 +34,19 @@ module.exports = {
         type: Sequelize.STRING
       },
       role_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model:'roles',
+          Key:'id'
+        }
+       
       },
       document_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references:{
+          model:'documents',
+          key:'id'
+        }
       },
       createdAt: {
         allowNull: false,

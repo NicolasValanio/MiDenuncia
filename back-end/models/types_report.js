@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      types_report.hasMany(models.request,{
+        foreignKey:'type_request_id'
+      })
     }
   }
   types_report.init({

@@ -11,6 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      request.belongsTo(models.types_request,{
+        foreignKey:"type_request_id"
+      })
+
+      request.belongsTo(models.user,{
+        foreignKey:"user_id"
+      })
+
+      request.hasMany(models.photos,{
+        foreignKey:"request_id"
+      })
     }
   }
   request.init({
