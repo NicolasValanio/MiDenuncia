@@ -25,10 +25,10 @@ function Login() {
                 <form onSubmit={handleSubmit(onSubmit)} className="contenedor formulario-login">
 
                     <label ><AiOutlineUser className="iconsFrom iconLogin"/>
-                        <input {...register("usuario")} type="text" className="inputsForm inputLogin" placeholder="Usuario o Correo" />
+                        <input {...register("usuario",{required:"true"})} type="text" className="inputsForm inputLogin" placeholder="Usuario o Correo" />
                     </label>
                     <label ><AiOutlineLock className="iconsFrom iconLogin"/>
-                        <input {...register("contraseña")} type="password" className="inputsForm inputLogin" placeholder="Contraseña"/>
+                        <input {...register("contraseña",{required:"true"})} type="password" className="inputsForm inputLogin" placeholder="Contraseña"/>
                     </label>
 
                     <button type="submit" className="btn btnLogin">Iniciar Sesión</button>
