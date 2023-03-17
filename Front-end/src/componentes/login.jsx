@@ -28,10 +28,11 @@ function Login() {
                 <div className="contenedor contendor-bottom">
                     <div className="contenedor cont-regiscontra">
                         <p className="textoLogin">¿No tienes Cuenta? <samp><Link to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
-                        <p className="textoLogin">¿Olvidaste tu? <samp><Link to="/RegistroUsuario">CONTRASEÑA</Link></samp></p>
+                        <p className="textoLogin">¿Olvidaste tu <samp><Link to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
                     </div>
                     <div className="contenedor inicar-google"> 
-                        <AiFillGoogleCircle className="google" /><p>Iniciar sesión con Google</p> 
+                        <AiFillGoogleCircle className="google"/>
+                        <p>Iniciar sesión con Google</p> 
                     </div>
 
                 </div>

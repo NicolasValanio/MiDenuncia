@@ -11,7 +11,7 @@ import UsuarioLog from './componentes/usuarioLog'
 import VistaDenunciaX from './componentes/vistaDenunciaX'
 import VistaSuperAdmin from './componentes/vistaSuperAdmin'
 import VistaUsuario from './componentes/vistaUsuario'
-
+// NADIE TOCA ESTO!!!!
 
 function App() {
 
