@@ -99,6 +99,7 @@
 .inicar-google{
     margin-bottom: 30px ;
     flex-direction: row;
+    gap: .5rem;
 }
 
 .google{

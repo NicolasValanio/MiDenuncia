@@ -24,10 +24,12 @@
   border-radius: 15px;
   color: white;
   transition: 0.2s all;
+  margin-bottom: .5rem;
 
 }
 .btn:hover{
   background-color: var(--primer-color);
   color: var(--segundo-color);
   transition: 0.2s all;
+  cursor: pointer;
 }
