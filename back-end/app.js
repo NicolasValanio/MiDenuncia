@@ -7,7 +7,10 @@ const handleError=require('./handlers/handlerError')
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+
 app.use(cors());
+
 app.use(morgan('tiny'));
 
 app.use('/',routes)

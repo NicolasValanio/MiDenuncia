@@ -19,10 +19,13 @@ module.exports = {
         type: Sequelize.STRING(20)
       },
       email: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull:false,
+        unique:true
       },
       password: {
         type: Sequelize.STRING(50)
+        
         
       },
       contact_phone: {
