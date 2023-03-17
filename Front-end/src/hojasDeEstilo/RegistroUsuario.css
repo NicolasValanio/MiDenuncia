@@ -4,7 +4,7 @@
     background:var(--degradado-color);
 }
 .registroUsuarios{
-    width: 30%;
+    width: 50%;
     min-width: 400px;
     height: 80vh;
     border-left: solid 3px var(--primer-color);
@@ -12,4 +12,35 @@
     border-radius: 20px;
     background-color: var(--segundo-color);
     color: white;
+}
+.formulario-registrar{
+    width: 100%;
+    height: 60% ;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.inputRegister{
+    font-size: 1em;
+}
+.formulario-registrar label{
+    width: 40%;
+    height: 15%;
+    display: flex;
+    margin: 15px;
+}
+.contenedor-boton{
+    width: 100%;
+    height: 30%;
+}     
+.contenedor-bottom-registro{
+    width: 50%;
+    height: 20%;
+    font-size: 1.2em;
+}
+.contenedor-bottom-registro samp{
+    font-size: 1.7em;
+}
+.contenedor-bottom-registro a{
+    text-decoration: none;
+    color: var(--primer-color);
 }
