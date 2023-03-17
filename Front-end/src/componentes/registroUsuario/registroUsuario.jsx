@@ -1,5 +1,5 @@
 import React from "react";
-import '../hojasDeEstilo/RegistroUsuario.css'
+import  Basededatos  from '../baseDedatos'
 
 import { useForm} from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -13,6 +13,7 @@ function RegistroUsuario() {
 
     const onSubmit = valor =>{
         console.log(valor)
+        Basededatos(valor) 
     }
 
     return (
@@ -26,27 +27,27 @@ function RegistroUsuario() {
                 <form onSubmit={handleSubmit(onSubmit)} className="contenedor formulario-registrar" >
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("nombre",{required: "Porfavor ingrese un nombre"})} type="text" className="inputsForm inputRegister" placeholder="Nombre" />
+                        <input {...register("name",{required: "Porfavor ingrese un nombre", })} type="text" className="inputsForm inputRegister" placeholder="Nombre" />
                     </label>
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("apellido",{required: "hola"} ,)} type="text" className="inputsForm inputRegister" placeholder="Apellido" />
+                        <input {...register("last_name",{required: "hola"} ,)} type="text" className="inputsForm inputRegister" placeholder="Apellido" />
                     </label>
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("nombreUsuario",{required: "hola"})} type="text" className="inputsForm inputRegister" placeholder="Nombre Usuario" />
+                        <input {...register("nickname",{required: "hola"})} type="text" className="inputsForm inputRegister" placeholder="Nombre Usuario" />
                     </label>
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("correo",{required: "hola"})} type="text" className="inputsForm inputRegister" placeholder="Correo" />
+                        <input {...register("email",{required: "hola"})} type="text" className="inputsForm inputRegister" placeholder="Correo" />
                     </label>
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("contraseña",{required: "hola",min: 6, max: 12 })} type="text" className="inputsForm inputRegister" placeholder="Contraseña" />
+                        <input {...register("password1",{required: "hola" })} type="text" className="inputsForm inputRegister" placeholder="Contraseña" />
                     </label>
 
                     <label ><AiOutlineUser className="iconsFrom iconRegister"/>
-                        <input {...register("contraseñaConfirmar",{required: "hola",min: 6, max: 12})} type="text" className="inputsForm inputRegister" placeholder="Confirmar Contraseña" />
+                        <input {...register("password2",{required: "hola"})} type="text" className="inputsForm inputRegister" placeholder="Confirmar Contraseña" />
                     </label>
  
                     <div className="contenedor contenedor-boton">

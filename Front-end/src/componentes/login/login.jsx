@@ -1,5 +1,6 @@
 import React from "react";
-import '../hojasDeEstilo/login.css'
+import style from './login.module.css'
+import general from '../../App.module.css'
 
 import { Link } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
@@ -15,7 +16,7 @@ function Login() {
     }
 
     return (
-        <div className="contenedor login-contenedor">
+        <div className={general.contenedor}>
             <div className="contenedor login">
 
                 <div className="contenedor contenedor-top">

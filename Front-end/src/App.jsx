@@ -1,19 +1,27 @@
-import './App.css'
+import style from './App.module.css'
 import { Route,Routes,Link } from 'react-router-dom'
 
-import Login from './componentes/login'
-import UsuarioNoLog from './componentes/usuarioNoLog'
-import HabeasData from './componentes/habeasData'
-import PeticionesUsuarios from './componentes/peticionesUsuarios'
-import RegistroDenuncia from './componentes/registroDenuncia'
-import RegistroUsuario from './componentes/registroUsuario'
-import UsuarioLog from './componentes/usuarioLog'
-import VistaDenunciaX from './componentes/vistaDenunciaX'
-import VistaSuperAdmin from './componentes/vistaSuperAdmin'
-import VistaUsuario from './componentes/vistaUsuario'
+
+import Login from './componentes/login/login'
+import UsuarioNoLog from './componentes/usuarioNoLog/usuarioNoLog'
+import HabeasData from './componentes/habeasData/habeasData'
+import PeticionesUsuarios from './componentes/peticionesUsuarios/peticionesUsuarios'
+import RegistroDenuncia from './componentes/registroDenuncia/registroDenuncia'
+import RegistroUsuario from './componentes/registroUsuario/registroUsuario'
+import UsuarioLog from './componentes/usuarioLog/usuarioLog'
+import VistaDenunciaX from './componentes/vistaDenunciaX/vistaDenunciaX'
+import VistaSuperAdmin from './componentes/vistaSuperAdmin/vistaSuperAdmin'
+import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
 // NADIE TOCA ESTO!!!!
 
-function App() {
+
+ function App() {
+
+  // const basededatos = async () => {
+  //   const peticion = await axios.post("http://192.168.20.64:4000/createUser", )
+  // }
+
+  // basededatos()
 
   return (
     <div className="App">
