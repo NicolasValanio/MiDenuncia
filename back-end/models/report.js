@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"user_id"
       })
 
-      report.belongsTo(models.type_report,{
+      report.belongsTo(models.types_report,{
         foreignKey:"type_report_id"
       })
 

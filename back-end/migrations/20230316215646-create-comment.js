@@ -7,19 +7,19 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       date: {
         type: Sequelize.DATE
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(250)
       },
       status: {
-        type: Sequelize.TINYINT
+        type: Sequelize.TINYINT(1)
       },
       request_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(5),
         references:{
 
           model:'requests',
@@ -29,7 +29,7 @@ module.exports = {
 
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(5),
         references:{
           model:'users',
           key:'id'

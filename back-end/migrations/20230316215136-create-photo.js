@@ -7,13 +7,13 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       request_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(5),
         references:{
 
           model:'requests',

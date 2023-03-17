@@ -7,34 +7,35 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       nickname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       last_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
+        
       },
       contact_phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(15)
       },
       status: {
-        type: Sequelize.TINYINT
+        type: Sequelize.TINYINT(1)
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(15)
       },
       role_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(1),
         references:{
           model:'roles',
           Key:'id'
@@ -42,7 +43,7 @@ module.exports = {
        
       },
       document_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(11),
         references:{
           model:'documents',
           key:'id'

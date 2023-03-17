@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"user_id"
       })
 
-      request.hasMany(models.photos,{
+      request.hasMany(models.photo,{
         foreignKey:"request_id"
       })
     }

@@ -7,18 +7,17 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       score: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(1)
       },
       suggestion: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(200)
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(5),
         references:{
-
           model:'users',
           key:'id'
 

@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         user.hasOne(models.rating,{
           foreignKey:"user_id"
         })
-        user.hasMany(models.reports,{
+        user.hasMany(models.report,{
           foreignKey:"user_id"
         })
-        user.hasMany(models.comments,{
+        user.hasMany(models.comment,{
           foreignKey:"user_id"
         })
     }
@@ -46,3 +46,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   return user;
 };
+
+// set(value){
+//   this.setDataValue('password',hash(this.nickname+value))
+// },

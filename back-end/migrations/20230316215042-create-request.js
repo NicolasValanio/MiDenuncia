@@ -7,19 +7,19 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       date: {
         type: Sequelize.DATE
       },
       location: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(250)
       },
       neighborhood: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       subject: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       problem: {
         type: Sequelize.TEXT
@@ -28,16 +28,16 @@ module.exports = {
         type: Sequelize.TEXT
       },
       support: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(5)
       },
       status: {
-        type: Sequelize.TINYINT
+        type: Sequelize.TINYINT(1)
       },
       tag: {
-        type: Sequelize.TINYINT
+        type: Sequelize.TINYINT(1)
       },
       type_request_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(1),
         references:{
 
           model:'types_requests',
@@ -46,7 +46,7 @@ module.exports = {
         }
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(5),
         references:{
 
           model:'users',

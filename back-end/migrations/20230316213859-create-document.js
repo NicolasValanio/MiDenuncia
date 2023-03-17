@@ -7,13 +7,16 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(11)
       },
       type: {
-        type: Sequelize.CHAR
+        type: Sequelize.CHAR(2)
+      },
+      number_document: {
+        type: Sequelize.STRING(12)
       },
       place_dispatch: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       createdAt: {
         allowNull: false,
