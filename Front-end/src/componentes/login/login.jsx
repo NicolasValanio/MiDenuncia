@@ -1,6 +1,5 @@
 import React from "react";
 import style from './login.module.css'
-import general from '../../App.module.css'
 
 import { Link } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
@@ -16,33 +15,33 @@ function Login() {
     }
 
     return (
-        <div className={general.contenedor}>
-            <div className="contenedor login">
+        <div className={`contenedor ${style.login_Contenedor}`}>
+            <div className={`contenedor ${style.login}`}>
 
-                <div className="contenedor contenedor-top">
-                    <h2 className="tituloLoginRegistre">MI DENUNCIA</h2>
+                <div className={`contenedor ${style.contenedor_top}`}>
+                    <h2 className={style.tituloLogin}>MI DENUNCIA</h2>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="contenedor formulario-login">
+                <form onSubmit={handleSubmit(onSubmit)} className={`contenedor ${style.formulario_login}`}>
 
-                    <label ><AiOutlineUser className="iconsFrom iconLogin"/>
-                        <input {...register("usuario",{required:"true"})} type="text" className="inputsForm inputLogin" placeholder="Usuario o Correo" />
+                    <label className={style.label}><AiOutlineUser className={style.iconLogin}/>
+                        <input {...register("usuario",{required:"true"})} type="text" className={style.inputLogin} placeholder="Usuario o Correo" />
                     </label>
-                    <label ><AiOutlineLock className="iconsFrom iconLogin"/>
-                        <input {...register("contraseña",{required:"true"})} type="password" className="inputsForm inputLogin" placeholder="Contraseña"/>
+                    <label className={style.label}><AiOutlineLock className={style.iconLogin}/>
+                        <input {...register("contraseña",{required:"true"})} type="password" className={style.inputLogin}  placeholder="Contraseña"/>
                     </label>
 
-                    <button type="submit" className="btn btnLogin">Iniciar Sesión</button>
+                    <button type="submit" className={`btn ${style.btnLogin}`}>Iniciar Sesión</button>
                      
                 </form>
                 
-                <div className="contenedor contenedor-bottom">
-                    <div className="contenedor cont-regiscontra">
-                        <p className="textoLogin">¿No tienes Cuenta? <samp><Link to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
-                        <p className="textoLogin">¿Olvidaste tu <samp><Link to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
+                <div className={`contenedor ${style.contenedor_bottom}`}>
+                    <div className={`contenedor ${style.cont_regiscontra}`}>
+                        <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
+                        <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
                     </div>
-                    <div className="contenedor inicar-google"> 
-                        <AiFillGoogleCircle className="google"/>
+                    <div className={`contenedor ${style.iniciar_google}`}> 
+                        <AiFillGoogleCircle className={style.google}/>
                         <p>Iniciar sesión con Google</p> 
                     </div>
 

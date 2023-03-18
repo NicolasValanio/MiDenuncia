@@ -1,4 +1,4 @@
-import style from './App.module.css'
+import './App.css'
 import { Route,Routes,Link } from 'react-router-dom'
 
 
