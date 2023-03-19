@@ -1,0 +1,84 @@
+.registroUsuarios_contenedor{
+    width: 100%;
+    height: 100vh;
+    background:var(--degradado-color);
+}
+.contenedor_top{
+    width: 100%;
+    height: 30%;
+}
+.tituloRegistre{
+    color: var(--primer-color);
+    font-size: 3em;
+}
+.registroUsuarios{
+    width: 50%;
+    min-width: 400px;
+    height: 80vh;
+    border-left: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
+    border-radius: 20px;
+    background-color: var(--segundo-color);
+    color: white;
+}
+.formulario_registrar{
+    width: 100%;
+    height: 70% ;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.iconRegister{
+    width: 15%;
+    height: 100%;
+    padding: 3%;
+    border-radius: 10px 0 0 10px;
+    background-color: #313131;
+    color: var(--primer-color);
+    font-size: 1em;
+}
+.inputRegister{
+    width: 85%;
+    height: 100%;
+    font-size: 1.3em;
+    padding: 10px;
+    background-color: #282828;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    outline: none;
+    color: white;
+    transition: 0.2s all ease-in;
+}
+.inputRegister:focus{
+    background-color: #b86efd41;
+    transition: 0.2s all ease-in;
+}
+.label{
+    width: 40%;
+    height: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+}
+.contenedor_boton{
+    width: 100%;
+    height: 30%;
+}     
+.contenedor_bottom{
+    width: 60%;
+    height: 20%;
+    font-size: 1.2em;
+}
+
+.link{
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--primer-color);
+}
+.textoRegister{
+    font-size: 0.6em;
+}
+.error{
+    margin: 3px;
+    font-size: 0.7em;
+    color: var(--primer-color);
+}

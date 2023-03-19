@@ -1,13 +1,13 @@
-.login-contenedor{
+.login_Contenedor{
     width: 100%;
     height: 100vh;
     background:var(--degradado-color);
 }
-.contendor-top{
+.contenedor_top{
     width: 100%;
     height: 30%;
 }
-.contendor-bottom{
+.contenedor_bottom{
     width: 100%;
     height: 30%;
     font-size: 1em;
@@ -32,11 +32,11 @@
 
 .formulario-login{
     width: 100%;
-    height: 35%;
+    height: 38%;
     display: flex;
 }
 
-.formulario-login label{
+.label{
     width: 70%;
     height: 25%;
     display: flex;
@@ -80,7 +80,7 @@
     padding: 10px;
 }
 
-.contendor-bottom a{
+.link{
     text-decoration: none;
     color: var(--primer-color);
 }
@@ -88,15 +88,15 @@
 .textoLogin{
     font-size: 0.7em;
 }
-.cont-regiscontra{
+.cont_regiscontra{
     width: 100%;
     height: 30%;
 }
-.cont-regiscontra samp{
+.samp{
     font-size: 1.5em;
 }
 
-.inicar-google{
+.iniciar_google{
     margin-bottom: 30px ;
     flex-direction: row;
     gap: .5rem;
