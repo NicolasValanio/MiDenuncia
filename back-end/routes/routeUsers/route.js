@@ -23,7 +23,7 @@ router.get('/info',infoUserController.infoUser)
 router.get('/validateEmail',validateEmailUserController.validateEmail)
 // Route role
 router.post('/createRole',createRoleController.createRole)
-router.put('/deleteRole/:id',deleteRoleController.deleteRole)
+router.get('/deleteRole/:id',deleteRoleController.deleteRole)
 router.get('/queryRole/:id',queryRoleController.queryRoleId)
 router.get('/queryRoleAll',queryRoleAllController.queryRoleAll)
 // Route document
