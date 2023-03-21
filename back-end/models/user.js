@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         if (this.name.length < 2) {
           throw new Error("firstName length must be 7 or greater!");
         }
-        if (this.email.includes("kandres38@gmail.com")) {
+        if (this.email.includes("@mail.com")) {
           throw new Error("Email must not use mail.com address!");
         }
       },

@@ -11,6 +11,6 @@ const validateEmailUserController= require('../../controllers/user/validateEmail
 
 router.post('/createUser',createUserController.createUser)
 router.get('/info',infoUserController.infoUser)
-router.get('/validateEmail',validateEmailUserController.validateEmail)
+router.get('/signIn',validateEmailUserController.validateEmail)
 
 module.exports=router
