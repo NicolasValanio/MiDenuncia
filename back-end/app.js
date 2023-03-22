@@ -13,12 +13,8 @@ app.use(morgan('tiny'));
 app.use('/',routes)
 app.use(handleError)
 
-
-
-
-
-
-
 const port=4000
 
 app.listen(port,console.log('el server escuchando por el puerto '+ port))
+
+module.exports = { app };
