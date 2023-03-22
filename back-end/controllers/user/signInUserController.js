@@ -1,21 +1,26 @@
 const modeloUser = require('../../models').user;
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-exports.validateEmail = async (req, res, next) => {
+exports.signIn = async (req, res, next) => {
 
     try {
 
-        let { email, password } = req.body;
+        let { email, password1 } = req.body;
+     
+     
        
-        
-        // const user =
          await modeloUser.findOne({ where: {email } }).then(user => {
+          
+           
            
             
             if(!user){
                 res.status(400).json({ message: 'Usuario con este correo no encontrado'})
             }else{
-               
-                if(bcrypt.compareSync(password,user.password)){
+                
+             
+                if(bcrypt.compareSync(password1,user.password1)){
                     
                   
                   
@@ -28,12 +33,9 @@ exports.validateEmail = async (req, res, next) => {
                 }
             }
 
-         });
+          
 
-
-
-        // Search validate information email
-        // (email === user.email && password === user.password) ? res.send(user) : res.status(404).json({mensaje:'user not exist'});
+         }).catch((err)=>next(err));
 
 
     } catch (error) {
