@@ -1,9 +1,9 @@
 import React from "react";
-
+import Navegacion from "../navegación/navegacion";
 function UsuarioNoLog(params) {
     return (
-        <h1>USUARIONOLOG</h1>
-    )
+        <Navegacion/>
+        )
 }
 
 export default UsuarioNoLog;

@@ -36,6 +36,7 @@ import Navegacion  from './componentes/navegación/navegacion';
         <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
         <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
         <Route path="/UsuarioLog" element={<UsuarioLog />} />
+        <Route path='/UsuarioNoLog' element={<UsuarioNoLog />} />
         <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
         <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
         <Route path="/VistaUsuario" element={<VistaUsuario />} />
