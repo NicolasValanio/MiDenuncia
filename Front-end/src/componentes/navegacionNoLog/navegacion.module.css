@@ -56,16 +56,55 @@ body{
     padding: .5rem;
     color: white;
     transform: rotate(320deg);
-
+    
 }
 
 .btns:hover{
-background-color: #252A2E; 
-border: solid 1px #B86EFD;
-transition: .3s ease;
+    background-color: #252A2E; 
+    border: solid 1px #B86EFD;
+    transition: .3s ease;
 }
 
 .iconoDenuncia:hover{
-color: black;
-transition: .4s;    
+    color: black;
+    transition: .4s;    
+}
+
+@media (max-width: 768px) {
+    .imagen{
+        width: 35%;
+        height: 8vh;
+    }
+}
+@media (max-width: 635px) {
+    .imagen{
+        width: 35%;
+        height: 5vh;
+    }
+    .contenedorBtns{
+        margin: 0;
+        gap: .4rem;
+    }
+    .btns{
+        width: fit-content;
+        font-size: .8rem;
+        letter-spacing: 0;
+    }
+    .iconoDenuncia{
+        width: 2rem;
+        height: 2rem;
+    }
+}
+        
+@media (max-width: 480px) {
+    .imagen{
+        width: 30%;
+        height: 6vh;
+        background-size: cover;
+    }
+    .btns{
+        text-align: center;
+        padding: .4rem;
+        font-weight: 400;
+    }
 }
