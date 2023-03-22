@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  :root{
+    --primer-color: #B86EFD;
+    --segundo-color: #1E2326;
+    --tercer-color: #252A2E;
+    --degradado-color: #1E2326 linear-gradient(242.91deg, #B86EFD 12.52%, rgba(180, 108, 247, 0.973958) 17%, rgba(163, 100, 224, 0.866016) 22.74%, rgba(145, 91, 198, 0.744979) 29.9%, rgba(110, 74, 149, 0.517713) 43.75%, rgba(71, 55, 95, 0.266051) 59.08%, rgba(70, 55, 94, 0.260477) 69.4%, rgba(30, 35, 38, 0) 81.15%);
+  }
+  .contenedor{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  .btn{
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--primer-color);
+    border-radius: 15px;
+    color: white;
+    transition: 0.2s all;
+  
+  }
+  .btn:hover{
+    background-color: var(--primer-color);
+    color: var(--segundo-color);
+    transition: 0.2s all;
+  }
