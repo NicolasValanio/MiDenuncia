@@ -1,8 +1,24 @@
 import React from "react";
+import style from './vistaUsuario.module.css';
 
 function VistaUsuario(params) {
     return(
-        <h1>VISTAUSUARIO</h1>
+        <div className={style.main_container}>
+            <div>
+
+            </div>
+            <div>
+                <div>
+
+                </div>
+
+
+                <div>
+                    
+                </div>
+            </div>
+
+        </div>
     )
 }
 
