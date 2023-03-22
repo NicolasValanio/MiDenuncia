@@ -3,7 +3,7 @@ import style from './navegacion.module.css';
 import { IoMegaphoneOutline } from 'react-icons/io5';
 
 
-function Navegacion() {
+function NavegacionNoLog() {
 
     return(
         <div className={style.contenedor}>
@@ -18,4 +18,4 @@ function Navegacion() {
     )
 }
 
-export  default Navegacion;
+export  default NavegacionNoLog;
