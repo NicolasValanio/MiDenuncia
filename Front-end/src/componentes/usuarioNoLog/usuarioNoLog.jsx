@@ -1,8 +1,9 @@
 import React from "react";
-import Navegacion from "../navegación/navegacion";
+import NavegacionNoLog from "../navegacionNoLog/navegacion";
+import Navegacion from "../navegacionNoLog/navegacion";
 function UsuarioNoLog(params) {
     return (
-        <Navegacion/>
+        <NavegacionNoLog/>
         )
 }
 
