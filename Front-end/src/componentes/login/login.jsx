@@ -1,5 +1,6 @@
 import React from "react";
 import style from './login.module.css'
+import {loginBd} from '../baseDedatos'
 
 import { Link,useNavigate } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
@@ -11,8 +12,11 @@ function Login() {
     const navigate = useNavigate();
 
     const onSubmit = value =>{
-        console.log(value)
+
+        console.log(value);
         navigate("/usuarioLog");
+        loginBd(value)
+        
     }
 
     return (
@@ -26,7 +30,7 @@ function Login() {
                 <form onSubmit={handleSubmit(onSubmit)} className={`contenedor ${style.formulario_login}`}>
 
                     <label className={style.label}><AiOutlineUser className={style.iconLogin}/>
-                        <input {...register("usuario",{
+                        <input {...register("nickname",{
                             required: {
                                 value: true,
                                 message : "el usuario es requerido"
@@ -40,7 +44,7 @@ function Login() {
                     </label>
 
                     <label className={style.label}><AiOutlineLock className={style.iconLogin}/>
-                        <input {...register("contraseña",{
+                        <input {...register("password",{
                             required: {
                                 value: true,
                                 message : "la contraseña es requerido"
@@ -50,7 +54,7 @@ function Login() {
                                 message : "la contraseña es requerido"
                             }
                         })} type="password" className={style.inputLogin}  placeholder="Contraseña"/>
-                        {errors.contraseña && <span className={style.error}>{errors.contraseña.message}</span>}
+                        {errors.password && <span className={style.error}>{errors.password.message}</span>}
                     </label>
 
                     <button type="submit" className={`btn ${style.btnLogin}`}>Iniciar Sesión</button>

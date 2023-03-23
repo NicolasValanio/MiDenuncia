@@ -1,5 +1,5 @@
 import React from "react";
-import  Basededatos  from '../baseDedatos'
+import  {registroBd}  from '../baseDedatos'
 import style from './RegistroUsuario.module.css'
 
 import { useForm} from 'react-hook-form';
@@ -13,8 +13,9 @@ function RegistroUsuario() {
     const navigate = useNavigate();
 
     const onSubmit = valor =>{
-        Basededatos(valor) 
-        navigate("/usuarioLog");
+        console.log(valor);
+        registroBd(valor) 
+        navigate("/login");
     }
 
     return (
@@ -88,7 +89,7 @@ function RegistroUsuario() {
                     </label>
 
                     <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
-                        <input {...register("password1",{ 
+                        <input {...register("password",{ 
                               required: {
                                 value: true,
                                 message : "la contrasea es requerido"
@@ -107,10 +108,6 @@ function RegistroUsuario() {
                               required: {
                                 value: true,
                                 message : "La confirmacion de la contraseña es requerida"
-                            },
-                            validate : {
-                                value : true,
-                                message : "el nombre es requerido"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Confirmar Contraseña" />
