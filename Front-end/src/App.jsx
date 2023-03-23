@@ -1,5 +1,5 @@
 import './App.css'
-import { Route,Routes,Link } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 
 
 import Login from './componentes/login/login'
@@ -15,7 +15,7 @@ import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
 // NADIE TOCA ESTO!!!!
 
 
- function App() {
+function App() {
 
   // const basededatos = async () => {
   //   const peticion = await axios.post("http://192.168.20.64:4000/createUser", )
@@ -27,8 +27,8 @@ import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
     <div className="App">
 
       <Routes>
-        
-        <Route exact path="/" element={<UsuarioNoLog />} /> 
+
+        <Route exact path="/" element={<UsuarioNoLog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/HabeasData" element={<HabeasData />} />
         <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
