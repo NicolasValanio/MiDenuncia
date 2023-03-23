@@ -1,9 +1,13 @@
 import React from "react";
-import NavegacionNoLog from "../navegacionNoLog/navegacion";
-import Navegacion from "../navegacionNoLog/navegacion";
+import NavegacionNoLog from "../navegacionNoLog/navegacion"
+import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+
 function UsuarioNoLog(params) {
     return (
-        <NavegacionNoLog/>
+        <div>
+       <NavegacionNoLog/>
+        <TarjetasPublicacion/>
+        </div>
         )
 }
 
