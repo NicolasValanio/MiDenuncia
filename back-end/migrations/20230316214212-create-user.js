@@ -24,8 +24,7 @@ module.exports = {
         unique:true
       },
       password: {
-        type: Sequelize.STRING(50)
-        
+        type: Sequelize.STRING(255)       
         
       },
       contact_phone: {

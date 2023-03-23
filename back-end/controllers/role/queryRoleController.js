@@ -5,7 +5,7 @@ exports.queryRoleId= async (req,res,next)=>{
         const {id}=req.params
         const role= await ModeloRole.findByPk(id)
         if(!role){
-            // 
+            // Check if the role already exists in db
             return res.status(400).json({error:'Role not found'})
         }
         // 

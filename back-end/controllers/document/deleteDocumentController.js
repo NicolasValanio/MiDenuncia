@@ -4,6 +4,7 @@ const ModeloDocument = require("../../models").document;
 exports.deleteDocument = async (req, res, next) => {
   try {
     const { number_document } = req.params;
+    // Search the document by id
     const document = await ModeloDocument.findOne({
       where: { number_document },
     });

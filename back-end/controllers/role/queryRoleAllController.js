@@ -4,7 +4,7 @@ exports.queryRoleAll = async (req, res, next) => {
     try {
         const role = await ModeloRole.findAll()
         if (!role) {
-            // 
+            // Check if the role already exists in db
             return res.status(400).json({ error: 'Role not found' })
         }
         // 

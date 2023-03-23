@@ -1,11 +1,12 @@
 
 const modeloUser= require('../../models').user;
+
 exports.createUser = async(req,res,next)=>{
    // console.log(req.body)
 
     try {
         const {name,last_name,nickname,email,password,password2}=req.body;
-        
+        // Creation of a new user
         await modeloUser.create({
             nickname,name,last_name,email,password
         }).then((data)=>{
