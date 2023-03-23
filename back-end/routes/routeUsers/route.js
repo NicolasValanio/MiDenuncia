@@ -10,6 +10,7 @@ const {
   registerUserMiddleware,
 } = require("../../controllers/user/registerUserController");
 const UserRegistration = require("../../helpers/registerValidateUser");
+const signInUserController= require('../../controllers/user/signInUserController')
 
 // Route user
 router.post("/createUser", createUserController.createUser);
@@ -22,6 +23,7 @@ router.post(
   UserRegistration.validate,
   registerUserController.registerUser
 );
+router.post("/signIn", signInUserController.signIn);
 console.log("====Connect to router successfully ====");
 
 module.exports = router;

@@ -7,9 +7,10 @@ const deleteRoleController = require("../../controllers/role/deleteRoleControlle
 const queryRoleController = require("../../controllers/role/queryRoleController");
 const queryRoleAllController = require("../../controllers/role/queryRoleAllController");
 
+
 // Route role
 router.post("/createRole", createRoleController.createRole);
-router.get("/deleteRole/:id", deleteRoleController.deleteRole);
+router.put("/deleteRole/:id", deleteRoleController.deleteRole);
 router.get("/queryRole/:id", queryRoleController.queryRoleId);
 router.get("/queryRoleAll", queryRoleAllController.queryRoleAll);
 

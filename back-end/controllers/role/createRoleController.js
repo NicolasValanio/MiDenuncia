@@ -10,11 +10,11 @@ exports.createRole = async (req, res, next) => {
     });
     
     if (existingRole) {
-      // Show messaje wiht error exist
+      // Show message wiht error exist
       return res.status(400).json({ error: "Role already exists" });
     }
     const newRole = await ModeloRole.create({ name });
-    // Show messaje created successfully
+    // Show message created successfully
     console.log("Role created successfully", newRole.toJSON());
     return res.status(201).json({ datos: newRole });
   } catch (error) {
