@@ -1,17 +1,18 @@
 import React from "react";
 import style from './login.module.css'
 
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
 import { useForm} from 'react-hook-form';
 
 function Login() {
 
-    const {register,handleSubmit,errors} = useForm()
+    const {register,handleSubmit,formState:{errors}} = useForm()
+    const navigate = useNavigate();
 
     const onSubmit = value =>{
         console.log(value)
-
+        navigate("/usuarioLog");
     }
 
     return (
@@ -25,10 +26,31 @@ function Login() {
                 <form onSubmit={handleSubmit(onSubmit)} className={`contenedor ${style.formulario_login}`}>
 
                     <label className={style.label}><AiOutlineUser className={style.iconLogin}/>
-                        <input {...register("usuario",{required:"true"})} type="text" className={style.inputLogin} placeholder="Usuario o Correo" />
+                        <input {...register("usuario",{
+                            required: {
+                                value: true,
+                                message : "el usuario es requerido"
+                            },
+                            pattern: {
+                                value : true,
+                                message : "el usuario es requerido"
+                            }
+                        })} type="text" className={style.inputLogin} placeholder="Usuario o Correo" />
+                        {errors.usuario && <span className={style.error}>{errors.usuario.message}</span>}
                     </label>
+
                     <label className={style.label}><AiOutlineLock className={style.iconLogin}/>
-                        <input {...register("contraseña",{required:"true"})} type="password" className={style.inputLogin}  placeholder="Contraseña"/>
+                        <input {...register("contraseña",{
+                            required: {
+                                value: true,
+                                message : "la contraseña es requerido"
+                            },
+                            pattern: {
+                                value : true,
+                                message : "la contraseña es requerido"
+                            }
+                        })} type="password" className={style.inputLogin}  placeholder="Contraseña"/>
+                        {errors.contraseña && <span className={style.error}>{errors.contraseña.message}</span>}
                     </label>
 
                     <button type="submit" className={`btn ${style.btnLogin}`}>Iniciar Sesión</button>
