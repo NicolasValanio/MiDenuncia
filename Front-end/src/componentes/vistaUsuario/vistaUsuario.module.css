@@ -2,6 +2,74 @@
     position: relative;
     width: 100%;
     height: 100vh;  
+    background: linear-gradient(243.18deg, #060606 0%, rgba(49, 47, 51, 0.973958) 5.88%, rgba(20, 20, 21, 0.866016) 10.02%, rgba(26, 25, 28, 0.744979) 19.45%, rgba(25, 23, 27, 0.708263) 43.07%, rgba(35, 33, 38, 0.260477) 76.47%, rgba(30, 35, 38, 0) 86.79%, rgba(21, 19, 23, 0.266051) 91.93%, rgba(64, 58, 70, 0.517713) 98.94%);
+}
+.container{
+    position: absolute;
+    width: 140px;
+    height: 883px;
+    left: 30px;
+    top: 29px;
 
-    background: linear-gradient(243.18deg, #B86EFD 0%, rgba(180, 108, 247, 0.973958) 5.88%, rgba(163, 100, 224, 0.866016) 10.02%, rgba(145, 91, 198, 0.744979) 19.45%, rgba(139, 88, 190, 0.708263) 25.23%, rgba(110, 74, 149, 0.517713) 42.07%, rgba(70, 55, 94, 0.260477) 86.11%, rgba(71, 55, 95, 0.266051) 99.64%, rgba(30, 35, 38, 0) 100%);
+background: linear-gradient(180deg, #1E1724 97.79%, rgba(7, 2, 12, 0.65) 100%);
+border-radius: 15px;
+}
+/* .iconoUsuario{
+    width: 100px;
+    height: 100px;
+} */
+.imagen{
+    position: relative;
+    
+    top: 20px;
+    left: 6.5px;
+    width: 8rem;
+    height: 3rem;
+}
+.Fihome{
+    width: 36px;
+    position: absolute;
+    left: 38px;
+    height: 33px;
+    top: 169px;
+
+}
+
+/* Home */
+
+.homeIcono{
+
+    position: absolute;
+    width: 43px;
+    height: 14px;
+    left: 77px;
+    top: 186px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+.AiFillSetting{
+    position: absolute;
+    width: 36px;
+    height: 34px;
+    left: 38px;
+    top: 674px;
+
+}
+.confiIcono{
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    left: 74px;
+    top: 683px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+
+}
+.BsQuestionCircle{
+
 }
