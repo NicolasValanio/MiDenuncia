@@ -18,7 +18,7 @@ function FiltarPor (){
                 <li><BsFillSignStopFill className={Style.icon}/> Señalizacion Vial </li>
                 <li><BsFillTreeFill className={Style.icon}/>Espacios Publicos</li>
                 <li><GiDoubleStreetLights className={Style.icon}/>Alumbrado Publico</li>
-                <li>  <TbRecycleOff className={Style.icon}/>Contaminacion Ambiental</li>
+                <li>  <TbRecycleOff className={Style.icon}/>Contaminacion  Ambiental</li>
               </ul>
                 
             </div>
