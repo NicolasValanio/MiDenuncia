@@ -1,8 +1,12 @@
 import React from "react";
-
+import FiltrarPor from "../filtrarPor/filtarPor";
+import NavegacionNoLog from "../navegacionNoLog/navegacion";
 function UsuarioLog(params) {
     return (
-        <h1>UsuarioLog</h1>
+        <div>
+            <NavegacionNoLog />
+            <FiltrarPor/>
+        </div>
     )
 }
 

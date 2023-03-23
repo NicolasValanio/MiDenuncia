@@ -1,0 +1,17 @@
+.filtrar{
+    color: white;
+    position: relative;
+    top: 100px;
+    height: 100px;
+    width: 250px;
+}
+
+.filtrar ul{
+    border-bottom: 1px solid;
+}
+
+.icon{
+    color: blueviolet;
+    width: 2rem;
+    height: 2rem    ;
+}

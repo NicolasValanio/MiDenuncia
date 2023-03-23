@@ -13,6 +13,7 @@ import VistaDenunciaX from './componentes/vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './componentes/vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
 import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
+
 // NADIE TOCA ESTO!!!!
 
 
@@ -41,7 +42,7 @@ import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
         <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
         <Route path="/VistaUsuario" element={<VistaUsuario />} />
         <Route path="/NavegacionNoLog" element={<NavegacionNoLog />} />
-
+      
         <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
       </Routes>
 
