@@ -1,0 +1,162 @@
+.login_Contenedor{
+    width: 100%;
+    height: 100vh;
+    background:var(--degradado-color);
+}
+.contenedor_top{
+    width: 100%;
+    height: 30%;
+}
+.contenedor_bottom{
+    width: 100%;
+    height: 30%;
+    font-size: 1em;
+    justify-content: space-between;
+}
+
+.login{
+    width: 30%;
+    min-width: 400px;
+    height: 80vh;
+    border-left: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
+    border-radius: 20px;
+    background-color: var(--segundo-color);
+    color: white;
+}
+.btnLogin{
+    width: 60%;
+    height: 25%;
+    font-size: 1.5em;
+}
+
+.formulario-login{
+    width: 100%;
+    height: 38%;
+    display: flex;
+}
+
+.label{
+    width: 70%;
+    height: 25%;
+    display: flex;
+    margin-bottom: 5%;
+}
+
+
+.iconLogin{
+    width: 15%;
+    height: 100%;
+    padding: 3%;
+    border-radius: 10px 0 0 10px;
+    background-color: #313131;
+    color: var(--primer-color);
+}
+
+.tituloLogin{
+    color: var(--primer-color);
+    font-size: 3em;
+}
+
+.inputLogin{
+    width: 100%;
+    height: 100%;
+    font-size: 1.3em;
+    padding: 10px;
+    background-color: #282828;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    outline: none;
+    color: white;
+    transition: 0.2s all ease-in;
+}
+.inputLogin:focus{
+    background-color: #b86efd41;
+    transition: 0.2s all ease-in;
+}
+
+::placeholder{
+    color: #7D7D7D;
+    padding: 10px;
+}
+
+.link{
+    text-decoration: none;
+    color: var(--primer-color);
+}
+
+.textoLogin{
+    font-size: 0.7em;
+}
+.cont_regiscontra{
+    width: 100%;
+    height: 30%;
+}
+.samp{
+    font-size: 1.5em;
+}
+
+.iniciar_google{
+    margin-bottom: 30px ;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.google{
+    background-color: red;
+    border-radius: 20px;
+    font-size: 2em;
+}
+
+/* RESPONSIVE TABLET */
+
+@media ( max-width: 1030px ){
+    .login{
+        width: 75%;
+    }
+    .btnLogin{
+        width: 70%;
+        height: 25%;
+        font-size: 2em;
+    }
+    .textoLogin{
+        font-size: 1.2em;
+    }
+    .formulario-login{
+        height: 35%;
+    }
+    .google{
+        font-size: 2.5em;
+    }
+    .inicar-google{
+        font-size: 1.2em;
+    }
+}
+
+/* RESPONSIVE CELULAR */
+
+@media ( max-width: 450px ){
+    .login{
+        width: 100%;
+        height: 100vh;
+        border-radius: 0px;
+        background:#1E2326 linear-gradient(360.0deg, #B86EFD 0.75%, rgba(165, 101, 226, 0.870921) 7.18%, rgba(124, 82, 168, 0.591511) 19.16%, rgba(104, 73, 140, 0.453117) 28.74%, rgba(80, 62, 107, 0.292542) 55.36%, rgba(57, 51, 74, 0.133167) 83.67%, rgba(37, 42, 46, 0) 100%); 
+    }
+    .btnLogin{
+        width: 70%;
+        height: 25%;
+        font-size: 2em;
+        margin-top: 30px;
+    }
+    .textoLogin{
+        font-size: 1em;
+    }
+    .google{
+        font-size: 2.5em;
+    }
+    .inicar-google{
+        font-size: 1.2em;
+    }
+}
+
+
