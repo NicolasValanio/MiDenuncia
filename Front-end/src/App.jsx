@@ -1,4 +1,4 @@
-import './App.css'
+import './index.css'
 import { Route,Routes,Link } from 'react-router-dom'
 
 
@@ -12,6 +12,7 @@ import UsuarioLog from './componentes/usuarioLog/usuarioLog'
 import VistaDenunciaX from './componentes/vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './componentes/vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
+import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
 // NADIE TOCA ESTO!!!!
 
 
@@ -35,9 +36,11 @@ import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
         <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
         <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
         <Route path="/UsuarioLog" element={<UsuarioLog />} />
+        <Route path='/UsuarioNoLog' element={<UsuarioNoLog />} />
         <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
         <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
         <Route path="/VistaUsuario" element={<VistaUsuario />} />
+        <Route path="/NavegacionNoLog" element={<NavegacionNoLog />} />
 
         <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
       </Routes>
