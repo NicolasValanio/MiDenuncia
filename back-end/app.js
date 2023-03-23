@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const sgMail=require('./services/sendgrid')
 const morgan = require('morgan')
 const app = express()
 const routes = require('./routes/routeUsers/route')
@@ -20,6 +21,10 @@ app.use(morgan('tiny'));
 app.use('/', routes)
 app.use('/',routeRequest)
 app.use('/', routesComment)
+
+
+//prueba de correo
+
 
 app.use(handleError)
 
