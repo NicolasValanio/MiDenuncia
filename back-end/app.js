@@ -3,6 +3,7 @@ const cors=require('cors')
 const morgan=require('morgan')
 const app=express()
 const routes=require('./routes/routeUsers/route')
+const routeRequest=require('./routes/routeRequest/route')
 const handleError=require('./handlers/handlerError')
 
 app.use(express.urlencoded({extended:true}));
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 
 app.use('/',routes)
+app.use('/',routeRequest)
 app.use(handleError)
 
 
