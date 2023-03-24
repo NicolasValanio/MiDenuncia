@@ -12,6 +12,7 @@ const handleError = require('./handlers/handlerError')
 const users = require('./routes/routeUsers/routeUSerAuth0')
 dotenv.config()
 
+
 const config=require('./middleware/authUser')
 app.use(express.urlencoded({
     extended: true
@@ -23,8 +24,8 @@ app.use(cors());
 
 app.use(morgan('tiny'));
 
-app.use('/',auth(config),users )
-app.use('/',auth(config),routes)
+//app.use('/',auth(config),users )
+app.use('/',routes)
 app.use('/',routeRequest)
 app.use('/', routesComment)
 

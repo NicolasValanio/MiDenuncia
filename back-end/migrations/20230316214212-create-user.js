@@ -23,14 +23,11 @@ module.exports = {
         allowNull:false,
         unique:true
       },
-      password1: {
+      password: {
         type: Sequelize.STRING(100)
         
       },
-      password2: {
-        type: Sequelize.STRING(100)
-        
-      },
+     
       contact_phone: {
         type: Sequelize.STRING(15)
       },
