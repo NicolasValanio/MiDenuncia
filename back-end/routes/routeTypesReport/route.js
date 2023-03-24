@@ -1,8 +1,8 @@
-//variables para los controladores de los tipos de reporte
 const express= require('express'); 
 const router=express.Router(); 
 
 
+//variables para los controladores de los tipos de reporte
 const createTypesReportController=require('../../controllers/typeReport/createTypesReportController');
 const infoTypesReportController=require('../../controllers/typeReport/infoTypesReportController');
 const updateTypesReportController=require('../../controllers/typeReport/updateTypesReportController');
