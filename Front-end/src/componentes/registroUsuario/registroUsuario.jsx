@@ -1,6 +1,6 @@
 import React from "react";
-import  {registroBd}  from '../baseDedatos'
 import style from './RegistroUsuario.module.css'
+import axios from 'axios'
 
 import { useForm} from 'react-hook-form';
 import { AiOutlineUser } from "react-icons/ai";
@@ -12,9 +12,20 @@ function RegistroUsuario() {
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
 
+// FUNCION PARA HACER EN ENVIO DE LOS DATOS 
+
+    function resgistrarBd(envio) {
+
+        axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
+        .then(res => res)
+        .catch(err => err)
+
+    }
+
+//------------------------------------------------------------------------------------------
+
     const onSubmit = valor =>{
-        console.log(valor);
-        registroBd(valor) 
+        resgistrarBd(valor) 
         navigate("/login");
     }
 
@@ -35,8 +46,8 @@ function RegistroUsuario() {
                                 message : "el nombre es requerido"
                             },
                             pattern: {
-                                value : true,
-                                message : "el nombre es requerido"
+                                value : /[a-zA-Z]\d*/,
+                                message : "El nombre debe tener letras"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Nombre" />
@@ -50,8 +61,8 @@ function RegistroUsuario() {
                                 message : "el Apellido es requerido"
                             },
                             pattern: {
-                                value : true,
-                                message : "el Apellido es requerido"
+                                value : /[a-zA-Z]\d*/,
+                                message : "El nombre debe tener letras"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Apellido" />
@@ -99,7 +110,7 @@ function RegistroUsuario() {
                                 message : "la contraseña debe tener mas de 6 caracteres"
                             }
                         })} 
-                        type="text" className={style.inputRegister} placeholder="Contraseña" />
+                        type="password" className={style.inputRegister} placeholder="Contraseña" />
                         {errors.password1 && <span className={style.error}> {errors.password1.message} </span>}
                     </label>
 
@@ -108,9 +119,13 @@ function RegistroUsuario() {
                               required: {
                                 value: true,
                                 message : "La confirmacion de la contraseña es requerida"
+                            },
+                            minLength: {
+                                value : 6,
+                                message : "la contraseña debe tener mas de 6 caracteres"
                             }
                         })} 
-                        type="text" className={style.inputRegister} placeholder="Confirmar Contraseña" />
+                        type="password" className={style.inputRegister} placeholder="Confirmar Contraseña" />
                         {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
                     </label>
  

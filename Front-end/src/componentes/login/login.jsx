@@ -1,6 +1,7 @@
-import React from "react";
+import { React,useState } from "react";
 import style from './login.module.css'
-import {loginBd} from '../baseDedatos'
+import axios from 'axios'
+
 
 import { Link,useNavigate } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
@@ -9,14 +10,26 @@ import { useForm} from 'react-hook-form';
 function Login() {
 
     const {register,handleSubmit,formState:{errors}} = useForm()
+    const [error,setError] = useState(null)
     const navigate = useNavigate();
 
-    const onSubmit = value =>{
+// FUNCION PARA HACER EN ENVIO DE LOS DATOS Y ESPERAMOS UNA RESPUESTA DEL BACK-END
+    function llamarBd(envio) {
 
-        console.log(value);
-        navigate("/usuarioLog");
-        loginBd(value)
-        
+        axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio)
+        .then(res => { 
+            if (res.status === 200) {
+                navigate('/usuarioLog')
+            }  })
+        .catch(err => {
+                setError(err.response.data.message) 
+        })
+    
+    }
+//------------------------------------------------------------------------------------------
+
+    const onSubmit = value =>{
+        llamarBd(value);    
     }
 
     return (
@@ -63,6 +76,7 @@ function Login() {
                 
                 <div className={`contenedor ${style.contenedor_bottom}`}>
                     <div className={`contenedor ${style.cont_regiscontra}`}>
+                        <p className={style.error}> {error} </p>
                         <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
                         <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
                     </div>
