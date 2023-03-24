@@ -11,8 +11,8 @@ body{
     justify-content: space-between;
 }
 .imagen{
-    width: 35%;
-    height: 15vh;
+    width: 25%;
+    height: 10vh;
     background-image: url(../public/logo.png);
     background-position: center;
     background-size: cover;
@@ -95,7 +95,7 @@ body{
         height: 2rem;
     }
 }
-        
+/* responsive-celular */     
 @media (max-width: 480px) {
     .imagen{
         width: 30%;
@@ -108,3 +108,4 @@ body{
         font-weight: 400;
     }
 }
+
