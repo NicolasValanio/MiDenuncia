@@ -15,8 +15,6 @@ import NavegacionNoLog  from './navegacionNoLog/navegacion';
 
 function Rutas() {
     return (
-        <div>
-
             <Routes>
                     
                 <Route exact path="/" element={<UsuarioNoLog />} /> 
@@ -35,8 +33,6 @@ function Rutas() {
                 <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
 
             </Routes>
-
-        </div>
     )
 }
 export default Rutas;

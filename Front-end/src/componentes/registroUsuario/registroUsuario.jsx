@@ -100,7 +100,7 @@ function RegistroUsuario() {
                     </label>
 
                     <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
-                        <input {...register("password",{ 
+                        <input {...register("password1",{ 
                               required: {
                                 value: true,
                                 message : "la contrasea es requerido"

@@ -1,6 +1,7 @@
-import { React,useState } from "react";
+import { React,useEffect,useState } from "react";
 import style from './login.module.css'
 import axios from 'axios'
+import {llamarBd} from '../baseDeDatos'
 
 
 import { Link,useNavigate } from 'react-router-dom'
@@ -11,14 +12,17 @@ function Login() {
 
     const {register,handleSubmit,formState:{errors}} = useForm()
     const [error,setError] = useState(null)
+    const [api,setApi] = useState(null)
     const navigate = useNavigate();
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS Y ESPERAMOS UNA RESPUESTA DEL BACK-END
-    function llamarBd(envio) {
+
+    function llamarBdd(envio) {
 
         axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio)
         .then(res => { 
             if (res.status === 200) {
+                console.log(res);
                 navigate('/usuarioLog')
             }  })
         .catch(err => {
@@ -27,10 +31,22 @@ function Login() {
     
     }
 //------------------------------------------------------------------------------------------
+    // useEffect(()=>{
+    //     enviarLog() 
+    // },[api])
 
-    const onSubmit = value =>{
-        llamarBd(value);    
+    const  onSubmit = value =>{
+
+        llamarBdd(value); 
+        console.log(api);
     }
+
+    // function enviarLog() {
+    //     console.log(api);
+    //    if (api.status === 200) {
+    //         navigate('/usuarioLog')
+    //    }  
+    // } 
 
     return (
         <div className={`contenedor ${style.login_Contenedor}`}>
@@ -53,7 +69,7 @@ function Login() {
                                 message : "el usuario es requerido"
                             }
                         })} type="text" className={style.inputLogin} placeholder="Usuario o Correo" />
-                        {errors.usuario && <span className={style.error}>{errors.usuario.message}</span>}
+                        {errors.nickname && <span className={style.error}>{errors.nickname.message}</span>}
                     </label>
 
                     <label className={style.label}><AiOutlineLock className={style.iconLogin}/>
@@ -82,7 +98,7 @@ function Login() {
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
-                        <p>Iniciar sesión con Google</p> 
+                        <p><a href="https://midenuncia-database-production.up.railway.app/login">Iniciar sesión con Google</a></p> 
                     </div>
 
                 </div>
