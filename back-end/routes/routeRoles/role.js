@@ -9,7 +9,7 @@ const queryRoleAllController = require("../../controllers/role/queryRoleAllContr
 
 
 // Route role
-router.post("/createRole", createRoleController.createRole);
+router.post("/createRole", createRoleController);
 router.put("/deleteRole/:id", deleteRoleController.deleteRole);
 router.get("/queryRole/:id", queryRoleController.queryRoleId);
 router.get("/queryRoleAll", queryRoleAllController.queryRoleAll);

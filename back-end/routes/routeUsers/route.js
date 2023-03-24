@@ -6,6 +6,8 @@ const createUserController = require("../../controllers/user/createUserControlle
 const infoUserController = require("../../controllers/user/infoUserController");
 const validateEmailUserController = require("../../controllers/user/validateEmailUserController");
 const registerUserController = require("../../controllers/user/registerUserController");
+const queryRoleAllController = require("../../controllers/role/queryRoleAllController");
+
 const {
   registerUserMiddleware,
 } = require("../../controllers/user/registerUserController");
@@ -23,6 +25,8 @@ router.post(
   UserRegistration.validate,
   registerUserController.registerUser
 );
+router.get("/queryRoleAll", queryRoleAllController.queryRoleAll);
+
 router.post("/signIn", signInUserController.signIn);
 console.log("====Connect to router successfully ====");
 

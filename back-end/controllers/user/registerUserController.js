@@ -1,12 +1,12 @@
 const modelRegister = require("../../models").user;
 const { validationResult } = require("express-validator");
-const UserRegistration = require("../../helpers/registerValidateUser");
+const userRegistration = require("../../helpers/registerValidateUser");
 const bcrypt = require("bcrypt");
 
 exports.registerUser = async (req, res, next) => {
   try {
     console.log("RegisterUser called");
-    const { name, last_name, nickname, email, password, password2 } = req.body;
+    const { name, last_name, nickname, email, password } = req.body;
 
     // Validate if the email is already registered in the database
     const existingUser = await modelRegister.findOne({ where: { email } });
@@ -34,7 +34,7 @@ exports.registerUser = async (req, res, next) => {
 };
 
 exports.registerUserMiddleware = [
-  UserRegistration.validations,
-  UserRegistration.validate,
+  userRegistration.validations,
+  userRegistration.validate,
   exports.registerUser,
 ];

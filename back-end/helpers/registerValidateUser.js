@@ -1,6 +1,6 @@
 const { check, validationResult } = require("express-validator");
 
-class UserRegistration {
+class userRegistration {
   static validations = [
     // Creation of decorations to validate the information
     check("name")
@@ -10,6 +10,7 @@ class UserRegistration {
       .withMessage(
         "The name must begin with a capital letter and contain only letters"
       ),
+      
 
     check("last_name")
       .notEmpty()
@@ -53,4 +54,4 @@ class UserRegistration {
   }
 }
 
-module.exports = UserRegistration;
+module.exports = userRegistration;
