@@ -1,16 +1,17 @@
-const dotenv = require('dotenv');
-const express = require('express')
+
+const express=require('express')
 const cors = require('cors')
-const sgMail=require('./services/sendgrid')
-const { auth } = require('express-openid-connect');
 const morgan = require('morgan')
-const app = express()
-const routes = require('./routes/routeUsers/route')
-const routesComment = require('./routes/routeComments/route')
+const passport = require('passport');
+const app=express()
+const routes=require('./routes/routeUsers/route')
 const routeRequest=require('./routes/routeRequest/route')
-const handleError = require('./handlers/handlerError')
-const users = require('./routes/routeUsers/routeUSerAuth0')
-dotenv.config()
+const handleError=require('./handlers/handlerError')
+require('./middleware/auth2UserGoogle')
+
+const session = require('express-session')
+
+
 
 const config=require('./middleware/authUser')
 app.use(express.urlencoded({
@@ -19,25 +20,48 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 
+
 app.use(cors());
 
 app.use(morgan('tiny'));
 
-app.use('/',auth(config),users )
-app.use('/',auth(config),routes)
+app.use('/',routes)
 app.use('/',routeRequest)
-app.use('/', routesComment)
-
-
-
-
-
 app.use(handleError)
 
-const port = 4000
 
-app.listen(port, console.log('el server escuchando por el puerto ' + port))
+// app.use('/',routes)
+// app.use('/',routeRequest)
+// app.use(handleError)
 
-module.exports = {
-    app
-};
+
+// ------------------------------ Google OAuth2 ------------------------------ 
+function isLoggedin(req, res,next) {
+  request.user ? next() : res.sendStatus(401);
+}
+
+app.get('/',(req,res) => {
+    res.send('<a href="/auth/google">Entrar por google</a>');
+})
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+/* app.get('/auth/google/callback', 
+  passport.authenticate('google', { 
+    failureRedirect: '/auth/failure', 
+    successRedirect: '/protected'
+})); */
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/auth/failure' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/protected');
+  });
+
+
+
+const port=4000
+
+app.listen(port,console.log('el server escuchando por el puerto '+ port))
