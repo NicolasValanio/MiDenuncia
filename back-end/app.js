@@ -44,14 +44,18 @@ app.get('/',(req,res) => {
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
-app.get('/auth/google/callback', 
+/* app.get('/auth/google/callback', 
   passport.authenticate('google', { 
     failureRedirect: '/auth/failure', 
     successRedirect: '/protected'
-}));  //function(req, res) {
-  // Successful authentication, redirect home.
-  //res.redirect('/proteced');
-//});
+})); */
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/auth/failure' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/protected');
+  });
 
 app.get('/auth/failure',(req,res)=>{
   res.send('Algo Esta mal!!!')

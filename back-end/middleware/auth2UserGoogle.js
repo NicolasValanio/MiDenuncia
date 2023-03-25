@@ -1,8 +1,8 @@
 const GOOGLE_CLIENT_ID = '304053125557-bseggul5rjtb6l9kqo6obfl9vdttes5a.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
 const users=require('../models').user;
-
 const passport = require('passport');
+
 let GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
@@ -13,9 +13,9 @@ passport.use(new GoogleStrategy({
 
 },
   function(accessToken, refreshToken,profile, cb) {
-    users.findAll({ nickname: profile.id },
+    users.findOne({where:{ nickname: profile.id }},
           function (err, user)  {
-      return cb(err,user);
+      return cb(null ,user);
       }); 
     return profile
   }

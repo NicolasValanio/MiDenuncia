@@ -2,3 +2,8 @@ carpetas
 /Front-end/node_modules/
 /Front-end/jspm_packages/
 /back-end/node_modules/
+/back-end/package-lock
+/back-end/jspm_packages/
+*.json
+/back-end/!packages-lock.json
+
