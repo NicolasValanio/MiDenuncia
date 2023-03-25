@@ -40,6 +40,7 @@
     width: 70%;
     height: 25%;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 5%;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .inputLogin{
-    width: 100%;
+    width: 85%;
     height: 100%;
     font-size: 1.3em;
     padding: 10px;
@@ -106,6 +107,11 @@
     background-color: red;
     border-radius: 20px;
     font-size: 2em;
+}
+.error{
+    margin: 3px;
+    font-size: 0.7em;
+    color: var(--primer-color);
 }
 
 /* RESPONSIVE TABLET */
