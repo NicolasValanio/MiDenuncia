@@ -4,3 +4,6 @@ carpetas
 /back-end/node_modules/
 /back-end/jspm_packages/
 /back-end/.env
+back-end/node_modules/
+
+back-end/package-lock.json
