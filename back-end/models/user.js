@@ -34,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password1: DataTypes.STRING,
-    password2: DataTypes.STRING,
+    password: DataTypes.STRING,
+    avatar: DataTypes.STRING,
     contact_phone: DataTypes.STRING,
     status: DataTypes.TINYINT,
     address: DataTypes.STRING,
@@ -45,16 +45,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'user',
-    validate: {
-      userValidation() {
-        if (this.name.length < 2) {
-          throw new Error("firstName length must be 7 or greater!");
-        }
-        if (this.email.includes("@mail.com")) {
-          throw new Error("Email must not use mail.com address!");
-        }
-      },
-    },
+    // validate: {
+    //   userValidation() {
+    //     if (this.name.length < 2) {
+    //       throw new Error("firstName length must be 7 or greater!");
+    //     }
+    //     if (this.email.includes("@mail.com")) {
+    //       throw new Error("Email must not use mail.com address!");
+    //     }
+    //   },
+    // },
   });
   return user;
 };

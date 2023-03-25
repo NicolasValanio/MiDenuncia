@@ -7,7 +7,9 @@ exports.infoRequestUser = async (req,res,next) => {
 
     try {
     let storeRequest= await modelRequest.findAll({include: [modelTypeRequest]})
+
     let storeUser= await modelRating.findAll({include: [modelUser]});
+
     res.status(200).send(JSON.stringify({storeRequest,storeUser}))
     } catch (error) {
         res.send(error)
