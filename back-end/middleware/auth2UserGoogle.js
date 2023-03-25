@@ -12,19 +12,20 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:4000/auth/google/callback",
 
 },
-  function(accessToken, refreshToken, profile, cb) {
-    // users.create({ nickname: profile.id },
-    //      function (err, user)  {
-    //   return cb(err,user);
-    //  }); 
+  function(accessToken, refreshToken,profile, cb) {
+    users.findAll({ nickname: profile.id },
+          function (err, user)  {
+      return cb(err,user);
+      }); 
     return profile
   }
 ));
 
-/* passport.serializeUser((user,done)=> {
+
+passport.serializeUser((user,done)=> {
     done(null,user)
 })
 
- passport.deserializeUser((user,done)=> {
-     done(null,user)
-}) */
+passport.deserializeUser((user,done)=> {
+    done(null,user)
+}) 
