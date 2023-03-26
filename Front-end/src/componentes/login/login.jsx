@@ -15,6 +15,7 @@ function Login() {
 
     const  onSubmit = value =>{
 
+
         EnvioLoginBd(value).then(res => {
             if (res.status === 200) {
                 navigate('/usuarioLog')
@@ -32,6 +33,8 @@ function Login() {
 
                 <div className={`contenedor ${style.contenedor_top}`}>
                     <h2 className={style.tituloLogin}>MI DENUNCIA</h2>
+                    <p className={style.error}> { error } </p>
+
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className={`contenedor ${style.formulario_login}`}>
@@ -70,13 +73,12 @@ function Login() {
                 
                 <div className={`contenedor ${style.contenedor_bottom}`}>
                     <div className={`contenedor ${style.cont_regiscontra}`}>
-                        <p className={style.error}> { error } </p>
                         <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
                         <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
-                        <p><a href="https://midenuncia-database-production.up.railway.app/google ">Iniciar sesión con Google</a></p> 
+                        <p><a className={style.a} href="https://midenuncia-database-production.up.railway.app/google">Iniciar sesión con Google</a></p> 
                     </div>
 
                 </div>
