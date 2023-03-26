@@ -1,5 +1,6 @@
 import React from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
+import FiltrarPor from "../filtrarPor/filtarPor";
 
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
@@ -12,8 +13,7 @@ import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
 
 
-
-function UsuarioLog() {
+function UsuarioLog(params) {
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -53,7 +53,7 @@ function UsuarioLog() {
                 </div>
             </div>
             <div className={`contenedor ${style.filtrar}`}>
-                
+                <FiltrarPor/>
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
                 
