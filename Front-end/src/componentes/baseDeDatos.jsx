@@ -1,9 +1,15 @@
 import axios from 'axios'
 
-export async function llamarBd(params) {
-    return (
-            await axios.post("https://midenuncia-database-production.up.railway.app/signIn",params)
+export function EnvioLoginBd(params) {
+        axios.post("https://midenuncia-database-production.up.railway.app/signIn",params)
                 .then(res => res)
                 .catch(err => err) 
-            ) 
-    }
+}
+
+export function EnvioResgistrarBd(envio) {
+
+    axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
+    .then(res => res)
+    .catch(err => err)
+
+}

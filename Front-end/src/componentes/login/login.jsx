@@ -1,7 +1,6 @@
-import { React,useEffect,useState } from "react";
+import { React,useState } from "react";
 import style from './login.module.css'
-import axios from 'axios'
-import {llamarBd} from '../baseDeDatos'
+import {EnvioLoginBd} from '../baseDeDatos'
 
 
 import { Link,useNavigate } from 'react-router-dom'
@@ -12,41 +11,20 @@ function Login() {
 
     const {register,handleSubmit,formState:{errors}} = useForm()
     const [error,setError] = useState(null)
-    const [api,setApi] = useState(null)
     const navigate = useNavigate();
-
-// FUNCION PARA HACER EN ENVIO DE LOS DATOS Y ESPERAMOS UNA RESPUESTA DEL BACK-END
-
-    function llamarBdd(envio) {
-
-        axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio)
-        .then(res => { 
-            if (res.status === 200) {
-                console.log(res);
-                navigate('/usuarioLog')
-            }  })
-        .catch(err => {
-                setError(err.response.data.message) 
-        })
-    
-    }
-//------------------------------------------------------------------------------------------
-    // useEffect(()=>{
-    //     enviarLog() 
-    // },[api])
 
     const  onSubmit = value =>{
 
-        llamarBdd(value); 
-        console.log(api);
-    }
+        EnvioLoginBd(value).then(res => {
+            if (res.status === 200) {
+                navigate('/usuarioLog')
+            }
+            else{
+                setError(res.response.data.message)
+            }
+        })
 
-    // function enviarLog() {
-    //     console.log(api);
-    //    if (api.status === 200) {
-    //         navigate('/usuarioLog')
-    //    }  
-    // } 
+    }
 
     return (
         <div className={`contenedor ${style.login_Contenedor}`}>
@@ -92,13 +70,13 @@ function Login() {
                 
                 <div className={`contenedor ${style.contenedor_bottom}`}>
                     <div className={`contenedor ${style.cont_regiscontra}`}>
-                        <p className={style.error}> {error} </p>
+                        <p className={style.error}> { error } </p>
                         <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
                         <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
-                        <p><a href="https://midenuncia-database-production.up.railway.app/login">Iniciar sesión con Google</a></p> 
+                        <p><a href="https://midenuncia-database-production.up.railway.app/google ">Iniciar sesión con Google</a></p> 
                     </div>
 
                 </div>

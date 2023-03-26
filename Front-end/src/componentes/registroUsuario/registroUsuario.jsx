@@ -1,6 +1,6 @@
 import React from "react";
 import style from './RegistroUsuario.module.css'
-import axios from 'axios'
+import {EnvioResgistrarBd} from '../baseDeDatos'
 
 import { useForm} from 'react-hook-form';
 import { AiOutlineUser } from "react-icons/ai";
@@ -14,18 +14,10 @@ function RegistroUsuario() {
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
 
-    function resgistrarBd(envio) {
-
-        axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
-        .then(res => res)
-        .catch(err => err)
-
-    }
-
 //------------------------------------------------------------------------------------------
 
     const onSubmit = valor =>{
-        resgistrarBd(valor) 
+        EnvioResgistrarBd(valor) 
         navigate("/login");
     }
 
