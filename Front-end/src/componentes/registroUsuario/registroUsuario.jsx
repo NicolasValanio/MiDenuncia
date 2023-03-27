@@ -1,6 +1,6 @@
 import React from "react";
-import  Basededatos  from '../baseDedatos'
 import style from './RegistroUsuario.module.css'
+import {EnvioResgistrarBd} from '../baseDeDatos'
 
 import { useForm} from 'react-hook-form';
 import { AiOutlineUser } from "react-icons/ai";
@@ -12,9 +12,13 @@ function RegistroUsuario() {
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
 
+// FUNCION PARA HACER EN ENVIO DE LOS DATOS 
+
+//------------------------------------------------------------------------------------------
+
     const onSubmit = valor =>{
-        Basededatos(valor) 
-        navigate("/usuarioLog");
+        EnvioResgistrarBd(valor) 
+        navigate("/login");
     }
 
     return (
@@ -31,11 +35,11 @@ function RegistroUsuario() {
                         <input {...register("name",{
                             required: {
                                 value: true,
-                                message : "el nombre es requerido"
+                                message : "El nombre es requerido"
                             },
                             pattern: {
-                                value : true,
-                                message : "el nombre es requerido"
+                                value : /[a-zA-Z]\d*/,
+                                message : "El nombre debe tener letras"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Nombre" />
@@ -46,11 +50,11 @@ function RegistroUsuario() {
                         <input {...register("last_name",{
                               required: {
                                 value: true,
-                                message : "el Apellido es requerido"
+                                message : "El apellido es requerido"
                             },
                             pattern: {
-                                value : true,
-                                message : "el Apellido es requerido"
+                                value : /[a-zA-Z]\d*/,
+                                message : "El apellido debe tener letras"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Apellido" />
@@ -61,11 +65,11 @@ function RegistroUsuario() {
                         <input {...register("nickname",{
                               required: {
                                 value: true,
-                                message : "el usuario es requerido"
+                                message : "El usuario es requerido"
                             },
                             pattern: {
                                 value : true,
-                                message : "el usuario es requerido"
+                                message : "El usuario es requerido"
                             }
                         })} 
                         type="text" className={style.inputRegister} placeholder="Nombre Usuario" />
@@ -76,7 +80,7 @@ function RegistroUsuario() {
                         <input {...register("email",{
                             required: {
                                 value: true,
-                                message : "el correo es requerido"
+                                message : "El correo es requerido"
                             },
                             pattern: {
                                 value : /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i ,
@@ -88,18 +92,18 @@ function RegistroUsuario() {
                     </label>
 
                     <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
-                        <input {...register("password1",{ 
+                        <input {...register("password",{ 
                               required: {
                                 value: true,
-                                message : "la contrasea es requerido"
+                                message : "La contrasea es requerido"
                             },
                             minLength: {
                                 value : 6,
-                                message : "la contraseña debe tener mas de 6 caracteres"
+                                message : "La contraseña debe tener mas de 6 caracteres"
                             }
                         })} 
-                        type="text" className={style.inputRegister} placeholder="Contraseña" />
-                        {errors.password1 && <span className={style.error}> {errors.password1.message} </span>}
+                        type="password" className={style.inputRegister} placeholder="Contraseña" />
+                        {errors.password && <span className={style.error}> {errors.password.message} </span>}
                     </label>
 
                     <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
@@ -108,12 +112,12 @@ function RegistroUsuario() {
                                 value: true,
                                 message : "La confirmacion de la contraseña es requerida"
                             },
-                            validate : {
-                                value : true,
-                                message : "el nombre es requerido"
+                            minLength: {
+                                value : 6,
+                                message : "La contraseña debe tener mas de 6 caracteres"
                             }
                         })} 
-                        type="text" className={style.inputRegister} placeholder="Confirmar Contraseña" />
+                        type="password" className={style.inputRegister} placeholder="Confirmar Contraseña" />
                         {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
                     </label>
  
@@ -124,7 +128,7 @@ function RegistroUsuario() {
                 </form>
 
                 <div className={`contenedor ${style.contenedor_bottom}`}>
-                        <p className={style.textoRegister}>¿Ya estas Registrado? <samp className={style.samp}><Link className={style.link} to="/login">Inicar Sesión</Link></samp></p>
+                        <p className={style.textoRegister}>¿Ya estás Registrado? <samp className={style.samp}><Link className={style.link} to="/login">Iniciar Sesión</Link></samp></p>
                 </div>
             </div>  
         </div>
