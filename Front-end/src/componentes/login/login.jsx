@@ -1,6 +1,5 @@
 import React from "react";
 import style from './login.module.css'
-import loginDatos from "../loginDatos";
 
 import { Link } from 'react-router-dom'
 import { AiOutlineUser,AiOutlineLock,AiFillGoogleCircle } from "react-icons/ai";
