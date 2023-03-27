@@ -1,7 +1,10 @@
 import { React,useState } from "react";
 import style from './login.module.css'
+<<<<<<< HEAD
 import {EnvioLoginBd} from '../baseDeDatos'
 import {llenardatos} from '../ProtegerRutas'
+=======
+>>>>>>> origin/German
 
 
 
