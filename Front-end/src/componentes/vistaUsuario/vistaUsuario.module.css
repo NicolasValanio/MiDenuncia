@@ -120,9 +120,14 @@
 
 @media (min-width:1025px)and(max-width:1280px){
     
+
+
 }
 @media (min-width:768px)and(max-width:1024px){
-    
+    .containerEditarPerfil{
+        background-color: red;
+        width: 300px;
+    }
 }
 @media (min-width:481px)and(max-width:767px){
     
