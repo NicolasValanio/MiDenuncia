@@ -1,0 +1,26 @@
+.filtrar{
+    color: white;
+    position: relative;
+    top: 30px; 
+    left: 40px;
+    height: 100px;
+    width: 250px;
+}
+
+.filtrar li{
+    border-bottom: 1px solid;
+    padding: 5px;
+    list-style: none;
+}
+.filtrar li:hover{
+    font-size: 20px;
+    display: flex;
+    
+}
+.icon{
+    color: #B86EFD;
+    width: 2rem;
+    height: 2rem ;
+    margin-right:20px ;
+}
+
