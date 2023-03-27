@@ -6,7 +6,6 @@ import Rutas from '../src/componentes/rutas'
 // NADIE TOCA ESTO!!!!
   return (
     <div className="App">
-
 {/* // NADIE TOCA ESTO!!!! */}
       <Rutas />
 {/*  NADIE TOCA ESTO!!!! */}

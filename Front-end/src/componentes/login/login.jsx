@@ -1,6 +1,8 @@
 import { React,useState } from "react";
 import style from './login.module.css'
 import {EnvioLoginBd} from '../baseDeDatos'
+import {llenardatos} from '../ProtegerRutas'
+
 
 
 import { Link,useNavigate } from 'react-router-dom'
@@ -11,6 +13,7 @@ function Login() {
 
     const {register,handleSubmit,formState:{errors}} = useForm()
     const [error,setError] = useState(null)
+    // const [user , setUser] = useState(null)
     const navigate = useNavigate();
 
     const  onSubmit = value =>{
@@ -18,6 +21,7 @@ function Login() {
 
         EnvioLoginBd(value).then(res => {
             if (res.status === 200) {
+                llenardatos(res)
                 navigate('/usuarioLog')
             }
             else{
@@ -26,6 +30,8 @@ function Login() {
         })
 
     }
+
+
 
     return (
         <div className={`contenedor ${style.login_Contenedor}`}>
