@@ -65,11 +65,15 @@ require('./middleware/auth2UserGoogle')
 app.get('/google',
   passport.authenticate('google', { scope: ['profile','email'] }));
 
-app.get('/google/callback', 
+  app.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),(req, res)=> {
-  
-    res.status(200).json({message: 'success'});
+ 
+     res.redirect('/redirect');
     
+  });
+
+  app.get('/redirect', function(req, res) {
+    res.redirect('http://localhost:5173/usuarioLog');
   });
 
   
