@@ -1,8 +1,12 @@
 import React from "react";
-
-function VistaDenunciaX(params) {
+/* import UsuarioLog from "../usuarioLog/usuarioLog" */
+import VistaSuperAdmin from "../vistaSuperAdmin/vistaSuperAdmin"
+function VistaDenunciaX() {
     return (
-        <h1>VistaDenunciaX</h1>
+        <div>
+        <VistaSuperAdmin/>
+        {/* <UsuarioLog /> */}
+        </div>
     )
 }
 

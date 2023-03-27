@@ -22,7 +22,7 @@ function Rutas() {
     return (
             <Routes>
                 <Route exact path="/" element={<UsuarioNoLog />} /> 
-                <Route path="/login" element={<Login />} />
+              {/*   <Route path="/login" element={<Login />} />
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
                     <Route path="/HabeasData" element={<HabeasData />} />
@@ -32,7 +32,8 @@ function Rutas() {
                     <Route path='/UsuarioNoLog' element={<UsuarioNoLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} />
-                </Route>
+                </Route> */}
+                <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 
                 <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
