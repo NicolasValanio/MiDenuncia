@@ -4,7 +4,7 @@ const modeloUser= require('../../models').user;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { json } = require('sequelize');
-exports.singUp = async(req,res,next)=>{
+exports.signUp = async(req,res,next)=>{
    // console.log(req.body)
 
     try {
@@ -15,11 +15,11 @@ exports.singUp = async(req,res,next)=>{
 
         let user=await modeloUser.findOne({ where: {email } });
         
-            // if(!user){
-            //     res.status(100).json({message:'Usuario ya existe'})
-            // }else{
+             if(user){
+                 res.status(400).json({message:'Usuario ya existe'})
+             }else{
 
-                modeloUser.create({
+              await  modeloUser.create({
                     nickname,name,last_name,email,password,
                 }).then((data)=>{
                    let token= jwt.sign({
@@ -27,10 +27,13 @@ exports.singUp = async(req,res,next)=>{
                       }, 'secret', { expiresIn: '1h' });
                     
                     res.status(201).json({data,token})
-                }).catch((err) => next(err));
+                }).catch((err) => {
+                    res.status(400).json({message:err.message})
+                });
 
-           // }
-              
+            }
+
+           
         
         
     } catch (error) {
