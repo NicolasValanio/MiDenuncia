@@ -32,6 +32,12 @@ module.exports = {
       token: {
         type: Sequelize.STRING(250)
       },
+      resetPasswordToken: {
+        type: Sequelize.STRING(250)
+      },
+      resetPasswordExpires: {
+        type: Sequelize.STRING(250)
+      },
       
       contact_phone: {
         type: Sequelize.STRING(15)

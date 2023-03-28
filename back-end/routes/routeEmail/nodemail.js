@@ -7,7 +7,7 @@ const email= require('../../controllers/email/email')
 
 
 
-router.post('/send-mail',email.sendEmail)
+router.get('/send-mail',email.sendEmail)
 
 
 module.exports=router;
