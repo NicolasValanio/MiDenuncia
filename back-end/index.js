@@ -65,6 +65,7 @@ require('./middleware/auth2UserGoogle')
 app.get('/google',
   passport.authenticate('google', { scope: ['profile','email'] }));
 
+
   app.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),(req, res)=> {
  

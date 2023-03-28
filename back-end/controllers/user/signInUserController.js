@@ -29,11 +29,13 @@ exports.signIn = async (req, res, next) => {
                     }, 'secret', { expiresIn: '1h' });
                     res.json({ user, token })
                 } else {
-                    res.status(401).json({ message: 'contrase:na no es correcta' })
+                    res.status(401).json({ message: 'contraseña no es correcta' })
                 }
             }
 
-        }).catch((err) => next(err));
+        }).catch((err) => {
+            res.status(400).json({ message: 'error de autenticacion'})
+        });
 
 
     } catch (error) {

@@ -2,6 +2,8 @@ const modeloUser= require('../../models').user;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { json } = require('sequelize');
+exports.singUp = async(req,res,next)=>{
+   // console.log(req.body)
 
 exports.signUp = async (req, res, next) => {
   try {
@@ -15,28 +17,28 @@ exports.signUp = async (req, res, next) => {
       return res.status(400).json({message: 'El correo electrónico ya está registrado'});
     }
 
-    // si el correo electrónico no existe, crear el nuevo usuario
-    password = bcrypt.hashSync(password, 10);
+        let user=await modeloUser.findOne({ where: {email } });
+        
+            // if(!user){
+            //     res.status(100).json({message:'Usuario ya existe'})
+            // }else{
 
-    await modeloUser
-      .create({
-        nickname,
-        name,
-        last_name,
-        email,
-        password,
-      })
-      .then((data) => {
-        let token = jwt.sign({data}, 'secret', {expiresIn: '1h'});
+                modeloUser.create({
+                    nickname,name,last_name,email,password,
+                }).then((data)=>{
+                   let token= jwt.sign({
+                        data
+                      }, 'secret', { expiresIn: '1h' });
+                    
+                    res.status(201).json({data,token})
+                }).catch((err) => next(err));
 
-        res.status(201).json({data, token});
-      })
-      .catch((err) => {
-        res.status(400).json({message: 'Ha habido un error al crear el usuario'});
-      });
-  } catch (error) {
-    res.send(error);
-  }
-};
-
+           // }
+              
+        
+        
+    } catch (error) {
+        res.send(error)
+    }
+}
 
