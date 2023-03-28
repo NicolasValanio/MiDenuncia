@@ -12,7 +12,6 @@ import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
-import NavegacionNoLog  from './navegacionNoLog/navegacion';
 
 
 
@@ -29,7 +28,6 @@ function Rutas() {
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
-                    <Route path='/UsuarioNoLog' element={<UsuarioNoLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} />
                 </Route>
