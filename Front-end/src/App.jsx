@@ -1,6 +1,7 @@
-import './index.css'
-import { Route,Routes,Link } from 'react-router-dom'
+import './App.css'
+import Rutas from '../src/componentes/rutas'
 
+<<<<<<< HEAD
 
 import Login from './componentes/login/login'
 import UsuarioNoLog from './componentes/usuarioNoLog/usuarioNoLog'
@@ -14,19 +15,14 @@ import VistaSuperAdmin from './componentes/vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
 import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
 import NavegacionUserLog from './componentes/navegacionUserLog/NavegacionUserLog'
+=======
+>>>>>>> origin
 // NADIE TOCA ESTO!!!!
-
-
  function App() {
-
-  // const basededatos = async () => {
-  //   const peticion = await axios.post("http://192.168.20.64:4000/createUser", )
-  // }
-
-  // basededatos()
-
+// NADIE TOCA ESTO!!!!
   return (
     <div className="App">
+<<<<<<< HEAD
 
       <Routes>
         
@@ -47,8 +43,14 @@ import NavegacionUserLog from './componentes/navegacionUserLog/NavegacionUserLog
         <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
       </Routes>
 
+=======
+{/* // NADIE TOCA ESTO!!!! */}
+      <Rutas />
+{/*  NADIE TOCA ESTO!!!! */}
+>>>>>>> origin
     </div>
-  )
+  ) 
 }
-
+// NADIE TOCA ESTO!!!!
 export default App
+// NADIE TOCA ESTO!!!!
