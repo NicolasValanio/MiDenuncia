@@ -187,7 +187,7 @@
 
 @media (min-width: 1024px) {
     .contenedor_top{
-        height: 25%;
+        height: 20%;
     }
 
     .formulario_login{
@@ -195,7 +195,7 @@
     }
 
     .contenedor_bottom{
-        height: 25%;
+        height: 20%;
     }
 
     .login{
@@ -207,12 +207,20 @@
     }
 
     .label{
-        height: 20%;
+        height: 17%;
         margin-bottom: 40px;
     }
 
+    .btnLogin{
+        width: 60%;
+        height: 17%;
+    }
+
     .error{
-        font-size: 1.3em;
+        font-size: 1.1em;
+    }
+    .textoLogin{
+        font-size: 0.9em;
     }
 
     .link{
@@ -220,7 +228,7 @@
     }
 
     .iniciar_google{
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 }
 
