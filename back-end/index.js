@@ -112,6 +112,72 @@ app.get('/reset-password', async (req, res) => {
 
 
 ////////////////////////////////////////////////////////////////
-//INICIO
 
- 
+
+
+//sesion para guardar logueado:
+
+const Sequelize=require('sequelize')
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+
+const dbSequelize=new Sequelize('miDenuncia', 'root', null, {//instancia de sequelize
+
+  dialect: 'sqlite',
+  storage: 'session.sqlite' //este sera el archivo de almacenamiento
+
+})
+
+app.use(session({
+  secret: 'midenunciasecreta',
+  resave: false,
+  saveUninitialized: false,
+  store: new SequelizeStore({//configuramos que sequelize sea el que almacene esa session
+    db: dbSequelize
+
+  })
+}))
+
+dbSequelize.sync()//aqui sincronizamos la bd con el modelo de sesion
+
+
+///estamos guardando la info de sesion en la bd en vez de la memoria del servidorr
+//por lo tanto la sesion esta persistente
+
+
+app.post('/login',async(req,res)=>{
+
+  req.session.user=User //establecemos la sesion activa aqui
+
+res.redirect('http://localhost:5173/usuarioLog')
+
+res.send('Inicio de sesión exitoso')
+
+
+
+})
+
+
+
+app.get('/usuarioLog',async(req,res)=>{
+
+  if (!req.session.user) {
+
+    res.send('inicia sesion primero')
+    res.redirect('/login');
+    return;
+  }
+
+  const userSession=req.session.user //obtenemos el usuario de la sesion
+
+  if(req.session.user){
+
+    res.send('bienvenida')
+
+  }
+    
+  
+
+  res.render('usuarioLog',{userSession}) //renderizamos la pagina de inicio
+
+})
