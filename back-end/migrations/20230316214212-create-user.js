@@ -29,6 +29,9 @@ module.exports = {
       avatar: {
         type: Sequelize.STRING(250)
       },
+      token: {
+        type: Sequelize.STRING(250)
+      },
       
       contact_phone: {
         type: Sequelize.STRING(15)
