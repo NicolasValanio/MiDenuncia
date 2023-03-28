@@ -1,40 +1,42 @@
-
 const modeloUser= require('../../models').user;
-
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { json } = require('sequelize');
-exports.singUp = async(req,res,next)=>{
-   // console.log(req.body)
-    try {
-        let {name,last_name,nickname,email,password}=req.body;
 
-        password = bcrypt.hashSync(password,10);
-        //let user=await modeloUser.findOne({ where: {email } });
-        
-            // if(!user){
-            //     res.status(100).json({message:'Usuario ya existe'})
-            // }else{
+exports.signUp = async (req, res, next) => {
+  try {
+    let {name, last_name, nickname, email, password} = req.body;
 
-                const [user,created] = modeloUser.findOrCreate({
-                    
-                    where : nickname,name,last_name,email,password,
-                    default : nickname,name,last_name,email,password,
+    // buscar el correo electrónico en la tabla de usuarios
+    const user = await modeloUser.findOne({where: {email: email}});
 
-                }).then((data)=>{
-                let token= jwt.sign({
-                        data
-                    }, 'secret', { expiresIn: '1h' });
-                    
-                    res.status(201).json({data,token})
-                }).catch((err) => next(err));
-
-           // }
-              
-        
-        
-    } catch (error) {
-        res.send(error)
+    // si el correo electrónico existe, enviar una respuesta de error
+    if (user) {
+      return res.status(400).json({message: 'El correo electrónico ya está registrado'});
     }
-}
+
+    // si el correo electrónico no existe, crear el nuevo usuario
+    password = bcrypt.hashSync(password, 10);
+
+    await modeloUser
+      .create({
+        nickname,
+        name,
+        last_name,
+        email,
+        password,
+      })
+      .then((data) => {
+        let token = jwt.sign({data}, 'secret', {expiresIn: '1h'});
+
+        res.status(201).json({data, token});
+      })
+      .catch((err) => {
+        res.status(400).json({message: 'Ha habido un error al crear el usuario'});
+      });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 
