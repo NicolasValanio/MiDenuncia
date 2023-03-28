@@ -1,30 +1,16 @@
 import './App.css'
+import Rutas from '../src/componentes/rutas'
 import { Route, Routes, Link } from 'react-router-dom'
 
 
-import Login from './componentes/login/login'
-import UsuarioNoLog from './componentes/usuarioNoLog/usuarioNoLog'
-import HabeasData from './componentes/habeasData/habeasData'
-import PeticionesUsuarios from './componentes/peticionesUsuarios/peticionesUsuarios'
-import RegistroDenuncia from './componentes/registroDenuncia/registroDenuncia'
-import RegistroUsuario from './componentes/registroUsuario/registroUsuario'
-import UsuarioLog from './componentes/usuarioLog/usuarioLog'
-import VistaDenunciaX from './componentes/vistaDenunciaX/vistaDenunciaX'
-import VistaSuperAdmin from './componentes/vistaSuperAdmin/vistaSuperAdmin'
-import VistaUsuario from './componentes/vistaUsuario/vistaUsuario'
 // NADIE TOCA ESTO!!!!
-
-
 function App() {
-
-  // const basededatos = async () => {
-  //   const peticion = await axios.post("http://192.168.20.64:4000/createUser", )
-  // }
-
-  // basededatos()
-
+// NADIE TOCA ESTO!!!!
   return (
     <div className="App">
+{/* // NADIE TOCA ESTO!!!! */}
+      <Rutas />
+{/*  NADIE TOCA ESTO!!!! */}
 
       <Routes>
 
@@ -43,7 +29,8 @@ function App() {
       </Routes>
 
     </div>
-  )
+  ) 
 }
-
+// NADIE TOCA ESTO!!!!
 export default App
+// NADIE TOCA ESTO!!!!
