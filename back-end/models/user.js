@@ -37,6 +37,8 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     avatar: DataTypes.STRING,
     token: DataTypes.STRING,
+    resetPasswordToken:DataTypes.STRING,
+    resetPasswordExpires:DataTypes.STRING,
     contact_phone: DataTypes.STRING,
     status: DataTypes.TINYINT,
     address: DataTypes.STRING,

@@ -17,6 +17,7 @@ const passport= require('passport');
 const routes = require('./routes/routeUsers/route')
 const routesComment = require('./routes/routeComments/route')
 const routeRequest=require('./routes/routeRequest/route')
+const routeEmail = require('./routes/routeEmail/nodemail')
 const handleError = require('./handlers/handlerError')
 
 //FIN
@@ -35,7 +36,8 @@ app.use(morgan('tiny'));//monitoreo de solicitudes
 
 app.use('/',routes)
 app.use('/',routeRequest)
-app.use('/',routesComment)
+app.use('/', routesComment)
+app.use('/',routeEmail)
 
 //FIN
 ////////////////////////////////////////////////////////////////
@@ -76,5 +78,35 @@ app.get('/google',
   
 //FIN
 ////////////////////////////////////////////////////////////////
+
+//INICIO
+////////////////////////////////////////////////////////////////
+
+
+app.post('/forgot-password',(req,res,next)=>{
+  const redirectUrl = '/send-mail?email=' + req.body.email; 
+  res.redirect(redirectUrl); 
+})
+
+app.get('/reset-password', async (req, res) => {
+  const { token } = req.query;
+
+  try {
+    const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Token inválido o expirado' });
+    }
+
+    res.render('reset-password-form', { token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+
+////////////////////////////////////////////////////////////////
+//INICIO
 
  

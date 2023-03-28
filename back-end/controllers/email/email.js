@@ -1,5 +1,7 @@
 
 const nodemailer = require('nodemailer');
+const User = require('../../models').user;
+const jwt = require('jsonwebtoken');
 
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
@@ -30,16 +32,40 @@ const transporter = nodemailer.createTransport({
 
   
   try {
+    const { email } = req.query;
+
+   
+ 
+    const user = await User.findOne({where:{ email} });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    const token = jwt.sign({ userId:user.id }, 'secret', { expiresIn: '30m' });
+     user.resetPasswordToken  = token;
+    
+   
+    user.resetPasswordExpires = Date.now() + 1800000; // 30 minutos en milisegundos
+    await user.save();
+
+    const resetPasswordUrl = `http://localhost:4000/reset-password?token=${token}`;
     const mailOptions = {
-      from: 'kandres38@gmail.com',
-      to: 'kandres38@gmail.com',
-      subject: 'dgfhdfhdfm',
-      html:  `<p>Hola,</p><p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Si no has solicitado este cambio, puedes ignorar este mensaje.</p><p>Si el enlace no funciona, copia y pega la siguiente URL en tu navegador:</p>`,
-    // `<p>Hola,</p><p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Si no has solicitado este cambio, puedes ignorar este mensaje.</p><p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p><p><a href="${resetPasswordUrl}">${resetPasswordUrl}</a></p><p>Si el enlace no funciona, copia y pega la siguiente URL en tu navegador:</p><p>${resetPasswordUrl}</p>`,
+      to: user.email,
+      subject: 'Restablecimiento de contraseña',
+      html: `<div>Para restablecer tu contraseña, haz clic en el siguiente enlace: <a href="${resetPasswordUrl}">${resetPasswordUrl}</a></div>`
     };
-    const result = await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Correo electrónico enviado correctamente', result });
+    // Código para enviar el correo electrónico utilizando nodemailer
+    // ...
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Correo electrónico enviado:', info.response);
+      }});
+    //res.json({ message: 'Correo electrónico enviado' });
   } catch (error) {
-    res.status(500).json({ message: 'Ocurrió un error al enviar el correo electrónico', error });
+    console.error(error);
+    res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
