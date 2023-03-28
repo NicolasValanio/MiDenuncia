@@ -8,7 +8,7 @@ exports.updateComment = async (req, res) => {
 
 
         const comment = await modeloComment.findByPk(req.params.id)
-        const {date,description,status}=req.body
+        //const {date,description,status}=req.body
 
         if (!comment) {
 

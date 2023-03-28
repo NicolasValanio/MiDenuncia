@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   user.init({
+    
     nickname: DataTypes.STRING,
     name: DataTypes.STRING,
     last_name: DataTypes.STRING,

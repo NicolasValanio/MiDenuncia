@@ -42,4 +42,3 @@ exports.signUp = async(req,res,next)=>{
         res.send(error)
     }
 }
-

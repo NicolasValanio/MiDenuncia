@@ -114,7 +114,8 @@ app.get('/reset-password', async (req, res) => {
 ////////////////////////////////////////////////////////////////
 
 
-
+////////////////////////////////////////////////////////////////
+//INICIO
 //sesion para guardar logueado:
 
 const Sequelize=require('sequelize')
@@ -181,3 +182,6 @@ app.get('/usuarioLog',async(req,res)=>{
   res.render('usuarioLog',{userSession}) //renderizamos la pagina de inicio
 
 })
+
+//FIN
+////////////////////////////////////////////////////////////////
