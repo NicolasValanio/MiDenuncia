@@ -4,7 +4,7 @@ const modeloUser=require('../models').user
 
 
 
-module.exports=(req,res,next)=>{
+module.exports=  (req,res,next)=>{
 
     if(!req.headers.authorization){
         res.status(401).json({message: 'Authorization required'})
@@ -16,7 +16,7 @@ module.exports=(req,res,next)=>{
             res.status(500).json({message:'Ha ocurrido un problema', err})
         }else{
 
-            modeloUser.findById(decoded.user.id,{include:'roles'}).then((user) => {
+           modeloUser.findByPk(decoded.user.id,{include:'roles'}).then((user) => {
                 
             }).catch((err) => {
                 

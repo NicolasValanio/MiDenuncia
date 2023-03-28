@@ -55,15 +55,14 @@ const transporter = nodemailer.createTransport({
       subject: 'Restablecimiento de contraseña',
       html: `<div>Para restablecer tu contraseña, haz clic en el siguiente enlace: <a href="${resetPasswordUrl}">${resetPasswordUrl}</a></div>`
     };
-    // Código para enviar el correo electrónico utilizando nodemailer
-    // ...
+   
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
       } else {
-        console.log('Correo electrónico enviado:', info.response);
-      }});
-    //res.json({ message: 'Correo electrónico enviado' });
+        res.status(200).json({message:`Correo electrónico enviado:${info.response}` })
+      }})
+          //res.json({ message: 'Correo electrónico enviado' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error interno del servidor' });

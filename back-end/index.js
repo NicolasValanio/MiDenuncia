@@ -1,4 +1,5 @@
 const app=require('./app')
+const User = require('./models').user;
 ////aqui hacemos las importaciones y que todo quede dentro de ella
 const express = require('express');
 const dotenv = require('dotenv');
@@ -98,7 +99,7 @@ app.get('/reset-password', async (req, res) => {
       return res.status(404).json({ message: 'Token inválido o expirado' });
     }
 
-    res.render('reset-password-form', { token });
+    res.status(200).json({message:'prueba', token:token });//redirigimos al front 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error interno del servidor' });
@@ -106,7 +107,12 @@ app.get('/reset-password', async (req, res) => {
 });
 
 
+//otra ruta
+
+
+
 ////////////////////////////////////////////////////////////////
 //INICIO
+
 
  
