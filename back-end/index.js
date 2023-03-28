@@ -1,7 +1,4 @@
-
 const app=require('./app')
-
-
 ////aqui hacemos las importaciones y que todo quede dentro de ella
 const express = require('express');
 const dotenv = require('dotenv');
@@ -22,7 +19,6 @@ const routesComment = require('./routes/routeComments/route')
 const routeRequest=require('./routes/routeRequest/route')
 const handleError = require('./handlers/handlerError')
 
-
 //FIN
 ////////////////////////////////////////////////////////////////
 
@@ -39,7 +35,7 @@ app.use(morgan('tiny'));//monitoreo de solicitudes
 
 app.use('/',routes)
 app.use('/',routeRequest)
-app.use('/', routesComment)
+app.use('/',routesComment)
 
 //FIN
 ////////////////////////////////////////////////////////////////

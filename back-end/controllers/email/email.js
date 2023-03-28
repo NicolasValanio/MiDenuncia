@@ -5,17 +5,14 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
 exports.sendEmail= async (req,res)=>{
-  
-
 
 const accountTransport = require("../../services/accountTransport.json");
 
-
 const oAuth2Client = new google.auth.OAuth2(accountTransport.auth.clientId,
           accountTransport.auth.clientSecret,
-           "https://developers.google.com/oauthplayground");
+          "https://developers.google.com/oauthplayground");
 oAuth2Client.setCredentials({ refresh_token: accountTransport.auth.refreshToken,tls: {
-               rejectUnauthorized: false
+              rejectUnauthorized: false
           } });
 
 // Configurar el transporter de Nodemailer con la API de Gmail de Google

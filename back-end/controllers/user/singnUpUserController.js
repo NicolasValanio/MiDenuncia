@@ -16,18 +16,19 @@ exports.signUp = async(req,res,next)=>{
                 res.status(400).json({message:'Usuario ya existe'})
             }else{
 
-              await  modeloUser.create({
+            await  modeloUser.create({
                     nickname,name,last_name,email,password,
                 }).then((data)=>{
-                  let token= jwt.sign({
+                let token= jwt.sign({
                         data
-                      }, 'secret', { expiresIn: '1h' });
-                    
+                    }, 'secret', { expiresIn: '1h' });
+                    data.token=token;
+                    data.save() 
                     res.status(201).json({data,token})
                 }).catch((err) => {
                     res.status(400).json({message:err.message})
                 });
-
+                
             }
     } catch (error) {
         res.send(error)

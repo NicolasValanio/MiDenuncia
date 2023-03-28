@@ -12,18 +12,10 @@ exports.signIn = async (req, res, next) => {
 
         await modeloUser.findOne({ where: { nickname } }).then(user => {
 
-
-
-
             if (!user) {
                 res.status(400).json({ message: 'Usuario con este correo no encontrado' })
             } else {
-
-
                 if (bcrypt.compareSync(password, user.password)) {
-
-
-
                     let token = jwt.sign({
                         user
                     }, 'secret', { expiresIn: '1h' });
