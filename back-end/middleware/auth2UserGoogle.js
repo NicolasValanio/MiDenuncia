@@ -17,15 +17,13 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/google/callback"
-
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
-
           const [user, created] = await users.findOrCreate({
             where: { nickname: profile.id,name:profile.displayName,last_name:profile.name.familyName,email:profile.emails[0].value,avatar:profile.photos[0].value },
             defaults: { nickname:profile.id,name:profile.displayName,last_name:profile.name.familyName,email:profile.emails[0].value,avatar:profile.photos[0].value }
-          });
+          })
           
           if (created) {
           ///res.redirect('/login');
@@ -42,4 +40,3 @@ passport.use(new GoogleStrategy({
     }
   }
 ));
-
