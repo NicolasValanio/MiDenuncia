@@ -31,9 +31,7 @@ oAuth2Client.setCredentials({ refresh_token: accountTransport.auth.refreshToken,
 
   try {
     const { email } = req.query;
-
-   
- 
+    
     const user = await User.findOne({where:{ email} });
 
     if (!user) {
@@ -47,7 +45,7 @@ oAuth2Client.setCredentials({ refresh_token: accountTransport.auth.refreshToken,
     user.resetPasswordExpires = Date.now() + 1800000; // 30 minutos en milisegundos
     await user.save();
 
-    const resetPasswordUrl = `http://localhost:4000/reset-password?token=${token}`;
+    const resetPasswordUrl = `http://localhost:4000/reset-password?token=${token}&&email=${email}`;
     const mailOptions = {
       to: user.email,
       subject: 'Restablecimiento de contraseña',
