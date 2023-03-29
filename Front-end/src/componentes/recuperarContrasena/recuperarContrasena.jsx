@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import style from "./recuperarContrasena.module.css"
 import {EnvioEmailResetpassword} from '../baseDeDatos'
 
+////iconos
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck,faTimes } from '@fortawesome/free-solid-svg-icons';
+///fin
+
 import { useForm} from 'react-hook-form';
 import { AiOutlineUser } from "react-icons/ai";
 import { Link,useNavigate  } from 'react-router-dom'
@@ -13,7 +18,7 @@ import { Link,useNavigate  } from 'react-router-dom'
 function RecuperarContrasena() {
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
-    const [infoEmail, setInfoEmail]=useState(null)
+    const [infoEmail, setInfoEmail]=useState([''])
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
 
@@ -21,7 +26,10 @@ function RecuperarContrasena() {
 
     const onSubmit = async(valor) =>{
        await EnvioEmailResetpassword(valor)
-        .then(res => console.log(res))
+        .then(res => {
+            
+            setInfoEmail([res.data.message, res.data.message2])
+        })
         .catch(err => {
            // console.log()
            setInfoEmail(err.response.data)
@@ -33,7 +41,11 @@ function RecuperarContrasena() {
 
     const errorEmail={
         color:"white",
-        "text-align":"center"
+       
+    }
+    const infoEmailEnviado={
+        color:"white",
+        
     }
 
 
@@ -65,7 +77,11 @@ function RecuperarContrasena() {
                         })} 
                         type="text" className={style.inputRegister} placeholder="ingresar correo" />
                         {errors.email && <span className={style.error}>{errors.email.message}</span>}
-                        { infoEmail && infoEmail.message && <span style={errorEmail} className={style.error}>{infoEmail.message}</span>}
+                         { infoEmail && infoEmail.message && <span style={errorEmail} className={style.error}>{infoEmail.message} <FontAwesomeIcon className={style.iconCheckBad}  icon={faTimes} /></span>}
+                        <div className={infoEmail[0] && infoEmail[0] && style.infoEmailEnviado}>
+                        { infoEmail[0] && infoEmail[0] && <span style={infoEmailEnviado} className={style.error}>{infoEmail[0]} <FontAwesomeIcon className={style.iconCheck} icon={faCheck} /></span>} <br />
+                        { infoEmail[1] && infoEmail[1] && <span style={infoEmailEnviado} className={style.error}>{infoEmail[1]}</span>}
+                        </div>
                     </label>
 
                    

@@ -54,7 +54,7 @@ const transporter = nodemailer.createTransport({
       if (error) {
         res.status(400).json({message:'Email no es válido' })
       } else {
-        res.status(200).json({message:`Correo electrónico enviado \n verifica tu bandeja de entrada:${info.response}` })
+        res.status(200).json({message:`Correo electrónico enviado!`,message2:"verifica tu bandeja de entrada" })
       }})
           //res.json({ message: 'Correo electrónico enviado' });
 
