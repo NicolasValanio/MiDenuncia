@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import {EnvioEmailResetpassword} from '../baseDeDatos'
 
 
@@ -14,7 +18,7 @@ function ContrasenaNueva() {
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
 
-    const [mostrarContrasena, setmostrarContrasena] = useState(false);
+    const [mostrarContrasena, setmostrarContrasena] = useState([false,false]);
     const handleShowPassword = () => {
         setShowPassword(!mostrarContrasena);
       };
@@ -38,24 +42,41 @@ function ContrasenaNueva() {
       
                     
                      <div className={style.inputsPassword}>
-                     <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
-                          <input {...register("password",{ 
-                                required: {
-                                  value: true,
-                                  message : "La contrasea es requerido"
-                              },
-                              minLength: {
-                                  value : 6,
-                                  message : "La contraseña debe tener mas de 6 caracteres"
-                              }
-                          })} 
-                          type="password" className={style.inputRegister} placeholder="Nueva contraseña" />
-                          {errors.password && <span className={style.error}> {errors.password.message} </span>}
-                      </label>
+                        <div className={style.boton_inputs}>
+                            <div className={style.div_input}>
+                            <AiOutlineUser className={style.iconRegister}/>
+                            <label className={style.label} htmlFor="password" >
+                                <input id="password" type={mostrarContrasena[0] ? 'text' : 'password'}
+                                {...register("password",{ 
+                                        required: {
+                                        value: true,
+                                        message : "La contrasea es requerido"
+                                    },
+                                    minLength: {
+                                        value : 6,
+                                        message : "La contraseña debe tener mas de 6 caracteres"
+                                    }
+                                })} 
+                            
+                                className={style.inputRegister} placeholder="Nueva contraseña"  />
+                                
+                                
+                            </label>
+                        <button className={style.iconEye} onClick={() => setmostrarContrasena([!mostrarContrasena[0],mostrarContrasena[1]])}>
+                                
+                                <FontAwesomeIcon className={style.iconEye} icon={mostrarContrasena[0] ? faEye : faEyeSlash} />
+                        </button>
+                            </div>
+                      {errors.password && <span className={style.error}> {errors.password.message} </span>}
+                     </div>
+                     
       
       
-                      <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
-                          <input {...register("password2",{
+                    <div className={style.div_input} >
+                    <AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label} >
+                          <input htmlFor="password2" id="password2"  type={mostrarContrasena[1] ? 'text' : 'password'}
+                           {...register("password2",{
                                 required: {
                                   value: true,
                                   message : "La confirmacion de la contraseña es requerida"
@@ -65,9 +86,17 @@ function ContrasenaNueva() {
                                   message : "La contraseña debe tener mas de 6 caracteres"
                               }
                           })} 
-                          type="password" className={style.inputRegister} placeholder="Confirmar Contraseña" />
-                          {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
+                           className={style.inputRegister} placeholder="Confirmar Contraseña" />
+                          
+                          
                       </label>
+                      <button className={style.iconEye} onClick={() => setmostrarContrasena([mostrarContrasena[0],!mostrarContrasena[1]])}>
+                              
+                                 <FontAwesomeIcon  icon={mostrarContrasena[1] ? faEye : faEyeSlash} />
+                        </button>
+                    </div>
+                    {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
+                      
                      </div>
       
                       <div className={`contenedor ${style.contenedor_boton}`}>
