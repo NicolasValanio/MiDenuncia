@@ -3,7 +3,10 @@ import style from './RegistroUsuario.module.css'
 import {EnvioResgistrarBd} from '../baseDeDatos'
 
 import { useForm} from 'react-hook-form';
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai"
+import {GiDualityMask} from "react-icons/gi"
+import {RiLockPasswordLine} from "react-icons/ri"
+import {BsMailbox} from "react-icons/bs"
 import { Link,useNavigate  } from 'react-router-dom'
 
 
@@ -61,7 +64,7 @@ function RegistroUsuario() {
                         {errors.last_name && <span className={style.error}> {errors.last_name.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><GiDualityMask className={style.iconRegister}/>
                         <input {...register("nickname",{
                               required: {
                                 value: true,
@@ -76,7 +79,7 @@ function RegistroUsuario() {
                         {errors.nickname && <span className={style.error}> {errors.nickname.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><BsMailbox className={style.iconRegister}/>
                         <input {...register("email",{
                             required: {
                                 value: true,
@@ -91,7 +94,7 @@ function RegistroUsuario() {
                         {errors.email && <span className={style.error}>{errors.email.message}</span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><RiLockPasswordLine className={style.iconRegister}/>
                         <input {...register("password",{ 
                               required: {
                                 value: true,
@@ -106,7 +109,7 @@ function RegistroUsuario() {
                         {errors.password && <span className={style.error}> {errors.password.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><RiLockPasswordLine className={style.iconRegister}/>
                         <input {...register("password2",{
                               required: {
                                 value: true,
