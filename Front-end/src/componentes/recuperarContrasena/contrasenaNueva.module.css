@@ -96,6 +96,7 @@
     margin: 3px;
     font-size: 0.9em;
     color: var(--primer-color);
+    text-align: center;
 }
 
 .contenedor_bottom{
@@ -118,7 +119,7 @@
 .iconEye{
     width: 30px;
     background-color: #282828;
-    color: #72479b;
+    color: var(--primer-color);
    
     border: none;
      border-radius: 0 10px 10px 0;
