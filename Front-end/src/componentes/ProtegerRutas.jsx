@@ -1,17 +1,35 @@
 
-import { useState,useEffect } from "react"
+import { useEffect } from "react"
 import {  Navigate,Outlet } from "react-router-dom"
 
-let ValidacionesUsuario 
+let usuario
 
 export function llenardatos(userA) {
-    ValidacionesUsuario = userA
+    usuario = userA
+    window.localStorage.setItem (
+        'usuarioLogeado' , JSON.stringify(usuario)
+    )
 }
 
 export const UseProtegerRutas =() => {
-    if (!ValidacionesUsuario) {
-       return  < Navigate to='/login'  />
+
+    let usuarioToken
+        usuarioToken = window.localStorage.getItem('usuarioLogeado')
+        if (usuarioToken) {
+            const user = JSON.parse(usuarioToken) 
+        }
+
+    if (usuarioToken) {
+        const user = JSON.parse(usuarioToken)
+        console.log(user.status);   
+    }else{
+        console.log('no existe');
+        return   < Navigate to='/login'  />
     }
-    return <Outlet />
+
+    return  <Outlet />
 }
+
+
+// LOCALSTORAGE ---------------------------------------------------------------------
 
