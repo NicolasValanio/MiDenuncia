@@ -7,6 +7,7 @@ import { AiOutlineUser } from "react-icons/ai"
 import {GiDualityMask} from "react-icons/gi"
 import {RiLockPasswordLine} from "react-icons/ri"
 import {BsMailbox} from "react-icons/bs"
+import "animate.css";
 import { Link,useNavigate  } from 'react-router-dom'
 
 
@@ -125,7 +126,7 @@ function RegistroUsuario() {
                     </label>
  
                     <div className={`contenedor ${style.contenedor_boton}`}>
-                        <button type="submit" className={`btn ${style.btnResgistrar}`}>Registrarse</button>
+                        <button type="submit" className={`btn ${style.btnResgistrar} animate__animated animate__backInUp`}>Registrarse</button>
                     </div>
 
                 </form>
