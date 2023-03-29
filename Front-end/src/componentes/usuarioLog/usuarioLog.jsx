@@ -17,7 +17,7 @@ function UsuarioLog(params) {
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
-                <div className={`contenedor ${style.cont_left}`}>
+                <div className={` ${style.cont_left}`}>
                     <div className={style.logo}></div>
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
