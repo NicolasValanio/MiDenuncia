@@ -44,6 +44,7 @@
 
 .titulop{
  color: white;
+ font-size: 1.2rem;
 }
 
 /* inicio form */
@@ -52,7 +53,7 @@
     width: 60%;
     max-width: 1200px;
     margin: auto;
-    height:100vh ;
+    height:300vh ;
     border-radius: 10px;
     border-bottom: solid 2px var(--primer-color);
     border-right: solid 2px var(--primer-color);
@@ -63,42 +64,45 @@
     color: white;
     text-align: center;
     padding: 20px;
+    font-size: 1.2rem;
 }
 
 .contenedorSolicitud{
     color: white;
-    padding: 15px;
-    margin-left: 75px;  
+    padding: 20px;
+    margin-left: 75px; 
+    font-size: 1.4rem; 
 }
 
 .contenedorselect{
-    width: 200px;
+    width: 300px;
+    padding: 8px;
     background-color: var(--primer-color);
     border-radius: 5px;
     border: none;
-    color: white;
+    color:black;
+    font-size: 1rem;
 
 }
 
 /* contenedor de datos personales */
 .contenedorDatos{
-    background-color: var(--segundo-color);
-    width: 80%;
-    max-width: 1200px;
-    height: 45vh;
-    margin-left: 7em;
-    padding: 5px;
+    display: flex;
+    margin: auto;
     display: grid;
+    
+    background-color: var(--segundo-color);
+    width: 95%;
+    max-width: 1200px;
+    height: 55vh; 
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(4,1fr);
-    justify-content: center;
-    align-content: center;
+
    
 }
 
 .contenedoricotex{
     grid-column: 1/4;
-    gap: 10px;
     align-items: center;
     text-align: left; 
     font-size: 20px;  
@@ -116,7 +120,7 @@
 .contenedoricotex p{
     color: var(--primer-color);
 }
-
+/* select del tipo de solicitud */
 .info{
     padding: 15px;
     justify-self: center;
@@ -126,18 +130,19 @@
 .info p{
     color: white;
     padding: 10px;
+    font-size: 1.2rem;
     
 }
 
 .info select{
-    width: 200px; 
+    width: 260px; 
     background-color: var(--tercer-color);
     color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;  
+    padding: 10px;
+    border-radius: 5px; 
+    font-size: 1.1rem;   
 }
-
+/* inicio de datos personales */
 .infolabel {
     padding: 15px;
     justify-self: center;
@@ -146,18 +151,73 @@
 
 .infolabel label{
     color: white;
+    font-size: 1.2rem;
 }
 
 
 .infolabel input{
     display: flex;
     background-color: var(--tercer-color);
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 15px;
     margin-top: 10px;
     justify-self: center;
     align-self: center;
+    width: 100%;
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* informacion de la peticion */
+.infpeticion{
+    padding: 40px;
+    
+}
+.infpeticion label{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.infpeticion input{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    background-color: var(--segundo-color);
+    border-radius: 5px;
+    border-color: var(--primer-color);
+}
+    
+/* información de la petición */
+.complinf{
+    padding: 20px;
+}
+.complinf label{
+ font-size: 1.2rem;
+ padding: 20px;
+ color: #fff;
+    
+}
+
+.complinf input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 6vh;
+    border-radius:5px;
+    background-color: var(--segundo-color);
+    font-size: 1rem;   
+}
+
+.textdes label{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.textdes textarea{
+    width: 100%; 
+    background-color: var(--segundo-color);
+    font-size: 1rem;
 }
 
 
@@ -165,72 +225,4 @@
 
 
 
-@media (max-width: 600px) {
-    /* contenedor nav */
-    .icono{
-        color: violet;
-        width: 2rem;
-        height: 2rem;   
-        margin-right: 35px;
-        margin-top: 15px;
-    }
 
-    .logo{
-        width: 20%;
-        height: 8vh;
-        background-image: url(../public/logo.png);
-        background-position: center;
-        background-size: cover;
-        margin-top: .5rem;   
-    }
-    /* inicio text de bienvenido peticion */
-    .contenedortext{
-        text-align: center;
-        justify-content: center;
-        padding: 25px;
-    }
-    
-    
-    .tituloh3{
-        color: var(--primer-color);
-        font-size: 2rem;
-    }
-
-    .titulop{
-        color: white;
-        font-size: 10px;
-    }
-    /* inicio form */
-    .contenedorform{
-        background-color:var(--tercer-color);
-        width: 50%;
-        margin: auto;
-        height:100vh ;
-        border-radius: 10px;
-        border-bottom: solid 2px var(--primer-color);
-        border-right: solid 2px var(--primer-color);
-    }
-    
-    .contenedortext{
-        color: white;
-        text-align: center;
-        padding: 10px;
-        font-size: 10px;
-    }
-    
-    .contenedorSolicitud{
-        color: white;
-        padding: 15px;
-        margin-left: 75px;  
-        font-size: 10px;
-    }
-    
-    .contenedorselect{
-        width: 50px;
-        background-color: var(--primer-color);
-        border-radius: 5px;
-        border: none;
-        color: white;
-    
-    }
-}
