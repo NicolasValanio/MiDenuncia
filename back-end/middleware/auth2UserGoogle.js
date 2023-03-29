@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config()
+const {json} = require('sequelize');
 
 const users=require('../models').user;
 const passport = require('passport');
@@ -20,21 +21,35 @@ passport.use(new GoogleStrategy({
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
-          const [user, created] = await users.findOrCreate({
-            where: { nickname: profile.id,name:profile.displayName,last_name:profile.name.familyName,email:profile.emails[0].value,avatar:profile.photos[0].value },
-            defaults: { nickname:profile.id,name:profile.displayName,last_name:profile.name.familyName,email:profile.emails[0].value,avatar:profile.photos[0].value }
-          })
-          
-          if (created) {
-          ///res.redirect('/login');
-          cb(null, user);
+     // console.log(profile)
+           
+     const [user, created] = await users.findOrCreate({
+      where: { nickname: profile.id,email:profile.emails[0].value },
+      defaults: { 
+          nickname: profile.id,
+          name: profile.displayName,
+          last_name: profile.name.familyName,
+          email: profile.emails[0].value,
+          avatar: profile.photos[0].value 
+      }
+  });
+          // console.log(user)
+           
+           if (created) {
+            console.log(user + "arribbbaaaa ")
+           ///res.redirect('/login');
+
+            cb(null, user);
           } else {
-          // Si se encontró un usuario existente, se podría redirigirlo a la página de inicio
-          // res.redirect('/login');
-          cb(null, user);
+            // Si se encontró un usuario existente, se podría redirigirlo a la página de inicio
+           // res.redirect('/login');
+           console.log(user + "aaauiiii yoooooo")
+            cb(null, user);
           }
-    //  }
-     //con esto retorno el perfil par que passport lo utilize
+          
+       
+
+    
     } catch (err) {
       cb(err);
     }

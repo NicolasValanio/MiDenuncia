@@ -55,7 +55,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 
 require('./middleware/auth2UserGoogle')
@@ -85,8 +85,9 @@ app.get('/google',
 
 
 app.post('/forgot-password',(req,res,next)=>{
-  const redirectUrl = '/send-mail?email=' + req.body.email; 
-  res.redirect(redirectUrl); 
+  //console.log(req.body.email)
+   const redirectUrl = '/send-mail?email=' + req.body.email; 
+   res.redirect(redirectUrl); 
 })
 
 app.get('/reset-password', async (req, res) => {
