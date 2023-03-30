@@ -66,7 +66,7 @@ function VistaUsuario(params) {
                                 </label>
                                 
 
-                                <label htmlFor="">Nombre:
+                                <label htmlFor="">Nombre
                                     <input className={style.inputdatos} type="text" />
                                 </label>
                                 

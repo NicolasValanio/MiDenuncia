@@ -144,6 +144,7 @@
     display: flex;
     justify-content:space-around;
     text-align: center;
+    padding: 5rem;
     
 }
 .datosFila1{
@@ -156,7 +157,6 @@
 }
 .inputdatos{
     width: 100%;
-    height: 100%;
     border: none;
     background-color: transparent;
     border-bottom: solid 2px;
