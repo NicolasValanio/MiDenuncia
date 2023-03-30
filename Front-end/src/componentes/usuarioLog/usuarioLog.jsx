@@ -11,6 +11,8 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
+
 
 
 function UsuarioLog(params) {
@@ -24,7 +26,7 @@ function UsuarioLog(params) {
                     <ul className={`contenedor ${style.listaBoton}`}>
 
                         <li className={style.li} >
-                            <div className={style.a} to="/"> <IoMdNotifications className={style.iconsLog}/></div>
+                            <div className={style.a} to="/"> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
                             <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`}>
                                <li>hola1</li>
                                <li>hola1</li>
@@ -35,8 +37,8 @@ function UsuarioLog(params) {
                             </ul>
                         </li>
 
-                        <li className={style.li}>
-                            <div className={style.a} to="/"> <VscSettings className={style.iconsLog}/></div>
+                        <li className={`${style.li} ${style.notificaciones}`}>
+                            <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
                             <ul className={`contenedor ${style.despegableFiltro} ${style.li}`}>
                                 <li className={style.liFiltrados} > <AiFillAlert /> Seguridad  </li>
                                 <li className={style.liFiltrados} > <BsSignStopFill /> Malla Vial </li>
@@ -48,7 +50,8 @@ function UsuarioLog(params) {
                             </ul>
                         </li>
                         
-                        <li className={style.li}><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={style.iconsLog} /> </Link></li>
+                        <li className={style.li}><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
+                        <li className={style.li}> <link rel="stylesheet" href="" /> <BiLogOut className={`icon ${style.iconsLog}`}/> </li>
                     </ul>
                 </div>
             </div>
