@@ -51,7 +51,8 @@ function Footer(){
                     <p className={Style.coex}>Datos Coex</p>
                    <div className={Style.ubication}> 
                         <MdLocationPin className={Style.Sicon}/>
-                        <a href="https://goo.gl/maps/fhJaE7Ra2MBZ7AEp6">Calle 35 # 32-85</a>
+                        <a href="https://goo.gl/maps/fhJaE7Ra2MBZ7AEp6" target="_blank">Calle 35 # 32-85</a>
+                     
                    </div>
 
                     <div className={Style.mails}>
