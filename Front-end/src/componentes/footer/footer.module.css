@@ -1,0 +1,88 @@
+body{
+    background-color: var(--segundo-color);
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.contenedorPrincipal{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    justify-content: space-around;
+    border-top: solid 1px #ffffff;
+    border-bottom: solid 1px #ffffff;
+    padding: 10px 0 0 0; 
+}
+
+.logo{
+    width: 57%;
+    height: 5rem;
+    background-image: url(../../../public/logo.png);
+    background-position: center;
+    background-size: cover;
+}
+.redessociales{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+.redessociales p{
+    color: var(--primer-color);
+    font-weight: 700;
+}
+.icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.segundoContenedor p{
+    color: var(--primer-color);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.mails{
+display: flex;
+}
+.mails a{
+    color: #ffffff;
+    margin-left: 5px;
+    padding-bottom: 5px;
+}
+.tels{
+    display: flex;;
+
+}
+.tels p{
+    text-align:justify;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 14px;
+}
+.Sicon{
+    color: var(--primer-color);
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.tercercontenedor a{
+color: #ffffff;
+}
+.coex {
+    font-weight: 700;
+    color: var(--primer-color);
+    font-size: 18px;
+}
+.end{
+    color: #ffffff;
+
+}
