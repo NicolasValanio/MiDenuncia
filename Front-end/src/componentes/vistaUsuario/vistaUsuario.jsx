@@ -54,46 +54,51 @@ function VistaUsuario(params) {
 
             </div>
                 <div className={style.containerEdiPrinipal}>
-                        <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
-                        <BsFillCameraFill className={style.BsFillCameraFill}/>   
+                    <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
+                    <BsFillCameraFill className={style.BsFillCameraFill}/>   
                 
                     <div className={style.containerEditarPerfil}>
                         <h1>Editar perfil</h1>
                         <form action="" className={style.formulario}>
                             <div className={style.datosFila1}>
-                                <label htmlFor=""></label>
-                                <input className={style.inputdatos} type="text" />
+                                <label htmlFor="">Número de documento
+                                    <input className={style.inputdatos} type="text" />
+                                </label>
                                 
 
-                                <label htmlFor=""></label>
-                                <input className={style.inputdatos} type="text" />
+                                <label htmlFor="">Nombre:
+                                    <input className={style.inputdatos} type="text" />
+                                </label>
                                 
 
-                                <label htmlFor=""></label>
-                                <input className={style.inputdatos} type="text" />
+                                <label htmlFor="">Apellido                           
+                                    <input className={style.inputdatos} type="text" />
+                                </label>
                                 
 
-                                <label htmlFor=""></label>
-                                <input className={style.inputdatos} type="text" />
+                                <label htmlFor="">Dirección
+                                    <input className={style.inputdatos} type="text" />
+                                </label>
                                 
                             </div>
                             <div  className={style.datosFila1}>
                                 
-                                <label htmlFor=""></label>
-                                <input className={style.inputdatos} type="text" />
+                                <label htmlFor="">Usuario
+                                    <input className={style.inputdatos} type="text" />
+                                </label>
                                
 
-                                <label htmlFor="">cedula 
+                                <label htmlFor="">Contraseña
                                  <input className={style.inputdatos} type="text" />
                                 </label>
                                 
 
-                                <label htmlFor="">sas
+                                <label htmlFor="">Correo electronico
                                  <input className={style.inputdatos} type="text" />
                                 </label>
                                 
 
-                                <label htmlFor="">
+                                <label htmlFor="">Número de contanto
                                  <input className={style.inputdatos} type="text" />
                                 </label>
                                
