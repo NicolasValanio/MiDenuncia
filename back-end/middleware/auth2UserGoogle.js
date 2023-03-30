@@ -39,14 +39,14 @@ passport.use(new GoogleStrategy({
           // console.log(user)
            
            if (created) {
-            console.log(user + "arribbbaaaa ")
+          
            ///res.redirect('/login');
 
             cb(null, user);
           } else {
             // Si se encontró un usuario existente, se podría redirigirlo a la página de inicio
            // res.redirect('/login');
-           console.log(user + "aaauiiii yoooooo")
+        
             cb(null, user);
           }
           

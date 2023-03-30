@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     type: 'OAuth2',
-    user: 'kandres38@gmail.com',
+    user: 'midenunciacoex@gmail.com',
     clientId:accountTransport.auth.clientId,
     clientSecret: accountTransport.auth.clientSecret,
     refreshToken: accountTransport.auth.refreshToken,

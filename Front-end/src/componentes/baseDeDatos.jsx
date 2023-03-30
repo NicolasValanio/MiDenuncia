@@ -22,3 +22,11 @@ export async function  EnvioEmailResetpassword (envio){
     
 
 }
+
+
+export async function  EnvioContrasenaNueva (envio){
+
+    return await axios.put("http://localhost:4000/recoverPassword/4",envio)
+     
+ 
+ }

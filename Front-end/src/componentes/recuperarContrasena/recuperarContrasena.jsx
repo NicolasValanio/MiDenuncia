@@ -32,6 +32,7 @@ function RecuperarContrasena() {
         })
         .catch(err => {
            // console.log()
+           console.log(err)
            setInfoEmail(err.response.data)
         })
        

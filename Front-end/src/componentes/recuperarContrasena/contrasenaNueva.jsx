@@ -24,7 +24,8 @@ function ContrasenaNueva() {
       };
 
     const onSubmit = valor =>{
-          EnvioResgistrarBd(valor) 
+
+        EnvioResgistrarBd(valor) 
          // navigate("/login");
       }
       
