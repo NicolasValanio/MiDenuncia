@@ -1,5 +1,5 @@
 
-const app=require('./app')
+const app = require('./app')
 
 const User=require('./models').user
 
@@ -59,7 +59,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 
 require('./middleware/auth2UserGoogle')
@@ -89,8 +89,9 @@ app.get('/google',
 
 
 app.post('/forgot-password',(req,res,next)=>{
-  const redirectUrl = '/send-mail?email=' + req.body.email; 
-  res.redirect(redirectUrl); 
+  //console.log(req.body.email)
+   const redirectUrl = '/send-mail?email=' + req.body.email; 
+   res.redirect(redirectUrl); 
 })
 
 app.get('/reset-password', async (req, res) => {
@@ -112,15 +113,12 @@ app.get('/reset-password', async (req, res) => {
 
 
 ////////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////////
 //INICIO
-//sesion para guardar logueado:
-
+//sesion persistente
+/*
 const Sequelize=require('sequelize')
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const SequelizeStore = require('connect-session-sequelize')(session.Store)//este paquete genera automaticamente el modelo session en la bd
 
 const dbSequelize=new Sequelize('miDenuncia', 'root', null, {//instancia de sequelize
 
@@ -146,42 +144,59 @@ dbSequelize.sync()//aqui sincronizamos la bd con el modelo de sesion
 //por lo tanto la sesion esta persistente
 
 
-app.post('/login',async(req,res)=>{
+app.post('/Login',async(req,res)=>{
 
-  req.session.user=User //establecemos la sesion activa aqui
+  try{
+  const {userLog}=req.body
 
-res.redirect('http://localhost:5173/usuarioLog')
+  req.session.user={ username: userLog} //establecemos la sesion activa aqui
+
+
 
 res.send('Inicio de sesión exitoso')
 
+res.redirect('http://localhost:5173/usuarioLog')
+
+console.log('exito')
+console.log(userLog)
+console.log(req.session.user)}
+
+catch(error){
+
+  res.send(error)
+
+}
 
 
 })
 
 
 
-app.get('/usuarioLog',async(req,res)=>{
+app.get('/UsuarioLog',async(req,res)=>{
 
-  if (!req.session.user) {
 
-    res.send('inicia sesion primero')
-    res.redirect('/login');
-    return;
-  }
-
+ 
   const userSession=req.session.user //obtenemos el usuario de la sesion
 
   if(req.session.user){
 
     res.send('bienvenida')
 
+    console.log('session creada')
+  }else{
+    res.redirect('/Login');
+    res.send('inicia sesion primero')
+    
+  
+
   }
     
   
 
-  res.render('usuarioLog',{userSession}) //renderizamos la pagina de inicio
+  res.render('UsuarioLog',{userSession}) //renderizamos la pagina de inicio
 
-})
+  console.log('pagina renderizada')
 
-//FIN
-////////////////////////////////////////////////////////////////
+})*/
+
+//fin
