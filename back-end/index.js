@@ -10,6 +10,8 @@ const morgan = require('morgan')
 dotenv.config()
 
 const passport = require('passport');
+const bcrypt = require('bcrypt')
+
 
 //FIN
 ////////////////////////////////////////////////////////////////
@@ -114,7 +116,7 @@ app.get('/verificacionToken', async (req, res) => {
   const data = await User.findOne({where: {email}});
 
   res.status(200).json(data); 
-  /* try {
+  try {
     if(data === null){
       res.status(400).json({ message: 'vuelva a enviar enlace' });
     }
@@ -122,30 +124,26 @@ app.get('/verificacionToken', async (req, res) => {
     res.redirect(url)
   } catch (error) {
     res.status(500).json({ message: 'Error interno del servidor' });
-  } */
+  } 
 })
 
-/* app.put('/newPassword', async (req, res) => {
+app.put('/newPassword', async (req, res) => {
   const {email} = req.query;
   try {
-
+    let {password, password2} = req.body;
     let user = await User.findOne({ where: {email}})
-
     if(user){
-      res.status(200).json({ message: 'Usuario encontrado' })
+      password2 = bcrypt.hashSync(password2,10);
+      await User.update({password: password2},
+        {where: {email: email}})
+        .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
+        .catch(err => res.json({ message: err.message }))
+    }else{
+      res.status(400).json({ message: "no se pudo" })
     }
-
   } catch (error) {
-    res.status(500).json({ message: 'Error interno del servidor' });
+    res.status(500).json({ message: error.message });
   }
-}) */
-
-
-
-
-
-
-
-
+})
 
 ////////////////////////INICIO/////////////////
