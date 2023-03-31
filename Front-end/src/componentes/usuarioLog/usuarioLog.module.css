@@ -61,6 +61,12 @@
 
 /* CONTENEDOR DE NOTIFICAION Y BUSQUEDA Y  LISTA DESPLEGABLE */
 
+.notificaciones{
+    display: none;
+}
+
+
+
 .despegableNotificaion{
     display: none;
     position: absolute;
