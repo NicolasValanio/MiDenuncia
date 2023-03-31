@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import {EnvioEmailResetpassword} from '../baseDeDatos'
+import {nuevaContrasena} from '../baseDeDatos'
 
 
 import style from './contrasenaNueva.module.css';
@@ -19,13 +19,13 @@ function ContrasenaNueva() {
     const navigate = useNavigate();
 
     const [mostrarContrasena, setmostrarContrasena] = useState([false,false]);
-    const handleShowPassword = () => {
-        setShowPassword(!mostrarContrasena);
-      };
+    // const handleShowPassword = () => {
+    //     setShowPassword(!mostrarContrasena);
+    //   };
 
     const onSubmit = valor =>{
 
-        EnvioResgistrarBd(valor) 
+        nuevaContrasena(valor) 
          // navigate("/login");
       }
       

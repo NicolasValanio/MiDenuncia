@@ -16,6 +16,8 @@ export function EnvioResgistrarBd(envio) {
 }
 
 
+
+// esto envia el un enlace al email para recuperar contrasena
 export async function  EnvioEmailResetpassword (envio){
 
    return await axios.post("http://localhost:4000/forgot-password",envio)
@@ -24,9 +26,23 @@ export async function  EnvioEmailResetpassword (envio){
 }
 
 
+// esta funcion resetea la contrasena del usuario con el enlace enviado al correo
+
+export async function  nuevaContrasena (envio){
+
+    return await axios.put("http://localhost:4000/newPassword",envio)
+     
+ 
+ }
+
+
+
+// esta funcion es para cambiar la contrasena del usuario logueado 
 export async function  EnvioContrasenaNueva (envio){
 
     return await axios.put("http://localhost:4000/recoverPassword/4",envio)
      
  
  }
+
+ 
