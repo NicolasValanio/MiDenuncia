@@ -1,0 +1,112 @@
+body{
+    background-color: var(--segundo-color);
+    transition: .5ms;
+
+}
+
+.contenedor{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+}
+.imagen{
+    width: 15%;
+    height: 10vh;
+    margin-left: 2rem;
+    background-image: url(../../../public/logo.png);
+    background-position: center;
+    background-size: cover;
+    margin-top: .5rem;
+    
+}
+.contenedorBtns{
+    width: fit-content;
+    display: flex;
+    margin-right: 1rem;
+    gap: 1rem;
+    padding: 1rem;
+}
+.btns{
+    height: fit-content;
+    padding: .3rem 1rem .3rem 1rem;
+    text-decoration: none;
+    background-color: var(--primer-color);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: .1rem;
+    
+}
+
+.denuncia{
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+    background-color: var(--primer-color);
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+}
+.iconoDenuncia{
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    padding: .5rem;
+    color: white;
+    transform: rotate(320deg);
+    
+}
+
+.btns:hover{
+    background-color: var(--segundo-color); 
+    border: solid 1px var(--primer-color);
+    transition: .3s ease;
+}
+
+.iconoDenuncia:hover{
+    color: black;
+    transition: .4s;    
+}
+
+@media (max-width: 768px) {
+    .imagen{
+        width: 35%;
+        height: 8vh;
+    }
+}
+@media (max-width: 635px) {
+    .imagen{
+        width: 35%;
+        height: 5vh;
+    }
+    .contenedorBtns{
+        margin: 0;
+        gap: .4rem;
+    }
+    .btns{
+        width: fit-content;
+        font-size: .8rem;
+        letter-spacing: 0;
+    }
+    .iconoDenuncia{
+        width: 2rem;
+        height: 2rem;
+    }
+}
+        
+@media (max-width: 480px) {
+    .imagen{
+        width: 30%;
+        height: 6vh;
+        background-size: cover;
+    }
+    .btns{
+        text-align: center;
+        padding: .4rem;
+        font-weight: 400;
+    }
+}
