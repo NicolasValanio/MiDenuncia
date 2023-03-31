@@ -58,29 +58,42 @@ app.use('/',routeAuthGoogle)
 ////////////////////////////////////////////////////////////////
 
 
-app.post('/forgot-password',(req,res,next)=>{
-  //console.log(req.body.email)
-   const redirectUrl = '/send-mail?email=' + req.body.email; 
-   res.redirect(redirectUrl); 
-})
 
-app.get('/reset-password', async (req, res) => {
-  const { token } = req.query;
+// app.get('/reset-password', async (req, res) => {
+//   const { token, email } = req.query;
 
-  try {
-    const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+//   try {
+//     const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
 
-    if (!user) {
-      return res.status(404).json({ message: 'Token inválido o expirado' });
+//     if (!user) {
+//       return res.status(404).json({ message: 'Token inválido o expirado' });
+//     }
+//     const url = `/verificacionToken?token=${token}&email=${email}`
+//     res.redirect(url)
+//     //res.status(200).json({ message: 'prueba', token: token });//redirigimos al front 
+//   } catch (error) {
+//       res.status(500).json({ message: 'Error interno del servidor' }); 
+//   }
+// });
+
+//otra ruta// Cambio de contraseña
+
+app.get('/verificacionToken', async (req, res) => {
+  const {token,email} = req.query;
+  const data = await User.findOne({where: {email}});
+
+  data ?  res.status(200).json(data) : res.json({message: 'asegurese de su usuario este registrado'});
+ 
+  /* try {
+    if(data === null){
+      res.status(400).json({ message: 'vuelva a enviar enlace' });
     }
-
-    res.render('reset-password-form', { token });
+    const url = `http://localhost:5173/contrasenaNueva?data=${data}`;
+    res.redirect(url)
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: 'Error interno del servidor' });
-  }
-});
-
+  } */
+})
 
 ////////////////////////////////////////////////////////////////
 //INICIO
