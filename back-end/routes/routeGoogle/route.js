@@ -19,9 +19,10 @@ app.use(session({
 router.get('/google', googleController);
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),(req, res)=> {
+  res.redirect('http://localhost:5173/usuarioLog')
 
 
-  res.status(200).json({message: 'Success',user:{id:req.user.id,name:req.user.name,email:req.user.email}})
+  //res.status(200).json({message: 'Success',user:{id:req.user.id,name:req.user.name,email:req.user.email}})
    
  })
 
