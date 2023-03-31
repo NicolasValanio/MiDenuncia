@@ -44,9 +44,20 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     role_id: DataTypes.INTEGER,
     document_id: DataTypes.STRING
+    
   }, {
     sequelize,
     modelName: 'user',
+    // validate: {
+    //   userValidation() {
+    //     if (this.name.length < 2) {
+    //       throw new Error("firstName length must be 7 or greater!");
+    //     }
+    //     if (this.email.includes("@mail.com")) {
+    //       throw new Error("Email must not use mail.com address!");
+    //     }
+    //   },
+    // },
   });
   return user;
 };
