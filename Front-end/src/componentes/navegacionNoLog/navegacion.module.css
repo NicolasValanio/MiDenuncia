@@ -1,5 +1,5 @@
 body{
-    background-color: #252A2E;
+    background-color: var(--segundo-color);
     transition: .5ms;
 
 }
@@ -11,15 +11,17 @@ body{
     justify-content: space-between;
 }
 .imagen{
-    width: 35%;
-    height: 15vh;
-    background-image: url(../public/logo.png);
+    width: 15%;
+    height: 10vh;
+    margin-left: 2rem;
+    background-image: url(../../../public/logo.png);
     background-position: center;
     background-size: cover;
     margin-top: .5rem;
     
 }
 .contenedorBtns{
+    width: fit-content;
     display: flex;
     margin-right: 1rem;
     gap: 1rem;
@@ -29,7 +31,7 @@ body{
     height: fit-content;
     padding: .3rem 1rem .3rem 1rem;
     text-decoration: none;
-    background-color: #B86EFD;
+    background-color: var(--primer-color);
     border: none;
     border-radius: 15px;
     color: white;
@@ -44,7 +46,7 @@ body{
     width: fit-content;
     height: fit-content;
     text-decoration: none;
-    background-color: #B86EFD;
+    background-color: var(--primer-color);
     border: none;
     border-radius: 50%;
     text-align: center;
@@ -60,8 +62,8 @@ body{
 }
 
 .btns:hover{
-    background-color: #252A2E; 
-    border: solid 1px #B86EFD;
+    background-color: var(--segundo-color); 
+    border: solid 1px var(--primer-color);
     transition: .3s ease;
 }
 

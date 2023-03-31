@@ -1,9 +1,14 @@
 import React from "react";
 import NavegacionNoLog from "../navegacionNoLog/navegacion";
-import Navegacion from "../navegacionNoLog/navegacion";
+import FiltrarPor from "../filtrarPor/filtarPor";
+
 function UsuarioNoLog(params) {
     return (
-        <NavegacionNoLog />
+        <div>
+            <NavegacionNoLog />
+            <FiltrarPor />
+        </div>
+        
         )
 }
 
