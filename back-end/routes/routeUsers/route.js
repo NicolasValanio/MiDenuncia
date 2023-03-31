@@ -19,6 +19,7 @@ router.get('/info',authMiddleware,infoUserController.infoUser)
 router.get('/infoRequestUser',infoRequestUserController.infoRequestUser)
 router.post('/forgot-password',forgotPasswordController.forgotPassword)
 router.get('/reset-password',resetPasswordController.resetPassword)
+router.post('/changePassword',changePasswordUserController.changePasswordUser)
 
 
 module.exports=router
