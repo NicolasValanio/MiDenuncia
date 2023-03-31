@@ -14,6 +14,9 @@ dotenv.config()
 
 const passport= require('passport');
 
+
+let cookieParser = require('cookie-parser')
+
 //FIN
 ////////////////////////////////////////////////////////////////
 
@@ -31,8 +34,10 @@ const handleError = require('./handlers/handlerError')
 
 
 /// codigo especial para procesar solicitudes HTTP y expres json lo convierta en json
+app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
 
 app.use(cors()); //proteccion de cabecera
 app.use(morgan('tiny'));//monitoreo de solicitudes
@@ -80,11 +85,19 @@ app.use('/',routeAuthGoogle)
 
 app.get('/verificacionToken', async (req, res) => {
   const {token,email} = req.query;
-  const data = await User.findOne({where: {email}});
+   await User.findOne({where: {resetPasswordToken:token}})
+  .then(user => {
+    res.cookie('miCookie', user.email, { maxAge: 900000,httpOnly: true });
+    const url = `http://localhost:5173/contrasenaNueva?token=${user.resetPasswordToken}&email=${user.email}}`;
+  res.redirect(url)
+  }).catch(err => {
+    res.send('token no funciona')
+  });
+ 
+  
 
   //data ?  res.status(200).json(data) : res.json({message: 'asegurese de su usuario este registrado'});
-  const url = `http://localhost:5173/contrasenaNueva?token=${data.token}&email=${data.email}}`;
-  res.redirect(url)
+  
   /* try {
     if(data === null){
       res.status(400).json({ message: 'vuelva a enviar enlace' });
@@ -99,10 +112,9 @@ app.get('/verificacionToken', async (req, res) => {
 ////////////////////////////////////////////////////////////////
 //INICIO
 app.put('/newPassword', async (req, res) => {
-  const referer = req.headers.referer;
-  const urlParams = new URLSearchParams(referer.slice(referer.indexOf('?')));
-  const email = urlParams.get('email');
-  console.log(req.headers)
+  const miCookie = req.signedCookies;
+  
+  console.log(miCookie,req.cookies);
   // try {
   //   let {password, password2} = req.body;
   //   let user = await User.findOne({ where: {email}})

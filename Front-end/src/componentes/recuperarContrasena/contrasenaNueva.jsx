@@ -91,6 +91,7 @@ function ContrasenaNueva() {
                           
                           
                       </label>
+                    
                       <button className={style.iconEye} onClick={() => setmostrarContrasena([mostrarContrasena[0],!mostrarContrasena[1]])}>
                               
                                  <FontAwesomeIcon  icon={mostrarContrasena[1] ? faEye : faEyeSlash} />
