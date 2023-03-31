@@ -8,6 +8,7 @@ const session = require('express-session');
 const Sequelize=require('sequelize');
 
 
+
 const SequelizeStore = require('connect-session-sequelize')(session.Store)//este paquete genera automaticamente el modelo session en la bd
 //aqui sincronizamos la bd con el modelo de sesion
 
@@ -25,10 +26,19 @@ app.use(session({
     secret: 'midenunciasecreta',
     resave: false,
     saveUninitialized: false,
+
     store: new SequelizeStore({//configuramos que sequelize sea el que almacene esa session
     db: dbSequelize
 
-    })
+
+    }),
+
+    genid : function(req){
+
+        return Sequelize.UUIDV4 //genera un identificador unico para cada sesion
+
+    }
+
 }))
 
 dbSequelize.sync()
@@ -40,7 +50,7 @@ exports.signIn = async (req, res, next) => {
 
     try {
 
-        let { nickname, password } = req.body;
+        const { nickname, password } = req.body;
 
 
 
@@ -58,15 +68,17 @@ exports.signIn = async (req, res, next) => {
 
 
 
-                    let token = jwt.sign({
+                    const token = jwt.sign({
                         user
                     }, 'secret', { expiresIn: '1h' });
 
-                    res.json({ user, token })
+             
+
+                    req.session.user=user
 
 
-                       
-                   const sesionUser=  req.session.user={ data: nickname} 
+                 
+                    const sessionUser = req.session
 
 
 
@@ -74,12 +86,11 @@ exports.signIn = async (req, res, next) => {
 
                         //res.redirect('http://localhost:5173/usuarioLog')
     
-                        console.log('exito')
-                 
-                        console.log(req.session.user)
+           
 
-                    return sesionUser
-                  
+           
+
+                    res.json({ user, token, sessionUser  })
 
 
                 } else {
