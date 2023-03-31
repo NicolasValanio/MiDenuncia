@@ -1,18 +1,15 @@
 const nodemailer = require('nodemailer');
 const User = require('../../models').user;
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config()
 
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-
-exports.sendEmail= async (req,res)=>{
-
-const accountTransport = require("../../services/accountTransport.json");
-
-const oAuth2Client = new google.auth.OAuth2(accountTransport.auth.clientId,
-          accountTransport.auth.clientSecret,
+const oAuth2Client = new google.auth.OAuth2(process.env.EMAIL_AUTH_CLIENT_ID,
+  process.env.EMAIL_AUTH_CLIENT_SECRET,
           "https://developers.google.com/oauthplayground");
-oAuth2Client.setCredentials({ refresh_token: accountTransport.auth.refreshToken,tls: {
+oAuth2Client.setCredentials({ refresh_token:process.env.EMAIL_AUTH_CLIENT_REFRESH_TOKEN,tls: {
               rejectUnauthorized: false
           } });
 
@@ -21,13 +18,20 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     type: 'OAuth2',
-    user: 'midenunciacoex@gmail.com',
-    clientId:accountTransport.auth.clientId,
-    clientSecret: accountTransport.auth.clientSecret,
-    refreshToken: accountTransport.auth.refreshToken,
+    user: process.env.EMAIL_AUTH_USER,
+    clientId:process.env.EMAIL_AUTH_CLIENT_ID,
+    clientSecret: process.env.EMAIL_AUTH_CLIENT_SECRET,
+    refreshToken: process.env.EMAIL_AUTH_CLIENT_REFRESH_TOKEN,
     accessToken: oAuth2Client.getAccessToken(),
   },
 });
+
+////// RUTA DE ENVIO DE EMAIL
+
+exports.sendEmail= async (req,res)=>{
+
+
+
 
   
   try {
@@ -36,7 +40,7 @@ const transporter = nodemailer.createTransport({
    
  
     const user = await User.findOne({where:{ email} }).then(user=>{
-      const token = jwt.sign({ userId:user.id }, 'secret', { expiresIn: '30m' });
+      const token = jwt.sign({ userId:user.id }, process.env.JWT_SECRET, { expiresIn: '30m' });
      user.resetPasswordToken  = token;
     
    

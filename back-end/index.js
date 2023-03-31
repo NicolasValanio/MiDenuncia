@@ -7,7 +7,7 @@ const User=require('./models').user
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors')
-const session = require('express-session');
+// const session = require('express-session');
 //const { auth } = require('express-openid-connect');
 const morgan = require('morgan')
 dotenv.config()
@@ -22,6 +22,7 @@ const routes = require('./routes/routeUsers/route')
 const routesComment = require('./routes/routeComments/route')
 const routeRequest=require('./routes/routeRequest/route')
 const routeEmail = require('./routes/routeEmail/nodemail')
+const routeAuthGoogle = require('./routes/routeGoogle/route')
 const handleError = require('./handlers/handlerError')
 
 
@@ -43,6 +44,7 @@ app.use('/',routes)
 app.use('/',routeRequest)
 app.use('/', routesComment)
 app.use('/',routeEmail)
+app.use('/',routeAuthGoogle)
 
 //FIN
 ////////////////////////////////////////////////////////////////
@@ -50,39 +52,7 @@ app.use('/',routeEmail)
 
 
 
-////////////////////////////////////////////////////////////////
-//INICIO
-//codigo especial para los usuarios de GOOGLE
-app.use(session({
-  secret: 'MIDENUNCIA',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-//app.use(passport.session());
 
-
-require('./middleware/auth2UserGoogle')
-
-
-app.get('/google',
-  passport.authenticate('google', { scope: ['profile','email'] }));
-
-
-  app.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),(req, res)=> {
- 
-     res.redirect('/redirect');
-    
-  });
-
-  app.get('/redirect', function(req, res) {
-    res.redirect('http://localhost:5173/usuarioLog');
-  });
-
-  
-//FIN
-////////////////////////////////////////////////////////////////
 
 //INICIO
 ////////////////////////////////////////////////////////////////

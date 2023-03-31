@@ -24,7 +24,7 @@ exports.signUp = async(req,res,next)=>{
                 }).then((data)=>{
                    let token= jwt.sign({
                         data
-                      }, 'secret', { expiresIn: '1h' });
+                      }, process.env.JWT_SECRET, { expiresIn: '1h' });
                       data.token=token;
                       data.save()
                     

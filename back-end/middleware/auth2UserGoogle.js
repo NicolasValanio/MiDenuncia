@@ -24,28 +24,25 @@ passport.use(new GoogleStrategy({
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
-     // console.log(profile)
+     
            
      const [user, created] = await users.findOrCreate({
-      where: { nickname: profile.id,email:profile.emails[0].value },
+      where: { email:profile.emails[0].value },
       defaults: { 
           nickname: profile.id,
-          name: profile.displayName,
+          name: profile.name.givenName,
           last_name: profile.name.familyName,
-          email: profile.emails[0].value,
-          avatar: profile.photos[0].value 
+          email: profile.emails[0].value
       }
   });
-          // console.log(user)
+        
            
            if (created) {
           
-           ///res.redirect('/login');
+       
 
             cb(null, user);
           } else {
-            // Si se encontró un usuario existente, se podría redirigirlo a la página de inicio
-           // res.redirect('/login');
         
             cb(null, user);
           }
