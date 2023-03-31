@@ -3,7 +3,6 @@
     position: relative;
     top: 60px; 
     left: 40px;
-    height: 100px;
     width: 230px;
 }
 
@@ -13,7 +12,6 @@
     border-bottom: 1px solid;
     text-align: justify;
     list-style: none;
-    /* margin-bottom: 10px; */
     font-size: 14px;
     padding: 5px;
 
