@@ -14,7 +14,7 @@ function Footer(){
             <div className={`contenedor ${Style.contenedorPrincipal}`}>
 
                 <div className={`contenedor ${Style.primerContenedor}`}>
-                    <div className={Style.logo}></div>
+                    <img src="../../../public/logo.png" alt="logo" className={Style.logo} />
 
                     <div className={Style.redessociales}>
                         <p>Redes Sociales:</p>

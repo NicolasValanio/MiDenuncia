@@ -1,6 +1,7 @@
 import React from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
+import Footer from "../footer/footer.jsx"
 
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
@@ -63,7 +64,9 @@ function UsuarioLog(params) {
                 
 
             </div>
+            <Footer />
         </div>
+
     )
 }
 

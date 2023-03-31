@@ -22,11 +22,8 @@ footer{
 }
 
 .logo{
-    width: 57%;
-    height: 5rem;
-    background-image: url(../../../public/logo.png);
-    background-position: center;
-    background-size: cover;
+    width: 50%;
+    height: fit-content;
 }
 .redessociales{
     display: flex;
@@ -88,8 +85,8 @@ color: #ffffff;
 
 @media(min-width:768px)and (max-width:1024px) {
     .logo{
-        width: 14rem;
-        height: 4.6rem;
+        width: 50%;
+        height: 3.5rem;
     }
 
     p,a{
@@ -99,8 +96,8 @@ color: #ffffff;
 
 @media(min-width:481px)and (max-width:767px) {
     .logo{
-        width: 70%;
-        height: rem;
+        width: 50%;
+        height: 3rem;
     }
     .contenedorPrincipal p{
         font-size: 14px;
@@ -137,5 +134,26 @@ color: #ffffff;
     }
     .icon{
         margin: .5rem;
+    }
+    p,a{
+        font-size: 14px;
+    }
+}
+
+@media(min-width:280px)and (max-width:480px) {
+    .contenedorPrincipal{
+        display: block;
+        padding-bottom: 10px;
+    }
+    .logo{
+        width: 60%;
+        height: 4rem;
+        margin-bottom: 1rem;
+    }
+    .redessociales p{
+        margin-bottom: 10px;
+    }
+    p,a{
+        font-size: 14px;
     }
 }
