@@ -32,7 +32,7 @@
 .contenedortext{
     text-align: center;
     justify-content: center;
-    padding: 35px;
+    padding: 45px;
 }
 
 
@@ -50,14 +50,14 @@
 /* inicio form */
 .contenedorform{
     background-color:var(--tercer-color);
-    width: 60%;
+    width: 100%;
     max-width: 1200px;
     margin: auto;
-    height:300vh ;
     border-radius: 10px;
     border-bottom: solid 2px var(--primer-color);
     border-right: solid 2px var(--primer-color);
-    padding: 25px;
+    padding: 45px;
+    padding-top: 45px;
 }
 
 .contenedortext{
@@ -88,11 +88,8 @@
 /* contenedor de datos personales */
 .contenedorDatos{
     display: flex;
-    margin: auto;
     display: grid;
-    
     background-color: var(--segundo-color);
-    width: 95%;
     max-width: 1200px;
     height: 55vh; 
     grid-template-columns: repeat(3,1fr);
@@ -190,11 +187,11 @@
     
 /* información de la petición */
 .complinf{
-    padding: 20px;
+    padding-top: 30px;
 }
+
 .complinf label{
  font-size: 1.2rem;
- padding: 20px;
  color: #fff;
     
 }
@@ -209,20 +206,207 @@
     font-size: 1rem;   
 }
 
+.textdes{
+    padding-top: 30px;
+}
+
+
 .textdes label{
     color: #fff;
-    font-size: 1.2rem;
 }
+
 
 .textdes textarea{
     width: 100%; 
     background-color: var(--segundo-color);
     font-size: 1rem;
+    
+}
+/* infromacion de localizacion del problema */
+.inflocal{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    color: #fff;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
+.inflocal h3{
+    grid-column: 1/2
+}
 
 
+.infbar{
+    grid-row:2/3 ;
+    color: #fff;
+}
 
 
+.infbar input{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--segundo-color);
+    width: 75%;
+    height: 5vh;
+    border-radius: 5px;
+}
 
+
+.infodesp{
+    grid-row: 2/3;
+}
+
+
+.infodesp textarea{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--segundo-color);
+    
+}
+/* adjuntar imagen */
+.infoimg{
+    color: #fff;
+    padding-top: 30px;
+
+}
+
+.infoimg p{
+    color: #ffffffa4;
+
+}
+
+.infoimg input{
+    background-color: var(--primer-color);
+    color: #000;
+    border-radius: 5px;
+    height: 3vh;
+   font-size: 1rem;
+}
+
+.textusu{
+    color: #fff;
+    padding-top: 40px;
+}
+
+/* tratamiento de datos */
+.infoterminos{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #fff;
+    padding-top: 15%;
+}
+
+.datostext{
+    display: flex;
+    gap: 10px;
+}
+.datostext span{
+    color: aqua;
+}
+
+/* botones */
+
+.botones{
+    display: flex;
+    gap: 50%;
+    padding-top: 30px;
+}
+.boton1 {
+    background-color: #8d0ef515;
+    border: 1px solid var(--primer-color);
+    color: var(--primer-color);
+    padding: 6px 14px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.boton2 {
+    background-color: #ff000012;
+    border: 1px solid #f73131;
+    color: #f73131;
+    padding: 6px 14px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.boton2:hover{
+    background-color: #ff00002f;
+    
+}
+
+.boton1:hover{
+    background-color: #8d0ef531;
+}
+
+
+/* tablet */
+@media(max-width:1024px){
+    .logo{
+        width: 30%;
+        margin-left: 20px;
+    }
+
+    .contenedorDatos{
+        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+        height: 70vh;
+    
+       
+    }
+
+    .contenedoricotex{
+        grid-column: 1/4;
+
+    }
+
+
+    .contenedoricotex{
+        grid-column: 1/3;
+    }
+
+}
+/*  */
+@media(max-width:768px){
+    .contenedorDatos{
+        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+        height: 70vh;
+    
+       
+    }
+
+    .contenedoricotex{
+        grid-column: 1/4;
+
+    }
+
+
+    .contenedoricotex{
+        grid-column: 1/3;
+    }
+
+}
+/* celular */
+@media(max-width:480px){
+
+}
