@@ -1,0 +1,4 @@
+.tarjetas{
+    width: calc(100%-16%);
+    height: calc(100vh - 20vh);
+}
