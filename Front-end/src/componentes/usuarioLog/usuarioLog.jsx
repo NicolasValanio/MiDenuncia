@@ -48,7 +48,7 @@ function UsuarioLog(params) {
                             </ul>
                         </li>
                         
-                        <li className={style.li}><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={style.iconsLog} /> </Link></li>
+                        <li className={style.li}><Link className={style.a} to="http://localhost:4000/logout"> <FaUserCircle className={style.iconsLog} /> </Link></li>
                     </ul>
                 </div>
             </div>

@@ -20,7 +20,7 @@ exports.signUp = async(req,res,next)=>{
              }else{
 
               await  modeloUser.create({
-                    nickname,name,last_name,email,password,
+                    nickname,name,last_name,email,password,role_id:1
                 }).then((data)=>{
                    let token= jwt.sign({
                         data

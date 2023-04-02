@@ -17,7 +17,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const passport= require('passport');
+
 
 
 let cookieParser = require('cookie-parser')
@@ -36,7 +36,7 @@ const handleError = require('./handlers/handlerError')
 
 //FIN
 ////////////////////////////////////////////////////////////////
-mongoose.connect('mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/?retryWrites=true&w=majority', {
+ mongoose.connect(process.env.URI_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
  // useCreateIndex: true
@@ -47,7 +47,7 @@ app.use(session({
   secret: 'mysecret', // secreto para firmar las cookies de sesión
   resave: false,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/?retryWrites=true&w=majority',
+  store: MongoStore.create({ mongoUrl: process.env.URI_MONGO,
   crypto: {
     secret: 'secret'
   },
@@ -111,7 +111,7 @@ app.get('/verificacionToken', async (req, res) => {
     user1.save()
     req.session.email=user.email
    
-    //res.cookie('miCookie', user.email, { maxAge: 900000,httpOnly: true });
+    
     const url = `http://localhost:5173/contrasenaNueva?token=${user.resetPasswordToken}&email=${user.email}}`;
   res.redirect(url)
   }).catch(err => {
@@ -120,17 +120,6 @@ app.get('/verificacionToken', async (req, res) => {
  
   
 
-  //data ?  res.status(200).json(data) : res.json({message: 'asegurese de su usuario este registrado'});
-  
-  /* try {
-    if(data === null){
-      res.status(400).json({ message: 'vuelva a enviar enlace' });
-    }
-    const url = `http://localhost:5173/contrasenaNueva?data=${data}`;
-    res.redirect(url)
-  } catch (error) {
-    res.status(500).json({ message: 'Error interno del servidor' });
-  } */
 })
 
 ////////////////////////////////////////////////////////////////
@@ -175,22 +164,15 @@ const sessioUser= await SessionModel.findOne({ sessionID: seesionid })
   
 })
 
-// app.put('/newPassword', async (req, res) => {
-//   const {email} = req.query;
-//    // email ? console.log('llega') : console.log('no llega')
-//   try {
-//     let {password, password2} = req.body;
-//     let user = await User.findOne({ where: {email}})
-//     if(user){
-//       password2 = bcrypt.hashSync(password2,10);
-//       await User.update({password: password2},
-//         {where: {email: email}})
-//         .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
-//         .catch(err => res.json({ message: err.message }))
-//     }else{
-//       res.status(400).json({ message: "no se pudo" })
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// })
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+     // console.log("Sesión finalizada correctamente");
+      // Eliminar el token de autenticación de la base de datos
+      
+      res.redirect("http://localhost:5173/login");
+    }
+  });
+});
