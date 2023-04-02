@@ -1,13 +1,16 @@
 import React from "react";
-import NavegacionNoLog from "../navegacionNoLog/navegacion"
-import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+import NavegacionNoLog from "../navegacionNoLog/navegacion";
+import FiltrarPor from "../filtrarPor/filtarPor";
+import Footer from "../footer/footer";
 
 function UsuarioNoLog(params) {
     return (
         <div>
-       <NavegacionNoLog/>
-        <TarjetasPublicacion/>
+            <NavegacionNoLog />
+            <FiltrarPor />
+            <Footer />
         </div>
+        
         )
 }
 
