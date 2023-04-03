@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
+import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+import Pokemon from './pokemon'
 
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
@@ -11,12 +13,32 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
-import { BiLogIn, BiLogOut } from "react-icons/bi";
-import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
-
+import { BiLogOut } from "react-icons/bi";
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 
 function UsuarioLog(params) {
+
+    const [pokemon, setPokemon] = useState()
+    const [pagePokemon , setPagePokemon] = useState(0)
+
+    useEffect(()=>{
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
+        .then(res => res.json())
+        .then(res => setPokemon(res.results))
+    },[])
+
+    function nuevoLlamado(page) {
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}`)
+        .then(res => res.json())
+        .then(res => {
+            let nuevoPokemon = pokemon.concat(res.results)
+            setPokemon(nuevoPokemon)
+            setPagePokemon( pagePokemon + 1)
+        })
+    }
+
+
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -37,7 +59,6 @@ function UsuarioLog(params) {
                                <li>hola1</li> 
                             </ul>
                         </li>
-
                         <li className={`${style.li} ${style.notificaciones}`}>
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
                             <ul className={`contenedor ${style.despegableFiltro} ${style.li}`}>
@@ -60,9 +81,19 @@ function UsuarioLog(params) {
                 <FiltrarPor/>
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
-                <TarjetasPublicacion/>
-                
 
+                <InfiniteScroll dataLength={pokemon === undefined ? 5 : pokemon.length} 
+                next={()=> {nuevoLlamado(pagePokemon)}} hasMore={true} >
+
+                {
+
+                    pokemon === undefined ?  null : pokemon.map((pokemon,index) =>{
+                        return <Pokemon key={index} pokemones={pokemon.name} />
+                    })
+
+                }
+
+                </InfiniteScroll>            
             </div>
         </div>
 

@@ -4,6 +4,7 @@
 }
 
 .contenedor{
+    display: grid;
     background-color: #252A2E;
     grid-template-areas: 'foto nombre'
                         'foto descripcion'
@@ -12,16 +13,13 @@
                         'fecha fecha'
                         'ubicacion ubicacion'
                         'apoyo apoyo';
-    margin: 8rem;
-    margin-left: 5%;
-    margin-right: 20%;
-    display: grid;
+    margin: 20px;
     height: 40rem;
     width: 50rem;
     -webkit-border-radius: 10px;
-border-radius: 10px;
-border-bottom: solid 2px #B86EFD;
-border-right:solid 2px  #B86EFD;
+    border-radius: 10px;
+    border-bottom: solid 2px #B86EFD;
+    border-right:solid 2px  #B86EFD;
 }
 
 
