@@ -31,7 +31,7 @@ function Rutas() {
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
-                    <Route path="/VistaUsuario" element={<VistaUsuario />} />
+                    <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                 </Route>
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 
