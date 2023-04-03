@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.contenedor{
+    background-color: #252A2E;
+    grid-template-areas: 'foto nombre'
+                        'foto descripcion'
+                        'texto texto'
+                        'imagen imagen'
+                        'fecha fecha'
+                        'ubicacion ubicacion'
+                        'apoyo apoyo';
+    margin: 8rem;
+    margin-left: 5%;
+    margin-right: 20%;
+    display: grid;
+    height: 40rem;
+    width: 50rem;
+    -webkit-border-radius: 10px;
+border-radius: 10px;
+border-bottom: solid 2px #B86EFD;
+border-right:solid 2px  #B86EFD;
+}
+
+
+
+.nombreUsuario{
+    padding: 1rem;
+    font-size: 0.6rem;
+    width: 100%;
+    margin-left: -23rem;
+    grid-area: nombre;
+    color: white;
+}
+.textoPublicacion{
+    padding: 1rem;
+    grid-area: texto;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.imagenContenedor{
+    background-image: url(./pared-cemento-agrietada.jpg);
+    grid-area: imagen;
+    margin: auto;
+    height: 15rem;
+    padding: 1rem;
+    margin-left: 2%;
+    margin-right: 2%;
+    object-fit: cover;
+    margin-top: -0.1rem;
+    margin-bottom: -10%;
+}
+.icono{
+    height: 2rem;
+}
+
+.iconoUsuario{
+    padding: 1rem;
+    height: 2rem;
+    width: 2rem;
+    grid-area: foto;
+}
+.fechaPublicacion {
+    font-size: 0.6rem;
+    padding-top: 6rem;
+    padding-bottom: -3%;
+    margin-left: 1rem;
+
+    grid-area: fecha;
+    color: white
+}
+.ubicacionPublicacion{
+    font-size: 0.6rem;
+    padding-bottom: 1rem;
+    padding-top: -2rem;
+    grid-area: ubicacion;
+    color: white;
+    margin-left: 1rem;
+}
+
+.textoTipo{
+    height: 100%;
+    grid-area: descripcion;
+}
+
+/*.contenedor{
+    grid-template-areas: 'foto nombre'
+                        'foto descripcion'
+                        'texto texto'
+                        'imagen imagen'
+                        'fecha fecha'
+                        'ubicacion ubicacion'
+                        'apoyo apoyo';
+    border: 0.1rem solid white;
+    margin: 1rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    height: 30rem;
+    width: 50rem;
+}
+.iconoUsuario{
+    height: 4rem;
+    width: 4rem;
+    margin-top: -1.5rem;
+    margin-left: -70%;
+    margin-right: 100%;
+    grid-area: foto;
+    border: solid 1px rgb(201, 13, 13);
+}
+.icono{
+    height: 4rem;
+}
+.nombreUsuario{
+    margin-top: 20%;
+    margin-left: -25rem;
+    grid-area: nombre;
+    color: white;
+    border: solid 1px rgb(51, 61, 119);
+}*/

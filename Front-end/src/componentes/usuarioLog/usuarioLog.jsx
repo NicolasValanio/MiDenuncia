@@ -13,6 +13,7 @@ import { MdPark } from "react-icons/md";
 import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
+import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 
 
 
@@ -60,7 +61,7 @@ function UsuarioLog(params) {
                 <FiltrarPor/>
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
-                
+                <TarjetasPublicacion/>
                 
 
             </div>
