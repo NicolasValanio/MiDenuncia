@@ -4,7 +4,6 @@ import { userget } from './fetch';
 
 
 function TarjetasPublicacion() {
-
    const [api,setApi] = useState()
    
    useEffect(()=>{
@@ -68,14 +67,18 @@ console.log(barrio)
         </div>
 
         <div className={style.nombreUsuario}>
-        <p>nombre</p>
-        <p >Denuncia por :  </p>
+      {api === undefined ? 'espera': <h3>{api.storeRequest[0].subject}
+        </h3>}
+        {api === undefined ? 'espera': <h3>Denuncia por: {api.storeRequest[0].types_request.name}
+        </h3>}
+
         </div> 
 
-        <div className={style.textoTipo}></div>
+
 
         <div className={style.textoPublicacion}>
-        <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptas recusandae veniam doloribus consequatur deleniti quis minima incidunt! Doloribus quo animi exercitationem eos sit ullam corporis necessitatibus velit eveniet molestias laborum asperiores id maiores cum rem similique officiis, illo vitae. Esse beatae odio est ducimus pariatur praesentium impedit aut amet!</p>
+        {api === undefined ? 'espera': <p>{api.storeRequest[0].problem}
+        </p>}
 
         </div>
 
@@ -83,10 +86,14 @@ console.log(barrio)
            
         </div>
 
-        <div className={style.fechaPublicacion}><p >publicado el: fecha</p></div>
+        <div className={style.fechaPublicacion}>
+        {api === undefined ? 'espera': <h4>Publicado el:  {api.storeRequest[0].createdAt}
+        </h4>}
+        </div>
         
         <div className={style.ubicacionPublicacion}>
-           <p >barrio</p>
+        {api === undefined ? 'espera': <h4>{api.storeRequest[0].location}, {api.storeRequest[0].neighborhood}
+        </h4>}
         </div>
 
         <div className={style.apoyoPublicacion}>
