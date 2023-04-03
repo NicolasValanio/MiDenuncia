@@ -10,9 +10,9 @@ function NavegacionNoLog() {
             <div className={style.imagen}></div>
             
             <div className={style.contenedorBtns}>
-            <a href="#" className={style.denuncia}> <IoMegaphoneOutline className={style.iconoDenuncia}/> </a>
-            <a href="#" className={style.btns}>Registrarse</a>
-            <a href="#" className={style.btns}>Iniciar Sesi&oacute;n</a>
+            <a href="/Login" className={style.denuncia}> <IoMegaphoneOutline className={style.iconoDenuncia}/> </a>
+            <a href="/RegistroUsuario" className={style.btns}>Registrarse</a>
+            <a href="/Login" className={style.btns}>Iniciar Sesi&oacute;n</a>
             </div>
         </div>
     )
