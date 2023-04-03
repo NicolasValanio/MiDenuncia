@@ -1,7 +1,8 @@
 .usuario_log{
     width: 100%;
-    height: 100vh;
+    height: auto;
     flex-direction: row;
+    align-items: flex-start;
     flex-wrap: wrap;
     background-color: var(--segundo-color);
 }
@@ -46,7 +47,7 @@
 }
 .cont_tarjetas{
     width: 100%;
-    height: 87%;
+    height: auto;
 }
 .logo{
     width: 40%;
@@ -155,9 +156,25 @@
 
     }
 
+    .filtrar{
+        width: 20%;
+    }
+
     .cont_tarjetas{
-        width: 70%;
+        width: 80%;
         height: 87%;
     }
 
+}
+
+
+
+
+
+
+.pokemon{
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    background-color: aquamarine;
 }

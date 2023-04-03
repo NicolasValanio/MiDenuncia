@@ -3,6 +3,7 @@ import {FiHome } from "react-icons/fi";
 import {AiFillSetting} from "react-icons/ai";
 import {BsQuestionCircle,BsFillCameraFill} from "react-icons/bs"
 import style from './vistaUsuario.module.css';
+import {useform} from 'react-hook-form'
 function VistaUsuario(params) {
     return(
         <div className={style.main_container}>
@@ -59,7 +60,7 @@ function VistaUsuario(params) {
                 
                     <div className={style.containerEditarPerfil}>
                         <h1>Editar perfil</h1>
-                        <form action="" className={style.formulario}>
+                        <form onSubmit={handleSubmit(onSubmit)} className={style.formulario}>
                             <div className={style.datosFila1}>
                                 <label htmlFor="">Número de documento
                                     <input className={style.inputdatos} type="text" />
