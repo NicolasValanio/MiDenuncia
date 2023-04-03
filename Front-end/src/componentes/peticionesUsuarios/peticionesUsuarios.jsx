@@ -186,3 +186,6 @@ function PeticionesUsuarios () {
 }
 
 export default PeticionesUsuarios
+/* enpoint para enviar los datos 
+rellenar datos del usuairio rellendar los datos
+una vez enviada la consuta que debe hacer y la encuentas a que enpoints se envia, con que metodo y que se necesitan el token, que se necesita enviar */
