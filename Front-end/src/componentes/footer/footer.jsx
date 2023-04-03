@@ -10,8 +10,8 @@ import {MdLocationPin} from "react-icons/md"
 
 function Footer(){
     return(
-        <footer>
-            <div className={`contenedor ${Style.contenedorPrincipal}`}>
+         
+    <div className={`contenedor ${Style.contenedorPrincipal}`}>
 
                 <div className={`contenedor ${Style.primerContenedor}`}>
                     <img src="../../../public/logo.png" alt="logo" className={Style.logo} />
@@ -69,8 +69,7 @@ function Footer(){
 
 
             </div>
-            <p className={Style.end}>Talentos Coex&copy; 2023</p>
-        </footer>
+       
     )
 }
 
