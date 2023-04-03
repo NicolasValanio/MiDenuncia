@@ -19,16 +19,17 @@ function VistaUsuario(params) {
                 </div>
                 <div className={style.containerIconos}>
 
-                    <button href="" className={style.Iconos1}>
-                        
-                        <FiHome className={style.Fihome}/>
-                       
-                        
-                        <h4 className={style.homeIcono}>Home</h4>
-                        
-                    </button>
-
                     <div>
+                        <button href="" className={style.Iconos1}>
+                            
+                            <FiHome className={style.Fihome}/>
+                        
+                            
+                            <h4 className={style.homeIcono}>Home</h4>
+                            
+                        </button>
+
+                    
 
                         <button className={style.Iconos2}>
                             
