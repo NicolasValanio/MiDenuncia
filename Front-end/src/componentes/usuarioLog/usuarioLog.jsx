@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
-import Pokemon from './pokemon'
 
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
@@ -25,7 +24,10 @@ function UsuarioLog(params) {
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
         .then(res => res.json())
-        .then(res => setPokemon(res.results))
+        .then(res => {
+            setPokemon(res.results)
+            console.log(res);
+    })
     },[])
 
     function nuevoLlamado(page) {
@@ -36,6 +38,17 @@ function UsuarioLog(params) {
             setPokemon(nuevoPokemon)
             setPagePokemon( pagePokemon + 1)
         })
+    }
+
+    function llamarPokemon() {
+       let retornar = pokemon.map(pokemon => {
+            return(
+                <div className={style.pokemon}>
+                    <h1> {pokemon.name} </h1>
+                </div>
+            )
+        })
+        return retornar
     }
 
 
@@ -82,14 +95,15 @@ function UsuarioLog(params) {
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
 
+                <TarjetasPublicacion key='2' />
+
+
                 <InfiniteScroll dataLength={pokemon === undefined ? 5 : pokemon.length} 
                 next={()=> {nuevoLlamado(pagePokemon)}} hasMore={true} >
 
                 {
 
-                    pokemon === undefined ?  null : pokemon.map((pokemon,index) =>{
-                        return <Pokemon key={index} pokemones={pokemon.name} />
-                    })
+                    pokemon === undefined ?  null : llamarPokemon()
 
                 }
 

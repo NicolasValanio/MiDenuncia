@@ -71,7 +71,7 @@
 .error{
     margin: 3px;
     font-size: 1em;
-    color: var(--primer-color);
+    color: rgb(255, 34, 34);
 }
 
 .contenedor_bottom{
