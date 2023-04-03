@@ -7,33 +7,35 @@ export async function EnvioLoginBd(envio) {
         return respuesta
 }
 
-export function EnvioResgistrarBd(envio) {
+export async function EnvioResgistrarBd(envio) {
 
-    axios.post("http://localhost:4000/signUp",envio)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    return await axios.post("http://localhost:4000/signUp",envio)
+  
 
 }
-
-
 
 // esto envia el un enlace al email para recuperar contrasena
 export async function  EnvioEmailResetpassword (envio){
 
-   return await axios.post("http://localhost:4000/forgot-password",envio)
-    
-
-}
-
-
-// esta funcion resetea la contrasena del usuario con el enlace enviado al correo
-
-export async function  nuevaContrasena (envio){
-
-    return await axios.put("http://localhost:4000/newPassword",envio)
+    return await axios.post("http://localhost:4000/forgot-password",envio)
      
  
  }
+ 
+ 
+ // esta funcion resetea la contrasena del usuario con el enlace enviado al correo
+ 
+ export async function  nuevaContrasena (envio){
+ 
+     return await axios.put("http://localhost:4000/newPassword",envio)
+      
+  
+  }
+ 
+
+
+
+
 
 
 

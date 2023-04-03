@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './RegistroUsuario.module.css'
 import {EnvioResgistrarBd} from '../baseDeDatos'
 
@@ -15,14 +15,29 @@ function RegistroUsuario() {
 
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
+    
+    const [errorEmail, setErrorEmail]=useState(['']);
+    const errorEmail2={
+        color:"white",
+        "text-Align": "center"
+       
+    }
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
 
 //------------------------------------------------------------------------------------------
 
     const onSubmit = valor =>{
-        EnvioResgistrarBd(valor) 
-        navigate("/login");
+        EnvioResgistrarBd(valor)
+            .then(res => {
+                setErrorEmail(res.response)
+                navigate("/login");
+            })
+            .catch(err =>{
+                setErrorEmail(err.response.data)
+                console.log(err.response.data)
+            } )
+       
     }
 
     return (
@@ -93,6 +108,7 @@ function RegistroUsuario() {
                         })} 
                         type="text" className={style.inputRegister} placeholder="Correo" />
                         {errors.email && <span className={style.error}>{errors.email.message}</span>}
+                       {errorEmail && errorEmail.message && <span style={errorEmail2} className={style.error}>{errorEmail.message}</span>}
                     </label>
 
                     <label className={style.label}><RiLockPasswordLine className={style.iconRegister}/>
