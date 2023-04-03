@@ -3,8 +3,7 @@
     position: relative;
     top: 60px; 
     left: 40px;
-    height: 100px;
-    width: 270px;
+    width: 230px;
 }
 
 .filtrar li{
@@ -13,9 +12,8 @@
     border-bottom: 1px solid;
     text-align: justify;
     list-style: none;
-    /* margin-bottom: 10px; */
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 14px;
+    padding: 5px;
 
 }
 
@@ -28,7 +26,6 @@
     background-color: var(--primer-color);
     border-top-right-radius:10px ;
     border-bottom-right-radius: 10px;
-    font-size: 1.1rem;
     transition: .5s;
     cursor: pointer;
 
