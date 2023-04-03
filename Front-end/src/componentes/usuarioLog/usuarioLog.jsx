@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useRef, useEffect} from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import Footer from "../footer/footer.jsx"
@@ -17,6 +17,31 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 
 
 function UsuarioLog(params) {
+    const [showNotifications, setShowNotifications] = useState(false);
+    const notificationRef = useRef(null);
+  
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (
+          notificationRef.current &&
+          !notificationRef.current.contains(event.target)
+        ) {
+          setShowNotifications(false);
+        }
+      }
+  
+      // Agregar un manejador de eventos al documento para cerrar las notificaciones al hacer clic fuera del botón
+      document.addEventListener("mousedown", handleClickOutside);
+  
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [notificationRef]);
+  
+    function toggleNotifications() {
+      setShowNotifications(!showNotifications);
+    }
+  
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -25,18 +50,16 @@ function UsuarioLog(params) {
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
-
-                        <li className={style.li} >
-                            <div className={style.a} to="/"> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
-                            <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`}>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li> 
+                    <li className={style.li} >
+                        <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
+                        {showNotifications && (
+                            <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`} ref={notificationRef}>
+                                <li>Se ha publicado su petición con éxito</li>
+                                <li>@Luis16 ha apoyado tu petición</li>
+                                <li>@Luis16 ha comentado tu petición</li>
                             </ul>
-                        </li>
+                        )}
+                    </li>
 
                         <li className={`${style.li} ${style.notificaciones}`}>
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
