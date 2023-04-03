@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import style from "./peticionesUsuarios.module.css";
-import { IoPersonCircleOutline } from "react-icons/io5";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { IoIosPaperPlane } from "react-icons/io";
-import { IoCloseSharp } from "react-icons/io5";
+import style from './peticionesUsuarios.module.css'
+import { IoPersonCircleOutline, IoDocumentTextOutline, IoCloseSharp } from 'react-icons/io5'
+import { IoIosPaperPlane } from 'react-icons/io'
 
-function PeticionesUsuarios() {
-    return (
+function PeticionesUsuarios () {
+  return (
         <section className={style.contenedorPrincipal}>
             {/* contenedor nav */}
             <div className={style.contenedor}>
@@ -25,11 +22,11 @@ function PeticionesUsuarios() {
             <form action="" className={style.contenedorform}>
 
                 <p className={style.contenedortext}>
-                    Registro de solicitud-Recuerda que los campos con * son obligatorios
+                    Registro de solicitud - Recuerda que los campos con * son obligatorios
                 </p>
                 {/* select para elegir el tipo de solicitud */}
                 <div className={style.contenedorSolicitud}>
-                    <p>Tipo de solicitud:</p>
+                    <label className={style.solilabel}>Tipo de solicitud:</label>
                     <select name="" id="" className={style.contenedorselect}>
                         <option value="" selected>
                             Tipo de solicitud
@@ -37,117 +34,123 @@ function PeticionesUsuarios() {
                     </select>
                 </div>
                 {/* inicio de datos personales */}
-                <div className={style.contenedorDatos}>
-                    <div className={style.contenedoricotex}>
-                        <IoDocumentTextOutline className={style.icontext} />
-                        <p>Datos personales:</p>
-                    </div>
+                <div className={style.contenedorprinDatos}>
 
-                    <div className={style.info}>
-                        <p>Tipo de documento:</p>
-                        <select name="" id="">
-                            <option value="" selected>
-                                tipo de documento
-                            </option>
-                        </select>
-                    </div>
+                        <div className={style.contenedoricotex}>
+                            <IoDocumentTextOutline className={style.icontext} />
+                            <p>Datos personales:</p>
+                        </div>
+                    <div className={style.contenedorDatos}>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Número de documento:
-                            <input type="number" placeholder=" Número de documento *" />
-                        </label>
-                    </div>
+                        <div className={style.info}>
+                            <p>* Tipo de documento:</p>
+                            <select name="" id="">
+                                <option value="" selected>
+                                    tipo de documento
+                                </option>
+                            </select>
+                        </div>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Confirmación de documento:
-                            <input type="number" placeholder="confirmación documento" />
-                        </label>
-                    </div>
+                        <div className={style.infolabel}>
+                            <label htmlFor="documento">* Número de documento:</label>
+                            <input type="text" placeholder="91287459" id='documento' />
+                        </div>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Lugar de expedición:
-                            <input type="text" placeholder="Lugar de expedición*" />
-                        </label>
-                    </div>
+                        <div className={style.infolabel}>
+                            <label htmlFor="cofirmacionDocumento">
+                                * Confirmación de documento:
+                            </label>
+                            <input type="text" placeholder="91287459" id='cofirmacionDocumento' />
+                        </div>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Nombres:
-                            <input type="text" disabled />
-                        </label>
-                    </div>
+                        <div className={style.infolabel}>
+                            <label htmlFor="expedicion">
+                               * Lugar de expedición:
+                            </label>
+                            <input type="text" placeholder="Bucaramanga"  id='expedicion'/>
+                        </div>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Apellidos:
-                            <input type="text" disabled />
-                        </label>
-                    </div>
+                        <div className={style.infolabel}>
+                            <label htmlFor="nombre">
+                                Nombres:
+                            </label>
+                            <input type="text" disabled/>
+                        </div>
 
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Dirección
-                            <input type="text" placeholder="Ejemplo: cll 01 #02-03*" />
-                        </label>
-                    </div>
-                    <div className={style.infolabel}>
-                        <label htmlFor="">
-                            Telefono:
-                            <input type="text" placeholder="Ejemplo: 3157845*" />
-                        </label>
+                        <div className={style.infolabel}>
+                            <label htmlFor="apellido">
+                                Apellidos:
+                            </label>
+                            <input type="text" disabled/>
+                        </div>
+
+                        <div className={style.infolabel}>
+                            <label htmlFor="direccion">
+                               * Dirección
+                            </label>
+                            <input type="text" placeholder=" cll 01 #02-03" id='direccion'/>
+                        </div>
+
+                        <div className={style.infolabel}>
+                            <label htmlFor="barrioper">
+                               * Barrio
+                            </label>
+                            <input type="text" placeholder="García Rovira" id='barrioper'/>
+                        </div>
+                        <div className={style.infolabel}>
+                            <label htmlFor="telefono">
+                               * Telefono:
+                            </label>
+                            <input type="text" placeholder="3157845257" id='telefono'/>
+                        </div>
                     </div>
                 </div>
                 {/* siguiente información para llenar la petición */}
                 <div>
                     <div className={style.complinf}>
-                        <label htmlFor="">
-                            Asunto del problema:
-                            <input type="text" placeholder="Describe en una oración el problema que observa*" />
+                        <label htmlFor="asunto">
+                          * Asunto del problema:
                         </label>
+                        <input type="text" placeholder="Daño en el alcantarillado" id='asunto' />
                     </div>
                     <div className={style.complinf}>
-                        <label htmlFor="">
-                            Descripción del problema:
-                            <input type="text" placeholder="Realiza una descripcion detallada del problema que percibes*" />
+                        <label htmlFor="descripcion">
+                         * Descripción del problema:
                         </label>
+                        <input type="text" placeholder="Debido a esto se han ocacionado muchos accidentes en la via, por el robo de una tapa de la alcantandarilla" id='descripcion' />
                     </div>
                     <div className={style.textdes}>
-                        <label htmlFor="">
-                            Descripción de la solicitud:
-                            <textarea type="text" rows={15} placeholder="Realiza una descripción detallada de lo que solicitas para solucionar el problema que se esta presentando*" />
+                        <label htmlFor="desSolicitud">
+                           * Descripción de la solicitud:
                         </label>
+                        <textarea type="text" rows={15} placeholder="Quisiera reportar este  incidente ante las entidades gubernamentales para que hagan acción..." id='desSolicitud'/>
                     </div>
                 </div>
                 {/* datos de localizacion sobre el problema */}
+                    <h3 className={style.textlocal}>Localización del problema:</h3>
                 <div className={style.inflocal}>
-                    <h3>Localización del problema:</h3>
                     <div className={style.infbar}>
-                        <label htmlFor="">
-                            Bario:
-                            <input type="text" placeholder="Barrio donde se ubica el problema*" />
+                        <label htmlFor="barrio">
+                        * Barrio:
                         </label>
+                        <input type="text" placeholder="García Rovira" id='barrio' />
                     </div>
                     <div className={style.infodesp}>
-                        <label htmlFor="">
-                            Descripción del problema:
-                            <textarea name="" id="" cols="45" rows="8" placeholder="Realiza una descripción detallada de la localización del problema*"></textarea>
-                        </label>
+                        <label htmlFor="descripcion">* Descripción de la localización:</label>
+                        <textarea name="" id="descripcion" cols="45" rows="8" placeholder="Este incidente se encuentra en la carrera 13 #31-34..."></textarea>
                     </div>
                 </div>
                 {/* adjuntar la imagen de la petición */}
                 <div className={style.infoimg}>
                     <h3>Archivos adjuntos:</h3>
-                    <p>Señor usuario debe adjuntar solo fotos con un peso Max de 5mb</p>
+                    <p>Señor/a usuario debe adjuntar solo fotos con un peso máximo de 5mb</p>
                     <input type="file" />
 
                 </div>
                 {/* texto importante para erl usuario */}
                 <div className={style.textusu}>
                     <p>
-                        Respuesta: Es importante revisar periódicamente el correo electrónico que registraste en la pagina durante un plazo aproximado de 15 dias hábiles, ya que es la forma más probable a tu peticón.sin embargo,también podrias recibir alguna respuesta por correspondencia fisica o te podrán solicitar  mas información por teléfono.
+                        Respuesta: Es importante revisar periódicamente el correo electrónico que registraste en la página, durante un plazo aproximado de 15 días hábiles, ya que es la forma más probable de respuesta a tu peticón. Sin embargo, también podrías recibir alguna respuesta por correspondencia física o solicitar  más información por teléfono.
                     </p>
                 </div>
                 {/* firma del usuario */}
@@ -167,7 +170,7 @@ function PeticionesUsuarios() {
                         <h3>Terminos y condiciones:</h3>
                         <div className={style.datostext}>
                             <input type="checkbox" id="" />
-                            <label>Helido y acepto los<span>terminos y condiciones de esta petición.</span></label>
+                            <label>He leído y acepto los <span>términos y condiciones de esta petición.</span></label>
                         </div>
                     </div>
                 </div>
@@ -175,11 +178,11 @@ function PeticionesUsuarios() {
                 <div className={style.botones}>
                      <button className={style.boton1}>Enviar<IoIosPaperPlane/></button>
                      <button className={style.boton2}>Cancelar<IoCloseSharp/></button>
-                    
+
                 </div>
             </form>
         </section>
-    );
+  )
 }
 
-export default PeticionesUsuarios;
+export default PeticionesUsuarios
