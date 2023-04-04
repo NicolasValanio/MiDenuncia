@@ -11,10 +11,9 @@ body{
     justify-content: space-between;
 }
 .imagen{
-    width: 20%;
+    width: 25%;
     height: 10vh;
-    margin-left: 2rem;
-    background-image: url(../../../public/logo.png);
+    background-image: url(../public/logo.png);
     background-position: center;
     background-size: cover;
     margin-top: .5rem;
@@ -113,8 +112,8 @@ body{
     }
     
 }
-/* Mq Celular */
-@media(min-width:270px)and (max-width:480px) {
+/* responsive-celular */     
+@media (max-width: 480px) {
     .imagen{
         margin-left: .5rem;
         margin-top: 1rem;
@@ -129,38 +128,5 @@ body{
         height: 2rem;
         padding: 5px;
     }
-    .icon{
-        width: 16px;
-        height: 16px;
-        margin: auto;
-    }
-    .contenedorBtns{
-        margin: 0;
-        display: flex;
-        gap: 5px;
-    }
-    
-    .LetraRegistro,
-    .LetraLogin{
-        display:none;
-    }
-    
-    .log,
-    .registro{
-        display: flex;
-    }
-    
-    
 }
-@media (max-width:429px ) {
-    .imagen{
-        width: 35%;
-        height: 6vh;
-    }
-}
-@media (min-width: 1440px) {
-.imagen{
-    width: 20%;
-    height: 10vh;
-}
-}
+
