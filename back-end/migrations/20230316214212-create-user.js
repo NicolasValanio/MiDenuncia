@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER(5)
       },
       nickname: {
-        type: Sequelize.STRING(20)
+        type: Sequelize.STRING(60)
       },
       name: {
         type: Sequelize.STRING(20)
@@ -23,14 +23,19 @@ module.exports = {
         allowNull:false,
         unique:true
       },
-      password1: {
-        type: Sequelize.STRING(100)
-        
+      password: {
+        type: Sequelize.STRING(250)
       },
-      password2: {
-        type: Sequelize.STRING(100)
-        
+      token: {
+        type: Sequelize.TEXT
       },
+      resetPasswordToken: {
+        type: Sequelize.STRING(250)
+      },
+      resetPasswordExpires: {
+        type: Sequelize.STRING(250)
+      },
+      
       contact_phone: {
         type: Sequelize.STRING(15)
       },
