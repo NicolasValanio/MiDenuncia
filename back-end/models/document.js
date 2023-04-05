@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   document.init({
     type: DataTypes.CHAR,
     place_dispatch: DataTypes.STRING
+    
   }, {
     sequelize,
     modelName: 'document',

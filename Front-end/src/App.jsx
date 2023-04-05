@@ -1,4 +1,4 @@
-import './index.css'
+import './App.css'
 import { Route,Routes,Link } from 'react-router-dom'
 
 
@@ -16,7 +16,7 @@ import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
 // NADIE TOCA ESTO!!!!
 
 
- function App() {
+function App() {
 
   // const basededatos = async () => {
   //   const peticion = await axios.post("http://192.168.20.64:4000/createUser", )
@@ -28,8 +28,8 @@ import NavegacionNoLog  from './componentes/navegacionNoLog/navegacion';
     <div className="App">
 
       <Routes>
-        
-        <Route exact path="/" element={<UsuarioNoLog />} /> 
+
+        <Route exact path="/" element={<UsuarioNoLog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/HabeasData" element={<HabeasData />} />
         <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
