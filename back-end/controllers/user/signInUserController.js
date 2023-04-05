@@ -35,7 +35,7 @@ app.use(session({
 
     genid : function(req){
 
-        return Sequelize.UUIDV4 //genera un identificador unico para cada sesion
+        return Sequelize.UUIDV4() //genera un identificador unico para cada sesion
 
     }
 
