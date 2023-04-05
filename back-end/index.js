@@ -1,18 +1,26 @@
 
 const app = require('./app')
+const bcrypt=require('bcrypt')
 
 const User=require('./models').user
+const SessionModel=require('./modeloMongo/sessionMongodb')
 
 ////aqui hacemos las importaciones y que todo quede dentro de ella
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors')
-const session = require('express-session');
+// const session = require('express-session');
 //const { auth } = require('express-openid-connect');
 const morgan = require('morgan')
 dotenv.config()
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
-const passport= require('passport');
+
+
+
+let cookieParser = require('cookie-parser')
 
 //FIN
 ////////////////////////////////////////////////////////////////
@@ -22,16 +30,44 @@ const routes = require('./routes/routeUsers/route')
 const routesComment = require('./routes/routeComments/route')
 const routeRequest=require('./routes/routeRequest/route')
 const routeEmail = require('./routes/routeEmail/nodemail')
+const routeAuthGoogle = require('./routes/routeGoogle/route')
 const handleError = require('./handlers/handlerError')
 
 
 //FIN
 ////////////////////////////////////////////////////////////////
+ mongoose.connect(process.env.URI_MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+ // useCreateIndex: true
+});
+
+
+app.use(session({
+  secret: 'mysecret', // secreto para firmar las cookies de sesión
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: process.env.URI_MONGO,
+  crypto: {
+    secret: 'secret'
+  },
+  collection: 'sessions',
+  // expires: 60 * 60 * 24 * 7, // 7 days
+  expires: 120, // 2 minutes
+  model: SessionModel,
+  
+  // ttl: 24 * 60 * 60, // 1 día de vida útil })
+})}));
+
+
+//////////////////////////////////
 
 
 /// codigo especial para procesar solicitudes HTTP y expres json lo convierta en json
+app.use(cookieParser())
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
 
 app.use(cors()); //proteccion de cabecera
 app.use(morgan('tiny'));//monitoreo de solicitudes
@@ -43,6 +79,7 @@ app.use('/',routes)
 app.use('/',routeRequest)
 app.use('/', routesComment)
 app.use('/',routeEmail)
+app.use('/',routeAuthGoogle)
 
 //FIN
 ////////////////////////////////////////////////////////////////
@@ -50,65 +87,94 @@ app.use('/',routeEmail)
 
 
 
-////////////////////////////////////////////////////////////////
+
+
 //INICIO
-//codigo especial para los usuarios de GOOGLE
-app.use(session({
-  secret: 'MIDENUNCIA',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-//app.use(passport.session());
+////////////////////////////////////////////////////////////////
 
 
-require('./middleware/auth2UserGoogle')
 
 
-app.get('/google',
-  passport.authenticate('google', { scope: ['profile','email'] }));
+//otra ruta// Cambio de contraseña
 
+app.get('/verificacionToken', async (req, res) => {
+  const { v4: uuidv4 } = require('uuid');
 
-  app.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),(req, res)=> {
- 
-     res.redirect('/redirect');
+  //const uniqueId = uuidv4();
+  const {token,email} = req.query;
+   await User.findOne({where: {resetPasswordToken:token}})
+  .then(user => {
+    const user1=new SessionModel
+    user1.sessionID=req.sessionID
+    user1.session=user.email
+    identificadorUUI=uuidv4()
+    user1.save()
+    req.session.email=user.email
+   
     
+    const url = `http://localhost:5173/contrasenaNueva?token=${user.resetPasswordToken}&email=${user.email}}`;
+  res.redirect(url)
+  }).catch(err => {
+    res.send('token no funciona')
   });
-
-  app.get('/redirect', function(req, res) {
-    res.redirect('http://localhost:5173/usuarioLog');
-  });
-
+ 
   
-//FIN
-////////////////////////////////////////////////////////////////
 
-//INICIO
-////////////////////////////////////////////////////////////////
-
-
-app.post('/forgot-password',(req,res,next)=>{
-  //console.log(req.body.email)
-   const redirectUrl = '/send-mail?email=' + req.body.email; 
-   res.redirect(redirectUrl); 
 })
 
-app.get('/reset-password', async (req, res) => {
-  const { token } = req.query;
+////////////////////////////////////////////////////////////////
+//INICIO
+app.put('/newPassword', async (req, res) => {
 
-  try {
-    const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+  let {password, password2} = req.body;
 
-    if (!user) {
-      return res.status(404).json({ message: 'Token inválido o expirado' });
+
+
+
+//console.log(email);
+const seesionid = Object.keys(req.sessionStore.sessions)[0]
+//console.log(seesionid)
+
+const sessioUser= await SessionModel.findOne({ sessionID: seesionid })
+  .then(user => {
+   
+    
+   
+      User.findOne({ where: {email:user.session}})
+        .then(user=>{
+          if(user){
+           
+            password2 = bcrypt.hashSync(password2,10);
+             User.update({password: password2},
+              {where: {email: user.email}})
+              .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
+              .catch(err => res.json({ message: err.message }))
+          }else{
+            res.status(400).json({ message: "no se pudo" })
+          }
+
+        }).catch(err => res.json({ message: err.message}))
+      
+
+
+  })
+  .catch(error => console.error('Error al buscar usuario', error));
+
+
+  
+})
+
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+     // console.log("Sesión finalizada correctamente");
+      // Eliminar el token de autenticación de la base de datos
+      
+      res.redirect("http://localhost:5173/login");
     }
-
-    res.render('reset-password-form', { token });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error interno del servidor' });
-  }
+  });
 });
 
 

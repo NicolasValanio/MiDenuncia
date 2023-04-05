@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken')
 const app=require('../../app')
 
 const session = require('express-session');
+const dotenv=require('dotenv')
+dotenv.config()
 const Sequelize=require('sequelize');
 
 
@@ -70,7 +72,7 @@ exports.signIn = async (req, res, next) => {
 
                     const token = jwt.sign({
                         user
-                    }, 'secret', { expiresIn: '1h' });
+                    }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
              
 

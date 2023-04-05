@@ -1,26 +1,50 @@
 .filtrar{
     color: white;
     position: relative;
-    top: 30px; 
+    top: 60px; 
     left: 40px;
-    height: 100px;
-    width: 250px;
+    width: 230px;
 }
 
 .filtrar li{
-    border-bottom: 1px solid;
-    padding: 5px;
-    list-style: none;
-}
-.filtrar li:hover{
-    font-size: 20px;
+    width: 100%;
     display: flex;
-    
-}
-.icon{
-    color: #B86EFD;
-    width: 2rem;
-    height: 2rem ;
-    margin-right:20px ;
+    border-bottom: 1px solid;
+    text-align: justify;
+    list-style: none;
+    font-size: 14px;
+    padding: 5px;
+
 }
 
+.Cseguridad:hover,
+.Mvial:hover,
+.Svial:hover,
+.Epublicos:hover,
+.Apublicos:hover,
+.Cambiental:hover {
+    background-color: var(--primer-color);
+    border-top-right-radius:10px ;
+    border-bottom-right-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+
+}
+
+.seguridad,
+.Malla,
+.Senalizacion,
+.Espacios,
+.Alumbrado,
+.Ambiental {
+    margin-right: 1rem;
+}
+
+.Cseguridad:hover .seguridad,
+.Mvial:hover .Malla,
+.Svial:hover .Senalizacion,
+.Epublicos:hover .Espacios,
+.Apublicos:hover .Alumbrado,
+.Cambiental:hover .Ambiental {
+    color: #FFFFFF;
+}

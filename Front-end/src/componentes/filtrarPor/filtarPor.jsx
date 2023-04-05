@@ -13,12 +13,12 @@ function FiltarPor (){
             <div className={Style.filtrar}>
                 <h1 >Filtrar Por: </h1>
               <ul>
-                <li><AiFillAlert className={Style.icon}/> Seguridad</li>
-                <li><TbRoad className={Style.icon}/> Malla Vial</li>
-                <li><BsFillSignStopFill className={Style.icon}/> Señalizacion Vial </li>
-                <li><BsFillTreeFill className={Style.icon}/>Espacios Publicos</li>
-                <li><GiDoubleStreetLights className={Style.icon}/>Alumbrado Publico</li>
-                <li>  <TbRecycleOff className={Style.icon}/>Contaminacion  Ambiental</li>
+                <li className={Style.Cseguridad}><AiFillAlert className={`icon ${Style.seguridad}`}/>Seguridad</li>
+                <li className={Style.Mvial}><TbRoad className={`icon ${Style.Malla}`}/> Malla Vial </li>
+                <li className={Style.Svial}><BsFillSignStopFill className={`icon ${Style.Senalizacion}`}/> Señalizacion Vial</li>
+                <li className={Style.Epublicos}><BsFillTreeFill className={`icon ${Style.Espacios}`}/>Espacios Publicos </li>
+                <li className={Style.Apublicos}> <GiDoubleStreetLights className={`icon ${Style.Alumbrado}`}/>Alumbrado Publico</li>
+                <li className={Style.Cambiental}><TbRecycleOff className={`icon ${Style.Ambiental}`}/>Contaminacion  Ambiental</li>
               </ul>
                 
             </div>

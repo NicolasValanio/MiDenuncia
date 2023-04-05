@@ -1,0 +1,330 @@
+.registroUsuarios{
+    width: 100%;
+    max-height: 100vh;
+    min-height: 30rem;
+    /* border-left: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
+    border-radius: 20px; */
+    background:#1E2326 linear-gradient(360.0deg, #72479b 0.75%, rgba(111, 67, 151, 0.871) 7.18%, rgba(106, 70, 145, 0.592) 19.16%, rgba(82, 58, 110, 0.453) 28.74%, rgba(80, 62, 107, 0.292542) 55.36%, rgba(57, 51, 74, 0.133167) 83.67%, rgba(37, 42, 46, 0) 100%); 
+    color: white;
+    
+}
+
+.inputsPassword{
+    display: grid;
+    grid-template-columns: (1fr,1);
+    place-items: center;
+    width: 100%;
+    
+   
+   
+     
+}
+.contenedor_top{
+    width: 100%;
+    height: 20vh;
+}
+
+.tituloRegistre{
+    color: var(--primer-color);
+    font-size: 2.8em;
+}
+
+.formulario_registrar{
+    width: 100%;
+    height: 100vh ;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.label{
+    max-width: 80%;
+    min-width: 10rem;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+   
+}
+
+
+.iconRegister{
+    width: 15%;
+    height: 40px;
+    padding: 7px;
+    border-radius: 10px 0 0 10px;
+    background-color: #313131;
+    color: var(--primer-color);
+    font-size: 1em;
+}
+
+.inputRegister{
+    width:100%;
+    height: 100%;
+    font-size: 1em;
+    padding: 10px;
+    background-color: #282828;
+    border: none;
+   
+    outline: none;
+    color: white;
+    transition: 0.2s all ease-in;
+    
+   
+   
+    
+}
+
+.inputRegister:focus{
+    background-color: #b86efd41;
+    transition: 0.2s all ease-in;
+}
+
+.contenedor_boton{
+    width: 100%;
+    height: 10%;
+    margin-top: 20px;
+}
+
+.btnResgistrar{
+    width: 50%;
+    font-size: 1.5em;
+   
+}
+
+.error{
+    margin: 3px;
+    font-size: 0.9em;
+    color: var(--primer-color);
+    text-align: center;
+}
+
+.contenedor_bottom{
+    width: 100%;
+    height: 15vh;
+    font-size: 1.2em;
+}
+
+.textoRegister{
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.link{
+    text-decoration: none;
+    font-size: 1.7em;
+    color: var(--primer-color);
+}
+
+.iconEye{
+    width: 30px;
+    background-color: #282828;
+    color: var(--primer-color);
+   
+    border: none;
+     border-radius: 0 10px 10px 0;
+     cursor: pointer;
+
+  
+ }
+
+ 
+ .div_input{
+    display: flex;
+    height: 40px;
+    
+    
+}
+
+
+.boton_inputs{
+    display: flex;
+    flex-direction: column;
+    margin-bottom:20px;
+    padding-right:5px;
+}
+
+/* RESPONSIVE TABLET */
+
+@media (min-width: 700px) {
+
+    .registroUsuarios_contenedor{
+        width: 100%;
+        height: 100vh;
+        background:var(--degradado-color);
+    }
+
+    .registroUsuarios{
+        width: 65%;
+        height: 90%;
+        border-left: solid 3px var(--primer-color);
+        border-bottom: solid 3px var(--primer-color);
+        border-radius: 20px;
+        color: white;
+        background: var(--tercer-color);
+       
+    }
+    .btnResgistrar{
+        width: 70%;
+        font-size: 1.3em;
+        cursor: pointer;
+        
+       
+    }
+
+    .contenedor_top{
+        width: 100%;
+        height: 15%;
+    }
+
+    .formulario_registrar{
+        width: 100%;
+        height: 75%;
+    }
+
+    .contenedor_boton{
+        width: 80%;
+        height: 10%;
+        font-size: 1.2em;
+        
+    }
+
+    .div_input{
+        display: flex;
+        justify-content: center;
+        height:45px;
+        width: 20rem;
+       
+        
+       
+        
+        
+        
+    }
+   
+
+    .boton_inputs{
+        display: flex;
+        flex-direction: column;
+        margin-bottom:20px;
+       
+    }
+    .inputsPassword{
+        display: grid;
+        place-items: center;
+        width: 100%;
+      
+       
+    }
+
+    .label{
+       width: 100%;
+       
+        height: 40px;
+        
+        
+      
+    }
+
+
+}
+
+/* RESPONSIVE DESKTOP --.------------------------------------------------------------------------------------------*/
+
+@media (min-width: 1024px) {
+
+    .registroUsuarios{
+        width: 40%;
+        height: 70%;
+    }
+
+    /* .label{
+        width: 70%;
+        height: 8%;
+        margin: 5px;
+    } */
+
+        .label{
+            max-width: 45%;
+            min-width: 10rem;
+           height: 45px;
+          
+           
+        
+        }
+
+        .inputsPassword{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+           
+        }
+
+        
+            .inputRegister{
+                max-width: 100%;
+                min-width: 10rem;
+                height: 40px;
+              
+            }
+
+            .btnResgistrar{
+                width: 50%;
+                font-size: 1.1em;
+                cursor: pointer;
+                padding: 10px;
+                
+               
+            }
+
+            .div_input{
+                display: flex;
+                height: 40px;
+                width: 35rem;
+                 
+                
+                
+            }
+            .iconEye{
+               width: 30px;
+               background-color: #282828;
+               color: #72479b;
+              
+               border: none;
+                border-radius: 0 10px 10px 0;
+                cursor: pointer;
+            
+             
+            }
+
+            .boton_inputs{
+                display: flex;
+                flex-direction: column;
+                margin-bottom:20px;
+                padding-right:5px;
+            }
+        
+   
+   
+   
+
+
+}
+
+
+
+
+/* 
+
+
+
+
+
+
+
+     
+
+
+
+
+ */

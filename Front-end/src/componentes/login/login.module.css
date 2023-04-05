@@ -71,7 +71,7 @@
 .error{
     margin: 3px;
     font-size: 1em;
-    color: var(--primer-color);
+    color: rgb(255, 34, 34);
 }
 
 .contenedor_bottom{
@@ -178,28 +178,67 @@
     }
 
     .iniciar_google{
+        margin-bottom: 10px;
         font-size: 1.5em;
     }
 
+}
+
+@media (max-height: 700px) {
+
+    .contenedor_top{
+        height: 18%;
+    }
+
+    .formulario_login{
+        height: 66%;
+    }
+
+    .contenedor_bottom{
+        height: 20%;
+    }
+
+    .label{
+        height: 15%;
+        margin-bottom: 50px;
+    }
+
+    .error{
+        font-size: 1em;
+    }
+
+    .btnLogin{
+        width: 60%;
+        height: 18%;
+    }
+
+    .link{
+        font-size: 1.2em;
+    }
+
+    .iniciar_google{
+        font-size: 1em;
+    }
 }
 
 /* RESPONSIVE DESKTOP --.------------------------------------------------------------------------------------------*/
 
 @media (min-width: 1024px) {
     .contenedor_top{
-        height: 25%;
+        height: 20%;
     }
 
     .formulario_login{
         height: 50%;
+        font-size: 14px;
     }
 
     .contenedor_bottom{
-        height: 25%;
+        height: 20%;
     }
 
     .login{
-        width: 40%;
+        width: 30%;
     }
 
     .tituloLogin{
@@ -207,12 +246,20 @@
     }
 
     .label{
-        height: 20%;
+        height: 17%;
         margin-bottom: 40px;
     }
 
+    .btnLogin{
+        width: 60%;
+        height: 17%;
+    }
+
     .error{
-        font-size: 1.3em;
+        font-size: 1.1em;
+    }
+    .textoLogin{
+        font-size: 0.9em;
     }
 
     .link{
@@ -220,7 +267,7 @@
     }
 
     .iniciar_google{
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 }
 
