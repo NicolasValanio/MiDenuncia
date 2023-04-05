@@ -1,5 +1,5 @@
 
-const app=require('./app')
+const app = require('./app')
 const bcrypt=require('bcrypt')
 
 const User=require('./models').user
@@ -176,3 +176,93 @@ app.get("/logout", (req, res) => {
     }
   });
 });
+
+
+////////////////////////////////////////////////////////////////
+//INICIO
+//sesion persistente
+/*
+const Sequelize=require('sequelize')
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store)//este paquete genera automaticamente el modelo session en la bd
+
+const dbSequelize=new Sequelize('miDenuncia', 'root', null, {//instancia de sequelize
+
+  dialect: 'sqlite',
+  storage: 'session.sqlite' //este sera el archivo de almacenamiento
+
+})
+
+app.use(session({
+  secret: 'midenunciasecreta',
+  resave: false,
+  saveUninitialized: false,
+  store: new SequelizeStore({//configuramos que sequelize sea el que almacene esa session
+    db: dbSequelize
+
+  })
+}))
+
+dbSequelize.sync()//aqui sincronizamos la bd con el modelo de sesion
+
+
+///estamos guardando la info de sesion en la bd en vez de la memoria del servidorr
+//por lo tanto la sesion esta persistente
+
+
+app.post('/Login',async(req,res)=>{
+
+  try{
+  const {userLog}=req.body
+
+  req.session.user={ username: userLog} //establecemos la sesion activa aqui
+
+
+
+res.send('Inicio de sesión exitoso')
+
+res.redirect('http://localhost:5173/usuarioLog')
+
+console.log('exito')
+console.log(userLog)
+console.log(req.session.user)}
+
+catch(error){
+
+  res.send(error)
+
+}
+
+
+})
+
+
+
+app.get('/UsuarioLog',async(req,res)=>{
+
+
+ 
+  const userSession=req.session.user //obtenemos el usuario de la sesion
+
+  if(req.session.user){
+
+    res.send('bienvenida')
+
+    console.log('session creada')
+  }else{
+    res.redirect('/Login');
+    res.send('inicia sesion primero')
+    
+  
+
+  }
+    
+  
+
+  res.render('UsuarioLog',{userSession}) //renderizamos la pagina de inicio
+
+  console.log('pagina renderizada')
+
+})*/
+
+//fin
