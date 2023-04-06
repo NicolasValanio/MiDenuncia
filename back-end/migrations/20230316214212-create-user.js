@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING(250)
       },
       token: {
-        type: Sequelize.STRING(250)
+        type: Sequelize.TEXT
       },
       resetPasswordToken: {
         type: Sequelize.STRING(250)

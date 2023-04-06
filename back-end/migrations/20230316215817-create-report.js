@@ -13,13 +13,22 @@ module.exports = {
         type: Sequelize.DATE
       },
       description: {
-        type: Sequelize.STRING(250)
+        type: Sequelize.TEXT
       },
       photo: {
         type: Sequelize.STRING(100)
       },
       status: {
         type: Sequelize.TINYINT(1)
+      },
+      likes_id:{
+        type: Sequelize.INTEGER(5),
+        references:{
+          model:'likes',
+          key:'id'
+        }
+
+
       },
       type_report_id: {
         type: Sequelize.INTEGER(1),
@@ -48,6 +57,16 @@ module.exports = {
           
         }
       },
+      comment_id:{
+        type: Sequelize.INTEGER(5),
+        references:{
+
+          model:'comments',
+          key:'id'
+          
+        }
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

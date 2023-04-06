@@ -27,9 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         user.hasMany(models.comment,{
           foreignKey:"user_id"
         })
+        user.hasOne(models.likes,{
+          foreignKey:"user_id"
+        })
     }
   }
   user.init({
+    
     nickname: DataTypes.STRING,
     name: DataTypes.STRING,
     last_name: DataTypes.STRING,
@@ -47,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'user',
+    // paranoid: true,
     // validate: {
     //   userValidation() {
     //     if (this.name.length < 2) {

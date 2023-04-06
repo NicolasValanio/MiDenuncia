@@ -1,16 +1,20 @@
 const modelUser = require('../../models').user;
 const modelRequest = require('../../models').request;
-const modelTypeRequest = require('../../models').types_request;
-const modelRating = require('../../models').rating
+const modelTypesReport = require('../../models').types_report;
+const modelReport=require('../../models').report;
+const modelComment=require('../../models').comment;
+const modelLikes=require('../../models').likes;
+//const modelRating = require('../../models').rating
 
 exports.infoRequestUser = async (req,res,next) => {
 
     try {
-    let storeRequest= await modelRequest.findAll({include: [modelTypeRequest]})
+    const news= await modelReport.findAll({include: [modelLikes,modelTypesReport,modelRequest,modelUser,modelComment]})
+    
 
-    let storeUser= await modelRating.findAll({include: [modelUser]});
-
-    res.status(200).send(JSON.stringify({storeRequest,storeUser}))
+    // let storeUser= await modelRating.findAll({include: [modelUser]});
+        res.status(200).json({news})
+    //res.status(200).send(JSON.stringify({storeRequest,storeUser}))
     } catch (error) {
         res.send(error)
     }

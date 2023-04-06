@@ -30,7 +30,7 @@ export async function  EnvioEmailResetpassword (envio){
 
 export async function  nuevaContrasena (envio){
 
-    return await axios.put("http://localhost:4000/newPassword",envio)
+    return await axios.get("http://localhost:4000/newPassword",envio)
      
  
  }
