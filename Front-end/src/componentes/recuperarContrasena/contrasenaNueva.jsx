@@ -26,7 +26,7 @@ function ContrasenaNueva() {
     const onSubmit = valor =>{
 
         nuevaContrasena(valor) 
-         // navigate("/login");
+         navigate("/login");
       }
       
       return (

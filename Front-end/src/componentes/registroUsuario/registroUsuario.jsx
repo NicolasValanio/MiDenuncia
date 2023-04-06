@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './RegistroUsuario.module.css'
 import {EnvioResgistrarBd} from '../baseDeDatos'
 
 import { useForm} from 'react-hook-form';
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai"
+import {GiDualityMask} from "react-icons/gi"
+import {RiLockPasswordLine} from "react-icons/ri"
+import {BsMailbox} from "react-icons/bs"
+import "animate.css";
 import { Link,useNavigate  } from 'react-router-dom'
 
 
@@ -11,14 +15,29 @@ function RegistroUsuario() {
 
     const { register, handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
+    
+    const [errorEmail, setErrorEmail]=useState(['']);
+    const errorEmail2={
+        color:"white",
+        "text-Align": "center"
+       
+    }
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
 
 //------------------------------------------------------------------------------------------
 
     const onSubmit = valor =>{
-        EnvioResgistrarBd(valor) 
-        navigate("/login");
+        EnvioResgistrarBd(valor)
+            .then(res => {
+                setErrorEmail(res.response)
+                navigate("/login");
+            })
+            .catch(err =>{
+                setErrorEmail(err.response.data)
+                console.log(err.response.data)
+            } )
+       
     }
 
     return (
@@ -61,7 +80,7 @@ function RegistroUsuario() {
                         {errors.last_name && <span className={style.error}> {errors.last_name.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><GiDualityMask className={style.iconRegister}/>
                         <input {...register("nickname",{
                               required: {
                                 value: true,
@@ -76,7 +95,7 @@ function RegistroUsuario() {
                         {errors.nickname && <span className={style.error}> {errors.nickname.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><BsMailbox className={style.iconRegister}/>
                         <input {...register("email",{
                             required: {
                                 value: true,
@@ -89,9 +108,10 @@ function RegistroUsuario() {
                         })} 
                         type="text" className={style.inputRegister} placeholder="Correo" />
                         {errors.email && <span className={style.error}>{errors.email.message}</span>}
+                       {errorEmail && errorEmail.message && <span style={errorEmail2} className={style.error}>{errorEmail.message}</span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><RiLockPasswordLine className={style.iconRegister}/>
                         <input {...register("password",{ 
                               required: {
                                 value: true,
@@ -106,7 +126,7 @@ function RegistroUsuario() {
                         {errors.password && <span className={style.error}> {errors.password.message} </span>}
                     </label>
 
-                    <label className={style.label}><AiOutlineUser className={style.iconRegister}/>
+                    <label className={style.label}><RiLockPasswordLine className={style.iconRegister}/>
                         <input {...register("password2",{
                               required: {
                                 value: true,
@@ -122,7 +142,7 @@ function RegistroUsuario() {
                     </label>
  
                     <div className={`contenedor ${style.contenedor_boton}`}>
-                        <button type="submit" className={`btn ${style.btnResgistrar}`}>Registrarse</button>
+                        <button type="submit" className={`btn ${style.btnResgistrar} animate__animated animate__backInUp`}>Registrarse</button>
                     </div>
 
                 </form>

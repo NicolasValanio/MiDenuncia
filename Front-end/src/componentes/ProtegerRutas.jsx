@@ -14,24 +14,20 @@ export function llenardatos(userA) {
 export const UseProtegerRutas =() => {
 
     let usuarioToken
-
-    useEffect(()=>{
         usuarioToken = window.localStorage.getItem('usuarioLogeado')
         if (usuarioToken) {
-            const user = JSON.parse(usuarioToken)
-            renderPaginas(user)    
+            const user = JSON.parse(usuarioToken) 
         }
-    },[])
 
-
-    function renderPaginas(usuaioTokenValidaion) {
-        if (!usuaioTokenValidaion) {
-            return  < Navigate to='/login'  />
-         }
+    if (usuarioToken) {
+        const user = JSON.parse(usuarioToken)
+        console.log(user.status);   
+    }else{
+        console.log('no existe');
+        return   < Navigate to='/login'  />
     }
-    
-   
-    return <Outlet />
+
+    return  <Outlet />
 }
 
 

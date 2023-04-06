@@ -1,6 +1,12 @@
 
+<<<<<<< HEAD
+=======
+const app=require('./app')
+const bcrypt=require('bcrypt')
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 
 const User=require('./models').user
+const SessionModel=require('./modeloMongo/sessionMongodb')
 
 ////aqui hacemos las importaciones y que todo quede dentro de ella
 const express = require('express');
@@ -23,10 +29,17 @@ const dotenv = require('dotenv');
 //const { auth } = require('express-openid-connect');
 
 dotenv.config()
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
+
+<<<<<<< HEAD
 const app=require('./app')
 
 const passport= require('passport');
+=======
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
@@ -45,6 +58,7 @@ const handleError = require('./handlers/handlerError')
 
 //FIN
 ////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 // const mongoStore = MongoStore.create({
 //   mongoUrl: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/api-session?retryWrites=true&w=majority',
 //   mongoOptions: {
@@ -55,6 +69,33 @@ const handleError = require('./handlers/handlerError')
 // });
 
 
+=======
+ mongoose.connect(process.env.URI_MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+ // useCreateIndex: true
+});
+
+
+app.use(session({
+  secret: 'mysecret', // secreto para firmar las cookies de sesión
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: process.env.URI_MONGO,
+  crypto: {
+    secret: 'secret'
+  },
+  collection: 'sessions',
+  // expires: 60 * 60 * 24 * 7, // 7 days
+  expires: 120, // 2 minutes
+  model: SessionModel,
+  
+  // ttl: 24 * 60 * 60, // 1 día de vida útil })
+})}));
+
+
+//////////////////////////////////
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 
 
 /// codigo especial para procesar solicitudes HTTP y expres json lo convierta en json
@@ -157,13 +198,22 @@ app.use('/',routeAuthGoogle)
 ////////////////////////////////////////////////////////////////
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 //otra ruta// Cambio de contraseña
 
 app.get('/verificacionToken', async (req, res) => {
+  const { v4: uuidv4 } = require('uuid');
+
+  //const uniqueId = uuidv4();
   const {token,email} = req.query;
 
    await User.findOne({where: {resetPasswordToken:token}})
   .then(user => {
+<<<<<<< HEAD
   //  res.cookie(cookie_name , 'cookie_value', { maxAge: 900000, httpOnly: true ,sameSite:'lax'});
    // res.cookie('miCookie', 'prueba', { maxAge: 200000, httpOnly: true ,sameSite:'lax'});
    const session = new Session({
@@ -180,6 +230,16 @@ app.get('/verificacionToken', async (req, res) => {
     .catch((err) => {
       console.log('Error al guardar la sesión:', err);
     });
+=======
+    const user1=new SessionModel
+    user1.sessionID=req.sessionID
+    user1.session=user.email
+    identificadorUUI=uuidv4()
+    user1.save()
+    req.session.email=user.email
+   
+    
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
     const url = `http://localhost:5173/contrasenaNueva?token=${user.resetPasswordToken}&email=${user.email}}`;
   res.redirect(url)
   }).catch(err => {
@@ -188,21 +248,11 @@ app.get('/verificacionToken', async (req, res) => {
  
   
 
-  //data ?  res.status(200).json(data) : res.json({message: 'asegurese de su usuario este registrado'});
-  
-  /* try {
-    if(data === null){
-      res.status(400).json({ message: 'vuelva a enviar enlace' });
-    }
-    const url = `http://localhost:5173/contrasenaNueva?data=${data}`;
-    res.redirect(url)
-  } catch (error) {
-    res.status(500).json({ message: 'Error interno del servidor' });
-  } */
 })
 
 ////////////////////////////////////////////////////////////////
 //INICIO
+<<<<<<< HEAD
 app.get('/newPassword', async (req, res) => {
   //const miCookie = req;
 
@@ -229,24 +279,57 @@ console.log(encryptedCookie);
   // } catch (error) {
   //   res.status(500).json({ message: error.message });
   // }
+=======
+app.put('/newPassword', async (req, res) => {
+
+  let {password, password2} = req.body;
+
+
+
+
+//console.log(email);
+const seesionid = Object.keys(req.sessionStore.sessions)[0]
+//console.log(seesionid)
+
+const sessioUser= await SessionModel.findOne({ sessionID: seesionid })
+  .then(user => {
+   
+    
+   
+      User.findOne({ where: {email:user.session}})
+        .then(user=>{
+          if(user){
+           
+            password2 = bcrypt.hashSync(password2,10);
+             User.update({password: password2},
+              {where: {email: user.email}})
+              .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
+              .catch(err => res.json({ message: err.message }))
+          }else{
+            res.status(400).json({ message: "no se pudo" })
+          }
+
+        }).catch(err => res.json({ message: err.message}))
+      
+
+
+  })
+  .catch(error => console.error('Error al buscar usuario', error));
+
+
+  
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 })
 
-// app.put('/newPassword', async (req, res) => {
-//   const {email} = req.query;
-//    // email ? console.log('llega') : console.log('no llega')
-//   try {
-//     let {password, password2} = req.body;
-//     let user = await User.findOne({ where: {email}})
-//     if(user){
-//       password2 = bcrypt.hashSync(password2,10);
-//       await User.update({password: password2},
-//         {where: {email: email}})
-//         .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
-//         .catch(err => res.json({ message: err.message }))
-//     }else{
-//       res.status(400).json({ message: "no se pudo" })
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// })
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+     // console.log("Sesión finalizada correctamente");
+      // Eliminar el token de autenticación de la base de datos
+      
+      res.redirect("http://localhost:5173/login");
+    }
+  });
+});

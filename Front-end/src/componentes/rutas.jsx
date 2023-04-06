@@ -31,6 +31,7 @@ function Rutas() {
                 <Route path="/recuperarContrasena" element={<RecuperarContrasena />} />
                 <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} />
                 <Route path="/contrasenaNuevaLog" element={<ContrasenaNuevaLog />} />
+                <Route path="/UsuarioLog" element={<UsuarioLog />} />
 
                 {/* <Route path="/password" element={<Password />} /> */}
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
@@ -39,7 +40,6 @@ function Rutas() {
                    
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
-                    <Route path="/UsuarioLog" element={<UsuarioLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} />
                 </Route>

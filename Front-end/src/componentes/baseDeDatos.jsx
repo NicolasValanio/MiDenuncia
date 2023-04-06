@@ -1,25 +1,23 @@
 import axios from 'axios'
 
 export async function EnvioLoginBd(envio) {
-       let respuesta = await axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio        )
+       let respuesta = await axios.post("http://localhost:4000/signIn",envio        )
                 .then(res => res)
                 .catch(err => err) 
         return respuesta
 }
 
-export function EnvioResgistrarBd(envio) {
+export async function EnvioResgistrarBd(envio) {
 
-    axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    return await axios.post("http://localhost:4000/signUp",envio)
+  
 
 }
-
-
 
 // esto envia el un enlace al email para recuperar contrasena
 export async function  EnvioEmailResetpassword (envio){
 
+<<<<<<< HEAD
    return await axios.post("http://localhost:4000/forgot-password",envio)
     
 
@@ -31,9 +29,27 @@ export async function  EnvioEmailResetpassword (envio){
 export async function  nuevaContrasena (envio){
 
     return await axios.get("http://localhost:4000/newPassword",envio)
+=======
+    return await axios.post("http://localhost:4000/forgot-password",envio)
+>>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
      
  
  }
+ 
+ 
+ // esta funcion resetea la contrasena del usuario con el enlace enviado al correo
+ 
+ export async function  nuevaContrasena (envio){
+ 
+     return await axios.put("http://localhost:4000/newPassword",envio)
+      
+  
+  }
+ 
+
+
+
+
 
 
 

@@ -13,7 +13,6 @@ const changePasswordUserController=require('../../controllers/user/changePasswor
 
 
 
-
 router.post('/signUp',signUpUserController.signUp)
 router.post('/signIn',signInUserController.signIn)
 
