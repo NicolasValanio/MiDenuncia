@@ -34,12 +34,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
 
-<<<<<<< HEAD
-const app=require('./app')
-
-const passport= require('passport');
-=======
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
@@ -58,18 +52,6 @@ const handleError = require('./handlers/handlerError')
 
 //FIN
 ////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-// const mongoStore = MongoStore.create({
-//   mongoUrl: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/api-session?retryWrites=true&w=majority',
-//   mongoOptions: {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   },
-//   ttl: 60 * 60 * 24 // Tiempo de vida de la sesión en segundos (en este caso, 1 día)
-// });
-
-
-=======
  mongoose.connect(process.env.URI_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -95,7 +77,6 @@ app.use(session({
 
 
 //////////////////////////////////
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 
 
 /// codigo especial para procesar solicitudes HTTP y expres json lo convierta en json
@@ -198,11 +179,8 @@ app.use('/',routeAuthGoogle)
 ////////////////////////////////////////////////////////////////
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 //otra ruta// Cambio de contraseña
 
 app.get('/verificacionToken', async (req, res) => {
@@ -213,24 +191,6 @@ app.get('/verificacionToken', async (req, res) => {
 
    await User.findOne({where: {resetPasswordToken:token}})
   .then(user => {
-<<<<<<< HEAD
-  //  res.cookie(cookie_name , 'cookie_value', { maxAge: 900000, httpOnly: true ,sameSite:'lax'});
-   // res.cookie('miCookie', 'prueba', { maxAge: 200000, httpOnly: true ,sameSite:'lax'});
-   const session = new Session({
-        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-        cookie: { originalMaxAge: 604800000, httpOnly: true, path: '/' },
-      //  // sessionId: 'some_session_id',
-        sessionData: user 
-      });
-
-      session.save()
-    .then(() => {
-      console.log('La sesión se ha guardado correctamente');
-    })
-    .catch((err) => {
-      console.log('Error al guardar la sesión:', err);
-    });
-=======
     const user1=new SessionModel
     user1.sessionID=req.sessionID
     user1.session=user.email
@@ -239,7 +199,6 @@ app.get('/verificacionToken', async (req, res) => {
     req.session.email=user.email
    
     
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
     const url = `http://localhost:5173/contrasenaNueva?token=${user.resetPasswordToken}&email=${user.email}}`;
   res.redirect(url)
   }).catch(err => {
@@ -252,34 +211,6 @@ app.get('/verificacionToken', async (req, res) => {
 
 ////////////////////////////////////////////////////////////////
 //INICIO
-<<<<<<< HEAD
-app.get('/newPassword', async (req, res) => {
-  //const miCookie = req;
-
-  const encryptedCookie = req; // aquí va la cookie encriptada
-
-
-
-console.log(encryptedCookie);
- //
-  
-  //console.log(miCookie,req.cookies);
-  // try {
-  //   let {password, password2} = req.body;
-  //   let user = await User.findOne({ where: {email}})
-  //   if(user){
-  //     password2 = bcrypt.hashSync(password2,10);
-  //     await User.update({password: password2},
-  //       {where: {email: email}})
-  //       .then(user => res.status(200).json({ message: 'cambio de contraseña exitoso!'}))
-  //       .catch(err => res.json({ message: err.message }))
-  //   }else{
-  //     res.status(400).json({ message: "no se pudo" })
-  //   }
-  // } catch (error) {
-  //   res.status(500).json({ message: error.message });
-  // }
-=======
 app.put('/newPassword', async (req, res) => {
 
   let {password, password2} = req.body;
@@ -318,7 +249,6 @@ const sessioUser= await SessionModel.findOne({ sessionID: seesionid })
 
 
   
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
 })
 
 app.get("/logout", (req, res) => {

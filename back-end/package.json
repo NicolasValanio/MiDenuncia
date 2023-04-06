@@ -16,13 +16,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
-<<<<<<< HEAD
-    "body-parser": "^1.20.2",
     "connect-mongo": "^5.0.0",
-    "connect-mongodb-session": "^3.1.1",
-=======
-    "connect-mongo": "^5.0.0",
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -31,10 +25,6 @@
     "express-session": "^1.17.3",
     "googleapis": "^114.0.0",
     "jsonwebtoken": "^9.0.0",
-<<<<<<< HEAD
-    "mongodb": "^5.1.0",
-=======
->>>>>>> c2c9fa2bd1323155a882f5a6e6bdd13b3678e803
     "mongoose": "^7.0.3",
     "morgan": "^1.10.0",
     "mysql2": "^3.2.0",
