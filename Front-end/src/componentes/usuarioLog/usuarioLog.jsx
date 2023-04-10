@@ -12,6 +12,7 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
+import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 
@@ -51,6 +52,8 @@ function UsuarioLog(params) {
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
+                    
+                    <li className={style.li} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.iconsLog}`}/></Link></li>
                     <li className={style.li} >
                         <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
                         {showNotifications && (
@@ -75,8 +78,8 @@ function UsuarioLog(params) {
                             </ul>
                         </li>
                         
-                        <li className={style.li}><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
-                        <li className={style.li}> <link rel="stylesheet" href="" /> <BiLogOut className={`icon ${style.iconsLog}`}/> </li>
+                        <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
+                        <li className={style.li} title="Salir"> <Link rel="stylesheet" href=""> <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>
             </div>
