@@ -11,6 +11,7 @@ function TarjetasPublicacion() {
    },[])
 
 console.log(api)
+
    // userget().then(res => setApi(res))
 
 
@@ -67,38 +68,37 @@ console.log(barrio)
         </div>
 
         <div className={style.nombreUsuario}>
-      {api === undefined ? 'espera': <h3>{api.storeRequest[0].subject}
+        {api === undefined ? 'espera': <h3>{api.news[0].user.nickname} <br/>
+        {api.news[0].request.subject}
         </h3>}
-        {api === undefined ? 'espera': <h3>Denuncia por: {api.storeRequest[0].types_request.name}
-        </h3>}
-
         </div> 
 
 
 
         <div className={style.textoPublicacion}>
-        {api === undefined ? 'espera': <p>{api.storeRequest[0].problem}
-        </p>}
-
+        {api === undefined ? 'espera': <h4>{api.news[0].description}
+        </h4>}
         </div>
 
         <div className={style.imagenContenedor}>
-           
-        </div>
-
+        {api === undefined ? 'espera':<img  src={api.news[0].photo} alt="" width={735} height={240}></img>}
+        </div>        
         <div className={style.fechaPublicacion}>
-        {api === undefined ? 'espera': <h4>Publicado el:  {api.storeRequest[0].createdAt}
-        </h4>}
+        {api === undefined ? 'espera': <h3>{api.news[0].request.date}
+        </h3>}
         </div>
         
         <div className={style.ubicacionPublicacion}>
-        {api === undefined ? 'espera': <h4>{api.storeRequest[0].location}, {api.storeRequest[0].neighborhood}
-        </h4>}
+        {api === undefined ? 'espera': <h3>{api.news[0].request.location}, {api.news[0].request.neighborhood}
+        </h3>}
         </div>
 
         <div className={style.apoyoPublicacion}>
-           <p ></p>
+        {api === undefined ? 'espera': <h5>apoyo: {api.news[0].like.like}   comentarios: {api.news[0].like.like} 
+        </h5>}
         </div>
+
+   
 
 
 
