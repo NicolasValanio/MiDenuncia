@@ -8,22 +8,13 @@ const SessionModel = require('./modeloMongo/sessionMongodb')
 ////aqui hacemos las importaciones y que todo quede dentro de ella
 const express = require('express');
 
-const mongoose = require('./services/mongoDB')
 
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
-//const MongoStore = require('connect-mongo')(session);
-const Session = require('./services/sessionMongodb')
 
 const cors = require('cors')
 const dotenv = require('dotenv');
 
 
-// const MongoDBStore = require('connect-mongodb-session')(session);
-// const { MongoClient } = require('mongodb');
 
-// const session = require('express-session');
-//const { auth } = require('express-openid-connect');
 
 dotenv.config()
 const mongoose = require('mongoose'); // --> Me genera error
@@ -87,27 +78,6 @@ app.use(express.json());
 app.use(cors()); //proteccion de cabecera
 app.use(morgan('tiny'));//monitoreo de solicitudes
 ////////////////////////////////////////////////////////////////
-// const store = new MongoDBStore({
-//   uri: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/api-sessions',
-//   collection: 'session'
-// });
-// store.on('error', function(error) {
-//   console.log(error);
-// });
-
-
-// app.use(session({
-//   secret: 'This is a secret',
-//   cookie: {
-//     maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-//   },
-//   store: store,
-//   // Boilerplate options, see:
-//   // * https://www.npmjs.com/package/express-session#resave
-//   // * https://www.npmjs.com/package/express-session#saveuninitialized
-//   resave: true,
-//   saveUninitialized: true
-// }));
 
 
 app.use(session({
@@ -118,14 +88,14 @@ app.use(session({
 
   resave: true,
   saveUninitialized: true,
-  store: new MongoDBStore({
-    uri: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/api-sessions',
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://midenuncia:MIDENUNCIA2023@api-session.gu6bn9e.mongodb.net/api-sessions',
     collection: 'mysessions',
 
   }),
 
 
-  // Guardar el documento en la colección
+  
 
 }));
 
