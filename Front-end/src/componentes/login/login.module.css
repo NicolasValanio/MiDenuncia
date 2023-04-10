@@ -240,6 +240,11 @@
     }
 }
 
+@media (min-width: 1280px) and (max-width: 1440px) {
+    .login{
+        width: 45%;
+    }
+}
 /* @media (min-width: 1440px) {
     .login{
         width: 30%;
