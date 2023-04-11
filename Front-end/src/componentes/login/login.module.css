@@ -233,11 +233,28 @@
     }
 }
 
-@media (min-width: 1440px) {
+/* Mq tablet grande */
+@media(min-width:768px)and (max-width:1024px) {
+    .login{
+        width:65%
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1300px) {
+    .login{
+        width: 40%;
+    }
+}
+@media (min-width: 1300px) and (max-width: 1450px) {
+    .login{
+        width: 35%;
+    }
+}
+/* @media (min-width: 1440px) {
     .login{
         width: 30%;
     }
-}
+} */
 
 /* 
 

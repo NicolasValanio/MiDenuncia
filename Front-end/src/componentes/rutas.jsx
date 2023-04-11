@@ -13,6 +13,7 @@ import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
 import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
+import Mapa from './mapa/mapa'
 
 
 
@@ -32,6 +33,7 @@ function Rutas() {
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
+                    <Route path="/Mapa" element={<Mapa />} />
                 </Route>
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 
