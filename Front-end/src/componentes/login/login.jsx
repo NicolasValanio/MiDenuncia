@@ -18,7 +18,6 @@ function Login() {
 
     const  onSubmit = value =>{
 
-
         EnvioLoginBd(value).then(res => {
             if (res.status === 200) {
                 llenardatos(res)
@@ -80,11 +79,11 @@ function Login() {
                 <div className={`contenedor ${style.contenedor_bottom}`}>
                     <div className={`contenedor ${style.cont_regiscontra}`}>
                         <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
-                        <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario">CONTRASEÑA</Link></samp>? </p>
+                        <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/recuperarContraseña">CONTRASEÑA</Link></samp>? </p>
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
-                        <p><a className={style.a} href="https://midenuncia-database-production.up.railway.app/google">Iniciar sesión con Google</a></p> 
+                        <p><a className={style.a} href="http://localhost:4000/google">Iniciar sesión con Google</a></p> 
                     </div>
 
                 </div>

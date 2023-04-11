@@ -1,11 +1,16 @@
 /* // NADIE TOCA ESTO!!!! */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:ital,wght@1,200&family=Noto+Sans:ital,wght@0,100;0,200;1,100&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@200&family=Righteous&family=Space+Grotesk:wght@300;400;500&family=Ubuntu:ital,wght@0,700;1,500;1,700&family=Unbounded:wght@200&family=Work+Sans:ital,wght@0,300;0,400;0,600;1,800&display=swap');
 *{ 
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: var(--letradepagina);
+
   }
+  
 /* // NADIE TOCA ESTO!!!! */
   :root{
+    --letradepagina:'Space Grotesk', sans-serif;
     --primer-color: #B86EFD;
     --segundo-color: #1E2326;
     --tercer-color: #252A2E;
@@ -34,5 +39,14 @@
     background-color: var(--primer-color);
     color: var(--segundo-color);
     transition: 0.2s all;
+    cursor: pointer;
   }
 /* // NADIE TOCA ESTO!!!! */
+
+/* clase global iconos del filtro */
+.icon{
+  color: var(--primer-color);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}

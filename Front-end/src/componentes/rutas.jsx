@@ -12,7 +12,7 @@ import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
-import NavegacionNoLog  from './navegacionNoLog/navegacion';
+import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
 
 
 
@@ -22,18 +22,17 @@ function Rutas() {
     return (
             <Routes>
                 <Route exact path="/" element={<UsuarioNoLog />} /> 
-              {/*   <Route path="/login" element={<Login />} />
+                 <Route path="/login" element={<Login />} />
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
                     <Route path="/HabeasData" element={<HabeasData />} />
+                    <Route path="/recuperarContraseña" element={<RecuperarContraseña />} />
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
-                    <Route path='/UsuarioNoLog' element={<UsuarioNoLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
-                    <Route path="/VistaUsuario" element={<VistaUsuario />} />
-                </Route> */}
-                <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
+                    <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
+                </Route>
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 
                 <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />
