@@ -5,9 +5,9 @@ import { BiSearchAlt } from "react-icons/bi";
 function VistaSuperAdmin() {
     return(
         <div>
-            <h1>@SuperAdmin</h1>
+            <h1 className={style.h1}>@SuperAdmin</h1>
             
-           <BiSearchAlt className={style.iconBuscar}/><input type="text" placeholder="      Filtrar" />
+           <BiSearchAlt className={style.iconBuscar}/><input className={style.input} type="text" placeholder="      Filtrar" />
            <div className={style.filtrar}>
            <select name="" id="" >
                 <option value="">Nombre</option>

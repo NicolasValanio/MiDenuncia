@@ -1,11 +1,11 @@
-h1{
+.h1{
     color: blueviolet;
     position: relative;
     top: 150px;
     left: 400px;
 }
 
-input{
+.input{
     height: 50px;
     width: 250px;
     border-radius: 80px;
