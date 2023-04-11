@@ -15,14 +15,18 @@ export function EnvioResgistrarBd(envio) {
     .catch(err => console.log(err))
 
 }
-/* se creo una carpeta config en el cual contiene la url base,para que modifiquen cada peticion de la siguente forma */ 
-/*
-export async function traerUsuario(id) {
-    return await clientHTTP.get(`/getUser/${id}`)
-    .catch(err => console.log(err))
-} */
 
-export async function traerUsuario(id) {
-    return await axios.get('/src/componentes/peticionesUsuarios/traerUsuario.json')
-    .catch(err => console.log(err))
+export async function enviarPeticion(cuerpo, id) {
+    return await axios.put(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo)
+        .catch(err => console.log(err))
 }
+
+// export async function enviarPeticion(cuerpo, id) {
+//     return await fetch(`https://midenuncia-database-production.up.railway.app/request/${id}`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(cuerpo)
+//     }).catch(err => console.log(err))
+// }

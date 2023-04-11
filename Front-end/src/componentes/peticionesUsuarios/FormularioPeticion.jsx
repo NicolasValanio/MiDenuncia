@@ -4,19 +4,71 @@ import style from './peticionesUsuarios.module.css'
 /* importar el react-hook para iniciar el formulario */
 import { useForm } from 'react-hook-form'
 import {CiInboxOut } from "react-icons/ci";
+import { enviarPeticion } from '../baseDeDatos'
+import Swal from 'sweetalert2'
+import { useState } from 'react';
+import Loading from '../loading/Loading';
 
 export default function FormularioPeticion ({user}) {
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
 		defaultValues: {...user}
 	})
 
+  const [loading, setLoading] = useState(false)
+
   const enviar = (values) => {
-		console.log(values)
+		const {type_request, type, number_document, place_dispatch, address, neighborhood, contact_phone, subject, problem, solution, neighborhood_request, location, url} = values
+    
+    const request = {
+      name: type_request,
+      type,
+      number_document,
+      place_dispatch,
+      address,
+      contact_phone,
+      location,
+      neighborhood: neighborhood_request,
+      subject,
+      problem,
+      solution,
+      url
+    }
+    Swal.fire({
+      title: 'Estas seguro de que los datos estan correctos',
+      text: "Selecciona confirmar para continuar o cancelar para cambiar los datos",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLoading(true)
+        enviarPeticion(request, user.id)
+          .then(res => {
+            setLoading(false)
+            if(res.status === 200) {
+              console.log(res.data)
+              const dataNew = res.data
+              console.log(typeof dataNew)
+              const newUser = JSON.parse(dataNew)
+              console.log(newUser)
+              const oldUser = JSON.parse(localStorage.getItem('usuarioLogueado'))
+
+              localStorage.setItem('usuarioLogueado', JSON.stringify({...oldUser, ...newUser}))
+              Swal.fire({titleText: 'Informacion enviada correctamente', icon: 'success'})
+            }
+            console.log(res)})
+      }
+    })
+
+    
 	}
 
   /* contenedor form */
   return (
     <form action="" className={style.contenedorform} onSubmit={handleSubmit(enviar)}>
+      {loading && <Loading />}
       <p className={style.contenedortext}>
           Registro de solicitud - Recuerda que los campos con * son obligatorios
       </p>
@@ -45,9 +97,9 @@ export default function FormularioPeticion ({user}) {
 
               <div className={style.info}>
                   <p>* Tipo de documento:</p>
-                  <select {...register('type_document', {
+                  <select {...register('type', {
                     required: true,
-                  })} id="" disabled={Boolean(user.type_document)}>
+                  })} id="" disabled={Boolean(user.type)}>
                       <option value="">
                           tipo de documento
                       </option>
@@ -64,23 +116,23 @@ export default function FormularioPeticion ({user}) {
                           Cedula de extranjeria
                       </option>
                   </select>
-                  {errors.type_document && <p className={style.palabraError}>El tipo de documento es requerido</p>}
+                  {errors.type && <p className={style.palabraError}>El tipo de documento es requerido</p>}
               </div>
 
               <div className={style.infolabel}>
                   <label htmlFor="documento">* Número de documento:</label>
-                  <input type="text" placeholder="91287459" id='documento' disabled={user.document} {...register('document', {
+                  <input type="text" placeholder="91287459" id='documento' disabled={user.number_document} {...register('number_document', {
                     required: true,
                     pattern: /^[0-9]{7,11}$/,
                     minLength: 7,
                     maxLength: 11
                   })} />
-                  {errors.document?.type === 'required' && <p className={style.palabraError}>El numero de documento es requerido</p>}
-                  {errors.document?.type === 'pattern' && <p className={style.palabraError}>Solo puede ingresar numeros</p>}
-                  {errors.document?.type === 'minLength' && <p className={style.palabraError}>El numero de documento debe tener al menos 7 numeros</p>}
-                  {errors.document?.type === 'maxLength' && <p className={style.palabraError}>El numero de documento no puede tener mas de 11 numeros</p>}
+                  {errors.number_document?.type === 'required' && <p className={style.palabraError}>El numero de documento es requerido</p>}
+                  {errors.number_document?.type === 'pattern' && <p className={style.palabraError}>Solo puede ingresar numeros</p>}
+                  {errors.number_document?.type === 'minLength' && <p className={style.palabraError}>El numero de documento debe tener al menos 7 numeros</p>}
+                  {errors.number_document?.type === 'maxLength' && <p className={style.palabraError}>El numero de documento no puede tener mas de 11 numeros</p>}
               </div>
-              {!user.document
+              {!user.number_document
               && <div className={style.infolabel}>
                     <label htmlFor="cofirmacionDocumento">
                         * Confirmación de documento:
@@ -88,7 +140,7 @@ export default function FormularioPeticion ({user}) {
                     <input type="text" placeholder="91287459" id='cofirmacionDocumento' {...register('retry_document', {
                       required: true,
                       validate: (value) => {
-                        if (watch('document') !== value) return 'El documento no esta correcto'
+                        if (watch('number_document') !== value) return 'El documento no esta correcto'
                       }
                     })} />
                     {errors.retry_document?.type === 'required' && <p className={style.palabraError}>El numero de confirmacion del documento es requerido</p>}
@@ -100,13 +152,13 @@ export default function FormularioPeticion ({user}) {
                   <label htmlFor="expedicion">
                     * Lugar de expedición:
                   </label>
-                  <input type="text" placeholder="Bucaramanga"  id='expedicion' disabled={user.place_get_document} {...register('place_get_document', {
+                  <input type="text" placeholder="Bucaramanga"  id='expedicion' disabled={user.place_dispatch} {...register('place_dispatch', {
                     required: true,
                     pattern: /^[a-zA-Z]*$/,
                   })}
                   />
-                  {errors.place_get_document?.type === 'required' && <p className={style.palabraError}>El lugar de expedición es requerido</p>}
-                  {errors.place_get_document?.type === 'pattern' && <p className={style.palabraError}>Solo puede ingresar letras</p>}
+                  {errors.place_dispatch?.type === 'required' && <p className={style.palabraError}>El lugar de expedición es requerido</p>}
+                  {errors.place_dispatch?.type === 'pattern' && <p className={style.palabraError}>Solo puede ingresar letras</p>}
               </div>
 
               <div className={style.infolabel}>
@@ -176,33 +228,33 @@ export default function FormularioPeticion ({user}) {
                 * Asunto del problema:
               </label>
               <input type="text" placeholder="Daño en el alcantarillado" id='asunto' 
-              {...register('case', {
+              {...register('subject', {
                 required: true
               })}
               />
-              {errors.case?.type === 'required' && <p className={style.palabraError}>El asunto del problema es requerido</p>}	
+              {errors.subject?.type === 'required' && <p className={style.palabraError}>El asunto del problema es requerido</p>}	
           </div>
           <div className={style.complinf}>
               <label htmlFor="descripcion">
               * Descripción del problema:
               </label>
               <input type="text" placeholder="Debido a esto se han ocacionado muchos accidentes en la via, por el robo de una tapa de la alcantandarilla" id='descripcion' 
-              {...register('description', {
+              {...register('problem', {
                 required: true
               })}
               />
-              {errors.description?.type === 'required' && <p className={style.palabraError}>La descripción del problema es requerida</p>}
+              {errors.problem?.type === 'required' && <p className={style.palabraError}>La descripción del problema es requerida</p>}
           </div>
           <div className={style.textdes}>
               <label htmlFor="desSolicitud">
                 * Descripción de la solicitud:
               </label>
               <textarea type="text" rows={15} placeholder="Quisiera reportar este  incidente ante las entidades gubernamentales para que hagan acción..." id='desSolicitud'
-              {...register('request_description', {
+              {...register('solution', {
                 required: true
               })}
               />
-              {errors.request_description?.type === 'required' && <p className={style.palabraError}>La descripción de la solicitud es requerida</p>}
+              {errors.solution?.type === 'required' && <p className={style.palabraError}>La descripción de la solicitud es requerida</p>}
           </div>
       </div>
       {/* datos de localizacion sobre el problema */}
@@ -223,10 +275,10 @@ export default function FormularioPeticion ({user}) {
           </div>
           <div className={style.infodesp}>
               <label htmlFor="descripcion">* Descripción de la localización:</label>
-              <textarea  id="descripcion" cols="45" rows="8" placeholder="Este incidente se encuentra en la carrera 13 #31-34..." {...register('description_place_request', {
+              <textarea  id="descripcion" cols="45" rows="8" placeholder="Este incidente se encuentra en la carrera 13 #31-34..." {...register('location', {
                 required: true
               })}></textarea>
-              {errors.description_place_request?.type === 'required' && <p className={style.palabraError}>La descripción de la localización es requerida</p>}
+              {errors.location?.type === 'required' && <p className={style.palabraError}>La descripción de la localización es requerida</p>}
           </div>
       </div>
       {/* adjuntar la imagen de la petición */}
@@ -234,15 +286,15 @@ export default function FormularioPeticion ({user}) {
           <h3>Archivos adjuntos:</h3>
           <p>Señor/a usuario debe adjuntar solo fotos con un peso máximo de 5mb</p>
           <input type="file"  id="file" accept='image/*' className={style.inputfile}
-          {...register('image', {
+          {...register('url', {
             required: true
           })}	
           />
           <label htmlFor='file'>
           <CiInboxOut size={25}/>
-          <span className={style.iborrainputfile}>{watch("image")? watch("image")[0].name:"Seleccionar archivo"}</span>
+          <span className={style.iborrainputfile}>{watch("url")? watch("url")[0].name:"Seleccionar archivo"}</span>
           </label>
-          {errors.image?.type === 'required' && <p className={style.palabraError}>La imagen es requerido</p>}
+          {errors.url?.type === 'required' && <p className={style.palabraError}>La imagen es requerido</p>}
       </div>
       {/* texto importante para erl usuario */}
       <div className={style.textusu}>

@@ -2,22 +2,17 @@ import style from './peticionesUsuarios.module.css'
 import { IoPersonCircleOutline } from 'react-icons/io5'
 import { useEffect, useState } from 'react'
 import Loading from '../loading/Loading'
-import { traerUsuario } from '../baseDeDatos'
 import FormularioPeticion from './FormularioPeticion'
-
 
 function PeticionesUsuarios () {
 	const [loading, setLoading] = useState(true) // eso es un hook
 	const [user, setUser] = useState(null) // eso un hook
-	console.log(user)
+
 	useEffect(() => {
 		const data = localStorage.getItem('usuarioLogeado')
-		const userId = JSON.parse(data).data.user.id
-		traerUsuario(userId)
-			.then((response) => {
-				setUser(response.data.data.user)
-				setLoading(false)
-			})
+		const userLocal = JSON.parse(data).data.user
+        setUser(userLocal)
+        setLoading(false)
 	}, [])
 	
     if (loading) return <Loading />

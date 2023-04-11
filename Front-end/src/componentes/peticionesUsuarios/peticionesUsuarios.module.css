@@ -265,6 +265,7 @@
     grid-template-columns: repeat(2,1fr);
     color: #fff;
     padding-top: 30px;
+    gap: 20px;
 }
 
 .textlocal{
