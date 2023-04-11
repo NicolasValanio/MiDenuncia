@@ -1,4 +1,5 @@
 import style from './peticionesUsuarios.module.css'
+import { Link } from 'react-router-dom';
 import { IoPersonCircleOutline, IoDocumentTextOutline, IoCloseSharp } from 'react-icons/io5'
 import { IoIosPaperPlane } from 'react-icons/io'
 
@@ -177,7 +178,7 @@ function PeticionesUsuarios () {
                 {/* botenes */}
                 <div className={style.botones}>
                      <button className={style.boton1}>Enviar<IoIosPaperPlane/></button>
-                     <button className={style.boton2}>Cancelar<IoCloseSharp/></button>
+                     <button className={style.boton2}> <Link to="/UsuarioLog" className={style.salir}> Cancelar<IoCloseSharp/> </Link> </button>
 
                 </div>
             </form>
