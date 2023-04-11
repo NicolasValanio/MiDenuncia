@@ -14,8 +14,13 @@ import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
+<<<<<<< HEAD
 import RecuperarContrasena from './recuperarContrasena/recuperarContrasena'
 import ContrasenaNueva from './recuperarContrasena/contrasenaNueva'
+=======
+import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
+import Mapa from './mapa/mapa'
+>>>>>>> desarrollo
 
 
 
@@ -39,7 +44,8 @@ function Rutas() {
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
-                    <Route path="/VistaUsuario" element={<VistaUsuario />} />
+                    <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
+                    <Route path="/Mapa" element={<Mapa />} />
                 </Route>
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 

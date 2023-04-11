@@ -12,8 +12,16 @@
                         'imagen imagen'
                         'fecha fecha'
                         'ubicacion ubicacion'
+<<<<<<< HEAD
                         'apoyo apoyo';
     margin: 20px;
+=======
+                        'apoyo comentario';
+    margin: 8rem;
+    margin-left: 5%;
+    margin-right: 20%;
+    display: grid;
+>>>>>>> desarrollo
     height: 40rem;
     width: 50rem;
     -webkit-border-radius: 10px;
@@ -40,7 +48,6 @@
 }
 
 .imagenContenedor{
-    background-image: url(./pared-cemento-agrietada.jpg);
     grid-area: imagen;
     margin: auto;
     height: 15rem;
@@ -83,6 +90,13 @@
     height: 100%;
     grid-area: descripcion;
 }
+.apoyoPublicacion{
+    height: 30%;
+    grid-area: apoyo;
+    padding-left: 2%;
+    color: white;
+}
+
 
 /*.contenedor{
     grid-template-areas: 'foto nombre'

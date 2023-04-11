@@ -3,6 +3,7 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 
+
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
@@ -12,7 +13,8 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
-import { BiLogOut } from "react-icons/bi";
+import {GoMegaphone} from "react-icons/go";
+import { BiLogOut,BiLogOut } from "react-icons/bi";
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 
@@ -20,6 +22,8 @@ function UsuarioLog(params) {
 
     const [pokemon, setPokemon] = useState()
     const [pagePokemon , setPagePokemon] = useState(0)
+    const [showNotifications, setShowNotifications] = useState(false);
+    const notificationRef = useRef(null);
 
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
@@ -51,6 +55,30 @@ function UsuarioLog(params) {
         return retornar
     }
 
+  
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (
+          notificationRef.current &&
+          !notificationRef.current.contains(event.target)
+        ) {
+          setShowNotifications(false);
+        }
+      }
+  
+      // Agregar un manejador de eventos al documento para cerrar las notificaciones al hacer clic fuera del botón
+      document.addEventListener("mousedown", handleClickOutside);
+  
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [notificationRef]);
+  
+    function toggleNotifications() {
+      setShowNotifications(!showNotifications);
+    }
+  
+
 
     return (
         <div className={`contenedor ${style.usuario_log}`}>
@@ -60,18 +88,19 @@ function UsuarioLog(params) {
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
-
-                        <li className={style.li} >
-                            <div className={style.a} to="/"> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
-                            <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`}>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li>
-                               <li>hola1</li> 
+                    
+                    <li className={style.li} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.iconsLog}`}/></Link></li>
+                    <li className={style.li} >
+                        <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
+                        {showNotifications && (
+                            <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`} ref={notificationRef}>
+                                <li>Se ha publicado su petición con éxito</li>
+                                <li>@Luis16 ha apoyado tu petición</li>
+                                <li>@Luis16 ha comentado tu petición</li>
                             </ul>
-                        </li>
+                        )}
+                    </li>
+
                         <li className={`${style.li} ${style.notificaciones}`}>
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
                             <ul className={`contenedor ${style.despegableFiltro} ${style.li}`}>
@@ -85,8 +114,8 @@ function UsuarioLog(params) {
                             </ul>
                         </li>
                         
-                        <li className={style.li}><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
-                        <li className={style.li}> <link rel="stylesheet" href="" /> <BiLogOut className={`icon ${style.iconsLog}`}/> </li>
+                        <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
+                        <li className={style.li} title="Salir"> <Link rel="stylesheet" href=""> <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>
             </div>

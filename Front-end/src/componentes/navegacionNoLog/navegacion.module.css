@@ -6,15 +6,14 @@ body{
 
 .contenedor{
     width: 100%;
-    height: 9vh;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
 }
 .imagen{
-    width: 15%;
+    width: 25%;
     height: 10vh;
-    margin-left: 2rem;
-    background-image: url(../../../public/logo.png);
+    background-image: url(../public/logo.png);
     background-position: center;
     background-size: cover;
     margin-top: .5rem;
@@ -60,7 +59,10 @@ body{
     transform: rotate(320deg);
     
 }
-
+.registro,
+.log{
+    display: none;
+}
 .btns:hover{
     background-color: var(--segundo-color); 
     border: solid 1px var(--primer-color);
@@ -72,15 +74,27 @@ body{
     transition: .4s;    
 }
 
-@media (max-width: 768px) {
+
+/* Mq tvs */
+@media (min-width: 1281px) {
     .imagen{
-        width: 35%;
-        height: 8vh;
+        width: 20%;
+        height: 15vh;
     }
 }
-@media (max-width: 635px) {
+/* Mq laptop */
+@media(min-width:1025px)and (max-width:1280px) {
     .imagen{
-        width: 35%;
+        width: 20%;
+        height: 10vh;
+    }
+    
+}
+
+/* Mq tablet grande */
+@media(min-width:800px)and (max-width:1024px) {
+    .imagen{
+        width: 20%;
         height: 5vh;
     }
     .contenedorBtns{
@@ -96,17 +110,23 @@ body{
         width: 2rem;
         height: 2rem;
     }
+    
 }
-        
+/* responsive-celular */     
 @media (max-width: 480px) {
     .imagen{
-        width: 30%;
-        height: 6vh;
+        margin-left: .5rem;
+        margin-top: 1rem;
+        width: 35%;
+        height: 8vh;
         background-size: cover;
     }
     .btns{
         text-align: center;
-        padding: .4rem;
         font-weight: 400;
+        width: 2rem;
+        height: 2rem;
+        padding: 5px;
     }
 }
+
