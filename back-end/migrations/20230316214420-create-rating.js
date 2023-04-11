@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER(1)
       },
       suggestion: {
-        type: Sequelize.STRING(200)
+        type: Sequelize.STRING(280)
       },
       user_id: {
         type: Sequelize.INTEGER(5),

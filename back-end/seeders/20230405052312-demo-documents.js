@@ -6,27 +6,27 @@ module.exports = {
    
     await queryInterface.bulkInsert('documents', [
           {
-          type:'cc',
+          type:'CC',
           number_document:'1097781555',
-          place_dispatch:'elkennedy',
+          place_dispatch:'Bucaramanga',
           createdAt:new Date() ,
           updatedAt:new Date()
             
 
           },
           {
-            type:'ti',
+            type:'TI',
             number_document:'1525963254',
-            place_dispatch:'lacumbre',
+            place_dispatch:'Floridablanca',
             createdAt:new Date() ,
             updatedAt:new Date()
               
       
             },
          {
-          type:'cc',
+          type:'CC',
           number_document:'1602336666',
-          place_dispatch:'elnorte',
+          place_dispatch:'Giron',
           createdAt:new Date() ,
           updatedAt:new Date()
             

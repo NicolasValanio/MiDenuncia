@@ -35,6 +35,7 @@ const routesComment = require('./routes/routeComments/route')
 const routeRequest = require('./routes/routeRequest/route')
 const routeEmail = require('./routes/routeEmail/nodemail')
 const routeAuthGoogle = require('./routes/routeGoogle/route')
+const routeTypeRequest = require('./routes/routeTypeRequest/route')
 const handleError = require('./handlers/handlerError')
 
 
@@ -106,6 +107,7 @@ app.use('/', routeRequest)
 app.use('/', routesComment)
 app.use('/', routeEmail)
 app.use('/', routeAuthGoogle)
+app.use('/',routeTypeRequest)
 
 
 

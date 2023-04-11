@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       photo: {
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(300)
       },
       status: {
         type: Sequelize.TINYINT(1)
