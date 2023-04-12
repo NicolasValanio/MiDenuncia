@@ -15,7 +15,7 @@ import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
-
+import { Logout } from "../ProtegerRutas";
 
 
 function UsuarioLog(params) {
@@ -44,13 +44,6 @@ function UsuarioLog(params) {
       setShowNotifications(!showNotifications);
     }
 
-    function Logout(){
-        //Borra el localStorage
-        
-        localStorage.clear();
-        console.log("Saliendo...");
-        window.location.href="/"
-    }
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
