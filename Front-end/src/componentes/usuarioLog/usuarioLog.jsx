@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
@@ -11,10 +11,10 @@ import { IoMdNotifications } from "react-icons/io";
 import { AiFillAlert } from "react-icons/ai";
 import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
-import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { BiLogOut,BiLogOut } from "react-icons/bi";
+import { GiStreetLight } from "react-icons/gi";
+import { BiLogOut } from "react-icons/bi";
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 

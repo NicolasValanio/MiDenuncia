@@ -12,16 +12,11 @@
                         'imagen imagen'
                         'fecha fecha'
                         'ubicacion ubicacion'
-<<<<<<< HEAD
-                        'apoyo apoyo';
-    margin: 20px;
-=======
                         'apoyo comentario';
     margin: 8rem;
     margin-left: 5%;
     margin-right: 20%;
     display: grid;
->>>>>>> desarrollo
     height: 40rem;
     width: 50rem;
     -webkit-border-radius: 10px;
