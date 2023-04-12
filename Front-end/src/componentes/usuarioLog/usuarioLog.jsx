@@ -3,7 +3,7 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import Footer from "../footer/footer.jsx"
 
-import { Link} from 'react-router-dom'
+import { Link, redirect} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { IoMdNotifications } from "react-icons/io";
@@ -43,6 +43,14 @@ function UsuarioLog(params) {
     function toggleNotifications() {
       setShowNotifications(!showNotifications);
     }
+
+    function Logout(){
+        //Borra el localStorage
+        
+        localStorage.clear();
+        console.log("Saliendo...");
+        window.location.href="/"
+    }
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
@@ -79,7 +87,7 @@ function UsuarioLog(params) {
                         </li>
                         
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
-                        <li className={style.li} title="Salir"> <Link rel="stylesheet" href=""> <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
+                        <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>
             </div>
