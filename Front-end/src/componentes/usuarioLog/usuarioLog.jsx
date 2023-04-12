@@ -1,7 +1,8 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
-import Footer from "../footer/footer.jsx"
+import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+
 
 import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
@@ -10,17 +11,50 @@ import { IoMdNotifications } from "react-icons/io";
 import { AiFillAlert } from "react-icons/ai";
 import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
-import { GiStreetLight } from "react-icons/gi";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { BiLogIn, BiLogOut } from "react-icons/bi";
-import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
-
+import { GiStreetLight } from "react-icons/gi";
+import { BiLogOut } from "react-icons/bi";
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 
 function UsuarioLog(params) {
+
+    const [pokemon, setPokemon] = useState()
+    const [pagePokemon , setPagePokemon] = useState(0)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
+
+    useEffect(()=>{
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
+        .then(res => res.json())
+        .then(res => {
+            setPokemon(res.results)
+            console.log(res);
+    })
+    },[])
+
+    function nuevoLlamado(page) {
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}`)
+        .then(res => res.json())
+        .then(res => {
+            let nuevoPokemon = pokemon.concat(res.results)
+            setPokemon(nuevoPokemon)
+            setPagePokemon( pagePokemon + 1)
+        })
+    }
+
+    function llamarPokemon() {
+       let retornar = pokemon.map(pokemon => {
+            return(
+                <div className={style.pokemon}>
+                    <h1> {pokemon.name} </h1>
+                </div>
+            )
+        })
+        return retornar
+    }
+
   
     useEffect(() => {
       function handleClickOutside(event) {
@@ -44,6 +78,8 @@ function UsuarioLog(params) {
       setShowNotifications(!showNotifications);
     }
   
+
+
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -87,11 +123,21 @@ function UsuarioLog(params) {
                 <FiltrarPor/>
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
-                <TarjetasPublicacion/>
-                
 
+                <TarjetasPublicacion key='2' />
+
+
+                <InfiniteScroll dataLength={pokemon === undefined ? 5 : pokemon.length} 
+                next={()=> {nuevoLlamado(pagePokemon)}} hasMore={true} >
+
+                {
+
+                    pokemon === undefined ?  null : llamarPokemon()
+
+                }
+
+                </InfiniteScroll>            
             </div>
-            <Footer />
         </div>
 
     )
