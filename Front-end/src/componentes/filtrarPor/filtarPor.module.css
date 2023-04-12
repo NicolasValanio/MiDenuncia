@@ -1,10 +1,10 @@
 .filtrar{
     color: white;
+    width: fit-content;
+    /* float: left; */
+    margin-left: 1rem;
+    margin-top: 3rem;
     position: relative;
-    top: 60px; 
-    left: 40px;
-    height: 100px;
-    width: 270px;
 }
 
 .filtrar li{
@@ -13,9 +13,8 @@
     border-bottom: 1px solid;
     text-align: justify;
     list-style: none;
-    /* margin-bottom: 10px; */
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 14px;
+    padding: 5px;
 
 }
 
@@ -28,7 +27,6 @@
     background-color: var(--primer-color);
     border-top-right-radius:10px ;
     border-bottom-right-radius: 10px;
-    font-size: 1.1rem;
     transition: .5s;
     cursor: pointer;
 
@@ -50,4 +48,10 @@
 .Apublicos:hover .Alumbrado,
 .Cambiental:hover .Ambiental {
     color: #FFFFFF;
+}
+
+@media(min-width:200px)and (max-width:850px) {
+    .filtrar{
+        display: none;
+    }
 }

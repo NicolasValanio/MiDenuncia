@@ -1,0 +1,165 @@
+body{
+    background-color: var(--segundo-color);
+}
+
+
+.contenedorPrincipal{
+    width: 90%;
+    height: fit-content;
+    margin: auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    justify-content: space-around;
+    border-top: solid 1px #ffffff;
+    border-bottom: solid 1px #ffffff;
+}
+
+.logo{
+    width: 50%;
+    height: fit-content;
+}
+.redessociales{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+.redessociales p{
+    color: var(--primer-color);
+    font-weight: 700;
+}
+.icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.segundoContenedor p{
+    color: var(--primer-color);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.mails{
+display: flex;
+}
+.mails a{
+    color: #ffffff;
+    margin-left: 5px;
+    padding-bottom: 5px;
+}
+.tels{
+    display: flex;;
+
+}
+.tels p{
+    text-align:justify;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 14px;
+}
+.Sicon{
+    color: var(--primer-color);
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.tercercontenedor a{
+color: #ffffff;
+}
+.coex {
+    font-weight: 700;
+    color: var(--primer-color);
+    font-size: 18px;
+}
+.end{
+    color: #ffffff;
+
+}
+
+@media(min-width:768px)and (max-width:1024px) {
+    .contenedorPrincipal{
+        height: fit-content;
+        padding: 10px;
+    }
+    .logo{
+        width: 70%;
+        height: 3.5rem;
+        margin-bottom: .5rem;
+    }
+
+    p,a{
+        font-size: 14px;
+    }
+}
+
+@media(min-width:481px)and (max-width:767px) {
+    .contenedorPrincipal{
+        height: fit-content;
+        padding: 10px;
+    }
+    .logo{
+        width: 50%;
+        height: 3rem;
+    }
+    .contenedorPrincipal p{
+        font-size: 14px;
+    }
+    .icon,.Sicon{
+        width: 1rem;
+        height: 1rem;
+    }
+    p,a{
+        font-size: 14px;
+    }
+
+}
+
+@media(min-width:320px)and (max-width:480px) {
+    .contenedorPrincipal{
+        height: fit-content;
+        display: block;
+        padding: 10px;
+    }
+    .logo{
+        width: 60%;
+        height: 4rem;
+    }
+    .primerContenedor,
+    .segundoContenedor,
+    .tercercontenedors{
+        margin-bottom: 1rem;
+    }
+    .redessociales{
+        display: block;
+    }
+    .redessociales p{
+        margin-bottom: 10px;
+    }
+    .icon{
+        margin: .5rem;
+    }
+    p,a{
+        font-size: 14px;
+    }
+}
+
+@media(min-width:280px)and (max-width:480px) {
+    .contenedorPrincipal{
+        display: block;
+        padding-bottom: 10px;
+        height: fit-content;
+    }
+    .logo{
+        width: 60%;
+        height: 4rem;
+        margin-bottom: 1rem;
+    }
+    .redessociales p{
+        margin-bottom: 10px;
+    }
+    p,a{
+        font-size: 14px;
+    }
+}
