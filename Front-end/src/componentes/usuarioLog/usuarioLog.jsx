@@ -14,9 +14,8 @@ import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
-import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import { Logout } from "../ProtegerRutas";
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 function UsuarioLog(params) {
