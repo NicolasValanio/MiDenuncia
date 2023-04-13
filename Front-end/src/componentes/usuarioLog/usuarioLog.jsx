@@ -4,7 +4,7 @@ import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 
 
-import { Link} from 'react-router-dom'
+import { Link, redirect} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { IoMdNotifications } from "react-icons/io";
@@ -13,8 +13,9 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { GiStreetLight } from "react-icons/gi";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
+import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+import { Logout } from "../ProtegerRutas";
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 
@@ -77,6 +78,7 @@ function UsuarioLog(params) {
     function toggleNotifications() {
       setShowNotifications(!showNotifications);
     }
+
   
 
 
@@ -115,7 +117,7 @@ function UsuarioLog(params) {
                         </li>
                         
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
-                        <li className={style.li} title="Salir"> <Link rel="stylesheet" href=""> <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
+                        <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>
             </div>
