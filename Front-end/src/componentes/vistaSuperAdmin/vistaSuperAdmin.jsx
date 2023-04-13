@@ -22,7 +22,7 @@ function VistaSuperAdmin() {
                 <ul className={style.opciones}>
                     <li>Nombre</li>
                     <li>Usuario</li>
-                    <li>Barrio</li>
+                    <li>DIreccion</li>
                     <li>Correo</li>
                     <li>Rol</li>
                     <li>Estado</li>
@@ -30,9 +30,9 @@ function VistaSuperAdmin() {
             </div>
             <div className={style.barra}>
             <ul className={style.opciones}>
-                    <li>Nombre</li>
-                    <li>Usuario</li>
-                    <li>Barrio</li>
+                    <li>johan</li>
+                    <li>nea</li>
+                    <li>cumbre</li>
                     <li>Correo</li>
                     <select name="" id="" className={style.rol}>
                         <option value="">Visitante</option>

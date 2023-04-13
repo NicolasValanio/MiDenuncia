@@ -30,8 +30,8 @@
     height: 50px;
     text-align: center;
     position: relative;
-    top: 160px;
-    left: 430px;
+    top: 110px;
+    left: 660px;
     border-radius: 10px;
     font-size: 20px;
     font-weight:bolder;
@@ -75,4 +75,9 @@ select{
 
 .rol option{
     border-radius: 20px;
+}
+
+
+@media {
+
 }
