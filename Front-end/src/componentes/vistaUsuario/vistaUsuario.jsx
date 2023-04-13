@@ -56,9 +56,16 @@ function VistaUsuario(params) {
 
             </div>
                 <div className={style.containerEdiPrinipal}>
-                    <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
-                    <BsFillCameraFill className={style.BsFillCameraFill}/>   
-                
+                    {/* <div className={style.imagenDeUsuario}>
+                        <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
+                        <BsFillCameraFill className={style.BsFillCameraFill}/>    */}
+                        <div className={style.infoUsuario}>
+                            <h3>t</h3>
+                            <h3>t</h3>
+                            <h3>t</h3>
+                            <h3>t</h3>
+                        </div>
+                    {/* </div> */}
                     <div className={style.containerEditarPerfil}>
                         <h1>Editar perfil</h1>
                         <form  className={style.formulario}>

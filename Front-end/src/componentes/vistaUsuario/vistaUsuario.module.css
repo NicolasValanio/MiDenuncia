@@ -12,7 +12,7 @@
     margin-left: 2%;
     box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    justify-content: center
+    justify-content: center;
 }
 .contaImage{
     width: 100%;
@@ -21,6 +21,16 @@
     padding: 1rem;
     
 }
+.imagenDeUsuario{
+    display: flex;
+
+}
+.infoUsuario{
+    border: solid;
+    display: grid;
+    grid-template-columns: 10% 10% ;
+    grid-gap: 4rem;
+}
 .imagen{
     /* position: relative; */
 
@@ -28,10 +38,12 @@
     height: 3rem;
 }
 .containerIconos{
-    height: 100%;
+    height: 92%;
+    background-color: #b86efd41;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .Iconos1{
@@ -101,9 +113,8 @@
     color:#FFFFFF
 }
 .elimCuenta{
-    /* position: absolute; */
-    width: 111px;
     height: 31px;
+    width: 40%;
     border-radius: 1rem;
     background: #9915EA;
     font-style:normal; 
@@ -129,9 +140,9 @@
 .containerEditarPerfil{
 
     width: 95%;
-    height: 50%;
+    height: 70%;
     margin-left: 2.5%;
-    margin-top: 5%;
+    margin-top: 10%;
     box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     text-align: center;
@@ -150,7 +161,7 @@
 .datosFila1{
     width: 40%;
     display: grid;
-    gap: 10%;
+    gap: 20%;
     color: white;
     text-align: left;
 
@@ -185,9 +196,34 @@
         
     }
 }
-@media (min-width:481px)and(max-width:767px){
-    
+@media ((min-width:481px)and(max-width:767px)){
+    .datosFila1{
+        font-size:1px ;
+    }
 }
 @media (min-width:320px)and(max-width:480px){
-    
+
 }
+
+
+/* @media (min-width:1025px)and(max-width:1280px){
+    
+    .container{
+        background-color: transparent;
+    }
+
+}
+@media (min-width:768px)and(max-width:1024px){
+    .containerEditarPerfil{
+        
+    }
+}
+@media (min-width:481px)and(max-width:767px){
+    /* .datosFila1{
+        font-size:1px ;
+    } */
+/* } */
+/* @media (min-width:320px)and(max-width:480px){
+
+} */ 
+
