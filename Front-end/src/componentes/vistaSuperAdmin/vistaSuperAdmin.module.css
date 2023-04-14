@@ -1,28 +1,44 @@
-.name{
-    color: blueviolet;
-    position: relative;
-    top: 150px;
-    left: 400px;
-    font-size: 30px;
+.contenedor1{
+    display: grid;
+    grid-template-areas: 
+    'admin'
+    'filtrar'
+    'barras'
+    ;
+    
 }
 
+.superAdmin{
+    color: blueviolet;
+    position: relative;
+
+    font-size: 30px;
+    grid-area: admin;
+}
+.contenedorFiltrar{
+    grid-area: filtrar;
+    display: grid;
+    grid-template-areas: 
+    'buscar filtro';
+}
+
+.barras{
+    grid: barras;
+}
 .input{
     height: 50px;
     width: 250px;
     border-radius: 80px;
     position: relative;
-    top: 155px;
-    left: 370px;
     font-size: 20px;
     text-align: center;
+    grid-area: buscar;
 }
 
 .iconBuscar{
     width: 20px;
     height: 20px;
     position: relative;
-    top: 160px;
-    left: 400px;
     z-index: 2;
 }
 
@@ -31,11 +47,10 @@
     height: 50px;
     text-align: center;
     position: relative;
-    top: 110px;
-    left: 660px;
     border-radius: 10px;
     font-size: 20px;
     font-weight:bolder;
+    grid-area: filtro;
 }
 select{
     background: #B86EFD;
@@ -47,8 +62,6 @@ select{
     margin: 10px;
     height: 50px;
     position: relative;
-    top: 160px;
-    left: 5%;
     border-radius: 50px
 }
 
