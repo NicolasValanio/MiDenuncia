@@ -33,6 +33,15 @@ function UsuarioLog(params) {
             console.log(res);
     })
     },[])
+    
+    function Logout(){
+        //Borra el localStorage
+        
+        localStorage.clear();
+        console.log("Saliendo...");
+        window.location.href="/"
+    }
+    
 
     function nuevoLlamado(page) {
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}`)
