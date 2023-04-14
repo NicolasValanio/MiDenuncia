@@ -14,7 +14,7 @@ import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
-import { Logout } from "../ProtegerRutas";
+import {GiStreetLight} from "react-icons/gi";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
@@ -146,7 +146,7 @@ function UsuarioLog(params) {
 
                 }
 
-                </InfiniteScroll>            
+                </ InfiniteScroll>            
             </div>
         </div>
 
