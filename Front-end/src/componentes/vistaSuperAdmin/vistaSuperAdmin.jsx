@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 
 function VistaSuperAdmin() {
     return(
-        <div>
+        <div className={style.contenedor1}>
             <h1 className={style.h1}>@SuperAdmin</h1>
             
            <BiSearchAlt className={style.iconBuscar}/><input className={style.input} type="text" placeholder="      Filtrar" />

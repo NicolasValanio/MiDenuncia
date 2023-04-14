@@ -78,6 +78,112 @@ select{
 }
 
 
-@media {
+@media (max-width :768px) {
+
+    .contenedor1{
+        display: flex;
+       
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+
+    }
+
+
+    .h1{
+        color: blueviolet;
+       
+        position: relative;
+        top: 150px;
+        left: -50px;
+    
+    }
+
+    .input{
+        height: 50px;
+        width: 265px;
+        border-radius: 80px;
+        position: relative;
+        top: 155px;
+        left: -45px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .iconBuscar{
+        width: 20px;
+        height: 20px;
+        
+        top: 190px;
+        left: -150px;
+      
+    }
+
+    
+
+    .filtrar select{
+        width: 79px;
+        height: 33px;
+        text-align: center;
+        position: relative;
+        top: 114px;
+        left: 137px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+
+
+    .barra{
+        background: #b86efd79;
+        width: 94%;
+        margin: 14px;
+        height: 35px;
+        position: relative;
+        top: 160px;
+        left: 0%;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .opciones{
+        display: flex;
+    /* justify-content: space-between; */
+    /* list-style: none; */
+    /* text-align: center; */
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    align-items: center;
+  width: 100%;
+    padding: 10px;
+    }
+
+    .opciones li{
+        margin: 0px;
+        width: 40px;
+        display: flex;
+        flex-direction: column;
+    
+    }
+
+    
+.rol{
+    text-align: center;
+    margin: -7px;
+    border-radius: 50px;
+    width: 55px;
+    height: 27px;
+    font-size: 7px;
+}
+
+.rol option{
+    border-radius: 20px;
+}
+
+
+
 
 }
