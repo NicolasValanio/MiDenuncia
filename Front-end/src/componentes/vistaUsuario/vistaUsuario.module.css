@@ -2,66 +2,37 @@
     /* position: relative; */
     width: 100%;
     height: 100vh;  
-    display: flex;
     background-color:#1E2326;
 }
-.container{
-    /* position: absolute; */
-    width: 20%;
-    /* height: 90%; */
-    margin-left: 2%;
-    box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    justify-content: center;
+.nabvarview{
+    border: solid;
+    display: flex;
+    justify-content: space-between;
+
 }
+.nabiconos{
+    display: flex;
+    padding: 2.8dssrem;
+
+}
+
 .contaImage{
     width: 100%;
     display: flex;
-    justify-content: center;
     padding: 1rem;
     
 }
-.imagenDeUsuario{
-    display: flex;
 
-}
 .infoUsuario{
-    border: solid;
     display: grid;
     grid-template-columns: 10% 10% ;
     grid-gap: 4rem;
+    font-size: 40px;
+    padding: 3rem;
 }
 .imagen{
-    /* position: relative; */
 
-    width: 70%;
-    height: 3rem;
 }
-.containerIconos{
-    height: 92%;
-    background-color: #b86efd41;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.Iconos1{
-    display: flex;
-    background-color: transparent;
-    border: none;
-}
-.Iconos2{
-    display: flex;
-    background-color: transparent;
-    border: none;
-}
-.Iconos3{
-    display: flex ;
-    background-color: transparent;
-    border: none;
-}
-
 
 
 .Fihome{
@@ -69,7 +40,7 @@
     width: 36px;
     height: 33px;
     top: 15%;
-    color: white;
+    color: #9915EA;
 }
 
 .homeIcono{
@@ -80,37 +51,9 @@
     color: #FFFFFF;
 
 }
-.AiFillSetting{
-    /* position: absolute; */
-    width: 33px;
-    height: 34px;
-    color: white;
-}
-.confiIcono{
-    /* position: absolute; */
-    width: 80px;
-    height: 15px;
-    font-style: normal;
-    font-size: 12px;
-    line-height: 15px;
-    color: #FFFFFF;
-
-}
-.BsQuestionCircle{
-
-    /* position: absolute; */
-    width: 33px;
-    height: 34px;    
-    color: white;
-}
-.ayudaIcono{
-    /* position: absolute; */
-    width: 97px;
-    height: 30px;
-    font-style: normal;
-    font-size: 10px;
-    line-height: 15px;
-    color:#FFFFFF
+.Iconos1{
+    background: transparent;
+    border: none;
 }
 .elimCuenta{
     height: 31px;
@@ -127,20 +70,16 @@
     fill: white !important;
 
 }
-.BsFillCameraFill{
-    /* position: relative; */
-    left: 360px;
-    top: 210px;
-    color: white;
-}
+
 .containerEdiPrinipal{
     width: 100%;
+    height: 30rem;
 }
 
 .containerEditarPerfil{
 
     width: 95%;
-    height: 70%;
+    height: 100%;
     margin-left: 2.5%;
     margin-top: 10%;
     box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -155,7 +94,7 @@
     display: flex;
     justify-content:space-around;
     text-align: center;
-    padding: 5rem;
+    padding: 4rem;
     
 }
 .datosFila1{

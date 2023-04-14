@@ -1,7 +1,6 @@
 import React from "react";
 import {FiHome } from "react-icons/fi";
-import {AiFillSetting} from "react-icons/ai";
-import {BsQuestionCircle,BsFillCameraFill} from "react-icons/bs"
+import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
 // import { useForm} from 'react-hook-form';
 function VistaUsuario(params) {
@@ -11,59 +10,52 @@ function VistaUsuario(params) {
 
 
 
-           <div className={style.container}> 
-                <div className={style.contaImage}> 
+        
+            
+            
 
-                    <img className={style.imagen} src="./src/componentes/vistaUsuario/images/logo.png" alt=""/>
+                    {/* <div> */}
 
-                </div>
-                <div className={style.containerIconos}>
-
-                    <div>
-                        <button href="" className={style.Iconos1}>
-                            
-                            <FiHome className={style.Fihome}/>
-                        
-                            
-                            <h4 className={style.homeIcono}>Home</h4>
-                            
-                        </button>
-
-                    
-
-                        <button className={style.Iconos2}>
-                            
-                            <AiFillSetting className={style.AiFillSetting}/>
-                            <h4 className={style.confiIcono}>Configuración</h4>
-
-                        </button>
-
-                        <button className={style.Iconos3}>
-
-                            <BsQuestionCircle className={style.BsQuestionCircle}/>
-                            <h4 className={style.ayudaIcono}>Ayuda y soporte técnico</h4>
-
-                        </button>
-                    </div>
+                    {/* </div> */}
 
                    
-
+                {/*     
                     <button className={style.elimCuenta}>
                         Elininar cuenta
-                    </button>
+                    </button> */}
                     
-                </div>
+                
+                <nav className={style.nabvarview}>
+                    <div className={style.contaImage}> 
 
-            </div>
+                        <img className={style.imagen} src="./src/componentes/vistaUsuario/images/logo.png" alt=""/>
+
+                    </div>  
+                    <div className={style.nabiconos}>
+                        <div>
+                            <button href="" className={style.Iconos1}>
+                                <FaUserCircle className={style.Fihome}/>
+                            </button>
+                        </div>
+                        <div>
+                            <button href="" className={style.Iconos1}>
+                                <FiHome className={style.Fihome}/>
+                                {/* <h4 className={style.homeIcono}>Home</h4> */}
+                            </button>
+                        </div>
+                    </div>
+                </nav>    
+            
                 <div className={style.containerEdiPrinipal}>
+
+
+
                     {/* <div className={style.imagenDeUsuario}>
                         <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
                         <BsFillCameraFill className={style.BsFillCameraFill}/>    */}
                         <div className={style.infoUsuario}>
                             <h3>t</h3>
-                            <h3>t</h3>
-                            <h3>t</h3>
-                            <h3>t</h3>
+                         
                         </div>
                     {/* </div> */}
                     <div className={style.containerEditarPerfil}>
