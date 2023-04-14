@@ -1,8 +1,9 @@
-.h1{
+.name{
     color: blueviolet;
     position: relative;
     top: 150px;
     left: 400px;
+    font-size: 30px;
 }
 
 .input{
