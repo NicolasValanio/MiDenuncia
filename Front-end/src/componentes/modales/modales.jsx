@@ -1,28 +1,55 @@
-import React from 'react'
-import { Dialog } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import Style from './modales.module.css'
 
-function Modales() {
-  const [isOpen, setIsOpen] = useState(true)
+export default function Modales({isOpen, setIsOpen, children}) {
+
+  function closeModal () {
+    setIsOpen(false)
+  }
+
   return (
-    <div>
-       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-      <Dialog.Panel>
-        <Dialog.Title>Deactivate account</Dialog.Title>
-        <Dialog.Description>
-          This will permanently deactivate your account
-        </Dialog.Description>
+    <>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className={Style.modal} onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter={Style.enter}
+            enterFrom={Style.enterLeave}
+            enterTo={Style.enterTo}
+            leave={Style.leave}
+            leaveFrom={Style.enterTo}
+            leaveTo={Style.enterLeave}
+          >
+            <div className={Style.fixedDiv} />
+          </Transition.Child>
 
-        <p>
-          Are you sure you want to deactivate your account? All of your data
-          will be permanently removed. This action cannot be undone.
-        </p>
-
-        <button onClick={() => setIsOpen(false)}>Deactivate</button>
-        <button onClick={() => setIsOpen(false)}>Cancel</button>
-      </Dialog.Panel>
-    </Dialog>
-    </div>
+          <div className={Style.fixedDiv}>
+            <div className={Style.divChil}>
+              <Transition.Child
+                as={Fragment}
+                enter={Style.enter}
+                enterFrom={Style.fromLeaveTo}
+                enterTo={Style.enterToFrom}
+                leave={Style.leave}
+                leaveFrom={Style.enterToFrom}
+                leaveTo={Style.fromLeaveTo}
+              >
+                <Dialog.Panel className={Style.dialPanel}>
+                  <Dialog.Title
+                    as="h3"
+                    className={Style.dialogtitle}
+                  >
+                    Ayúdanos a mejorar nuestra aplicación
+                  </Dialog.Title>
+                  {children}
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   )
 }
 
-export default modales

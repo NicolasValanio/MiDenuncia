@@ -1,5 +1,6 @@
 import { IoIosPaperPlane } from 'react-icons/io'
 import { IoDocumentTextOutline, IoCloseSharp } from 'react-icons/io5'
+import{AiFillStar} from 'react-icons/ai'
 import style from './peticionesUsuarios.module.css'
 /* importar el react-hook para iniciar el formulario */
 import { useForm } from 'react-hook-form'
@@ -8,30 +9,38 @@ import { enviarPeticion } from '../baseDeDatos'
 import Swal from 'sweetalert2'
 import { useState } from 'react';
 import Loading from '../loading/Loading';
+import TiposSolicitudes from './TiposSolicitudes';
+import Modales from '../modales/modales';
 
 export default function FormularioPeticion ({user}) {
+  const [open, setOpen] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const dataImage = new FileReader()
+  dataImage.onload = (e) => e.target.result
+
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
 		defaultValues: {...user}
 	})
 
-  const [loading, setLoading] = useState(false)
-
   const enviar = (values) => {
-		const {type_request, type, number_document, place_dispatch, address, neighborhood, contact_phone, subject, problem, solution, neighborhood_request, location, url} = values
+		const {type_request_id, type,document_id, place_dispatch, address, staff_neighborhood, contact_phone, subject, problem, solution, neighborhood, location, url} = values
+
+    // const image = dataImage.onload(url[0])
     
     const request = {
-      name: type_request,
+      type_request_id: type_request_id,
       type,
-      number_document,
+      document_id,
       place_dispatch,
       address,
       contact_phone,
       location,
-      neighborhood: neighborhood_request,
+      neighborhood,
       subject,
       problem,
       solution,
-      url
+      url: null,
+      staff_neighborhood
     }
     Swal.fire({
       title: 'Estas seguro de que los datos estan correctos',
@@ -45,25 +54,44 @@ export default function FormularioPeticion ({user}) {
       if (result.isConfirmed) {
         setLoading(true)
         enviarPeticion(request, user.id)
-          .then(res => {
+          .then(userUpdate => {
+            const user = userUpdate[0]
+            console.log({user})
             setLoading(false)
-            if(res.status === 200) {
-              console.log(res.data)
-              const dataNew = res.data
-              console.log(typeof dataNew)
-              const newUser = JSON.parse(dataNew)
-              console.log(newUser)
-              const oldUser = JSON.parse(localStorage.getItem('usuarioLogueado'))
-
-              localStorage.setItem('usuarioLogueado', JSON.stringify({...oldUser, ...newUser}))
+            if(user.id) {
+              const oldUser = JSON.parse(localStorage.getItem('usuarioLogeado'))
+              const newJson = {...oldUser, data:{user}}
+              console.log({newJson})
+              localStorage.setItem('usuarioLogeado', JSON.stringify(newJson))
               Swal.fire({titleText: 'Informacion enviada correctamente', icon: 'success'})
-            }
-            console.log(res)})
+            }})
       }
     })
 
     
 	}
+  /* estrellas */
+  const  stars = Array(5).fill(0)
+  const [estrellaActual, setestrellaActual] = useState(0);
+  const [hoverActual, sethoverActual] = useState(undefined);
+
+  /* tres funciones que cambian el evento y se actualiza el estado */
+  /* en esta se va a manejar elo evento click */ 
+  const click = value =>{
+    setestrellaActual(value)
+   };
+/* establecer el valor del desplazamiento */
+   const hover = value => {
+    sethoverActual(value)
+   };
+/* anular opcion */
+   const anularDefinicion = () => {
+    sethoverActual(undefined)
+   }
+   const colors = {
+    amarillo :'#ffff00',
+    blanco:'#fff'
+   }
 
   /* contenedor form */
   return (
@@ -75,17 +103,15 @@ export default function FormularioPeticion ({user}) {
       {/* select para elegir el tipo de solicitud */}
       <div className={style.contenedorSolicitud}>
           <label className={style.solilabel}>Tipo de solicitud:</label>
-          <select {...register('type_request', {
+          <select {...register('type_request_id', {
             required: true
           })} id="" className={style.contenedorselect}>
               <option value="">
                   Tipo de solicitud
               </option>
-              <option value="malla">
-                  Malla vial
-              </option>
+              <TiposSolicitudes />
           </select>
-          {errors.type_request && <p className={style.palabraError}>El tipo de solicitud es requerido</p>}
+          {errors.type_request_id && <p className={style.palabraError}>El tipo de solicitud es requerido</p>}
       </div>
       {/* inicio de datos personales */}
       <div className={style.contenedorprinDatos}>
@@ -121,7 +147,7 @@ export default function FormularioPeticion ({user}) {
 
               <div className={style.infolabel}>
                   <label htmlFor="documento">* Número de documento:</label>
-                  <input type="text" placeholder="91287459" id='documento' disabled={user.number_document} {...register('number_document', {
+                  <input type="text" placeholder="91287459" id='documento' disabled={user.number_document} {...register('document_id', {
                     required: true,
                     pattern: /^[0-9]{7,11}$/,
                     minLength: 7,
@@ -140,7 +166,7 @@ export default function FormularioPeticion ({user}) {
                     <input type="text" placeholder="91287459" id='cofirmacionDocumento' {...register('retry_document', {
                       required: true,
                       validate: (value) => {
-                        if (watch('number_document') !== value) return 'El documento no esta correcto'
+                        if (watch('document_id') !== value) return 'El documento no esta correcto'
                       }
                     })} />
                     {errors.retry_document?.type === 'required' && <p className={style.palabraError}>El numero de confirmacion del documento es requerido</p>}
@@ -192,14 +218,14 @@ export default function FormularioPeticion ({user}) {
                   <label htmlFor="barrioper">
                     * Barrio
                   </label>
-                  <input type="text" placeholder="García Rovira" disabled={user.neighborhood} id='barrioper'
-                  {...register('neighborhood', {
+                  <input type="text" placeholder="García Rovira" disabled={user.staff_neighborhood} id='barrioper'
+                  {...register('staff_neighborhood', {
                     required: true,
                     minLength: 4
                   })}
                   />
-                  {errors.neighborhood?.type === 'required' && <p className={style.palabraError}>El barrio es requerido</p>}
-                  {errors.neighborhood?.type === 'minLength' && <p className={style.palabraError}>Debe ingresar al menos 4 caracteres</p>}
+                  {errors.staff_neighborhood?.type === 'required' && <p className={style.palabraError}>El barrio es requerido</p>}
+                  {errors.staff_neighborhood?.type === 'minLength' && <p className={style.palabraError}>Debe ingresar al menos 4 caracteres</p>}
               </div>
               <div className={style.infolabel}>
                   <label htmlFor="telefono">
@@ -265,13 +291,13 @@ export default function FormularioPeticion ({user}) {
               * Barrio:
               </label>
               <input type="text" placeholder="García Rovira" id='barrio' 
-              {...register('neighborhood_request', {
+              {...register('neighborhood', {
                 required: true,
                 minLength: 4
               })}
               />
-              {errors.neighborhood_request?.type === 'required' && <p className={style.palabraError}>El barrio es requerido</p>}
-              {errors.neighborhood_request?.type === 'minLength' && <p className={style.palabraError}>Debe ingresar al menos 4 caracteres</p>}
+              {errors.neighborhood?.type === 'required' && <p className={style.palabraError}>El barrio es requerido</p>}
+              {errors.neighborhood?.type === 'minLength' && <p className={style.palabraError}>Debe ingresar al menos 4 caracteres</p>}
           </div>
           <div className={style.infodesp}>
               <label htmlFor="descripcion">* Descripción de la localización:</label>
@@ -292,7 +318,7 @@ export default function FormularioPeticion ({user}) {
           />
           <label htmlFor='file'>
           <CiInboxOut size={25}/>
-          <span className={style.iborrainputfile}>{watch("url")? watch("url")[0].name:"Seleccionar archivo"}</span>
+          <span className={style.iborrainputfile}>{(watch("url") && watch("url")[0]) ? watch("url")[0].name:"Seleccionar archivo"}</span>
           </label>
           {errors.url?.type === 'required' && <p className={style.palabraError}>La imagen es requerido</p>}
       </div>
@@ -337,8 +363,44 @@ export default function FormularioPeticion ({user}) {
       <div className={style.botones}>
           <button className={style.boton1} type='submit'>Enviar<IoIosPaperPlane/></button>
           <button className={style.boton2}>Cancelar<IoCloseSharp/></button>
-
       </div>
+      <Modales title="Mi titulo" isOpen={open} setIsOpen={setOpen}>
+        <p className={style.ModaltextP}>
+          Por favor califica nuestra página de acuerdo a tu experiencia como usuario
+        </p>
+        {/* estrellas de calificación */}
+        <div className={style.ModalEstrellas}>
+  
+          { stars.map((_, index)=> {
+            return(
+              <AiFillStar
+              key={index + 20}
+              size={35}
+              style={
+                {
+                  cursor: 'pointer'
+                }
+              }
+               color={(hoverActual >= index) || estrellaActual > index ? colors.amarillo: colors.blanco}
+               onClick={()=> click(index + 1)}
+               onMouseEnter={() => hover(index)}
+               onMouseLeave={() => anularDefinicion()}
+              />
+            )
+            
+          })}
+
+          
+        </div>
+        <div className={style.ModalComment}>
+          <textarea name="" id="" cols="20" rows="5" placeholder='Danos mas detalle de tu experiencia'></textarea>
+        </div>
+        {/* botones */}
+        <div className={style.botones}>
+          <button className={style.boton1} type='submit'>Enviar</button>
+          <button className={style.boton2}>Cancelar</button>
+      </div>
+      </Modales>
   </form>
   )
 }
