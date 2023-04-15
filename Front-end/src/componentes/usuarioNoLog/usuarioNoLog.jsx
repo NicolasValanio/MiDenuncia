@@ -12,8 +12,7 @@ function UsuarioNoLog() {
                 <div className={Style.main}>
                 <FiltrarPor/>    
                     <div className={Style.contTarjetas}>
-
-                        {/* AQUI VAN LAS TARJETAS */}
+                    {/* <Tarjetas /> */}
 
                     </div>
                 </div>

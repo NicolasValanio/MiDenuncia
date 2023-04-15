@@ -9,8 +9,8 @@ function NavegacionNoLog() {
 
     return(
         <div className={style.contenedor}>
-            <div className={style.imagen}></div>
-            
+            <img src="https://res.cloudinary.com/dwrupo75d/image/upload/v1681503206/logo_t6vkfb.png" alt="logo" className={style.imagen}/>
+
             <div className={style.contenedorBtns}>
             <a href="/Login" className={`${style.btns} `}  title="¡Has tu primera petición!"> <IoMegaphoneOutline className={style.icon}/> </a>
             <a href="/RegistroUsuario" className={`${style.btns} ${style.LetraRegistro}`}>Registrarse</a>
