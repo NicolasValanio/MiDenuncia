@@ -50,21 +50,16 @@ function VistaUsuario(params) {
 
 
 
-                    {/* <div className={style.imagenDeUsuario}>
-                        <img src="./src/componentes/vistaUsuario/images/usuario.png" alt=""  className={style.imgUsuario}/>
-                        <BsFillCameraFill className={style.BsFillCameraFill}/>    */}
+
                         <div className={style.infoUsuario}>
                             <h3>t</h3>
                          
                         </div>
-                    {/* </div> */}
+                    
                     <div className={style.containerEditarPerfil}>
                         <h1>Editar perfil</h1>
                         <form  className={style.formulario}>
                             <div className={style.datosFila1}>
-                                <label htmlFor="">Número de documento
-                                    <input className={style.inputdatos} type="text" />
-                                </label>
                                 
 
                                 <label htmlFor="">Nombre
@@ -77,9 +72,6 @@ function VistaUsuario(params) {
                                 </label>
                                 
 
-                                <label htmlFor="">Dirección
-                                    <input className={style.inputdatos} type="text" />
-                                </label>
                                 
                             </div>
                             <div  className={style.datosFila1}>
@@ -93,16 +85,10 @@ function VistaUsuario(params) {
                                  <input className={style.inputdatos} type="text" />
                                 </label>
                                 
-
-                                <label htmlFor="">Correo electronico
+                                <label htmlFor="">Confirmar contraseña
                                  <input className={style.inputdatos} type="text" />
                                 </label>
-                                
-
-                                <label htmlFor="">Número de contanto
-                                 <input className={style.inputdatos} type="text" />
-                                </label>
-                               
+                                               
 
                             </div>
 

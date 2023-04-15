@@ -12,7 +12,8 @@
 }
 .nabiconos{
     display: flex;
-    padding: 2.8dssrem;
+    padding: 2.8rem;
+    gap: 20%;
 
 }
 
@@ -81,12 +82,13 @@
     width: 95%;
     height: 100%;
     margin-left: 2.5%;
-    margin-top: 10%;
     box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     text-align: center;
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: block;
+
 
 
 }
@@ -94,7 +96,7 @@
     display: flex;
     justify-content:space-around;
     text-align: center;
-    padding: 4rem;
+    padding: 4%;
     
 }
 .datosFila1{
