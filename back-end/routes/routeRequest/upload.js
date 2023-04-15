@@ -7,7 +7,7 @@ const cloudinary = require("../../cloudinary/cloudinary");
 const router = express.Router();
 
 
-router.post('/form', controller.upload, async(req, res)=>{
+router.post('/formRequest', controller.upload, async(req, res)=>{
   try{
     let imagen = req.file.path;
     let urlCloudinary = await cloudinary.uploader.upload(imagen);
