@@ -54,6 +54,8 @@ align-items: center;
 }
 
 .imagenContenedor{
+    width: 100%;
+    height: auto;
     grid-area: imagen;
     display: flex;
     

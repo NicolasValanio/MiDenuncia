@@ -94,12 +94,12 @@ function UsuarioLog(params) {
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
-                    <div className={style.logo}></div>
+                <img src="https://res.cloudinary.com/dwrupo75d/image/upload/v1681503206/logo_t6vkfb.png" alt="logo" className={style.logo} />
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
                     
-                    <li className={style.li} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.iconsLog}`}/></Link></li>
+                    <li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
                     <li className={style.li} >
                         <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
                         {showNotifications && (
@@ -111,9 +111,9 @@ function UsuarioLog(params) {
                         )}
                     </li>
 
-                        <li className={`${style.li} ${style.notificaciones}`}>
+                        <li className={`${style.li} ${style.notificaciones}`} >
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
-                            <ul className={`contenedor ${style.despegableFiltro} ${style.li}`}>
+                            <ul className={`contenedor ${style.despegableFiltro} ${style.li}`} >
                                 <li className={style.liFiltrados} > <AiFillAlert /> Seguridad  </li>
                                 <li className={style.liFiltrados} > <BsSignStopFill /> Malla Vial </li>
                                 <li className={style.liFiltrados} > <BsFillSignNoParkingFill     /> Señalización Vial </li>
