@@ -2,6 +2,8 @@
 import { Route,Routes} from 'react-router-dom'
 import {UseProtegerRutas} from './ProtegerRutas'
 
+
+
 import Login from './login/login'
 import UsuarioNoLog from './usuarioNoLog/usuarioNoLog'
 import HabeasData from './habeasData/habeasData'
@@ -24,10 +26,15 @@ function Rutas() {
             <Routes>
                 <Route exact path="/" element={<UsuarioNoLog />} /> 
                 <Route path="/login" element={<Login />} />
+                {/* <Route path="/resetPassword" element={<ResetPassword />} /> */}
+                <Route path="/recuperarContrasena" element={<RecuperarContraseña />} />
+                {/* <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} /> */}
+
+                {/* <Route path="/password" element={<Password />} /> */}
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
                     <Route path="/HabeasData" element={<HabeasData />} />
-                    <Route path="/recuperarContraseña" element={<RecuperarContraseña />} />
+                   
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />

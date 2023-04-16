@@ -79,7 +79,7 @@ function Login() {
                 <div className={`contenedor ${style.contenedor_bottom}`}>
                     <div className={`contenedor ${style.cont_regiscontra}`}>
                         <p className={style.textoLogin}>¿No tienes Cuenta? <samp className={style.samp}><Link className={style.link} to="/RegistroUsuario"> REGISTRATE</Link></samp></p>
-                        <p className={style.textoLogin}>¿Olvidaste tu <samp className={style.samp}><Link className={style.link} to="/recuperarContraseña">CONTRASEÑA</Link></samp>? </p>
+                        <p className={style.textoLogin}>¿Olvidaste tu  <samp className={style.samp}><Link className={style.link} to="/recuperarContrasena">CONTRASEÑA</Link></samp>? </p>
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
