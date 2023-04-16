@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "./usuarioNoLog.module.css";
+import Style from "./usuarioNoLog.module.css"
 import NavegacionNoLog from "../navegacionNoLog/navegacion";
 import FiltrarPor from "../filtrarPor/filtarPor";
 import Footer from "../footer/footer";
@@ -12,8 +12,7 @@ function UsuarioNoLog() {
                 <div className={Style.main}>
                 <FiltrarPor/>    
                     <div className={Style.contTarjetas}>
-
-                        {/* AQUI VAN LAS TARJETAS */}
+                    {/* <Tarjetas /> */}
 
                     </div>
                 </div>

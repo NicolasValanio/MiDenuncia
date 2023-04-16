@@ -2,9 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import modalReportes from '../modalReportes/modalReprotes'
 
 
-import { Link} from 'react-router-dom'
+import { Link, redirect} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { IoMdNotifications } from "react-icons/io";
@@ -13,48 +15,50 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { GiStreetLight } from "react-icons/gi";
-import { BiLogOut } from "react-icons/bi";
-import InfiniteScroll from 'react-infinite-scroll-component'
+import { BiLogIn, BiLogOut } from "react-icons/bi";
+import {GiStreetLight} from "react-icons/gi";
 
 
 function UsuarioLog(params) {
 
-    const [pokemon, setPokemon] = useState()
-    const [pagePokemon , setPagePokemon] = useState(0)
+    const [publicaciones, setPublicaciones] = useState()
+    const [numeroPublicacion, setNumeroPublicacino] = useState(0)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(0)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
     useEffect(()=>{
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
-        .then(res => {
-            setPokemon(res.results)
-            console.log(res);
-    })
+        .then(res => setPublicaciones(res.news) )
     },[])
 
     function nuevoLlamado(page) {
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
         .then(res => {
-            let nuevoPokemon = pokemon.concat(res.results)
-            setPokemon(nuevoPokemon)
-            setPagePokemon( pagePokemon + 1)
+            console.log(res.news);
+            let nuevaPublicaiones = publicaciones.concat(res.news)
+            setPublicaciones(nuevaPublicaiones)
+            setPaginaPublicaciones( paginaPublicaciones + 1)
         })
     }
 
-    function llamarPokemon() {
-       let retornar = pokemon.map(pokemon => {
-            return(
-                <div className={style.pokemon}>
-                    <h1> {pokemon.name} </h1>
-                </div>
-            )
+    function llamarTarjetas (publicaciones) {
+        let nuevasPublicaciones = publicaciones.map( () =>{
+           return  <TarjetasPublicacion />
         })
-        return retornar
+        return nuevasPublicaciones
     }
-
+    
+    function Logout(){
+        //Borra el localStorage
+        
+        localStorage.clear();
+        console.log("Saliendo...");
+        window.location.href="/"
+    }
+    
   
     useEffect(() => {
       function handleClickOutside(event) {
@@ -77,9 +81,8 @@ function UsuarioLog(params) {
     function toggleNotifications() {
       setShowNotifications(!showNotifications);
     }
+
   
-
-
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -115,28 +118,26 @@ function UsuarioLog(params) {
                         </li>
                         
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
-                        <li className={style.li} title="Salir"> <Link rel="stylesheet" href=""> <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
+                        <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
+                    <button>modal </button>
                 </div>
             </div>
+
             <div className={`contenedor ${style.filtrar}`}>
                 <FiltrarPor/>
             </div>
+
             <div className={`contenedor ${style.cont_tarjetas}`}>
 
-                <TarjetasPublicacion key='2' />
+                <InfiniteScroll 
+                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
+                next={()=> {nuevoLlamado(paginaPublicaciones)}} 
+                hasMore={true} >
 
+                { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
 
-                <InfiniteScroll dataLength={pokemon === undefined ? 5 : pokemon.length} 
-                next={()=> {nuevoLlamado(pagePokemon)}} hasMore={true} >
-
-                {
-
-                    pokemon === undefined ?  null : llamarPokemon()
-
-                }
-
-                </InfiniteScroll>            
+                </ InfiniteScroll>            
             </div>
         </div>
 

@@ -37,7 +37,13 @@ export const UseProtegerRutas =() => {
 
     return  <Outlet />
 }
-
+export function Logout(){
+    //Borra el localStorage
+    
+    localStorage.clear();
+    console.log("Saliendo...");
+    window.location.href="/"
+}
 
 // LOCALSTORAGE ---------------------------------------------------------------------
 
