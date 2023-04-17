@@ -147,7 +147,7 @@ export default function FormularioPeticion ({user}) {
 
               <div className={style.infolabel}>
                   <label htmlFor="documento">* Número de documento:</label>
-                  <input type="text" placeholder="91287459" id='documento' disabled={user.number_document} {...register('number_document', {
+                  <input type="number" placeholder="91287459" id='documento' disabled={user.number_document} {...register('number_document', {
                     required: true,
                     pattern: /^[0-9]{7,11}$/,
                     minLength: 7,
@@ -163,7 +163,7 @@ export default function FormularioPeticion ({user}) {
                     <label htmlFor="cofirmacionDocumento">
                         * Confirmación de documento:
                     </label>
-                    <input type="text" placeholder="91287459" id='cofirmacionDocumento' {...register('retry_document', {
+                    <input type="number" placeholder="91287459" id='cofirmacionDocumento' {...register('retry_document', {
                       required: true,
                       validate: (value) => {
                         if (watch('number_document') !== value) return 'El documento no esta correcto'
