@@ -110,7 +110,7 @@ body{
     
 }
 /* responsive-celular */     
-@media (max-width: 280px) {
+@media (min-width: 280px) and (max-width:801px) {
     .imagen{
         margin-left: .5rem;
         margin-top: 1rem;
@@ -124,6 +124,13 @@ body{
         width: 2rem;
         height: 2rem;
         padding: 5px;
+    }
+    .registro,.log{
+        display: flex;
+        margin-left: 10px;
+    }
+    .LetraLogin,.LetraRegistro{
+        display: none;
     }
 }
 
