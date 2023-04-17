@@ -96,8 +96,8 @@ body{
 /* Mq tablet grande */
 @media(min-width:800px)and (max-width:1024px) {
     .imagen{
-        width: 20%;
-        height: 5vh;
+        width: 25%;
+        height: 7vh;
     }
     .contenedorBtns{
         margin: 0;
@@ -121,7 +121,7 @@ body{
     .imagen{
         margin-left: .5rem;
         margin-top: 1rem;
-        width: 35%;
+        width: 30%;
         height: 8vh;
         background-size: cover;
     }
