@@ -32,7 +32,7 @@ function VistaSuperAdmin() {
             </div >
                 
                 <div className={style.barras}>
-                    <div className={style.barra}>
+                    <div className={style.barra1}>
                         <ul className={style.opciones}>
                             <li>Nombre</li>
                             <li>Usuario</li>
@@ -42,7 +42,7 @@ function VistaSuperAdmin() {
                             <li>Estado</li>
                         </ul>   
                     </div>
-                    <div className={style.barra}>
+                    <div className={style.barra2}>
                         <div className={style.opciones}>
                             <div>
                             {data?.map((user) => (

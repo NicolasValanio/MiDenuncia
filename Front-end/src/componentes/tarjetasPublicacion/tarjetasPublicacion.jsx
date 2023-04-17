@@ -69,32 +69,32 @@ console.log(barrio)
 
         <div className={style.nombreUsuario}>
         {api === undefined ? 'espera': <h3>{api.news[0].user.nickname} <br/>
-        {api.news[0].request.subject}
+        {api.news[0].types_request.name}
         </h3>}
         </div> 
 
 
 
         <div className={style.textoPublicacion}>
-        {api === undefined ? 'espera': <h4>{api.news[0].description}
+        {api === undefined ? 'espera': <h4>{api.news[0].problem}
         </h4>}
         </div>
 
         <div className={style.imagenContenedor}>
-        {api === undefined ? 'espera':<img  src={api.news[0].photo} alt="" width={735} height={240}></img>}
+        {/* {api === undefined ? 'espera':<img  src={api.news[0].photos[0].url} alt="" width={735} height={240}></img>} */}
         </div>        
         <div className={style.fechaPublicacion}>
-        {api === undefined ? 'espera': <h3>{api.news[0].request.date}
+        {api === undefined ? 'espera': <h3>
         </h3>}
         </div>
         
         <div className={style.ubicacionPublicacion}>
-        {api === undefined ? 'espera': <h3>{api.news[0].request.location}, {api.news[0].request.neighborhood}
+        {api === undefined ? 'espera': <h3>{api.news[0].location}, {api.news[0].neighborhood}
         </h3>}
         </div>
 
         <div className={style.apoyoPublicacion}>
-        {api === undefined ? 'espera': <h5>apoyo: {api.news[0].like.like}   comentarios: {api.news[0].like.like} 
+        {api === undefined ? 'espera': <h5>apoyo:   comentario: 
         </h5>}
         </div>
 

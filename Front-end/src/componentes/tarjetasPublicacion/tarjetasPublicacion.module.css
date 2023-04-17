@@ -4,6 +4,7 @@
 }
 
 .contenedor{
+    display: grid;
     background-color: #252A2E;
     grid-template-areas: 'foto nombre'
                         'foto descripcion'
@@ -12,72 +13,87 @@
                         'fecha fecha'
                         'ubicacion ubicacion'
                         'apoyo comentario';
-    margin: 8rem;
-    margin-left: 5%;
-    margin-right: 20%;
+    margin: 5rem;
+    /* margin-left: 5%;
+    margin-right: 20%; */
     display: grid;
-    height: 40rem;
-    width: 50rem;
+    height: fit-content;
+    min-height: 35rem;
+    width: 70%;
     -webkit-border-radius: 10px;
 border-radius: 10px;
 border-bottom: solid 2px #B86EFD;
 border-right:solid 2px  #B86EFD;
+padding: 25px;
+align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 
 
 .nombreUsuario{
-    padding: 1rem;
+   
     font-size: 0.6rem;
     width: 100%;
     margin-left: -23rem;
     grid-area: nombre;
     color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
 }
 .textoPublicacion{
-    padding: 1rem;
+   
     grid-area: texto;
     color: white;
     font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 
 .imagenContenedor{
+    width: 100%;
+    height: auto;
     grid-area: imagen;
-    margin: auto;
-    height: 15rem;
-    padding: 1rem;
-    margin-left: 2%;
-    margin-right: 2%;
-    object-fit: cover;
-    margin-top: -0.1rem;
-    margin-bottom: -10%;
+    display: flex;
+    
+    align-items: center;
+  
 }
 .icono{
-    height: 2rem;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
+
+
 .iconoUsuario{
-    padding: 1rem;
-    height: 2rem;
-    width: 2rem;
+    
+    height: fit-content;
+    width: 4rem;
     grid-area: foto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
 }
 .fechaPublicacion {
     font-size: 0.6rem;
-    padding-top: 6rem;
-    padding-bottom: -3%;
-    margin-left: 1rem;
-
     grid-area: fecha;
     color: white
 }
 .ubicacionPublicacion{
     font-size: 0.6rem;
-    padding-bottom: 1rem;
-    padding-top: -2rem;
+ 
     grid-area: ubicacion;
     color: white;
-    margin-left: 1rem;
+   
 }
 
 .textoTipo{
@@ -85,9 +101,9 @@ border-right:solid 2px  #B86EFD;
     grid-area: descripcion;
 }
 .apoyoPublicacion{
-    height: 30%;
+
     grid-area: apoyo;
-    padding-left: 2%;
+   
     color: white;
 }
 
@@ -127,3 +143,77 @@ border-right:solid 2px  #B86EFD;
     color: white;
     border: solid 1px rgb(51, 61, 119);
 }*/
+
+/*-------------------------------------------*/
+/*responsive tarjeta*/
+
+@media (max-width :768px) {
+
+    .contenedor{
+      
+    
+        display: grid;
+        height: fit-content;
+        min-height: 25rem;
+        width: 80%;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border-bottom: solid 2px #B86EFD;
+        border-right:solid 2px  #B86EFD;
+        padding: 25px;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+
+.icono{
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+
+.iconoUsuario{
+    
+    height: fit-content;
+    width: 4rem;
+    grid-area: foto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.nombreUsuario{
+   
+    font-size: 0.6rem;
+    width: 100%;
+    margin-left: -12rem;
+    grid-area: nombre;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+}
+
+
+.textoPublicacion{
+   
+    grid-area:texto;
+  
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+   
+}
+
+    
+}
