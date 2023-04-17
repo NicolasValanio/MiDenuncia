@@ -6,24 +6,19 @@ import style from './vistaUsuario.module.css';
 function VistaUsuario(params) {
     return(
         <div className={style.main_container}>
+                                      
+                <div className={style.containermodal}>
+                    <div className={style.modal}>
+                        <h3>Está seguro que desea eliminar su cuenta</h3>
+                        <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
 
-
-
-
-        
-            
-            
-
-                    {/* <div> */}
-
-                    {/* </div> */}
-
-                   
-                {/*     
-                    <button className={style.elimCuenta}>
-                        Elininar cuenta
-                    </button> */}
-                    
+                        <div className={style.inputverificar}>
+                            <input type="button" value="Cancelar" />
+                            <input type="button" value="Aceptar" />
+                        </div>
+                    </div>
+                </div>
+                                
                 
                 <nav className={style.nabvarview}>
                     <div className={style.contaImage}> 
@@ -73,9 +68,11 @@ function VistaUsuario(params) {
                                     <button className={style.botonGuardar}>
                                         Guardar cambios
                                     </button>
+                                    <button className={style.elimCuenta}>
+                                        Elininar cuenta
+                                    </button> 
                                 </div>
 
-                                
                             </div>
                             <div  className={style.datosFila1}>
                                 
