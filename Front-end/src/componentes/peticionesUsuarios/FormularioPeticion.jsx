@@ -311,7 +311,7 @@ export default function FormularioPeticion ({user}) {
       <div className={style.infoimg}>
           <h3>Archivos adjuntos:</h3>
           <p>Señor/a usuario debe adjuntar solo fotos con un peso máximo de 5mb</p>
-          <input type="file"  id="file" accept='image/*' className={style.inputfile}
+          <input type="file" multiple id="file" accept='image/*' className={style.inputfile}
           {...register('url', {
             required: true
           })}	
