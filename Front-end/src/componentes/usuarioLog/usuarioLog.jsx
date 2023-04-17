@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import modalReportes from '../modalReportes/modalReprotes'
 
 
 import { Link, redirect} from 'react-router-dom'
@@ -15,24 +17,39 @@ import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 function UsuarioLog(params) {
 
-    const [pokemon, setPokemon] = useState()
-    const [pagePokemon , setPagePokemon] = useState(0)
+    const [publicaciones, setPublicaciones] = useState()
+    const [numeroPublicacion, setNumeroPublicacino] = useState(0)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(0)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
     useEffect(()=>{
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
+        .then(res => res.json())
+        .then(res => setPublicaciones(res.news) )
+    },[])
+
+    function nuevoLlamado(page) {
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
         .then(res => {
-            setPokemon(res.results)
-            console.log(res);
-    })
-    },[])
+            console.log(res.news);
+            let nuevaPublicaiones = publicaciones.concat(res.news)
+            setPublicaciones(nuevaPublicaiones)
+            setPaginaPublicaciones( paginaPublicaciones + 1)
+        })
+    }
+
+    function llamarTarjetas (publicaciones) {
+        let nuevasPublicaciones = publicaciones.map( () =>{
+           return  <TarjetasPublicacion />
+        })
+        return nuevasPublicaciones
+    }
     
     function Logout(){
         //Borra el localStorage
@@ -42,28 +59,6 @@ function UsuarioLog(params) {
         window.location.href="/"
     }
     
-
-    function nuevoLlamado(page) {
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page}`)
-        .then(res => res.json())
-        .then(res => {
-            let nuevoPokemon = pokemon.concat(res.results)
-            setPokemon(nuevoPokemon)
-            setPagePokemon( pagePokemon + 1)
-        })
-    }
-
-    function llamarPokemon() {
-       let retornar = pokemon.map(pokemon => {
-            return(
-                <div className={style.pokemon}>
-                    <h1> {pokemon.name} </h1>
-                </div>
-            )
-        })
-        return retornar
-    }
-
   
     useEffect(() => {
       function handleClickOutside(event) {
@@ -88,18 +83,16 @@ function UsuarioLog(params) {
     }
 
   
-
-
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
-                    <div className={style.logo}></div>
+                <img src="https://res.cloudinary.com/dwrupo75d/image/upload/v1681503206/logo_t6vkfb.png" alt="logo" className={style.logo} />
                 </div>
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
                     
-                    <li className={style.li} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.iconsLog}`}/></Link></li>
+                    <li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
                     <li className={style.li} >
                         <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
                         {showNotifications && (
@@ -111,9 +104,9 @@ function UsuarioLog(params) {
                         )}
                     </li>
 
-                        <li className={`${style.li} ${style.notificaciones}`}>
+                        <li className={`${style.li} ${style.notificaciones}`} >
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
-                            <ul className={`contenedor ${style.despegableFiltro} ${style.li}`}>
+                            <ul className={`contenedor ${style.despegableFiltro} ${style.li}`} >
                                 <li className={style.liFiltrados} > <AiFillAlert /> Seguridad  </li>
                                 <li className={style.liFiltrados} > <BsSignStopFill /> Malla Vial </li>
                                 <li className={style.liFiltrados} > <BsFillSignNoParkingFill     /> Señalización Vial </li>
@@ -127,24 +120,22 @@ function UsuarioLog(params) {
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
+                    <button>modal </button>
                 </div>
             </div>
+
             <div className={`contenedor ${style.filtrar}`}>
                 <FiltrarPor/>
             </div>
+
             <div className={`contenedor ${style.cont_tarjetas}`}>
 
-                <TarjetasPublicacion key='2' />
+                <InfiniteScroll 
+                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
+                next={()=> {nuevoLlamado(paginaPublicaciones)}} 
+                hasMore={true} >
 
-
-                <InfiniteScroll dataLength={pokemon === undefined ? 5 : pokemon.length} 
-                next={()=> {nuevoLlamado(pagePokemon)}} hasMore={true} >
-
-                {
-
-                    pokemon === undefined ?  null : llamarPokemon()
-
-                }
+                { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
 
                 </ InfiniteScroll>            
             </div>

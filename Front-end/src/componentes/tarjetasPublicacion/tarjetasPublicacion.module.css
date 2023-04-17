@@ -13,12 +13,13 @@
                         'fecha fecha'
                         'ubicacion ubicacion'
                         'apoyo comentario';
-    margin: 8rem;
-    margin-left: 5%;
-    margin-right: 20%;
+    margin: 5rem;
+    /* margin-left: 5%;
+    margin-right: 20%; */
     display: grid;
-    height: 40rem;
-    width: 50rem;
+    height: fit-content;
+    min-height: 35rem;
+    width: 70%;
     -webkit-border-radius: 10px;
 border-radius: 10px;
 border-bottom: solid 2px #B86EFD;
@@ -54,6 +55,8 @@ align-items: center;
 }
 
 .imagenContenedor{
+    width: 100%;
+    height: auto;
     grid-area: imagen;
     display: flex;
     
@@ -148,17 +151,16 @@ align-items: center;
 
     .contenedor{
       
-        margin: 8rem;
     
         display: grid;
-        height: 40rem;
-        width: 23rem;
+        height: fit-content;
+        min-height: 25rem;
+        width: 80%;
         -webkit-border-radius: 10px;
-    border-radius: 10px;
-    border-bottom: solid 2px #B86EFD;
-    border-right:solid 2px  #B86EFD;
-    padding: 25px;
-
+        border-radius: 10px;
+        border-bottom: solid 2px #B86EFD;
+        border-right:solid 2px  #B86EFD;
+        padding: 25px;
         justify-content: center;
         gap: 10px;
     }
