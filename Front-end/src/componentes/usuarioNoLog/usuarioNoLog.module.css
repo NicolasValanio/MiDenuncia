@@ -1,11 +1,11 @@
 .main{
     width: 100%;
-    height: 90vh;
+    height: fit-content;
     display: flex;
 }
 
 .contTarjetas{
-    width: 80%;
-    height: 80vh;
+    width: 100%;
+    height: fit-content;
 }
 
