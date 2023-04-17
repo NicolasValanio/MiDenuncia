@@ -129,6 +129,9 @@ body{
         display: flex;
         margin-left: 10px;
     }
+    .icon{
+        margin: auto;
+    }
     .LetraLogin,.LetraRegistro{
         display: none;
     }
