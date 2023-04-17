@@ -3,7 +3,7 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import modalReportes from '../modalReportes/modalReprotes'
+import ModalReportes from '../modalReportes/modalReprotes'
 
 
 import { Link, redirect} from 'react-router-dom'
@@ -20,9 +20,13 @@ import {GiStreetLight} from "react-icons/gi";
 
 
 function UsuarioLog(params) {
-
+    // ESTADO DEL MODAL
+    const [estadoModal , setEstadoModal] = useState(false)
+    // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
+    // EL NUMERO DE LA PUBLICACION QUE SE MUESTRA
     const [numeroPublicacion, setNumeroPublicacino] = useState(0)
+    // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
     const [paginaPublicaciones , setPaginaPublicaciones] = useState(0)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
@@ -33,6 +37,7 @@ function UsuarioLog(params) {
         .then(res => setPublicaciones(res.news) )
     },[])
 
+    // FUNCIONA LA CUAL HACE LA PETICION Y EL REDNDER DE LAS NUEVAS TARJESTAS
     function nuevoLlamado(page) {
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
@@ -45,8 +50,8 @@ function UsuarioLog(params) {
     }
 
     function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( () =>{
-           return  <TarjetasPublicacion />
+        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{
+           return  <TarjetasPublicacion  key={publicaciones[index].id}/>
         })
         return nuevasPublicaciones
     }
@@ -120,7 +125,7 @@ function UsuarioLog(params) {
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
-                    <button>modal </button>
+                    <button onClick={()=>setEstadoModal(!estadoModal)} >modal</button>
                 </div>
             </div>
 
@@ -139,6 +144,14 @@ function UsuarioLog(params) {
 
                 </ InfiniteScroll>            
             </div>
+
+            {/* MODAL */}
+
+            <ModalReportes 
+                estadoModal={estadoModal}
+                setEstadoModal={setEstadoModal} 
+            />                
+
         </div>
 
     )
