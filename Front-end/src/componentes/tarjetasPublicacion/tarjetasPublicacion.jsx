@@ -86,7 +86,7 @@ console.log(barrio)
         </div>
 
         <div className={style.imagenContenedor}>
-        {api === undefined ? 'espera':<img  src={api.news[props.iteracion].photos[props.iteracion].url} alt="" width={735} height={240}></img>}
+        {/* {api === undefined ? 'espera':<img  src={api.news[0].photos[0].url} alt="" width={735} height={240}></img>} */}
         </div>        
         <div className={style.fechaPublicacion}>
         {api === undefined ? 'espera': <h3>{api.news[props.iteracion].createdAt}

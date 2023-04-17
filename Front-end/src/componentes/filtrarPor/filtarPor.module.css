@@ -1,9 +1,10 @@
 .filtrar{
     color: white;
+    width: fit-content;
+    /* float: left; */
+    margin-left: 1rem;
+    margin-top: 3rem;
     position: relative;
-    top: 60px; 
-    left: 40px;
-    width: 230px;
 }
 
 .filtrar li{
@@ -47,4 +48,10 @@
 .Apublicos:hover .Alumbrado,
 .Cambiental:hover .Ambiental {
     color: #FFFFFF;
+}
+
+@media(min-width:200px)and (max-width:850px) {
+    .filtrar{
+        display: none;
+    }
 }

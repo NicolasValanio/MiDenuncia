@@ -71,7 +71,7 @@
 .error{
     margin: 3px;
     font-size: 1em;
-    color: var(--primer-color);
+    color: rgb(255, 34, 34);
 }
 
 .contenedor_bottom{
@@ -178,9 +178,47 @@
     }
 
     .iniciar_google{
+        margin-bottom: 10px;
         font-size: 1.5em;
     }
 
+}
+
+@media (max-height: 700px) {
+
+    .contenedor_top{
+        height: 18%;
+    }
+
+    .formulario_login{
+        height: 66%;
+    }
+
+    .contenedor_bottom{
+        height: 20%;
+    }
+
+    .label{
+        height: 15%;
+        margin-bottom: 50px;
+    }
+
+    .error{
+        font-size: 1em;
+    }
+
+    .btnLogin{
+        width: 60%;
+        height: 18%;
+    }
+
+    .link{
+        font-size: 1.2em;
+    }
+
+    .iniciar_google{
+        font-size: 1em;
+    }
 }
 
 /* RESPONSIVE DESKTOP --.------------------------------------------------------------------------------------------*/
@@ -233,11 +271,28 @@
     }
 }
 
-@media (min-width: 1440px) {
+/* Mq tablet grande */
+@media(min-width:768px)and (max-width:1024px) {
+    .login{
+        width:65%
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1300px) {
+    .login{
+        width: 40%;
+    }
+}
+@media (min-width: 1300px) and (max-width: 1450px) {
+    .login{
+        width: 35%;
+    }
+}
+/* @media (min-width: 1440px) {
     .login{
         width: 30%;
     }
-}
+} */
 
 /* 
 
