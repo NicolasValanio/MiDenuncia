@@ -29,7 +29,7 @@
     position: relative;
     top: 2rem;
     left: 6rem;
-    width: 24rem;
+    width: 25rem;
     height: 120vh;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
@@ -52,4 +52,11 @@
 }
 .inputResulto{
     background-color:  red;
+}
+
+@media (min-width: 700px){
+    .modalOpen{
+        left: 4rem;
+        width: 42rem;
+    }
 }
