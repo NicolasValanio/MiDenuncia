@@ -78,7 +78,7 @@ select{
     background:#b86efd79 ;
     width: 95%;
     margin: 10px;
- 
+    
     position: relative;
     border-radius: 20px;
     grid-area:barra2;
@@ -92,11 +92,11 @@ select{
     color: white;
     font-size:20px;
     font-weight: bold;
+
+    margin: 10px;
 }
 
-.opciones li{
-    margin: 10px 40px 0px 12px;
-}
+
 
 .rol{
     text-align: center;
