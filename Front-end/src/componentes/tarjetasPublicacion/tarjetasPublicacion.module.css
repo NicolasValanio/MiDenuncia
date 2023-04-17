@@ -6,23 +6,22 @@
 .contenedor{
     display: grid;
     background-color: #252A2E;
-    grid-template-areas: 'foto nombre'
-                        'foto descripcion'
-                        'texto texto'
-                        'imagen imagen'
-                        'fecha fecha'
-                        'ubicacion ubicacion'
-                        'apoyo comentario';
-    margin: 5rem;
-    /* margin-left: 5%;
-    margin-right: 20%; */
+    grid-template-areas: 'foto foto nombre reporte'
+                        'foto foto descripcion descripcion'
+                        'texto texto texto texto'
+                        'imagen imagen imagen imagen'
+                        'fecha fecha botonComentarios botonComentarios'
+                        'ubicacion ubicacion botonComentarios botonComentarios'
+                        'apoyo comentario comentario comentario';
+    
+ 
     display: grid;
     height: 40rem;
     width: 50rem;
     -webkit-border-radius: 10px;
-border-radius: 10px;
-border-bottom: solid 2px #B86EFD;
-border-right:solid 2px  #B86EFD;
+    border-radius: 10px;
+    border-bottom: solid 2px #B86EFD;
+    border-right:solid 2px  #B86EFD;
 }
 
 
@@ -50,8 +49,6 @@ border-right:solid 2px  #B86EFD;
 }
 
 .imagenContenedor{
-    width: 100%;
-    height: auto;
     grid-area: imagen;
     display: flex;
     
@@ -175,7 +172,7 @@ border-right:solid 2px  #B86EFD;
 
     .contenedor{
       
-        margin: 8rem;
+       
     
         display: grid;
         height: 40rem;

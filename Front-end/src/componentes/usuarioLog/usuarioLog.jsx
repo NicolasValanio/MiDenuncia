@@ -51,7 +51,7 @@ function UsuarioLog(params) {
 
     function llamarTarjetas (publicaciones) {
         let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{
-           return  <TarjetasPublicacion  key={publicaciones[index].id}/>
+           return  <TarjetasPublicacion api={publicacion} index={index} key={publicaciones[index].id}/>
         })
         return nuevasPublicaciones
     }

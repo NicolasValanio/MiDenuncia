@@ -3,14 +3,15 @@ import style from './tarjetasPublicacion.module.css'
 import { userget } from './fetch';
 
 
-function TarjetasPublicacion(props) {
-   const [api,setApi] = useState()
+function TarjetasPublicacion({api,index}) {
+  console.log(api);
+//    const [api,setApi] = useState()
    
-   useEffect(()=>{
-      userget().then(res => setApi(res.data))
-   },[])
+//    useEffect(()=>{
+//       userget().then(res => setApi(res.data))
+//    },[])
 
-console.log(api)
+// console.log(api)
 
    // userget().then(res => setApi(res))
 
@@ -68,15 +69,15 @@ console.log(barrio)
         </div>
 
         <div className={style.nombreUsuario}>
-        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].user.nickname} <br/>
-        {api.news[props.iteracion].types_request.name}
+        {api === undefined ? 'espera': <h3>{api.user.nickname} <br/>
+        {api.types_request.name}
         </h3>}
         </div> 
 
 
 
         <div className={style.textoPublicacion}>
-        {api === undefined ? 'espera': <h4>{api.news[props.iteracion].problem}
+        {api === undefined ? 'espera': <h4>{api.problem}
         </h4>}
         </div>
         <div className={style.reporteBoton}>
@@ -89,21 +90,21 @@ console.log(barrio)
         {/* {api === undefined ? 'espera':<img  src={api.news[0].photos[0].url} alt="" width={735} height={240}></img>} */}
         </div>        
         <div className={style.fechaPublicacion}>
-        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].createdAt}
+        {api === undefined ? 'espera': <h3>{api.createdAt}
         </h3>}
         </div>
         
         <div className={style.ubicacionPublicacion}>
-        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].location}, {api.news[props.iteracion].neighborhood}
+        {api === undefined ? 'espera': <h3>{api.location}, {api.neighborhood}
         </h3>}
         </div>
 
         <div className={style.apoyoPublicacion}>
         {api === undefined ? 'espera': <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-</svg> {api.news[props.iteracion].support}   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+</svg> {api.support}   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
   <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-</svg> {api.news[props.iteracion].comment_count} 
+</svg> {api.comment_count} 
         </h5>}
         </div>
 
