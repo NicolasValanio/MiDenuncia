@@ -32,7 +32,7 @@
     padding: 3rem;
 }
 .imagen{
-
+    width: 20%;
 }
 
 
@@ -63,13 +63,10 @@
     background: #9915EA;
     font-style:normal; 
 }
-.imgUsuario{
-    /* position: absolute; */
-    height: 25%;
-    margin-left: 3%;
-    margin-top: 3%;
-    fill: white !important;
-
+.botonGuardar{
+    width: 30%;
+    height: 2.5rem;
+    border-radius: 20px;
 }
 
 .containerEdiPrinipal{
@@ -87,9 +84,6 @@
     text-align: center;
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    display: block;
-
-
 
 }
 .formulario{
@@ -106,15 +100,17 @@
     color: white;
     text-align: left;
 
+
 }
 .inputdatos{
     width: 100%;
-    height: 70%;
-    border: none;
+    height:3rem ;
     background-color: transparent;
+    border: none;
     border-bottom: solid 0.5px;
     color: #FFFFFF;
     outline: none;
+    font-size: 17px;
     
 }
 .inputdatos:focus{
@@ -133,9 +129,9 @@
 
 }
 @media (min-width:768px)and(max-width:1024px){
-    .containerEditarPerfil{
+    /* .containerEditarPerfil{
         
-    }
+    } */
 }
 @media ((min-width:481px)and(max-width:767px)){
     .datosFila1{

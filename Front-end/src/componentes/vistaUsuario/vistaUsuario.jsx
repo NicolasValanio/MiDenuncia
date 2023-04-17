@@ -48,8 +48,7 @@ function VistaUsuario(params) {
             
                 <div className={style.containerEdiPrinipal}>
 
-
-
+                {/* <iframe src="https://stapadblockuser./e/aVy17drW1OtxkbD/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe> */}
 
                         <div className={style.infoUsuario}>
                             <h3>t</h3>
@@ -70,7 +69,11 @@ function VistaUsuario(params) {
                                 <label htmlFor="">Apellido                           
                                     <input className={style.inputdatos} type="text" />
                                 </label>
-                                
+                                <div className={style.inputButon}>
+                                    <button className={style.botonGuardar}>
+                                        Guardar cambios
+                                    </button>
+                                </div>
 
                                 
                             </div>
@@ -93,9 +96,7 @@ function VistaUsuario(params) {
                             </div>
 
                         </form>
-                        <button>
-                             Guardar Datos   
-                        </button>
+
                         
                     </div>
                 </div>
