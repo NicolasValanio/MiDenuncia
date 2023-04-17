@@ -17,9 +17,12 @@ function VistaSuperAdmin() {
            <div className={style.superAdmin}>@SuperAdmin</div>
            <div className={style.contenedorFiltrar}>
                     <div className={style.conteInput}>
-                        <span><BiSearchAlt className={style.iconBuscar}/></span>
-                        <input className={style.input} type="text" placeholder="Filtrar"/>
+                       <BiSearchAlt className={style.iconBuscar}/>
+                       <input className={style.input}  type="text" placeholder="Filtrar"/>
+                      
                     </div>
+
+
                     <div className={style.filtrar}>
                         <select name="" id="" >
                             <option value="">Nombre</option>
@@ -42,11 +45,22 @@ function VistaSuperAdmin() {
                             <li>Estado</li>
                         </ul>   
                     </div>
-                    <div className={style.barra2}>
-                        <div className={style.opciones}>
-                            <div>
+                  
+                            <div className={style.configbarra2}>
                             {data?.map((user) => (
-                                <div  key={user.name}>{user.name}</div>
+                                 
+                                <div  key={user.name} className={style.barra2}> 
+                                <ul className={style.opciones}>
+                                <li > {user.name}</li>
+                                <li>{user.nickname}</li>
+                                <li>{user.address}</li>
+                                <li>{user.email}</li>
+                                <li>rol</li>
+                                <li>estado</li>
+                            </ul>
+                            </div>
+                           
+
                             ))}
                         
                             </div>
@@ -62,9 +76,7 @@ function VistaSuperAdmin() {
                                 <option value="">Activo</option>
                                 <option value="">Inactivo</option>
                             </select> */}
-                        </div>
-
-                    </div>
+                       
                 </div>
         </div>
     )

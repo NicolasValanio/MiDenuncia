@@ -5,6 +5,7 @@
     'filtrar'
     'barras'
     ;
+    margin: 20px;
     
 }
 
@@ -19,26 +20,48 @@
     grid-area: filtrar;
     display: grid;
     grid-template-areas: 
-    'buscar filtro';
+    'contenido filtro';
+    margin-bottom: 10px;
 }
 
+.conteInput{
+
+    height: 50px;
+    width: 250px;
+    grid-area: contenido;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.filtrar{
+
+    grid-area:filtro ;
+}
+
+.span{
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+
+}
 .barras{
     display: grid;
     grid-area: barras;
-    grid-template-areas: 
-    'barra1'
-    'barra2'
-    ;
+   
 
-    margin: 10px;
-    
+    gap: 15px;
+
+    justify-items: center;
 
 }
 .input{
-    height: 50px;
-    width: 250px;
+    height: 100%;
+    width: 100%;
     border-radius: 80px;
-    position: relative;
+    /* position: relative; */
     font-size: 20px;
     text-align: center;
     grid-area: buscar;
@@ -47,8 +70,11 @@
 .iconBuscar{
     width: 20px;
     height: 20px;
-    position: relative;
-    z-index: 2;
+    /* position: relative; */
+    /* z-index: 2; */
+    display: grid;
+    position: absolute;
+    margin: 10px;
 }
 
 .filtrar select{
@@ -63,38 +89,19 @@
 }
 select{
     background: #B86EFD;
+  
     color: white;
 }
 .barra1{
     background:#b86efd79 ;
-    width: 95%;
-    margin: 10px;
+    width: 100%;
+   
     height: 50px;
     position: relative;
     border-radius: 50px;
-    grid-area:barra1;
-}
-.barra2{
-    background:#b86efd79 ;
-    width: 95%;
-    margin: 10px;
-    
-    position: relative;
-    border-radius: 20px;
-    grid-area:barra2;
+
 }
 
-.opciones{
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    text-align: center;
-    color: white;
-    font-size:20px;
-    font-weight: bold;
-
-    margin: 10px;
-}
 
 
 
@@ -111,7 +118,49 @@ select{
 }
 
 
+
+.configbarra2{
+ 
+    width: 100%;
+}
+
+.barra2{
+    background:#b86efd79 ;
+
+  
+ 
+    position: relative;
+    border-radius: 20px;
+   
+  
+}
+
+
+.opciones{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    text-align: center;
+    color: white;
+    font-size:20px;
+    font-weight: bold;
+   
+    margin: 10px;
+}
+
+
+
+.opciones li{
+   margin: 5px;
+   /*FALTA ARREGLAR AQUI LOS ESPACIOS ENTRE LAS PALABRAS*/
+}
+
+
+
 @media (max-width :768px) {
+
+
+
 
     
 }
