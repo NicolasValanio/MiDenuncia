@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER(5)
       },
       url: {
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(300)
       },
       request_id: {
         type: Sequelize.INTEGER(5),

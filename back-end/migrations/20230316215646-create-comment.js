@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       description: {
-        type: Sequelize.STRING(250)
+        type: Sequelize.STRING(350)
       },
       status: {
         type: Sequelize.TINYINT(1)
