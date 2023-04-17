@@ -3,7 +3,7 @@ import style from './tarjetasPublicacion.module.css'
 import { userget } from './fetch';
 
 
-function TarjetasPublicacion() {
+function TarjetasPublicacion(props) {
    const [api,setApi] = useState()
    
    useEffect(()=>{
@@ -68,34 +68,49 @@ console.log(barrio)
         </div>
 
         <div className={style.nombreUsuario}>
-        {api === undefined ? 'espera': <h3>{api.news[0].user.nickname} <br/>
-        {api.news[0].types_request.name}
+        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].user.nickname} <br/>
+        {api.news[props.iteracion].types_request.name}
         </h3>}
         </div> 
 
 
 
         <div className={style.textoPublicacion}>
-        {api === undefined ? 'espera': <h4>{api.news[0].problem}
+        {api === undefined ? 'espera': <h4>{api.news[props.iteracion].problem}
         </h4>}
+        </div>
+        <div className={style.reporteBoton}>
+        <svg className={style.reporteBotonIcono} xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-flag-fill" viewBox="0 0 16 16">
+  <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
+</svg>
         </div>
 
         <div className={style.imagenContenedor}>
-        {api === undefined ? 'espera':<img  src={api.news[0].photos[0].url} alt="" width={735} height={240}></img>}
+        {api === undefined ? 'espera':<img  src={api.news[props.iteracion].photos[props.iteracion].url} alt="" width={735} height={240}></img>}
         </div>        
         <div className={style.fechaPublicacion}>
-        {api === undefined ? 'espera': <h3>
+        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].createdAt}
         </h3>}
         </div>
         
         <div className={style.ubicacionPublicacion}>
-        {api === undefined ? 'espera': <h3>{api.news[0].location}, {api.news[0].neighborhood}
+        {api === undefined ? 'espera': <h3>{api.news[props.iteracion].location}, {api.news[props.iteracion].neighborhood}
         </h3>}
         </div>
 
         <div className={style.apoyoPublicacion}>
-        {api === undefined ? 'espera': <h5>apoyo:   comentario: 
+        {api === undefined ? 'espera': <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+</svg> {api.news[props.iteracion].support}   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg> {api.news[props.iteracion].comment_count} 
         </h5>}
+        </div>
+
+        <div className={style.botonComentarios}>
+        <svg className={style.botonComentariosIcono} xmlns="http://www.w3.org/2000/svg"  fill="white" class="bi bi-chat-right-text-fill" viewBox="0 0 16 16">
+  <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"/>
+</svg>
         </div>
 
    

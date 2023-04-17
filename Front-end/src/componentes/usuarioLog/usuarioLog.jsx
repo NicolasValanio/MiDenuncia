@@ -61,7 +61,9 @@ function UsuarioLog(params) {
                 <FiltrarPor/>
             </div>
             <div className={`contenedor ${style.cont_tarjetas}`}>
-                <TarjetasPublicacion/>
+                <TarjetasPublicacion
+                    iteracion='0'
+                />
                 
 
             </div>
