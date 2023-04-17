@@ -1,6 +1,6 @@
 //IMPORTACIONES
 import { Route,Routes} from 'react-router-dom'
-import {UseProtegerRutas} from './ProtegerRutas'
+import {UseProtegerRutas,EntrarPagina} from './ProtegerRutas'
 
 
 
@@ -24,17 +24,20 @@ function Rutas() {
 
     return (
             <Routes>
-                <Route exact path="/" element={<UsuarioNoLog />} /> 
+
+                <Route element={EntrarPagina()}>
+                    <Route exact path="/" element={<UsuarioNoLog />} /> 
+                </Route>
+                
                 <Route path="/login" element={<Login />} />
                 {/* <Route path="/resetPassword" element={<ResetPassword />} /> */}
                 <Route path="/recuperarContrasena" element={<RecuperarContraseña />} />
                 {/* <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} /> */}
-
                 {/* <Route path="/password" element={<Password />} /> */}
+
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
                     <Route path="/HabeasData" element={<HabeasData />} />
-                   
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
                     <Route path="/UsuarioLog" element={<UsuarioLog />} />
@@ -42,6 +45,7 @@ function Rutas() {
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />
                 </Route>
+                
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
 
                 <Route path="*" element={<h1>PAGINA NO EXISTE</h1>} />

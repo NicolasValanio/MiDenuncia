@@ -13,9 +13,9 @@
                         'fecha fecha'
                         'ubicacion ubicacion'
                         'apoyo comentario';
-    margin: 8rem;
-    margin-left: 5%;
-    margin-right: 20%;
+    margin: 5rem;
+    /* margin-left: 5%;
+    margin-right: 20%; */
     display: grid;
     height: 40rem;
     width: 50rem;
@@ -54,6 +54,8 @@ align-items: center;
 }
 
 .imagenContenedor{
+    width: 100%;
+    height: auto;
     grid-area: imagen;
     display: flex;
     
