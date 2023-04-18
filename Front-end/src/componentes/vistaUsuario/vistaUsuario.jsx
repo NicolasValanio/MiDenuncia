@@ -4,8 +4,16 @@ import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
 // import { useForm} from 'react-hook-form';
 function VistaUsuario(params) {
+
+    // let cerrar = document.querySelectorAll(".close")
+    function handleClick() {
+        console.log('Botón clickeado');
+        style.transform = translateY(-350%);
+
+      }
+
     return(
-        <div className={style.main_container}>
+            <div className={style.main_container} >
                                       
                 <div className={style.containermodal}>
                     <div className={style.modal}>
@@ -13,11 +21,11 @@ function VistaUsuario(params) {
                         <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
 
                         <div className={style.inputverificar}>
-                            <input type="button" value="Cancelar" />
+                            <input type="button" value="Cancelar" onClick={handleClick}/>
                             <input type="button" value="Aceptar" />
                         </div>
                     </div>
-                </div>
+            </div>
                                 
                 
                 <nav className={style.nabvarview}>

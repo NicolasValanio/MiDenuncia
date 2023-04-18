@@ -90,8 +90,15 @@
     background-color: white;
     border-radius: 10px;
     text-align: center;
-
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0%);
+}
+.modal{
+    /* transform: translateY(-350%); */
 }
 
 .containerEdiPrinipal{
