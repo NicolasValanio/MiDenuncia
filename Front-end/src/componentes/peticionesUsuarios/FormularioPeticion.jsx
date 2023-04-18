@@ -13,7 +13,7 @@ import TiposSolicitudes from './TiposSolicitudes';
 import Modales from '../modales/modales';
 
 export default function FormularioPeticion ({user}) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const dataImage = new FileReader()
   dataImage.onload = (e) => e.target.result
@@ -22,7 +22,7 @@ export default function FormularioPeticion ({user}) {
 		defaultValues: {...user}
 	})
 
-  const enviar = (values) => {
+    const enviar = async(values) => {
 		const {type_request_id, type,number_document, place_dispatch, address, staff_neighborhood, contact_phone, subject, problem, solution, neighborhood, location, url} = values
 
     // const image = dataImage.onload(url[0])
@@ -42,7 +42,7 @@ export default function FormularioPeticion ({user}) {
       url: null,
       staff_neighborhood
     }
-    Swal.fire({
+    await Swal.fire  ({
       title: 'Estas seguro de que los datos estan correctos',
       text: "Selecciona confirmar para continuar o cancelar para cambiar los datos",
       icon: 'warning',
@@ -54,16 +54,17 @@ export default function FormularioPeticion ({user}) {
       if (result.isConfirmed) {
         setLoading(true)
         enviarPeticion(request, user.id)
-          .then(userUpdate => {
-            const user = userUpdate[0]
-            console.log({user})
+          .then(async(userUpdate) => {
+            const user = userUpdate
+            console.log({userUpdate})
             setLoading(false)
             if(user.id) {
               const oldUser = JSON.parse(localStorage.getItem('usuarioLogeado'))
               const newJson = {...oldUser, data:{user}}
               console.log({newJson})
               localStorage.setItem('usuarioLogeado', JSON.stringify(newJson))
-              Swal.fire({titleText: 'Informacion enviada correctamente', icon: 'success'})
+             await Swal.fire({titleText: 'Informacion enviada correctamente', icon: 'success'})
+             setOpen(true)
             }})
       }
     })
@@ -149,9 +150,9 @@ export default function FormularioPeticion ({user}) {
                   <label htmlFor="documento">* Número de documento:</label>
                   <input type="number" placeholder="91287459" id='documento' disabled={user.number_document} {...register('number_document', {
                     required: true,
-                    pattern: /^[0-9]{7,11}$/,
+                    pattern: /^[0-9]{7,10}$/,
                     minLength: 7,
-                    maxLength: 11
+                    maxLength: 10
                   })} />
                   {errors.number_document?.type === 'required' && <p className={style.palabraError}>El numero de documento es requerido</p>}
                   {errors.number_document?.type === 'pattern' && <p className={style.palabraError}>Solo puede ingresar numeros</p>}
