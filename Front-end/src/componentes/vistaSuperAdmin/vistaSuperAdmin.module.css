@@ -44,18 +44,12 @@
     display: grid;
     align-items: center;
     justify-content: center;
-
-
 }
 .barras{
     display: grid;
     grid-area: barras;
-   
-
     gap: 15px;
-
     justify-items: center;
-
 }
 .input{
     height: 100%;
@@ -125,37 +119,64 @@ select{
 }
 
 .barra2{
-    background:#b86efd79 ;
-
-  
- 
+    background:#b86efd79 ; 
     position: relative;
     border-radius: 20px;
-   
-  
+    height: 15%;
+    margin: 10px;
 }
 
 
 .opciones{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 13% 18% 20% 18% 15% 10%;
     list-style: none;
     text-align: center;
     color: white;
     font-size:20px;
     font-weight: bold;
-   
-    margin: 10px;
+    margin: 10px 50px;
 }
-
-
-
+ 
 .opciones li{
-   margin: 5px;
-   /*FALTA ARREGLAR AQUI LOS ESPACIOS ENTRE LAS PALABRAS*/
+ background: rgba(255, 255, 255, 0.264);
+ border-radius: 50px;
+ width: 100px;
+ margin: 0px 90px;
 }
 
 
+.datos{
+    display: grid;
+    grid-template-columns: 10% 22% 10% 30% 15% 10% ;
+    justify-content:center;
+    list-style: none;
+    text-align: center;
+    color: white;
+    font-size:25px;
+    font-weight: bold;
+    margin:10px ;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+select{
+    font-size: 20px;
+    width: 90px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+button{
+    margin: 10px;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    background:#b86efd79 ;
+    color: white;
+}
 
 @media (max-width :768px) {
 
