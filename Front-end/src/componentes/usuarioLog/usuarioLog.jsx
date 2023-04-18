@@ -41,8 +41,7 @@ function UsuarioLog(params) {
     function nuevoLlamado(page) {
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
-        .then(res => {
-            console.log(res.news);
+        .then(res => {  
             let nuevaPublicaiones = publicaciones.concat(res.news)
             setPublicaciones(nuevaPublicaiones)
             setPaginaPublicaciones( paginaPublicaciones + 1)

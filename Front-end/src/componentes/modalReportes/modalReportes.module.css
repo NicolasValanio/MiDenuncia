@@ -28,8 +28,8 @@
 .modalOpen{
     position: relative;
     top: 2rem;
-    left: 6rem;
-    width: 25rem;
+    left: 3rem;
+    width: 22rem;
     height: 120vh;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
@@ -47,8 +47,9 @@
     margin: 10px;
     text-align: start;
 }
-.contResulto{
+.labelResulto{
     flex-direction: row;
+    color: green;
 }
 .inputResulto{
     background-color:  red;

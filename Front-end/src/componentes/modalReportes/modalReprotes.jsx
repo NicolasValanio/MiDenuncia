@@ -25,13 +25,13 @@ function ModalReportes({estadoModal , setEstadoModal}) {
                         <p className={style.parrafoReporte}>¿ Por que deseas reportar esta publicacion?</p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div >
-                            <label className={`contenedor ${style.contResulto}`}>
+                        <div className={`contenedor ${style.cont_checkbox}`}>
+                            <label className={`contenedor ${style.labelResulto}`}>
                                 <input type="checkbox" className={style.inputResulto} /> Ya se soluciono el problema
                             </label>
                         </div>
 
-                        <div>
+                        <div className={`contenedor ${style.cont_checkbox}`}>
                             <label>
                                 <input type="checkbox" /> Contenido Explícito
                             </label>
