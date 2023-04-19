@@ -1,0 +1,62 @@
+.fondo{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    display: none;
+}
+.open{
+    display: block;
+}
+.cerrar{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.boton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.iconCerrar{
+    font-size: 2.5rem;
+    color: var(--primer-color);
+    background: transparent;
+}
+.modalOpen{
+    position: relative;
+    top: 2rem;
+    left: 6rem;
+    width: 25rem;
+    height: 120vh;
+    border-right: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
+    border-radius: 20px; 
+    background: var(--tercer-color);
+    z-index: 1000;
+}
+.tituloReporte{
+    font-size: 2.5em;
+    color: var(--primer-color);
+}
+.parrafoReporte{
+    font-size: 1.3em;
+    color: white;
+    margin: 10px;
+    text-align: start;
+}
+.contResulto{
+    flex-direction: row;
+}
+.inputResulto{
+    background-color:  red;
+}
+
+@media (min-width: 700px){
+    .modalOpen{
+        left: 4rem;
+        width: 42rem;
+    }
+}
