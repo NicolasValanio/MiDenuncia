@@ -78,6 +78,9 @@ body{
         width: 20%;
         height: 15vh;
     }
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
+    }
 }
 /* Mq laptop */
 @media(min-width:1025px)and (max-width:1280px) {
@@ -85,14 +88,16 @@ body{
         width: 20%;
         height: 10vh;
     }
-    
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
+    }
 }
 
 /* Mq tablet grande */
 @media(min-width:800px)and (max-width:1024px) {
     .imagen{
-        width: 20%;
-        height: 5vh;
+        width: 25%;
+        height: 7vh;
     }
     .contenedorBtns{
         margin: 0;
@@ -107,14 +112,16 @@ body{
         width: 2rem;
         height: 2rem;
     }
-    
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
+    }
 }
 /* responsive-celular */     
-@media (max-width: 280px) {
+@media (min-width: 280px) and (max-width:801px) {
     .imagen{
         margin-left: .5rem;
         margin-top: 1rem;
-        width: 35%;
+        width: 30%;
         height: 8vh;
         background-size: cover;
     }
@@ -124,6 +131,16 @@ body{
         width: 2rem;
         height: 2rem;
         padding: 5px;
+    }
+    .registro,.log{
+        display: flex;
+        margin-left: 10px;
+    }
+    .icon{
+        margin: auto;
+    }
+    .LetraLogin,.LetraRegistro{
+        display: none;
     }
 }
 

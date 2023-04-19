@@ -4,6 +4,7 @@ import { IoPersonCircleOutline, IoDocumentTextOutline, IoCloseSharp } from 'reac
 import { IoIosPaperPlane } from 'react-icons/io'
 
 function PeticionesUsuarios () {
+    
   return (
         <section className={style.contenedorPrincipal}>
             {/* contenedor nav */}

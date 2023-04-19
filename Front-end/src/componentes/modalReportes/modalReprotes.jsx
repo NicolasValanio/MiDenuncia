@@ -27,32 +27,37 @@ function ModalReportes({estadoModal , setEstadoModal}) {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={`contenedor ${style.cont_checkbox}`}>
                             <label className={`contenedor ${style.labelResulto}`}>
-                                <input type="checkbox" className={style.inputResulto} /> Ya se soluciono el problema
+                                <input type="checkbox" className={`${style.checkbox} ${style.checkResulto}`} /> Ya se soluciono el problema
                             </label>
                         </div>
 
                         <div className={`contenedor ${style.cont_checkbox}`}>
-                            <label>
-                                <input type="checkbox" /> Contenido Explícito
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" /> Contenido Explícito
                             </label>
-                            <label>
-                                <input type="checkbox" /> Expresión de Odio
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" /> Expresión de Odio
                             </label>
-                            <label>
-                                <input type="checkbox" /> Denuncia Falsa
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" /> Denuncia Falsa
                             </label>
-                            <label>
-                                <input type="checkbox" /> Abuso Verbal
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" /> Abuso Verbal
                             </label>
-                            <label>
-                                <input type="checkbox" /> Vulnera algun Derecho
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" /> Vulnera algun Derecho
                             </label>
-                            <label>
-                                <input type="checkbox" />  Racismo
+                            <label className={style.labelCheck}>
+                                <input className={`${style.checkbox}`} type="checkbox" />  Racismo
+                            </label>
+                            <label className={style.labelTextArea}>
+                                <textarea className={style.textArea} name="" id="" cols="33" rows="5"></textarea>
                             </label>
                         </div>
 
-                        
+                        <div>
+                            <button className={`btn`}>REPORTAR</button>
+                        </div>
                         
                     </form>
                 </div>
