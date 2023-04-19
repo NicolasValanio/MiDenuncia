@@ -1,4 +1,5 @@
 import axios from 'axios'
+import clientHTTP from '../config/configAxios'
 
 export async function EnvioLoginBd(envio) {
        let respuesta = await axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio        )
@@ -15,10 +16,30 @@ export function EnvioResgistrarBd(envio) {
 
 }
 
+export async function enviarPeticion(cuerpo, id) {
+    return await axios.put(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo)
+        .then(res => res.data.message) 
+        .catch(err => console.log(err)) 
+}
 
-export async function  EnvioEmailResetpassword (envio){
+// export async function enviarPeticion(cuerpo, id) {
+//     return await fetch(`https://midenuncia-database-production.up.railway.app/request/${id}`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(cuerpo)
+//     }).catch(err => console.log(err))
+// }
+
+export async function traeTodoTipoSolicitudes() {
+    return await axios.get(`https://midenuncia-database-production.up.railway.app/typerequest`)
+        .catch(err => console.log(err))
+}
+
+/* export async function  EnvioEmailResetpassword (envio){
 
    return await axios.post("http://localhost:4000/forgot-password",envio)
     
 
-}
+} */
