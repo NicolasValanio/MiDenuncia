@@ -4,7 +4,7 @@ import { userget } from './fetch';
 
 
 function TarjetasPublicacion({api,index}) {
-  console.log(api);
+  // console.log(api);
 //    const [api,setApi] = useState()
    
 //    useEffect(()=>{
