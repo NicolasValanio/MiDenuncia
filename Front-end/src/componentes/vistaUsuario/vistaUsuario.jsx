@@ -5,28 +5,41 @@ import style from './vistaUsuario.module.css';
 // import { useForm} from 'react-hook-form';
 function VistaUsuario(params) {
 
-    // let cerrar = document.querySelectorAll(".close")
     function handleClick() {
-        console.log('Botón clickeado');
-        style.transform = translateY(-350%);
+        console.log('click 1');
+        
+        <div className={style.containermodal}>
+            <div className={style.modal}>
+                <h3>Está seguro que desea eliminar su cuenta</h3>
+                <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
+
+                <div className={style.inputverificar}>
+                    <input type="button" value="Cancelar" />
+                    <input type="button" value="Aceptar" />
+                </div>
+            </div>
+        </div>
 
       }
 
-    return(
-            <div className={style.main_container} >
-                                      
-                <div className={style.containermodal}>
-                    <div className={style.modal}>
-                        <h3>Está seguro que desea eliminar su cuenta</h3>
-                        <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
+      function datosUsuario() {
+  
+        const [Conex, setConex] = useState();
+    
+        useEffect(()=>{
+            fetch('https://midenuncia-database-production.up.railway.app/info')
+            .then((response) => response.json())
+            .then((infor) => setConex(infor));
+    
+            
+        },[])
+      }
 
-                        <div className={style.inputverificar}>
-                            <input type="button" value="Cancelar" onClick={handleClick}/>
-                            <input type="button" value="Aceptar" />
-                        </div>
-                    </div>
-            </div>
-                                
+    return(
+        <div className={style.main_container} >
+                {/* <handleClick/>            */}
+                                      
+
                 
                 <nav className={style.nabvarview}>
                     <div className={style.contaImage}> 
@@ -62,7 +75,22 @@ function VistaUsuario(params) {
                         <h1>Editar perfil</h1>
                         <form  className={style.formulario}>
                             <div className={style.datosFila1}>
+                            {
+
+                                Conex === undefined ? 'espera':Conex?.map((datosUser)=>{
+                    // let info = Conex.result[2]
+                                <div>
+                                    <p>{datosUser.name }{datosUser.last_name}</p>
+                                    <p>{datosUser.nickname} </p>
+                                    <p>{datosUser.email}</p>
+                                    <p>{datosUser.address}</p>
                                 
+                                </div>
+                            
+                        
+                                })
+                            }    
+
 
                                 <label htmlFor="">Nombre
                                     <input className={style.inputdatos} type="text" />
@@ -76,7 +104,7 @@ function VistaUsuario(params) {
                                     <button className={style.botonGuardar}>
                                         Guardar cambios
                                     </button>
-                                    <button className={style.elimCuenta}>
+                                    <button className={style.elimCuenta} onClick={handleClick}>
                                         Elininar cuenta
                                     </button> 
                                 </div>

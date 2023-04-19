@@ -5,7 +5,7 @@
     background-color:#1E2326;
 }
 .nabvarview{
-    border: solid;
+    box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
 
@@ -63,8 +63,7 @@
     height: 2.5rem;
     width: 40%;
     border-radius: 20px;
-    background: ;
-    font-style:normal; 
+    background-image: linear-gradient(135deg, #a35a7b 0, #9c537c 12.5%, #944b7c 25%, #8a437d 37.5%, #7e3c7e 50%, #70367f 62.5%, #613181 75%, #4f2e83 87.5%, #392d85 100%);    font-style:normal; 
 }
 .botonGuardar{
     width: 40%;
