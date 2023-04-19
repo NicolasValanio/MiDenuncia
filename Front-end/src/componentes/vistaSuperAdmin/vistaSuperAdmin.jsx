@@ -11,10 +11,7 @@ function VistaSuperAdmin() {
         .then((data) => setData(data));
     }, []);
 
-    let buscar = document.getElementById("buscar").value;
-    
-    console.log(buscar);
-
+   
     return(
         <div className={style.contenedor1}>
            <div className={style.superAdmin}>@SuperAdmin</div>
