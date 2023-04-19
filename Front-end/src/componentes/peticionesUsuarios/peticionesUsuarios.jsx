@@ -10,7 +10,7 @@ function PeticionesUsuarios () {
 
 	useEffect(() => {
 		const data = localStorage.getItem('usuarioLogeado')
-		const userLocal = JSON.parse(data).data
+		const userLocal = JSON.parse(data).data.user
         setUser(userLocal)
         setLoading(false)
 	}, [])

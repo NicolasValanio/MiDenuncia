@@ -18,8 +18,8 @@ export function EnvioResgistrarBd(envio) {
 
 export async function enviarPeticion(cuerpo, id) {
     return await axios.put(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo)
-        .then(res => res.data.message)  
-        .catch(err => console.log(err))
+        .then(res => res.data.message) 
+        .catch(err => console.log(err)) 
 }
 
 // export async function enviarPeticion(cuerpo, id) {

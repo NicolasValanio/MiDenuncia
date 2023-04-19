@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Loading from '../loading/Loading';
 import TiposSolicitudes from './TiposSolicitudes';
 import Modales from '../modales/modales';
+import { toFormData } from 'axios'
 
 export default function FormularioPeticion ({user}) {
   const [open, setOpen] = useState(false)
@@ -92,6 +93,19 @@ export default function FormularioPeticion ({user}) {
    const colors = {
     amarillo :'#ffff00',
     blanco:'#fff'
+   }
+
+   /* envio de imagenes */
+   const[archivos,setArchivos] = useState(null)
+   const subirArchivos = (event) =>{
+    setArchivos(event)
+   }
+   const insertarArchivos = async()=>{
+      const envioform = new FormData()
+      /* creacion de cliclo para agregar los archivos en el formData */
+    /*   for(let i=0;i<archivos.length;i++){
+        envioform.append("files",archivos[i])
+      } */
    }
 
   /* contenedor form */
