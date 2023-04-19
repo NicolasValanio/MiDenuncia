@@ -23,7 +23,13 @@
     padding: 1rem;
     
 }
+.botonesmodal{
+    width: 35%;
+    height: 90%;
+    color: blue;
 
+    
+}
 .infoUsuario{
     display: grid;
     grid-template-columns: 10% 10% ;
@@ -98,6 +104,11 @@
 }
 .modal{
     /* transform: translateY(-350%); */
+}
+.inputverificar{
+    display: ;
+    gap: 10px;
+    height: ;
 }
 
 .containerEdiPrinipal{

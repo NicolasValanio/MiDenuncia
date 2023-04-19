@@ -1,44 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import {FiHome } from "react-icons/fi";
 import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
-// import { useForm} from 'react-hook-form';
+import { useForm} from 'react-hook-form';
+import Modales from '../modales/useModal'
+
+
 function VistaUsuario(params) {
+    const [mostraDatos, setMostrarDatos]= useState(false);
 
-    function handleClick() {
-        console.log('click 1');
-        
-        <div className={style.containermodal}>
-            <div className={style.modal}>
-                <h3>Está seguro que desea eliminar su cuenta</h3>
-                <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
+    function handleClick(e) {
+        e.preventDefault()
+        setMostrarDatos(true)
+    }
 
-                <div className={style.inputverificar}>
-                    <input type="button" value="Cancelar" />
-                    <input type="button" value="Aceptar" />
-                </div>
-            </div>
-        </div>
-
-      }
-
-      function DatosUsuario() {
+    //   function DatosUsuario() {
   
-        const [Conex, setConex] = useState();
+    //     const [Conex, setConex] = useState();
     
-        useEffect(()=>{
-            fetch('https://midenuncia-database-production.up.railway.app/info')
-            .then((response) => response.json())
-            .then((infor) => setConex(infor));
+    //     useEffect(()=>{
+    //         fetch('https://midenuncia-database-production.up.railway.app/info')
+    //         .then((response) => response.json())
+    //         .then((infor) => setConex(infor));
     
             
-        },[])
-      }
+    //     },[])
+
+    //   }
+     
 
     return(
         <div className={style.main_container} >
-                {/* <handleClick/>            */}
-                                      
+            
+                <Modales className={style.containermodal}>
+                    <div className={style.modal}>
+                        <h3>Está seguro que desea eliminar su cuenta</h3>
+                        <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
+        
+                        <div className={style.inputverificar}>
+                            <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`}/>
+                            <input type="button" value="Aceptar" className={`btn ${style.botonesmodal}`} />
+                        </div>
+                    </div>
+                </Modales>
+                
+
 
                 
                 <nav className={style.nabvarview}>
@@ -75,7 +81,8 @@ function VistaUsuario(params) {
                         <h1>Editar perfil</h1>
                         <form  className={style.formulario}>
                             <div className={style.datosFila1}>
-                            {
+                      
+                            {/* {
 
                                 Conex === undefined ? 'espera':Conex?.map((datosUser)=>{
                     // let info = Conex.result[2]
@@ -89,7 +96,8 @@ function VistaUsuario(params) {
                             
                         
                                 })
-                            }    
+                            }     */}
+
 
 
                                 <label htmlFor="">Nombre
