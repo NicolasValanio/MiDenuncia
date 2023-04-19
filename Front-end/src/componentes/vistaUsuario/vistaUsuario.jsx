@@ -22,7 +22,7 @@ function VistaUsuario(params) {
 
       }
 
-      function datosUsuario() {
+      function DatosUsuario() {
   
         const [Conex, setConex] = useState();
     
