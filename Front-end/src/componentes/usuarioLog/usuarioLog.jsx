@@ -4,6 +4,7 @@ import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ModalReportes from '../modalReportes/modalReprotes'
+import ModalPeticiones from '../modalPeticiones/modalPeticiones'
 
 
 import { Link, redirect} from 'react-router-dom'
@@ -21,18 +22,18 @@ import {GiStreetLight} from "react-icons/gi";
 
 function UsuarioLog(params) {
     // ESTADO DEL MODAL
-    const [estadoModal , setEstadoModal] = useState(false)
+    const [estadoModal , setEstadoModal] = useState(true)
     // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
     // EL NUMERO DE LA PUBLICACION QUE SE MUESTRA
     const [numeroPublicacion, setNumeroPublicacino] = useState(0)
     // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
-    const [paginaPublicaciones , setPaginaPublicaciones] = useState(0)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
     useEffect(()=>{
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=1`)
         .then(res => res.json())
         .then(res => setPublicaciones(res.news) )
     },[])
@@ -49,7 +50,7 @@ function UsuarioLog(params) {
     }
 
     function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{
+        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{   
            return  <TarjetasPublicacion api={publicacion} index={index} key={publicaciones[index].id}/>
         })
         return nuevasPublicaciones
@@ -84,6 +85,33 @@ function UsuarioLog(params) {
   
     function toggleNotifications() {
       setShowNotifications(!showNotifications);
+    }
+
+    function mostrarScroll() {
+        return(
+            
+            <InfiniteScroll 
+            dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
+            next={()=> {nuevoLlamado(paginaPublicaciones)}} 
+            hasMore={true} >
+    
+            { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
+    
+            </ InfiniteScroll>  
+
+        )
+
+    }
+
+    function mostrarModal() {
+        
+        return(
+            <ModalPeticiones 
+            estadoModal={estadoModal}
+            setEstadoModal={setEstadoModal} 
+            />   
+        )
+
     }
 
   
@@ -134,22 +162,11 @@ function UsuarioLog(params) {
 
             <div className={`contenedor ${style.cont_tarjetas}`}>
 
-                <InfiniteScroll 
-                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
-                next={()=> {nuevoLlamado(paginaPublicaciones)}} 
-                hasMore={true} >
+                {
+                    !estadoModal ? mostrarScroll() : mostrarModal()
+                }
 
-                { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
-
-                </ InfiniteScroll>            
             </div>
-
-            {/* MODAL */}
-
-            <ModalReportes 
-                estadoModal={estadoModal}
-                setEstadoModal={setEstadoModal} 
-            />                
 
         </div>
 
