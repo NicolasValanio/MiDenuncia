@@ -3,7 +3,7 @@ import {FiHome } from "react-icons/fi";
 import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
 import { useForm} from 'react-hook-form';
-import Modales from '../modales/useModal'
+import Modales from '../modales/modales'
 
 
 function VistaUsuario(params) {
@@ -32,7 +32,7 @@ function VistaUsuario(params) {
     return(
         <div className={style.main_container} >
             
-                <Modales className={style.containermodal}>
+                <Modales isOpen={mostraDatos} setIsOpen={setMostrarDatos} title="Seguro que desea eliminar la cuenta">
                     <div className={style.modal}>
                         <h3>Está seguro que desea eliminar su cuenta</h3>
                         <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
