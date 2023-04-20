@@ -16,6 +16,7 @@ import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
 import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
 import Mapa from './mapa/mapa'
+import TarjetaPublicacion from './tarjetasPublicacion/diseñodetarjeta/tarjetaPublicacion'
 
 
 
@@ -44,6 +45,7 @@ function Rutas() {
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />
+                    <Route path="/TarjetaPublicacion" element={<TarjetaPublicacion />} />
                 </Route>
                 
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
