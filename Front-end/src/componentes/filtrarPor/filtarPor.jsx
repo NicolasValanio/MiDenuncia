@@ -7,10 +7,10 @@ import { BsFillTreeFill } from "react-icons/bs";
 import { GiDoubleStreetLights  } from "react-icons/gi";
 import { TbRecycleOff } from "react-icons/tb";
 
-function FiltarPor (){
+function FiltarPor ({mostrar}){
     return(
         <div >
-            <div className={Style.filtrar}>
+            <div className={Style.filtrar} style={mostrar ? {display:"none"}:{display:"block"}}>
                 <h1 >Filtrar Por: </h1>
               <ul>
                 <li className={Style.Cseguridad}><AiFillAlert className={`icon ${Style.seguridad}`}/>Seguridad</li>
