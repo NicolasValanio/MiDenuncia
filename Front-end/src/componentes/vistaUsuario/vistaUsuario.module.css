@@ -24,10 +24,10 @@
     
 }
 .botonesmodal{
-    width: 35%;
-    height: 90%;
-    color: blue;
-
+    width: 25%;
+    height: 35%;
+    color: white;
+    font-size: 80%;
     
 }
 .infoUsuario{
@@ -90,25 +90,18 @@
     /* color: white; */
 }
 .modal{
-    width: 40%;
-    height: 20%;
-    background-color: white;
-    border-radius: 10px;
+    width: 100%;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
-    transition: transform 1s;
-    transform: translateY(0%);
+    align-items: center;
 }
-.modal{
-    /* transform: translateY(-350%); */
-}
+
 .inputverificar{
-    display: ;
-    gap: 10px;
-    height: ;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    gap: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .containerEdiPrinipal{

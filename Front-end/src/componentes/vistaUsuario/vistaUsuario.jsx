@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {FiHome } from "react-icons/fi";
 import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
@@ -8,7 +8,22 @@ import axios from 'axios';
 
 function VistaUsuario(params) {
     const [mostraDatos, setMostrarDatos]= useState(false);
-    const [user, setUser] = useState(null);
+
+
+    const [user, setUser] = useState([]);
+    const [datosuser, setDatosuser] = useState([]);
+     useEffect(()=>{
+        fetch('https://midenuncia-database-production.up.railway.app/info')
+        .then(Response=>Response.json())
+        .then(data=>setUser(data))
+        .catch(error => console.log(error));
+        
+    },[])
+    useEffect(() => {
+        setDatosuser(user.filter(users => users.name.toLowerCase().includes('id')));
+    }, [user]);
+    
+    console.log(setUser);
 
     function handleClick(e) {
         e.preventDefault()
@@ -19,43 +34,32 @@ function VistaUsuario(params) {
     function closeModal() {
         setMostrarDatos(false);
     }
-
-    useEffect(() => {
-        axios.get('https://midenuncia-database-production.up.railway.app/info')
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }, []);
-      
-  if (!user) {
-    return <div>Cargando...</div>;
-  }
-  console.log(user)
-
-    //   function DatosUsuario() {
   
-    //     const [Conex, setConex] = useState();
-    
+
+    // function datosUsuarios() {
+
+    //     const info = [Conex, setConex] = useState();
+
     //     useEffect(()=>{
     //         fetch('https://midenuncia-database-production.up.railway.app/info')
     //         .then((response) => response.json())
     //         .then((infor) => setConex(infor));
     
-            
     //     },[])
+        
+    //     return info
 
-    //   }
+    // }
+    // datosUsuarios
+      
      
 
     return(
+        
         <div className={style.main_container} >
             
                 <Modales isOpen={mostraDatos} setIsOpen={setMostrarDatos} title="Seguro que desea eliminar la cuenta">
                     <div className={style.modal}>
-                        <h3>Está seguro que desea eliminar su cuenta</h3>
                         <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
         
                         <div className={style.inputverificar}>
@@ -65,7 +69,9 @@ function VistaUsuario(params) {
                     </div>
                 </Modales>
                 
-
+                {datosuser.map(user => (
+                    <li key={users.id}>{users.name}</li>
+                ))}
 
                 
                 <nav className={style.nabvarview}>
@@ -103,21 +109,7 @@ function VistaUsuario(params) {
                         <form  className={style.formulario}>
                             <div className={style.datosFila1}>
                       
-                            {/* {
-
-                                Conex === undefined ? 'espera':Conex?.map((datosUser)=>{
-                    // let info = Conex.result[2]
-                                <div>
-                                    <p>{datosUser.name }{datosUser.last_name}</p>
-                                    <p>{datosUser.nickname} </p>
-                                    <p>{datosUser.email}</p>
-                                    <p>{datosUser.address}</p>
-                                
-                                </div>
-                            
-                        
-                                })
-                            }     */}
+                           
 
 
 
