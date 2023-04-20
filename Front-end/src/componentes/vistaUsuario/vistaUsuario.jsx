@@ -4,15 +4,36 @@ import{FaUserCircle} from "react-icons/fa"
 import style from './vistaUsuario.module.css';
 import { useForm} from 'react-hook-form';
 import Modales from '../modales/modales'
-
+import axios from 'axios';
 
 function VistaUsuario(params) {
     const [mostraDatos, setMostrarDatos]= useState(false);
+    const [user, setUser] = useState(null);
 
     function handleClick(e) {
         e.preventDefault()
         setMostrarDatos(true)
     }
+    
+      
+    function closeModal() {
+        setMostrarDatos(false);
+    }
+
+    useEffect(() => {
+        axios.get('https://midenuncia-database-production.up.railway.app/info')
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, []);
+      
+  if (!user) {
+    return <div>Cargando...</div>;
+  }
+  console.log(user)
 
     //   function DatosUsuario() {
   
@@ -38,8 +59,8 @@ function VistaUsuario(params) {
                         <img className={style.gifimagen} src="./src/componentes/vistaUsuario/images/mundo.gif" alt=""/>
         
                         <div className={style.inputverificar}>
-                            <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`}/>
-                            <input type="button" value="Aceptar" className={`btn ${style.botonesmodal}`} />
+                            <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`} onClick={closeModal}/>
+                            <input type="button" value="Aceptar" className={`btn ${style.botonesmodal}`}  />
                         </div>
                     </div>
                 </Modales>
