@@ -6,28 +6,23 @@
 .contenedor{
     display: grid;
     background-color: #252A2E;
-    grid-template-areas: 'foto nombre'
-                        'foto descripcion'
-                        'texto texto'
-                        'imagen imagen'
-                        'fecha fecha'
-                        'ubicacion ubicacion'
-                        'apoyo comentario';
-    margin: 5rem;
-    /* margin-left: 5%;
-    margin-right: 20%; */
+    grid-template-areas: 'foto foto nombre reporte'
+                        'foto foto descripcion descripcion'
+                        'texto texto texto texto'
+                        'imagen imagen imagen imagen'
+                        'fecha fecha botonComentarios botonComentarios'
+                        'ubicacion ubicacion botonComentarios botonComentarios'
+                        'apoyo comentario comentario comentario';
+    
+ 
     display: grid;
     height: fit-content;
     min-height: 35rem;
     width: 70%;
     -webkit-border-radius: 10px;
-border-radius: 10px;
-border-bottom: solid 2px #B86EFD;
-border-right:solid 2px  #B86EFD;
-padding: 25px;
-align-items: center;
-    justify-content: center;
-    gap: 10px;
+    border-radius: 10px;
+    border-bottom: solid 2px #B86EFD;
+    border-right:solid 2px  #B86EFD;
 }
 
 
@@ -55,8 +50,6 @@ align-items: center;
 }
 
 .imagenContenedor{
-    width: 100%;
-    height: auto;
     grid-area: imagen;
     display: flex;
     
@@ -106,6 +99,35 @@ align-items: center;
    
     color: white;
 }
+.botonComentarios{
+    grid-area:  botonComentarios;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-left: 65%;
+    margin-top: 45%;
+    border-radius: 50%;
+    background-color: #B86EFD;
+}
+
+.botonComentariosIcono{
+    margin: auto;
+    margin: 25%;
+    width: 1.5rem;
+}
+.reporteBoton{
+    grid-area: reporte;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-top: 10%;
+    margin-left: 25%;
+    border-radius: 50%;
+    background-color: #B86EFD;
+}
+.reporteBotonIcono{
+    width: 1.5rem;
+    margin: 25%;
+}
+
 
 
 /*.contenedor{

@@ -14,7 +14,7 @@ import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
-import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
+import RecuperarContrasena from './recuperarContrasena/recuperarContrasena'
 import Mapa from './mapa/mapa'
 
 
@@ -31,7 +31,7 @@ function Rutas() {
                 
                 <Route path="/login" element={<Login />} />
                 {/* <Route path="/resetPassword" element={<ResetPassword />} /> */}
-                <Route path="/recuperarContrasena" element={<RecuperarContraseña />} />
+                <Route path="/recuperarContrasena" element={<RecuperarContrasena />} />
                 {/* <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} /> */}
                 {/* <Route path="/password" element={<Password />} /> */}
 
