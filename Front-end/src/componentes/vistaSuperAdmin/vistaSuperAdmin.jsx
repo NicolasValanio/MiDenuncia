@@ -39,12 +39,21 @@ function VistaSuperAdmin() {
    
     return(
         <div className={style.contenedor1}>
+
+
+
+
+
            <div className={style.superAdmin}>@SuperAdmin</div>
            <div className={style.contenedorFiltrar}>
                     <div className={style.conteInput}>
                        <BiSearchAlt className={style.iconBuscar}/>
                        <input className={style.input}  type="text" placeholder="nickname, usuario, barrio" value={filtro} onChange={handleChange}/>
-                        <button>Buscar</button>
+                     
+                    </div>
+
+                    <div className={style.conteBuscar}>
+                    <button className={style.filtrar}>Buscar</button>
                     </div>
             </div >
                 
@@ -53,10 +62,10 @@ function VistaSuperAdmin() {
                         <ul className={style.opciones}>
                             <li>Nombre</li>
                             <li>Usuario</li>
-                            <li>DIreccion</li>
+                            <li>Direccion</li>
                             <li>Correo</li>
-                            <li>Rol</li>
                             <li>Estado</li>
+                            <li>Rol</li>
                         </ul>   
                     </div>
                   
@@ -70,12 +79,12 @@ function VistaSuperAdmin() {
                                         <li>{user.address? user.address : "dato vacio "}</li>
                                         <li>{user.email}</li>
                                         
-                                        <select name="" id="">
+                                        <select className={style.estado} name="" id="">
                                             <option value="">activo</option>
                                             <option value="">inactivo</option>
                                         </select>
                                        
-                                        <button onClick={handleClick}>{estado ? <span>visitante</span>: <span>admin</span>}</button>
+                                        <button  className={style.rol} onClick={handleClick}>{estado ? <span>visitante</span>: <span>admin</span>}</button>
                                     </ul>
                             </div>
                            
