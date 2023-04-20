@@ -1,5 +1,10 @@
 import style from '../modalPeticiones/modalPeticiones.module.css'
-import {} from 'react-icons/'
+import { AiFillAlert } from "react-icons/ai";
+import { TbRoad } from "react-icons/tb";
+import { BsFillSignStopFill } from "react-icons/bs";
+import { BsFillTreeFill } from "react-icons/bs";
+import { GiDoubleStreetLights  } from "react-icons/gi";
+import { TbRecycleOff } from "react-icons/tb";
 
 function ModalPeticiones({estadoModal,setEstadoModal}) {
 
@@ -13,7 +18,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                 <div className={`contenedor ${style.bodyModal}`}>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Seguridad
+                            <AiFillAlert /> Seguridad
                         </div>
                         <div>
                             Cuando tu petición se trata de asuntos que alteran la tranquilidad y seguridad en tu comunidad.
@@ -21,7 +26,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Malla vial
+                           <TbRoad/> Malla vial
                         </div>
                         <div>
                             Cuando deseas informar sobre el mal estado de alguna vía que requiere ser arreglada para evitar accidentes y/o daños a los vehículos.
@@ -29,7 +34,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Señalización vial
+                            <BsFillSignStopFill /> Señalización vial
                         </div>
                         <div>
                             Cuando hay problemas que afectan la movilidad vial en tu comunidad. Podría ser por una señal de transito  defectuosa o porque no hay una señal que pueda mitigar el problema.
@@ -37,7 +42,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Espacio Público
+                            <BsFillTreeFill /> Espacio Público
                         </div>
                         <div>
                             Cuando percibas un problema que afecte el uso de lugares públicos como parques, andenes, etc. Podrías solicitar que se arregle algo que se encuentre en mal estado y podría afectar la integridad de las personas que lo usan.
@@ -45,7 +50,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Alumbrado Público
+                            <GiDoubleStreetLights /> Alumbrado Público
                         </div>
                         <div>
                             Cuando observas que el alumbrado publico en tu comunidad se encuentra en mal estado o si consideras que se debería instalar alumbrado público en algún sector donde no haya para intentar solucionar problemas de inseguridad, movilidad, etc.
@@ -53,7 +58,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                     <div className={`contenedor ${style.explicacion}`}>
                         <div>
-                            Contaminación Ambiental
+                            <TbRecycleOff /> Contaminación Ambiental
                         </div>
                         <div>
                             Cuando observas algún problema de tipo ambiental que afecta algún espacio publico de tu comunidad. Podría presentarse por afectaciones a la salud de las personas, solucionar el aspecto de los lugares públicos cuando hay acumulación de basuras, etc.
@@ -61,7 +66,7 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                     </div>
                 </div>
                 <div className={style.footerModal}>
-
+                    <button onClick={()=> setEstadoModal(!estadoModal)}>CONTINUAR</button>
                 </div>
             </div>
         </div>

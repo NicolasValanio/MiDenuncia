@@ -22,7 +22,7 @@ import {GiStreetLight} from "react-icons/gi";
 
 function UsuarioLog(params) {
     // ESTADO DEL MODAL
-    const [estadoModal , setEstadoModal] = useState(true)
+    const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
     // EL NUMERO DE LA PUBLICACION QUE SE MUESTRA
@@ -106,7 +106,7 @@ function UsuarioLog(params) {
     function mostrarModal() {
         
         return(
-            <ModalPeticiones 
+            <ModalReportes 
             estadoModal={estadoModal}
             setEstadoModal={setEstadoModal} 
             />   

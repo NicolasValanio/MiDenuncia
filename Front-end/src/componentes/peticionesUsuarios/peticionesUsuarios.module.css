@@ -26,9 +26,8 @@
 .logo{
     width:200px;
     height: 100%;
-    background-image: url(../public/logo.png);
+  /*   background-image: url(../../../public/logo.png); */
     background-position: center;
-   /*  background-size: cover; */
     margin-top: .5rem;   
     background-size: contain;
     background-repeat: no-repeat;
@@ -150,6 +149,12 @@
     font-size: 1rem;  
     width: 100%; 
     margin-top: 10px;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.info select:focus{
+    border:1px solid var(--primer-color);
 }
 /* inicio de datos personales */
 .infolabel {
@@ -176,6 +181,11 @@
     width: 100%;
     font-size: 1rem;
     color: #fff;
+    border:1px solid transparent;
+    outline:none;
+}
+.infolabel input:focus{
+  border: 1px solid var(--primer-color);
 }
 
 /* informacion de la peticion */
@@ -196,6 +206,8 @@
     background-color: var(--segundo-color);
     border-radius: 5px;
     border-color: var(--primer-color);
+    color: white;
+    border: none;
 }
    
 
@@ -217,7 +229,15 @@
     height: 6vh;
     border-radius:5px;
     background-color: var(--segundo-color);
-    font-size: 1rem;   
+    font-size: 1rem; 
+    outline: none;
+    color: #fff; 
+    border: none;
+    padding: 15px;
+    border: 1px solid transparent
+}
+.complinf input:focus{
+  border: 1px solid var(--primer-color);
 }
 
 .textdes{
@@ -235,7 +255,14 @@
     width: 100%; 
     background-color: var(--segundo-color);
     font-size: 1rem;
-    
+    outline: none;
+    color: #fff;
+    border: 1px solid transparent;
+
+}
+
+.textdes textarea:focus{
+    border: 1px solid var(--primer-color);
 }
 /* infromacion de localizacion del problema */
 .inflocal{
@@ -243,8 +270,7 @@
     grid-template-columns: repeat(2,1fr);
     color: #fff;
     padding-top: 30px;
-    
-
+    gap: 20px;
 }
 
 .textlocal{
@@ -263,8 +289,17 @@
     flex-direction: column;
     background-color: var(--segundo-color);
     width: 75%;
+    padding: 15px;
+    color: white;
+    font-size: 1rem;
     height: 5vh;
     border-radius: 5px;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.infbar input:focus{
+    border: 1px solid var(--primer-color);
 }
 
 
@@ -276,7 +311,15 @@
 
 .infodesp textarea{
     background-color: var(--segundo-color);
-    
+    padding: 10px;
+    color: white;
+    outline: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+}
+
+.infodesp textarea:focus{
+    border: 1px solid var(--primer-color);
 }
 /* adjuntar imagen */
 .infoimg{
@@ -286,18 +329,42 @@
 }
 
 .infoimg p{
-    color: #ffffffa4;
+    color: #ffff;
 
 }
 
-.infoimg input{
-    background-color: var(--primer-color);
-    color: #000;
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    color: #fff;
+    border: 2px solid currentColor;
     border-radius: 5px;
-   font-size: 1rem;
-   width: 100%;
-   max-width: 300px;
+    display: flex;
+    align-items: flex-end;
+    width: fit-content;
+    padding: 8px 12px;
+    gap: 5px;
+    cursor: pointer;
 }
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+
+.inputfile + label:hover {
+    color:var(--primer-color);
+}
+
+.iborrainputfile {
+    font-size:15px;
+}
+
 
 .textusu{
     color: #fff;
@@ -327,7 +394,7 @@
 .botones{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding-top: 30px;
     gap: 10px;
 }
@@ -346,11 +413,13 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    max-width: 300px;
 }
 
 
 .boton2 {
     background-color: #ff000012;
+    max-width: 300px;
     border: 1px solid #f73131;
     color: #f73131;
     padding: 6px 14px;
@@ -362,6 +431,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -375,8 +445,47 @@
     background-color: #8d0ef531;
 }
 
-/* responsive */
+.palabraError{
+    font-size: 13px;
+    color: rgba(250, 36, 36, 0.635);
+}
 
+/* modal de calificación */
+.ModaltextP{
+  color: #ffffff98;
+  font-size: 1rem;
+  text-align: center;
+}
+.ModalComment{
+  padding: 20px;
+}
+
+.ModalComment textarea{
+  width: 100%; 
+  background-color: var(--segundo-color);
+  font-size: 1rem;
+  outline: none;
+  color: #fff;
+  border: 1px solid transparent;
+}
+.ModalComment textarea:focus{
+  border: 1px solid var(--primer-color);
+}
+
+/* Estrellas de calificación */
+.ModalEstrellas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+}
+.estrellas{
+  font-size: 2.3rem;
+  color: #fff;
+}
+
+/* responsive */
 
 /* tablet */
 @media(max-width:1024px){
@@ -394,7 +503,7 @@
 
 
 }
-/*  */
+
 @media(max-width:768px){
     .contenedorDatos{
         display: flex;
@@ -437,5 +546,7 @@
     .botones{
         flex-direction: column;
         justify-content: center;
+        margin: auto;
+        width: fit-content;
     }
 }
