@@ -14,6 +14,7 @@ const validateCreatedSingUp = [
     check("last_name")
     .notEmpty()
     .withMessage("Last name is required")
+    // alvarez Alvarez Omar
     .matches(/^[A-Z][a-z]*(?: [A-Z][a-z]*)*$/)
     .withMessage(
       "The lastname must begin with a capital letter and contain only letters"
