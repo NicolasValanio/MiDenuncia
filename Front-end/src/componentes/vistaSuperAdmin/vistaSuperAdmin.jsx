@@ -1,9 +1,34 @@
 import React, { useState, useEffect } from "react";
 import style from "./vistaSuperAdmin.module.css"
 import { BiSearchAlt } from "react-icons/bi";
+import {filtroUser} from "../baseDeDatos"
+import {handle } from "react";
 
 function VistaSuperAdmin() {
     const [data, setData] = useState([]);
+
+    const [filtro, setFiltro] = useState("");
+
+
+    const [estado, setEstado] = useState(Boolean);
+
+    function handleClick() {
+        setEstado(!estado);
+      }
+
+    
+
+    const handleChange = (event) => {
+        setFiltro(event.target.value);
+       // console.log(event.target.value)
+    
+       fetch(`https://midenuncia-database-production.up.railway.app/info?filtro=${event.target.value}`)
+          .then((response) => response.json())
+          .then((info) => {
+            setData(info)
+            //console.log(info)
+          })
+        }
     
     useEffect(() => {
       fetch("https://midenuncia-database-production.up.railway.app/info")
@@ -18,19 +43,8 @@ function VistaSuperAdmin() {
            <div className={style.contenedorFiltrar}>
                     <div className={style.conteInput}>
                        <BiSearchAlt className={style.iconBuscar}/>
-                       <input className={style.input}  type="text" placeholder="Filtrar" id="buscar"/>
+                       <input className={style.input}  type="text" placeholder="nickname, usuario, barrio" value={filtro} onChange={handleChange}/>
                         <button>Buscar</button>
-                    </div>
-
-
-                    <div className={style.filtrar}>
-                        <select name="" id="" >
-                            <option value="">Nombre</option>
-                            <option value="">Usuario</option>
-                            <option value="">Barrio</option>
-                            <option value="">Rol</option>
-                            <option value="">Estado</option>
-                        </select>
                     </div>
             </div >
                 
@@ -49,7 +63,7 @@ function VistaSuperAdmin() {
                             <div className={style.configbarra2}>
                             {data?.map((user) => (
                                  
-                                <div  key={user.name} className={style.barra2}> 
+                                <div  key={user.id} className={style.barra2}> 
                                     <ul className={style.datos}>
                                         <li > {user.name}</li>
                                         <li>{user.nickname}</li>
@@ -60,10 +74,8 @@ function VistaSuperAdmin() {
                                             <option value="">activo</option>
                                             <option value="">inactivo</option>
                                         </select>
-                                        <select name="" id="">
-                                            <option value="">activo</option>
-                                            <option value="">inactivo</option>
-                                        </select>
+                                       
+                                        <button onClick={handleClick}>{estado ? <span>visitante</span>: <span>admin</span>}</button>
                                     </ul>
                             </div>
                            

@@ -22,3 +22,8 @@ export async function  EnvioEmailResetpassword (envio){
     
 
 }
+
+
+export async function filtroUser(filtro){
+    return await axios.get(`http://localhost:4000/info?filtro=${filtro}`)
+}
