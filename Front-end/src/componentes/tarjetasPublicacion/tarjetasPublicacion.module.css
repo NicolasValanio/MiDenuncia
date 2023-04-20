@@ -1,0 +1,219 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.contenedor{
+    display: grid;
+    background-color: #252A2E;
+    grid-template-areas: 'foto nombre'
+                        'foto descripcion'
+                        'texto texto'
+                        'imagen imagen'
+                        'fecha fecha'
+                        'ubicacion ubicacion'
+                        'apoyo comentario';
+    margin: 5rem;
+    /* margin-left: 5%;
+    margin-right: 20%; */
+    display: grid;
+    height: fit-content;
+    min-height: 35rem;
+    width: 70%;
+    -webkit-border-radius: 10px;
+border-radius: 10px;
+border-bottom: solid 2px #B86EFD;
+border-right:solid 2px  #B86EFD;
+padding: 25px;
+align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.nombreUsuario{
+   
+    font-size: 0.6rem;
+    width: 100%;
+    margin-left: -23rem;
+    grid-area: nombre;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+}
+.textoPublicacion{
+   
+    grid-area: texto;
+    color: white;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.imagenContenedor{
+    width: 100%;
+    height: auto;
+    grid-area: imagen;
+    display: flex;
+    
+    align-items: center;
+  
+}
+.icono{
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.iconoUsuario{
+    
+    height: fit-content;
+    width: 4rem;
+    grid-area: foto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.fechaPublicacion {
+    font-size: 0.6rem;
+    grid-area: fecha;
+    color: white
+}
+.ubicacionPublicacion{
+    font-size: 0.6rem;
+ 
+    grid-area: ubicacion;
+    color: white;
+   
+}
+
+.textoTipo{
+    height: 100%;
+    grid-area: descripcion;
+}
+.apoyoPublicacion{
+
+    grid-area: apoyo;
+   
+    color: white;
+}
+
+
+/*.contenedor{
+    grid-template-areas: 'foto nombre'
+                        'foto descripcion'
+                        'texto texto'
+                        'imagen imagen'
+                        'fecha fecha'
+                        'ubicacion ubicacion'
+                        'apoyo apoyo';
+    border: 0.1rem solid white;
+    margin: 1rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    height: 30rem;
+    width: 50rem;
+}
+.iconoUsuario{
+    height: 4rem;
+    width: 4rem;
+    margin-top: -1.5rem;
+    margin-left: -70%;
+    margin-right: 100%;
+    grid-area: foto;
+    border: solid 1px rgb(201, 13, 13);
+}
+.icono{
+    height: 4rem;
+}
+.nombreUsuario{
+    margin-top: 20%;
+    margin-left: -25rem;
+    grid-area: nombre;
+    color: white;
+    border: solid 1px rgb(51, 61, 119);
+}*/
+
+/*-------------------------------------------*/
+/*responsive tarjeta*/
+
+@media (max-width :768px) {
+
+    .contenedor{
+      
+    
+        display: grid;
+        height: fit-content;
+        min-height: 25rem;
+        width: 80%;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border-bottom: solid 2px #B86EFD;
+        border-right:solid 2px  #B86EFD;
+        padding: 25px;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+
+.icono{
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+
+.iconoUsuario{
+    
+    height: fit-content;
+    width: 4rem;
+    grid-area: foto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.nombreUsuario{
+   
+    font-size: 0.6rem;
+    width: 100%;
+    margin-left: -12rem;
+    grid-area: nombre;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+}
+
+
+.textoPublicacion{
+   
+    grid-area:texto;
+  
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+   
+}
+
+    
+}

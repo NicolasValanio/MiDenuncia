@@ -1,0 +1,24 @@
+.contenedor_loadingSolo {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.loadingSolo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  border: 6px solid var(--primer-color);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

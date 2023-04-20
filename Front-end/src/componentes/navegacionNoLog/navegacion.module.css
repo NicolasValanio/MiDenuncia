@@ -1,25 +1,23 @@
 body{
-    background-color: #252A2E;
+    background-color: var(--segundo-color);
     transition: .5ms;
 
 }
 
 .contenedor{
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
 }
 .imagen{
-    width: 35%;
-    height: 15vh;
-    background-image: url(../public/logo.png);
-    background-position: center;
-    background-size: cover;
+    width: 25%;
+    height: 10vh;
     margin-top: .5rem;
     
 }
 .contenedorBtns{
+    width: fit-content;
     display: flex;
     margin-right: 1rem;
     gap: 1rem;
@@ -29,7 +27,7 @@ body{
     height: fit-content;
     padding: .3rem 1rem .3rem 1rem;
     text-decoration: none;
-    background-color: #B86EFD;
+    background-color: var(--primer-color);
     border: none;
     border-radius: 15px;
     color: white;
@@ -44,7 +42,7 @@ body{
     width: fit-content;
     height: fit-content;
     text-decoration: none;
-    background-color: #B86EFD;
+    background-color: var(--primer-color);
     border: none;
     border-radius: 50%;
     text-align: center;
@@ -58,10 +56,13 @@ body{
     transform: rotate(320deg);
     
 }
-
+.registro,
+.log{
+    display: none;
+}
 .btns:hover{
-    background-color: #252A2E; 
-    border: solid 1px #B86EFD;
+    background-color: var(--segundo-color); 
+    border: solid 1px var(--primer-color);
     transition: .3s ease;
 }
 
@@ -70,16 +71,33 @@ body{
     transition: .4s;    
 }
 
-@media (max-width: 768px) {
+
+/* Mq tvs */
+@media (min-width: 1281px) {
     .imagen{
-        width: 35%;
-        height: 8vh;
+        width: 20%;
+        height: 15vh;
+    }
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
     }
 }
-@media (max-width: 635px) {
+/* Mq laptop */
+@media(min-width:1025px)and (max-width:1280px) {
     .imagen{
-        width: 35%;
-        height: 5vh;
+        width: 20%;
+        height: 10vh;
+    }
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
+    }
+}
+
+/* Mq tablet grande */
+@media(min-width:800px)and (max-width:1024px) {
+    .imagen{
+        width: 25%;
+        height: 7vh;
     }
     .contenedorBtns{
         margin: 0;
@@ -94,17 +112,35 @@ body{
         width: 2rem;
         height: 2rem;
     }
+    .LetraLogin,.LetraRegistro{
+        margin-left: 10px;
+    }
 }
-        
-@media (max-width: 480px) {
+/* responsive-celular */     
+@media (min-width: 280px) and (max-width:801px) {
     .imagen{
+        margin-left: .5rem;
+        margin-top: 1rem;
         width: 30%;
-        height: 6vh;
+        height: 8vh;
         background-size: cover;
     }
     .btns{
         text-align: center;
-        padding: .4rem;
         font-weight: 400;
+        width: 2rem;
+        height: 2rem;
+        padding: 5px;
+    }
+    .registro,.log{
+        display: flex;
+        margin-left: 10px;
+    }
+    .icon{
+        margin: auto;
+    }
+    .LetraLogin,.LetraRegistro{
+        display: none;
     }
 }
+

@@ -11,29 +11,39 @@ export function llenardatos(userA) {
     )
 }
 
-export const UseProtegerRutas =() => {
-
-    let usuarioToken
-
-    useEffect(()=>{
-        usuarioToken = window.localStorage.getItem('usuarioLogeado')
+export const EntrarPagina =() => {
+    console.log('entro');
+    let usuarioToken = window.localStorage.getItem('usuarioLogeado')
         if (usuarioToken) {
-            const user = JSON.parse(usuarioToken)
-            renderPaginas(user)    
+            const user = JSON.parse(usuarioToken) 
+            return   < Navigate to='/UsuarioLog'  />
         }
-    },[])
 
-
-    function renderPaginas(usuaioTokenValidaion) {
-        if (!usuaioTokenValidaion) {
-            return  < Navigate to='/login'  />
-         }
-    }
-    
-   
-    return <Outlet />
+    return  <Outlet />
 }
 
+
+export const UseProtegerRutas =() => {
+
+    let usuarioToken = window.localStorage.getItem('usuarioLogeado')
+
+    if (usuarioToken) {
+        const user = JSON.parse(usuarioToken)
+        console.log(user.status);   
+    }else{
+        console.log('no existe');
+        return   < Navigate to='/login'  />
+    }
+
+    return  <Outlet />
+}
+export function Logout(){
+    //Borra el localStorage
+    
+    localStorage.clear();
+    console.log("Saliendo...");
+    window.location.href="/"
+}
 
 // LOCALSTORAGE ---------------------------------------------------------------------
 
