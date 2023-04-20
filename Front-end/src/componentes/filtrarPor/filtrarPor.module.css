@@ -18,6 +18,27 @@
 
 }
 
+.filtrarA{
+    color: white;
+    width: fit-content;
+    /* float: left; */
+    margin-left: 1rem;
+    margin-top: 3rem;
+    position: relative;
+    
+}
+
+.filtrarA li{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid;
+    text-align: justify;
+    list-style: none;
+    font-size: 14px;
+    padding: 5px;
+
+}
+
 .Cseguridad:hover,
 .Mvial:hover,
 .Svial:hover,
@@ -50,8 +71,15 @@
     color: #FFFFFF;
 }
 
-@media(min-width:200px) and (max-width:850px) {
+/* @media(min-width:200px) and (max-width:850px) {
     .filtrar{
         display: none;
+    }
+} */
+
+@media(min-width:992px) {
+    .filtrarA{
+        /* display: none; */
+        /* border: 2px solid red; */
     }
 }

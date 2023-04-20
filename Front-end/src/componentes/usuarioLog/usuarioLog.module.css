@@ -194,11 +194,14 @@
     }
 
 }
+.ocultar{
+    display: none;
+}
 
 /* VISTA DESKTOP ----------------------------------------------------------------------------------------------------- */
 
 @media (min-width: 1024px){
-    
+/*     
     .filtrar{
         height: 87%;
         display: flex;
@@ -209,7 +212,7 @@
 
     .filtrar{
         width: 20%;
-    }
+    } */
 
     .cont_tarjetas{
         width: 80%;
@@ -226,7 +229,28 @@
     }
 
 }
+@media(min-width:992px){
+    .ocultarA{
+        display: block;
+    }
+    .ocultar{
+        display: none;
+    }
+    .ocultarB{
+        display: none;
+    }
+    .cont_tarjetas{
+        width: 70%;
+        height: 87%;
+    }
 
+}
+@media(max-width:992px){
+    .ocultar{
+        display: block;
+    }
+    
+}
 .pokemon{
     width: 200px;
     height: 100px;

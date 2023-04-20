@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
-import FiltrarPor from "../filtrarPor/filtarPor";
+import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ModalReportes from '../modalReportes/modalReprotes'
@@ -95,7 +95,7 @@ function UsuarioLog(params) {
 
     }
 
-    const [verFiltro, setVerFiltro] = useState(true);
+    const [verFiltro, setVerFiltro] = useState(false);
     function handleClickVerFiltro(){
         verFiltro ? setVerFiltro(false) : setVerFiltro(true);
         setVer(false);
@@ -123,7 +123,7 @@ function UsuarioLog(params) {
                         </li>
 
                         {/* <li className={`${style.li} ${style.notificaciones}`} onClick={handleClickVerFiltro} > */}
-                        <li className={`${style.li}`} onClick={handleClickVerFiltro} >
+                        <li className={`${style.li} ${style.ocultarB}`} title="Filtrar por" onClick={handleClickVerFiltro} >
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
                             {/* <ul className={`contenedor ${style.despegableFiltro} ${style.li}`} >
                                 <li className={style.liFiltrados} > <AiFillAlert /> Seguridad  </li>
@@ -146,11 +146,16 @@ function UsuarioLog(params) {
                 </div>
             </div>
 
-            {/* <div className={`contenedor ${style.filtrar}`}> */}
-            {/* <div className={`contenedor `} style={verFiltro ? {display:"block"}:{display:"block"}}>
-            </div> */}
+            {/* <div className={`contenedor `} style={verFiltro ? {display:"block"}:{display:"block"}}>*/}
+            
+            <div className={`contenedor ${style.filtrar} ${style.ocultarA}`}>
+                <FiltrarPorA/>
+            </div>
+            <div className={`contenedor ${style.filtrar} ${style.ocultar}`}>
+                <FiltrarPor mostrar={verFiltro}/>
+            </div>
+            
 
-            <FiltrarPor mostrar={verFiltro}/>
 
             <div className={`contenedor ${style.cont_tarjetas}`}>
 
