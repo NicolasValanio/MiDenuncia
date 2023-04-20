@@ -2,6 +2,8 @@ import {React, useEffect, useState} from 'react'
 import style from './tarjetasPublicacion.module.css'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { userget } from './fetch';
+import {HiUserCircle} from 'react-icons/hi'
+
 
 
 
@@ -83,7 +85,7 @@ console.log(barrio)
         <div className={style.modal_overlay}>
           <div className={style.modal}>
           <div className={style.modal_header}>
-              {api === undefined ? 'espera': <h3>{api.user.nickname} <br/>
+              {api === undefined ? 'espera': <h3 className={style.nickname}>{api.user.nickname} <br/>
               {api.types_request.name}</h3>}
               <span className={style.modal_close} onClick={toggleModal}>&times;</span>
               </div>
@@ -96,7 +98,13 @@ console.log(barrio)
               </div>
 
               <div className={style.modal_comentarios}>
-                comentarios
+               <div className={style.contenedor_comentarios}>
+               <div className={style.contenedor_imagen_comentario}>
+                <HiUserCircle className={style.icono_comentario}/>
+                <div className={style.usuario_comentario}> usuario</div>
+               </div>
+               <div className={style.texto_comentario}> comentario</div>
+               </div> 
               </div>
             </div>
 

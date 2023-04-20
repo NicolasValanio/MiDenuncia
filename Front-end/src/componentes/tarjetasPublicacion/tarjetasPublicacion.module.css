@@ -148,6 +148,7 @@ css del modal*/
   .modal {
     background-color: #1E2326;
     width: 90%;
+    height: 90%;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -183,14 +184,23 @@ css del modal*/
   .modal_imagen_contenedor{
     margin-top: 1rem;
     width: 100%;
+    border: solid 2px black;
+    height: 60%;
   }
 
   .modal_comentarios{
     background-color: #252A2E;
     margin-top: 1rem;
-    height: 10rem;
+    height: 40%;
     width: 100%;
     display: block;
+  }
+
+  .modal_parte1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .modal_parte2{
@@ -198,12 +208,14 @@ css del modal*/
     color: white;
     background-color: #252A2E;
     margin-top: 1rem;
-    width: 100%;
+    width: 30%;
     margin-left: 1rem;
+    height: 98%;
   }
 
   .modal_content{
     display: flex;
+    height: 90%;
   }
 
   .textoFechaModal{
@@ -250,7 +262,35 @@ css del modal*/
     margin-top: 1rem;
   }
 
+  .contenedor_comentarios{
+    background-color: #1E2326;
+    margin: 1rem;
+    width: 70%;
+    height: 30%;
+  }
 
+  .icono_comentario{
+    color: #B86EFD;
+    font-size: 35px;
+  }
+
+  .contenedor_imagen_comentario{
+    margin: 0.2rem;
+    display: flex;
+  }
+
+  .usuario_comentario{
+    margin: 0.4rem;
+    color: aliceblue;
+  }
+
+  .texto_comentario{
+    margin-left: 0.5rem;
+    color: aliceblue;
+  }
+
+
+/* Mq Celular */
 
 /*.contenedor{
     grid-template-areas: 'foto nombre'
@@ -363,10 +403,50 @@ css del modal*/
     
 }
 
-@media (max-width: 320px){
-
+@media(min-width:280px)and (max-width:480px) {
   .modal {
     background-color: #c6c6c6;
-
+    width: 100%;
+    height: 100%;
   }
+
+  .nickname{
+    display: none;
+  }
+
+  .modal_content{
+    flex-direction: column;
+  }
+
+  .modal{
+    padding: 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    border-bottom: solid 2px #B86EFD;
+    border-right: solid 2px #B86EFD;
+  }
+
+  .modal_imagen_contenedor{
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal_parte1{
+    width: 100%;
+  }
+
+  .modal_comentarios{
+    display: none;
+  }
+
+  .modal_parte2{
+    width: 100%;
+    margin-left: 0rem;
+    height: 100%;
+  }
+
+  .flex_apoyo{
+    display: none;
+  }
+
+  
 }
