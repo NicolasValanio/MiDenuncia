@@ -22,6 +22,7 @@
     border-radius: 10px;
     border-bottom: solid 2px #B86EFD;
     border-right:solid 2px  #B86EFD;
+    padding: 1rem;
 }
 
 
@@ -126,6 +127,128 @@
     width: 1.5rem;
     margin: 25%;
 }
+ 
+
+/*------------------------------------
+css del modal*/
+
+  
+  .modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.613);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #1E2326;
+    width: 90%;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-bottom: solid 2px #B86EFD;
+    border-right:solid 2px  #B86EFD
+  }
+  
+  .modal_header {
+    font-size: 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal_title {
+    margin: 0;
+  }
+  
+  .modal_close {
+    font-size: 40px;
+    cursor: pointer;
+    color:#B86EFD;
+
+  }
+
+  .prueba{
+    width: 2rem;
+    border: solid 2px black;
+    height: 2rem;
+  }
+
+  .modal_imagen_contenedor{
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .modal_comentarios{
+    background-color: #252A2E;
+    margin-top: 1rem;
+    height: 10rem;
+    width: 100%;
+    display: block;
+  }
+
+  .modal_parte2{
+    padding: 0.5rem;
+    color: white;
+    background-color: #252A2E;
+    margin-top: 1rem;
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  .modal_content{
+    display: flex;
+  }
+
+  .textoFechaModal{
+    font-size: 10px;
+    color: #777777;
+  }
+
+  .textoUbicacionModal{
+    margin-top: 0.5rem;
+    font-size: 15px;
+    color: #B86EFD;
+  }
+
+  .modal_apoyo{
+    margin-top: 0.5rem;
+    color: #df2727e9;
+  }
+
+  .modal_comentar{
+    color: rgb(12, 164, 12);
+  }
+
+  .flex_apoyo{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .barra{
+    border: 1px solid gray;
+  }
+
+  .subtitulo{
+    font-size: 17px;
+    color: #B86EFD;
+  }
+
+  .texto_modal{
+    font-size: 15px;
+  }
+
+  .contenedor_textos{
+    margin-top: 1rem;
+  }
 
 
 
@@ -238,4 +361,12 @@
 }
 
     
+}
+
+@media (max-width: 320px){
+
+  .modal {
+    background-color: #c6c6c6;
+
+  }
 }
