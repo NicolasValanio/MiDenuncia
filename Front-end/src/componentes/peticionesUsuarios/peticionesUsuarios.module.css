@@ -394,7 +394,7 @@
 .botones{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding-top: 30px;
     gap: 10px;
 }
@@ -413,11 +413,13 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    max-width: 300px;
 }
 
 
 .boton2 {
     background-color: #ff000012;
+    max-width: 300px;
     border: 1px solid #f73131;
     color: #f73131;
     padding: 6px 14px;
@@ -429,6 +431,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -543,5 +546,7 @@
     .botones{
         flex-direction: column;
         justify-content: center;
+        margin: auto;
+        width: fit-content;
     }
 }

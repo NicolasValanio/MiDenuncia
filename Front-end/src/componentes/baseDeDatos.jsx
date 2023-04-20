@@ -18,7 +18,7 @@ export function EnvioResgistrarBd(envio) {
 
 export async function enviarPeticion(cuerpo, id) {
     return await axios.put(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo)
-        .then(res => res.data.message) 
+        .then(res => res.data.data.user) 
         .catch(err => console.log(err)) 
 }
 
@@ -34,6 +34,11 @@ export async function enviarPeticion(cuerpo, id) {
 
 export async function traeTodoTipoSolicitudes() {
     return await axios.get(`https://midenuncia-database-production.up.railway.app/typerequest`)
+        .catch(err => console.log(err))
+}
+
+export async function enviarEstrellas(data) {
+    return await axios.post(`https://midenuncia-database-production.up.railway.app/rating/1`, data)
         .catch(err => console.log(err))
 }
 
