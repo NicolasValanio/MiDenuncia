@@ -12,8 +12,12 @@ import { useState } from "react"
 import Loading from "../../loading/Loading"
 import TiposSolicitudes from "./TiposSolicitudes"
 import Modales from "../../modales/modales"
+import ModalPeticiones from "../../modalPeticiones/modalPeticiones"
 
 export default function FormularioPeticion({ user }) {
+	// estado para el modal de peticiones	
+	const [estadoModal,setEstadoModal] = useState(true)
+
 	const [open, setOpen] = useState(false)
 	const [loading, setLoading] = useState(false)
 
@@ -158,6 +162,13 @@ export default function FormularioPeticion({ user }) {
 	/* contenedor form */
 	return (
 		<>
+			MODAL DE PETICIONES
+
+			<ModalPeticiones
+				estadoModal ={estadoModal}
+				setEstadoModal = {setEstadoModal}
+			/>
+
 			<form
 				action=""
 				id="peticiones"
