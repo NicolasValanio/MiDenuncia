@@ -17,8 +17,11 @@ export function EnvioResgistrarBd(envio) {
 }
 
 export async function enviarPeticion(cuerpo, id) {
-    return await axios.put(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo)
-        .then(res => res.data.data.user) 
+    return await axios.post(`https://midenuncia-database-production.up.railway.app/request/${id}`, cuerpo,{
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }})
+        .then(res => res.data.data) 
         .catch(err => console.log(err)) 
 }
 
