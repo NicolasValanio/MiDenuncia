@@ -45,9 +45,9 @@ export async function enviarEstrellas(data) {
         .catch(err => console.log(err))
 }
 
-/* export async function  EnvioEmailResetpassword (envio){
+export async function  EnvioEmailResetpassword (envio){
 
    return await axios.post("http://localhost:4000/forgot-password",envio)
     
 
-} */
+} 
