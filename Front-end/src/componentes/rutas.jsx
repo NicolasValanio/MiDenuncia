@@ -7,7 +7,7 @@ import {UseProtegerRutas,EntrarPagina} from './ProtegerRutas'
 import Login from './login/login'
 import UsuarioNoLog from './usuarioNoLog/usuarioNoLog'
 import HabeasData from './habeasData/habeasData'
-import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuarios/peticionesUsuarios'
+import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuario/peticionesUsuarios'
 import RegistroDenuncia from './registroDenuncia/registroDenuncia'
 import RegistroUsuario from './registroUsuario/registroUsuario'
 import UsuarioLog from './usuarioLog/usuarioLog'
@@ -17,6 +17,7 @@ import VistaUsuario from './vistaUsuario/vistaUsuario'
 import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
 import Mapa from './mapa/mapa'
 import TarjetaPublicacion from './tarjetasPublicacion/diseñodetarjeta/tarjetaPublicacion'
+
 
 
 
@@ -46,6 +47,7 @@ function Rutas() {
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />
                     <Route path="/TarjetaPublicacion" element={<TarjetaPublicacion />} />
+                    
                 </Route>
                 
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
