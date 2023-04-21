@@ -148,24 +148,6 @@ console.log(barrio)
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    */
  
  return (

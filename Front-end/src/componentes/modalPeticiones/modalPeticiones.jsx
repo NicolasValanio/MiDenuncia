@@ -5,12 +5,47 @@ import { BsFillSignStopFill } from "react-icons/bs";
 import { BsFillTreeFill } from "react-icons/bs";
 import { GiDoubleStreetLights  } from "react-icons/gi";
 import { TbRecycleOff } from "react-icons/tb";
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
 
-function ModalPeticiones({estadoModal,setEstadoModal}) {
+export default function ModalReportes({estadoModal, setEstadoModal,}) {
 
+    function closeModal () {
+      setEstadoModal(false)
+    }
     return(
-        <div className={`${style.fondo} ${ estadoModal ?  null : style.open}`}>
-            <div className={style.modalPeticiones}>
+    <>
+        <Transition appear show={estadoModal} as={Fragment}>
+        <Dialog as="div" className={style.modal} onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter={style.enter}
+            enterFrom={style.enterLeave}
+            enterTo={style.enterTo}
+            leave={style.leave}
+            leaveFrom={style.enterTo}
+            leaveTo={style.enterLeave}
+          >
+            <div className={style.fixedDiv} />
+          </Transition.Child>
+
+          <div className={style.fixedDiv}>
+            <div className={style.divChil}>
+              <Transition.Child
+                as={Fragment}
+                enter={style.enter}
+                enterFrom={style.fromLeaveTo}
+                enterTo={style.enterToFrom}
+                leave={style.leave}
+                leaveFrom={style.enterToFrom}
+                leaveTo={style.fromLeaveTo}
+              >
+                <Dialog.Panel className={style.modalOpen}>
+                  <Dialog.Title
+                    as="h3"
+                    className={style.dialogtitle}
+                  >
+                  </Dialog.Title>
                 <div className={`contenedor ${style.headerModal}`}>
                     <h2>Descripción de cada tipo de Petición</h2>
                     <p>A continuación puedes ver una breve descripción de cada tipo de petición, esto te puede ayudar a elegir el enfoque del problema que deseas manifestar</p>
@@ -68,9 +103,13 @@ function ModalPeticiones({estadoModal,setEstadoModal}) {
                 <div className={style.footerModal}>
                     <button onClick={()=> setEstadoModal(!estadoModal)}>CONTINUAR</button>
                 </div>
+
+                </Dialog.Panel>
+              </Transition.Child>
             </div>
-        </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
     )
 }
-
-export default ModalPeticiones;
