@@ -248,6 +248,9 @@
 @media(max-width:992px){
     .ocultar{
         display: block;
+        display:flex;
+        justify-content: center;
+        width: 100%;
     }
     
 }
