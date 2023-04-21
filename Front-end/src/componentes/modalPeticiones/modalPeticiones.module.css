@@ -11,6 +11,7 @@
 .open{
     display: none;
 }
+
 .modalPeticiones{
     position: relative;
     width: 60vw;
@@ -19,8 +20,8 @@
     border-bottom: solid 3px var(--primer-color);
     border-radius: 20px; 
     background: var(--segundo-color);
-    overflow: scroll;
     justify-content: space-evenly;
+    border: solid 1px red;
 }
 
 .contedorInfo{
@@ -32,8 +33,9 @@
 }
 
 .bodyModal{
-    margin: auto;
-    border: solid 1px red;
+    border: solid 1px rgb(0, 229, 255);
+    height: 100%;
+    width: 90%;
 }
 
 .headerModal h2{
@@ -50,6 +52,7 @@
     font-size: 15px;
     color: white;
 }
+
 .tituloInfo{
     display: flex;
     align-items: center;
@@ -80,5 +83,59 @@
 }
 
 .explicacion{
-    margin: 50px;
+    height: 20vh;
+    margin: 10px;
+    border: solid 1px rgb(0, 255, 13);
 }
+
+/* Mq Celular */
+@media(min-width:280px) and (max-width:480px) {
+
+    .fondo{
+        height: 100%;
+        width: 100%;
+    }
+
+    .modalPeticiones{
+        display: grid;
+        justify-items: center;
+        height: 90vh;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    .bodyModal{
+        height: 100%;
+    }
+
+    .contedorInfo{
+        display: flex;
+        flex-direction: column;
+    }
+    .explicacion{
+        height: auto;
+        margin: 5px;
+    }
+
+    .headerModal h2{
+        font-size: 10px;
+    }
+    
+    .headerModal p{
+        font-size: 10px;
+    }
+    
+    .explicacion p{
+        font-size: 10px;
+    }
+
+    .tituloInfo{
+        font-size: 10px;
+    } 
+
+    .contenedor{
+        display: block;
+    }
+    
+}
+
