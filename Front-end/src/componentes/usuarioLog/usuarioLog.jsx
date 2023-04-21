@@ -3,8 +3,7 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ModalReportes from '../modalReportes/modalReprotes'
-import Modal from 'react-modal'
+import ModalReportes from '../modalReportes/modalReportes'
 
 
 import { Link, redirect} from 'react-router-dom'
@@ -18,18 +17,10 @@ import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
-import {AiOutlineClose} from 'react-icons/ai'
 
 
-
-
-
-
-import { useForm} from 'react-hook-form';
 function UsuarioLog() {
     // ESTADO DEL MODAL
-    Modal.setAppElement(document.getElementById('root'))
-
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
@@ -62,8 +53,8 @@ function UsuarioLog() {
     }
 
     function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{   
-           return  <TarjetasPublicacion api={publicacion} index={index} key={publicaciones[index].id}/>
+        let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
+           return  <TarjetasPublicacion api={publicacion} key={publicaciones[index].id} setEstadoModal={setEstadoModal} />
         })
         return nuevasPublicaciones
     }
@@ -98,19 +89,6 @@ function UsuarioLog() {
     function toggleNotifications() {
       setShowNotifications(!showNotifications);
     }
-
-    
-
-
-  
-
-    const {register,handleSubmit,formState:{errors}} = useForm()
-
-    const onSubmit = value => {
-        console.log('si');
-        console.log(value);
-    }
-
 
     return (
         <div className={`contenedor ${style.usuario_log}`}>
@@ -149,7 +127,6 @@ function UsuarioLog() {
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
-                    <button onClick={()=>setEstadoModal(!estadoModal)} >modal</button>
                 </div>
             </div>
 
@@ -172,69 +149,11 @@ function UsuarioLog() {
 
             {/* MODAL ------------------------------------------ */}
 
-            <Modal 
-                isOpen = {estadoModal}
-                onRequestClose  = {cerrarModal}
-            >
-                <div className={style.modalOpen}>
-                    <div className={style.cerrar}>
-                        <button className={style.boton} onClick={()=> setEstadoModal(!estadoModal)}> <AiOutlineClose className={style.iconCerrar} /> </button>
-                    </div>
-                    <div className={style.modalBody}>
-                        <div className={`contenedor ${style.headerBody}`}>
-                            <h2 className={style.tituloReporte}>Reporte esta Publicaión</h2>
-                            <p className={style.parrafoReporte}>¿ Por que deseas reportar esta publicacion?</p>
-                        </div>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className={`contenedor ${style.cont_checkbox}`}>
-                                <label className={`contenedor ${style.labelResulto}`}>
+            <ModalReportes 
+                estadoModal = {estadoModal}
+                setEstadoModal  = {setEstadoModal}
+            />
 
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    type="radio" className={`${style.checkbox} ${style.checkResulto}`} value='solucionado'/> Ya se soluciono el problema
-                                </label>
-
-                            </div>
-
-                            <div className={`contenedor ${style.cont_checkbox}`}>
-                                
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${style.checkbox}`} type="radio"  value='contenidoExplicito' /> Contenido Explícito
-                                </label>
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${style.checkbox}`} type="radio"  value='expresionOdio' /> Expresión de Odio
-                                </label>
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${style.checkbox}`}  type="radio"  value='DenunciaFalsa' /> Denuncia Falsa
-                                </label>
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${style.checkbox}`} type="radio"  value='abusoVerbal'  /> Abuso Verbal
-                                </label>
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${style.checkbox}`}  type="radio" value='vueneraDerecho' /> Vulnera algun Derecho
-                                </label>
-                                <label className={style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})}  
-                                    className={`${style.checkbox}`} type="radio"  value='reacismo' />  Racismo
-                                </label>
-                                <label className={style.labelTextArea}>
-                                    <textarea {...register("textoReporte")}
-                                    className={style.textArea} cols="33" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
-                                </label>
-                            </div>
-
-                            <div className={`contenedor ${style.cont_boton}`}>
-                                <button type="submit" className={`btn`} >REPORTAR</button>
-                            </div>
-                            
-                        </form>
-                    </div>
-                </div>             
-            </Modal>
 
         </div>
 
