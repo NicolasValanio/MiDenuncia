@@ -20,7 +20,7 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
 
 
-function UsuarioLog(params) {
+function UsuarioLog() {
     // ESTADO DEL MODAL
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
@@ -28,12 +28,16 @@ function UsuarioLog(params) {
     // EL NUMERO DE LA PUBLICACION QUE SE MUESTRA
     const [numeroPublicacion, setNumeroPublicacino] = useState(0)
     // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
-    const [paginaPublicaciones , setPaginaPublicaciones] = useState(0)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
+    function cerrarModal() {
+        setEstadoModal(false)
+    }
+
     useEffect(()=>{
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=1`)
         .then(res => res.json())
         .then(res => setPublicaciones(res.news) )
     },[])
@@ -42,8 +46,7 @@ function UsuarioLog(params) {
     function nuevoLlamado(page) {
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
-        .then(res => {
-            console.log(res.news);
+        .then(res => {  
             let nuevaPublicaiones = publicaciones.concat(res.news)
             setPublicaciones(nuevaPublicaiones)
             setPaginaPublicaciones( paginaPublicaciones + 1)
@@ -51,8 +54,8 @@ function UsuarioLog(params) {
     }
 
     function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{
-           return  <TarjetasPublicacion  key={publicaciones[index].id}/>
+        let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
+           return  <TarjetasPublicacion api={publicacion} key={publicaciones[index].id} setEstadoModal={setEstadoModal} />
         })
         return nuevasPublicaciones
     }
@@ -142,7 +145,6 @@ function UsuarioLog(params) {
                         </li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
-                    <button onClick={()=>setEstadoModal(!estadoModal)} >modal</button>
                 </div>
             </div>
 
@@ -157,24 +159,26 @@ function UsuarioLog(params) {
             
 
 
-            <div className={`contenedor ${style.cont_tarjetas}`}>
+            <div className={`contenedor ${style.cont_tarjetas} ${estadoModal ? style.quieto : null}`}>
 
                 <InfiniteScroll 
                 dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
                 next={()=> {nuevoLlamado(paginaPublicaciones)}} 
                 hasMore={true} >
-
+        
                 { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
+        
+                </ InfiniteScroll>  
 
-                </ InfiniteScroll>            
             </div>
 
-            {/* MODAL */}
+            {/* MODAL ------------------------------------------ */}
 
             <ModalReportes 
-                estadoModal={estadoModal}
-                setEstadoModal={setEstadoModal} 
-            />                
+                estadoModal = {estadoModal}
+                setEstadoModal  = {setEstadoModal}
+            />
+
 
         </div>
 
