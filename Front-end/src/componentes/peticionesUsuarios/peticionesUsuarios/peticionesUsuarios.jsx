@@ -1,7 +1,7 @@
 import style from './peticionesUsuarios.module.css'
 import { IoPersonCircleOutline } from 'react-icons/io5'
 import { useEffect, useState } from 'react'
-import Loading from '../loading/Loading'
+import Loading from '../../loading/Loading'
 import FormularioPeticion from './FormularioPeticion'
 
 function PeticionesUsuarios () {
@@ -11,6 +11,7 @@ function PeticionesUsuarios () {
 	useEffect(() => {
 		const data = localStorage.getItem('usuarioLogeado')
 		const userLocal = JSON.parse(data).data
+        
         setUser(userLocal)
         setLoading(false)
 	}, [])

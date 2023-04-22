@@ -1,0 +1,164 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+}
+
+.card {
+  width: 95%;
+  background-color: #252a2e;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 var(--primer-color);
+  padding: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+      width: 50%;
+  }
+}
+
+.card  .card_header {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.card .card_header .user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.card .card_header .user .userImage img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.card .card_header .user .user_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+
+.card .card_header .user_info span:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.card .card_header .user_info span:last-child {
+  font-size: 0.8rem;
+  color: #c2c2c2;
+}
+
+.card .card_header .report svg {
+  background-color: var(--primer-color);
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.card .cardBody {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.card .cardBody .description {
+  color: #fff;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.card .cardBody .image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card .cardFooter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 10px;
+}
+
+.card .cardFooter .info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card .cardFooter .info .published {
+  color: #c2c2c2;
+  font-size: 0.8rem;
+}
+
+.card .cardFooter .info .location {
+  color: var(--primer-color);
+  font-size: 0.8rem;
+}
+
+.card .cardFooter .info .location svg {
+  width: 13px;
+  height: 13px;
+  fill:var(--primer-color);
+}
+.card .cardFooter .info .reactions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.card .cardFooter .info .reactions .likes {
+  display: flex;
+  align-items: center;
+  color: red;
+}
+
+.card .cardFooter .info .reactions .likes svg {
+  width: 20px;
+  height: 20px;
+  fill: red;
+}
+
+.card .cardFooter .info .reactions .numComments {
+  display: flex;
+  align-items: center;
+  color: green
+}
+
+.card .cardFooter .info .reactions .numComments svg {
+  width: 20px;
+  height: 20px;
+  fill: green;
+}
+
+.card .cardFooter .comments svg {
+  background-color:var(--primer-color);
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border-radius: 50%;
+  color :#fff;
+}
+.button{
+  background-color: #252a2e00;
+  border-radius: 50%;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: none;
+}
