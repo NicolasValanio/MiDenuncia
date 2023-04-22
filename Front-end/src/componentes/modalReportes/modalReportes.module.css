@@ -65,6 +65,7 @@
     max-height: 600px;
     overflow-y: auto;
     position: relative;
+    padding: 20px 0 15px 0;
   }
   
   /* text-lg font-medium leading-6 text-gray-900 */
@@ -93,9 +94,7 @@
     background: transparent;
 }
 
-.headerBody{
-  padding: 20px;
-}
+
 
 .tituloReporte{
     font-size: 2rem;
