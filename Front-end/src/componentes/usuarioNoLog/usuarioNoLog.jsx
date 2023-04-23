@@ -16,8 +16,8 @@ function UsuarioNoLog() {
     }),[])
 
     function tarjetasNoLog() {
-        let nuevasTarjetas = publicaciones.map(()=>{
-            return <Tarjetas />
+        let nuevasTarjetas = publicaciones.map((publicacion)=>{
+            return <Tarjetas api={publicacion} key={publicacion.id} />
         })
         return nuevasTarjetas
     }
