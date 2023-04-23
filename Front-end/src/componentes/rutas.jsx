@@ -7,14 +7,14 @@ import {UseProtegerRutas,EntrarPagina} from './ProtegerRutas'
 import Login from './login/login'
 import UsuarioNoLog from './usuarioNoLog/usuarioNoLog'
 import HabeasData from './habeasData/habeasData'
-import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuarios'
+import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuarios/peticionesUsuarios'
 import RegistroDenuncia from './registroDenuncia/registroDenuncia'
 import RegistroUsuario from './registroUsuario/registroUsuario'
 import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
-import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
+import RecuperarContrasena from './recuperarContrasena/recuperarContrasena'
 import Mapa from './mapa/mapa'
 import TarjetaPublicacion from './tarjetasPublicacion/diseñodetarjeta/tarjetaPublicacion'
 
@@ -32,7 +32,7 @@ function Rutas() {
                 
                 <Route path="/login" element={<Login />} />
                 {/* <Route path="/resetPassword" element={<ResetPassword />} /> */}
-                <Route path="/recuperarContrasena" element={<RecuperarContraseña />} />
+                <Route path="/recuperarContrasena" element={<RecuperarContrasena />} />
                 {/* <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} /> */}
                 {/* <Route path="/password" element={<Password />} /> */}
 
