@@ -48,6 +48,11 @@
 .cont_tarjetas{
     width: 100%;
     height: auto;
+
+}
+.quieto{
+    overflow-y: hidden;
+    height: 100rem;
 }
 .logo{
     width: 30%;
@@ -218,9 +223,112 @@
 
 }
 
-.pokemon{
-    width: 200px;
-    height: 100px;
+
+
+
+
+
+
+
+
+.fixedDiv{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.258);
+    
+  }
+.open{
+    display: flex;
+}
+.cerrar{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.boton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.iconCerrar{
+    font-size: 2.5rem;
+    color: #B86EFD;
+    background: transparent;
+}
+.modalOpen{
+    position: relative;
+    z-index: 10;
+    width: 20rem;
+    height: 100vh;
+    border-right: solid 3px #B86EFD;
+    border-bottom: solid 3px #B86EFD;
+    border-radius: 20px; 
+    background: var(--segundo-color);
+}
+.tituloReporte{
+    font-size: 2.5rem;
+    color: #B86EFD;
+}
+.parrafoReporte{
+    font-size: 20px;
+    color: white;
     margin: 10px;
-    background-color: aquamarine;
+    text-align: start;
+}
+.cont_checkbox{
+    width: 100%;
+    align-items: start;
+    color: white;   
+}
+.labelCheck{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+}
+.labelResulto{
+    flex-direction: row;
+    color: #00FF19;
+    margin: 10px;
+    gap: 10px;
+}
+.labelTextArea{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textArea{
+    background-color: var(--tercer-color);
+    color: white;
+    font-size: 1em;
+    border: none;
+}
+.checkbox{
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border: 3px solid #B86EFD;
+    cursor: pointer;
+}
+.checkResulto{
+    border: 3px solid #00FF19;
+}
+
+.checkbox:checked {
+    background-image: url('../modalReportes/checksImg/checkReporte.png') ;
+    background-position: center;
+    background-size: cover;
+}
+.checkResulto:checked {
+    background-image: url('../modalReportes/checksImg/checkResulto.png') ;
+    background-position: center;
+    background-size: cover;
+}
+.cont_boton{
+    margin: 20px 0;
 }
