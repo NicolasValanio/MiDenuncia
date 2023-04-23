@@ -6,17 +6,27 @@ import style from "./peticionesUsuarios.module.css"
 /* importar el react-hook para iniciar el formulario */
 import { useForm } from "react-hook-form"
 import { CiInboxOut } from "react-icons/ci"
-import { enviarEstrellas, enviarPeticion } from "../baseDeDatos"
+import { enviarEstrellas, enviarPeticion } from "../../baseDeDatos"
 import Swal from "sweetalert2"
 import { useState } from "react"
-import Loading from "../loading/Loading"
+import Loading from "../../loading/Loading"
 import TiposSolicitudes from "./TiposSolicitudes"
-import Modales from "../modales/modales"
-import ModalPeticiones from "../modalPeticiones/modalPeticiones"
+import Modales from "../../modales/modales"
+import ModalPeticiones from "../../modalPeticiones/modalPeticiones"
 
 export default function FormularioPeticion({ user }) {
+	// estado para el modal de peticiones	
+	const [estadoModal,setEstadoModal] = useState(true)
+
 	const [open, setOpen] = useState(false)
 	const [loading, setLoading] = useState(false)
+
+
+	const [imagenes, setImagenes] = useState([]);
+
+  const handleFileChange = (event) => {
+    setImagenes(event.target.files);
+  };
 
 	const {
 		register,
@@ -44,11 +54,16 @@ export default function FormularioPeticion({ user }) {
 			url
 		} = values
 
-		const formData = new FormData()
+	
 
-		for (const image in url) {
-			formData.append("image[]", image)
+		const formData = new FormData();
+		for (let i = 0; i < imagenes.length; i++) {
+		  formData.append("image[]", imagenes[i]);
+		
 		}
+
+		let archivo=formData.getAll("image[]");
+	
 
 		const request = {
 			type_request_id: type_request_id,
@@ -62,7 +77,7 @@ export default function FormularioPeticion({ user }) {
 			subject,
 			problem,
 			solution,
-			url: formData,
+			url: archivo,
 			staff_neighborhood
 		}
 
@@ -78,13 +93,19 @@ export default function FormularioPeticion({ user }) {
 			if (result.isConfirmed) {
 				setLoading(true)
 				enviarPeticion(request, user.id).then(async (userUpdate) => {
-					console.log({ userUpdate })
+					
 					const user = userUpdate
+				//	console.log(user)
+				//	console.log(user)
 					setLoading(false)
-					if (user.id) {
+					if (user.user.id) {
 						const oldUser = JSON.parse(localStorage.getItem("usuarioLogeado"))
-						const newJson = { ...oldUser, data: { ...user } }
-						console.log({ newJson })
+						
+
+						const newJson = { ...oldUser, data: { ...user.user,...user.doc} }
+					
+						
+					
 						localStorage.setItem("usuarioLogeado", JSON.stringify(newJson))
 						await Swal.fire({
 							titleText: "Informacion enviada correctamente",
@@ -141,10 +162,19 @@ export default function FormularioPeticion({ user }) {
 	/* contenedor form */
 	return (
 		<>
+			MODAL DE PETICIONES
+
+			<ModalPeticiones
+				estadoModal ={estadoModal}
+				setEstadoModal = {setEstadoModal}
+			/>
 
 			<form
 				action=""
+				id="peticiones"
+				encType="multipart/form-data"
 				className={style.contenedorform}
+				method="post" 
 				onSubmit={handleSubmit(enviar)}
 			>
 				{loading && <Loading />}
@@ -517,6 +547,8 @@ export default function FormularioPeticion({ user }) {
 						{...register("url", {
 							required: true
 						})}
+						//name="image"
+						onChange={handleFileChange}
 					/>
 					<label htmlFor="file">
 						<CiInboxOut size={25} />

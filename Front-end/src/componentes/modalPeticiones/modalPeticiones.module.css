@@ -1,5 +1,40 @@
-.fondo {
+.modal {
+    position: relative;
+    z-index: 10;
+}
+
+/* ease-out duration-300 */
+.enter {
+    transition: 0.3s ease-out;
+}
+
+/* opacity-0 */
+.enterLeave {
+    opacity: 0;
+}
+
+/* opacity-100 */
+.enterTo {
+    opacity: 1;
+}
+
+/* ease-in duration-200 */
+.leave {
+    transition: 0.2s ease-in;
+}
+
+/* fixed inset-0 bg-black bg-opacity-25 */
+.fixedDiv {
     position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.258);
+
+}
+
+/* flex min-h-full items-center justify-center p-4 text-center */
+.divChil {
+    display: flex;
+    min-height: 100%;
     align-items: center;
     justify-content: center;
     top: 0rem;
@@ -7,53 +42,56 @@
     height: 100%;
     backdrop-filter: blur(10px);
     display: flex;
+    padding: 4px;
+    text-align: center;
 }
-.open{
+
+.open {
     display: none;
 }
 
-.modalPeticiones{
+.modalPeticiones {
     position: relative;
     width: 60vw;
     height: 90vh;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
-    border-radius: 20px; 
+    border-radius: 20px;
     background: var(--segundo-color);
     justify-content: space-evenly;
     border: solid 1px red;
 }
 
-.contedorInfo{
- display: flex;
+.contedorInfo {
+    display: flex;
 }
 
-.headerModal{
+.headerModal {
     margin: 25px;
 }
 
-.bodyModal{
+.bodyModal {
     border: solid 1px rgb(0, 229, 255);
     height: 100%;
     width: 90%;
 }
 
-.headerModal h2{
+.headerModal h2 {
     font-size: 40px;
     color: var(--primer-color);
 }
 
-.headerModal p{
+.headerModal p {
     font-size: 15px;
     color: white;
 }
 
-.explicacion p{
+.explicacion p {
     font-size: 15px;
     color: white;
 }
 
-.tituloInfo{
+.tituloInfo {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -62,12 +100,12 @@
     color: var(--primer-color);
 }
 
-.textExpli{
+.textExpli {
     width: 80%;
     margin-left: 1.5rem;
 }
 
-.footerModal button{
+.footerModal button {
     width: 200px;
     height: 50px;
     border-radius: 10px;
@@ -77,12 +115,12 @@
     margin: 25px;
 }
 
-.footerModal button:hover{
+.footerModal button:hover {
     background: var(--primer-color);
     color: var(--segundo-color);
 }
 
-.explicacion{
+.explicacion {
     height: 20vh;
     margin: 10px;
     border: solid 1px rgb(0, 255, 13);
@@ -91,12 +129,12 @@
 /* Mq Celular */
 @media(min-width:280px) and (max-width:480px) {
 
-    .fondo{
+    .fondo {
         height: 100%;
         width: 100%;
     }
 
-    .modalPeticiones{
+    .modalPeticiones {
         display: grid;
         justify-items: center;
         height: 90vh;
@@ -104,38 +142,83 @@
         overflow: scroll;
     }
 
-    .bodyModal{
+    .bodyModal {
         height: 100%;
     }
 
-    .contedorInfo{
+    .contedorInfo {
         display: flex;
         flex-direction: column;
     }
-    .explicacion{
+
+    .explicacion {
         height: auto;
         margin: 5px;
     }
 
-    .headerModal h2{
-        font-size: 10px;
-    }
-    
-    .headerModal p{
-        font-size: 10px;
-    }
-    
-    .explicacion p{
+    .headerModal h2 {
         font-size: 10px;
     }
 
-    .tituloInfo{
+    .headerModal p {
         font-size: 10px;
-    } 
+    }
 
-    .contenedor{
+    .explicacion p {
+        font-size: 10px;
+    }
+
+    .tituloInfo {
+        font-size: 10px;
+    }
+
+    .contenedor {
         display: block;
     }
-    
+
 }
 
+
+
+/* opacity-0 scale-95 */
+.fromLeavelTo {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* opacity-100 scale-100 */
+.enterToFrom {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
+.modalOpen {
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    overflow: scroll;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 10;
+    width: 20rem;
+    height: 95vh;
+    border-right: solid 3px #B86EFD;
+    border-bottom: solid 3px #B86EFD;
+    border-radius: 20px;
+    background: var(--segundo-color);
+}
+
+/* text-lg font-medium leading-6 text-gray-900 */
+.dialogtitle {
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+
+}

@@ -3,8 +3,7 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor from "../filtrarPor/filtarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ModalReportes from '../modalReportes/modalReprotes'
-import ModalPeticiones from '../modalPeticiones/modalPeticiones'
+import ModalReportes from '../modalReportes/modalReportes'
 
 
 import { Link, redirect} from 'react-router-dom'
@@ -20,7 +19,7 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
 
 
-function UsuarioLog(params) {
+function UsuarioLog() {
     // ESTADO DEL MODAL
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
@@ -31,6 +30,10 @@ function UsuarioLog(params) {
     const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
+
+    function cerrarModal() {
+        setEstadoModal(false)
+    }
 
     useEffect(()=>{
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=1`)
@@ -50,8 +53,8 @@ function UsuarioLog(params) {
     }
 
     function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( (publicacion, index) =>{   
-           return  <TarjetasPublicacion api={publicacion} index={index} key={publicaciones[index].id}/>
+        let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
+           return  <TarjetasPublicacion api={publicacion} key={publicaciones[index].id} setEstadoModal={setEstadoModal} />
         })
         return nuevasPublicaciones
     }
@@ -87,34 +90,6 @@ function UsuarioLog(params) {
       setShowNotifications(!showNotifications);
     }
 
-    function mostrarScroll() {
-        return(
-            
-            <InfiniteScroll 
-            dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
-            next={()=> {nuevoLlamado(paginaPublicaciones)}} 
-            hasMore={true} >
-    
-            { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
-    
-            </ InfiniteScroll>  
-
-        )
-
-    }
-
-    function mostrarModal() {
-        
-        return(
-            <ModalReportes 
-            estadoModal={estadoModal}
-            setEstadoModal={setEstadoModal} 
-            />   
-        )
-
-    }
-
-  
     return (
         <div className={`contenedor ${style.usuario_log}`}>
             <div className={`contenedor ${style.navLog}`}>
@@ -152,7 +127,6 @@ function UsuarioLog(params) {
                         <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
-                    <button onClick={()=>setEstadoModal(!estadoModal)} >modal</button>
                 </div>
             </div>
 
@@ -160,13 +134,26 @@ function UsuarioLog(params) {
                 <FiltrarPor/>
             </div>
 
-            <div className={`contenedor ${style.cont_tarjetas}`}>
+            <div className={`contenedor ${style.cont_tarjetas} ${estadoModal ? style.quieto : null}`}>
 
-                {
-                    !estadoModal ? mostrarScroll() : mostrarModal()
-                }
+                <InfiniteScroll 
+                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
+                next={()=> {nuevoLlamado(paginaPublicaciones)}} 
+                hasMore={true} >
+        
+                { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
+        
+                </ InfiniteScroll>  
 
             </div>
+
+            {/* MODAL ------------------------------------------ */}
+
+            <ModalReportes 
+                estadoModal = {estadoModal}
+                setEstadoModal  = {setEstadoModal}
+            />
+
 
         </div>
 
