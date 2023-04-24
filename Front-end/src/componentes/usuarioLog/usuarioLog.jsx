@@ -100,6 +100,9 @@ function UsuarioLog() {
 
     return (
         <div className={`contenedor ${style.usuario_log}`}>
+
+<li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
+            
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
                 <img src="https://res.cloudinary.com/dwrupo75d/image/upload/v1681503206/logo_t6vkfb.png" alt="logo" className={style.logo} />
@@ -107,7 +110,7 @@ function UsuarioLog() {
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
                     
-                    <li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
+                 
                     <li className={style.li} >
                         <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
                         {showNotifications && (
