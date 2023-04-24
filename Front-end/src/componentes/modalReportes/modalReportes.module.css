@@ -1,62 +1,225 @@
-.fondo{
+.modal {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* ease-out duration-300 */
+  .enter {
+    transition: 0.3s ease-out;
+  }
+  
+  /* opacity-0 */
+  .enterLeave {
+    opacity: 0;
+  }
+  
+  /* opacity-100 */
+  .enterTo {
+    opacity: 1;
+  }
+  
+  /* ease-in duration-200 */
+  .leave {
+    transition: 0.2s ease-in;
+  }
+  
+  /* fixed inset-0 bg-black bg-opacity-25 */
+  .fixedDiv{
     position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.258);
+    
+  }
+  
+  /* flex min-h-full items-center justify-center p-4 text-center */
+  .divChil{
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    text-align: center;
+  }
+  
+  /* opacity-0 scale-95 */
+  .fromLeavelTo{
+    opacity: 0;
+    transform:scale(0.95) ;
+  }
+  
+  /* opacity-100 scale-100 */
+  .enterToFrom {
+    opacity: 1;
+    transform: scale(1) ;
+  }
+  
+  /* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
+  .modalOpen{
     width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    display: none;
-}
-.open{
-    display: block;
-}
+    max-width: 42rem;
+    border-right: solid 3px #B86EFD;
+    border-bottom: solid 3px #B86EFD;
+    border-radius: 20px; 
+    background: var(--segundo-color);
+    height: 90vh;
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px 0 15px 0;
+  }
+  
+  /* text-lg font-medium leading-6 text-gray-900 */
+  .dialogtitle{
+    color: #fff;
+    text-align: center;
+    font-size: 1.2rem;
+    
+  }
+
 .cerrar{
-    width: 40px;
-    height: 40px;
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
+
 .boton{
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
+
 .iconCerrar{
-    font-size: 2.5rem;
-    color: var(--primer-color);
+    font-size: 2rem;
+    color: #B86EFD;
     background: transparent;
 }
-.modalOpen{
-    position: relative;
-    top: 2rem;
-    left: 6rem;
-    width: 25rem;
-    height: 120vh;
-    border-right: solid 3px var(--primer-color);
-    border-bottom: solid 3px var(--primer-color);
-    border-radius: 20px; 
-    background: var(--tercer-color);
-    z-index: 1000;
-}
+
+
+
 .tituloReporte{
-    font-size: 2.5em;
-    color: var(--primer-color);
+    font-size: 2rem;
+    color: #B86EFD;
 }
+
 .parrafoReporte{
-    font-size: 1.3em;
-    color: white;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.811);
     margin: 10px;
-    text-align: start;
+  
 }
-.contResulto{
+.cont_checkbox{
+    display: flex;
+    align-items: end;
+    color: white;   
+    margin-left: 20px;
+    padding: 20px;
+}
+
+.checkboxdi{
+  display:flex;
+  flex-direction: column;
+  align-items: self-start;
+}
+
+
+.labelCheck{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+    text-align: left;
+}
+.labelResulto{
     flex-direction: row;
+    color: #00FF19;
+    margin: 10px;
+    gap: 10px;
+    text-align: left;
 }
-.inputResulto{
-    background-color:  red;
+
+.cont_textarea{
+  padding: 20px;
+}
+
+.labelTextArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.textArea{
+    background-color: var(--tercer-color);
+    color: white;
+    font-size: 1rem;
+    border: none;
+}
+
+.checkbox{
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #B86EFD;
+    cursor: pointer;
+}
+.checkResulto{
+    border: 2px solid #00FF19;
+}
+
+.checkbox:checked {
+  background-size:65% ;
+  background-repeat: no-repeat;
+    background-image: url('../modalReportes/checksImg/checkReporte.png') ;
+    background-position: center;
+  
+}
+
+.checkResulto:checked {
+   background-size:65% ;
+    background-repeat: no-repeat;
+    background-image: url('../modalReportes/checksImg/checkResulto.png') ;
+    background-position: center;
+ 
+}
+
+/* .checkbox:focus {
+    background-color: rgb(94, 94, 94);
+} */
+
+/* boton reportar */
+
+.btn{
+  width: 200px;
+  height: 45px;
+  background-color: transparent;
+  border: 2px solid var(--primer-color);
+  border-radius: 15px;
+  color: white;
+  transition: 0.2s all;
+}
+
+.btn:hover{
+  background-color: var(--primer-color);
+  color: #fff;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+/* responsive */
+
+@media(max-width:480px){
+  .cont_checkbox {
+    display: block;
+  }
+}
+
+@media(max-width:1024px){
 }
 
 @media (min-width: 700px){
-    .modalOpen{
-        left: 4rem;
-        width: 42rem;
-    }
 }
+
+
+  
