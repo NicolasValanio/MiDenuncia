@@ -162,7 +162,7 @@ export default function FormularioPeticion({ user }) {
 	/* contenedor form */
 	return (
 		<>
-			MODAL DE PETICIONES
+			{/* MODAL DE PETICIONES */}
 
 			<ModalPeticiones
 				estadoModal ={estadoModal}

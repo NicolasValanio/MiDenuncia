@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import ModalReportes from '../modalReportes/modalReportes'
 
 
-import { Link, redirect} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { IoMdNotifications } from "react-icons/io";
@@ -15,7 +15,7 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { BiLogIn, BiLogOut } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
 
 
