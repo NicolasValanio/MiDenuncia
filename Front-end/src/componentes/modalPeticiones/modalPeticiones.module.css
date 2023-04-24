@@ -43,23 +43,32 @@
     backdrop-filter: blur(10px);
     display: flex;
     padding: 4px;
-    text-align: center;
 }
 
 .open {
     display: none;
 }
 
-.modalPeticiones {
-    position: relative;
-    width: 60vw;
-    height: 90vh;
+.modalOpen {
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transition: all 0.3s ease-in-out;
+    width: 80vw;
+    height: 98vh;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
     border-radius: 20px;
     background: var(--segundo-color);
-    justify-content: space-evenly;
-    border: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .contedorInfo {
@@ -71,13 +80,12 @@
 }
 
 .bodyModal {
-    border: solid 1px rgb(0, 229, 255);
     height: 100%;
-    width: 90%;
+    width: 95%;
 }
 
 .headerModal h2 {
-    font-size: 40px;
+    font-size: 25px;
     color: var(--primer-color);
 }
 
@@ -87,7 +95,7 @@
 }
 
 .explicacion p {
-    font-size: 15px;
+    font-size: 13px;
     color: white;
 }
 
@@ -112,29 +120,22 @@
     border: 1px solid var(--primer-color);
     background: var(--segundo-color);
     color: white;
-    margin: 25px;
+    margin: 30px;
 }
 
 .footerModal button:hover {
     background: var(--primer-color);
-    color: var(--segundo-color);
+    color: white;
 }
 
 .explicacion {
     height: 20vh;
     margin: 10px;
-    border: solid 1px rgb(0, 255, 13);
 }
 
 /* Mq Celular */
 @media(min-width:280px) and (max-width:480px) {
-
-    .fondo {
-        height: 100%;
-        width: 100%;
-    }
-
-    .modalPeticiones {
+    .modalOpen {
         display: grid;
         justify-items: center;
         height: 90vh;
@@ -157,27 +158,61 @@
     }
 
     .headerModal h2 {
-        font-size: 10px;
+        font-size: 15px;
     }
 
     .headerModal p {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .explicacion p {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .tituloInfo {
-        font-size: 10px;
+        font-size: 15px;
     }
-
-    .contenedor {
-        display: block;
-    }
-
 }
 
+@media(min-width:481px) and (max-width:1100px){
+    .modalOpen {
+        display: grid;
+        justify-items: center;
+        height: 90vh;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    .bodyModal {
+        height: 100%;
+    }
+
+    .contedorInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .explicacion {
+        height: auto;
+        margin: 5px;
+    }
+
+    .headerModal h2 {
+        font-size: 20px;
+    }
+
+    .headerModal p {
+        font-size: 15px;
+    }
+
+    .explicacion p {
+        font-size: 15px;
+    }
+
+    .tituloInfo {
+        font-size: 20px;
+    }
+}
 
 
 /* opacity-0 scale-95 */
@@ -193,26 +228,7 @@
 }
 
 /* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
-.modalOpen {
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    overflow: scroll;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
-    width: 20rem;
-    height: 95vh;
-    border-right: solid 3px #B86EFD;
-    border-bottom: solid 3px #B86EFD;
-    border-radius: 20px;
-    background: var(--segundo-color);
-}
+
 
 /* text-lg font-medium leading-6 text-gray-900 */
 .dialogtitle {
@@ -220,5 +236,4 @@
     text-align: center;
     font-weight: 500;
     font-size: 1.2rem;
-
 }

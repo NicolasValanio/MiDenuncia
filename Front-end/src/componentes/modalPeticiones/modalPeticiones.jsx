@@ -59,7 +59,7 @@ export default function ModalReportes({estadoModal, setEstadoModal,}) {
                                 </div>
                                 <div>
                                     <p className={style.textExpli}>
-                                    Cuando tu petición se trata de asuntos que alteran la tranquilidad y seguridad en tu comunidad.
+                                    Cuando tu petición se trata de asuntos que alteran la tranquilidad y seguridad en tu comunidad. jejejejejejejejejejejejejejejejeje.
                                     </p>
                                 </div>
                             </div>
