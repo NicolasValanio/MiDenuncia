@@ -108,6 +108,18 @@
     margin: 10px;
     font-size: 0.8em;
 }
+
+.peticion {
+    /* Estilos de posicionamiento */
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    /* Otros estilos de apariencia */
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
 @media (max-width: 768px) {
     .peticion {
       /* Estilos de posicionamiento */
