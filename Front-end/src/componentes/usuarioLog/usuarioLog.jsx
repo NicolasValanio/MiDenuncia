@@ -20,6 +20,9 @@ import {GiStreetLight} from "react-icons/gi";
 
 
 function UsuarioLog() {
+
+    // ID DEL REPORTE
+    const [idReporte, setIdeReporte] = useState(0)
     // ESTADO DEL MODAL
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
@@ -54,7 +57,12 @@ function UsuarioLog() {
 
     function llamarTarjetas (publicaciones) {
         let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
-           return  <TarjetasPublicacion api={publicacion} key={publicaciones[index].id} setEstadoModal={setEstadoModal} />
+           return  <TarjetasPublicacion 
+           api={publicacion} 
+           key={publicaciones[index].id} 
+           setEstadoModal={setEstadoModal} 
+           setIdeReporte={setIdeReporte}
+           />
         })
         return nuevasPublicaciones
     }
@@ -149,10 +157,17 @@ function UsuarioLog() {
 
             {/* MODAL ------------------------------------------ */}
 
+
+            { estadoModal ? 
             <ModalReportes 
                 estadoModal = {estadoModal}
                 setEstadoModal  = {setEstadoModal}
-            />
+                idReporte = {idReporte}
+            /> 
+            : null 
+
+            }
+
 
 
         </div>

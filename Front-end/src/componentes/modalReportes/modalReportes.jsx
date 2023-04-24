@@ -4,7 +4,7 @@ import {AiOutlineClose} from 'react-icons/ai'
 import { useForm} from 'react-hook-form';
 import Style from './modalReportes.module.css'
 
-export default function ModalReportes({estadoModal, setEstadoModal, children}) {
+export default function ModalReportes({estadoModal, setEstadoModal, children,idReporte}) {
 
   function closeModal () {
     setEstadoModal(false)
@@ -100,12 +100,17 @@ export default function ModalReportes({estadoModal, setEstadoModal, children}) {
                                     <textarea {...register("textoReporte")}
                                     className={Style.textArea} cols="33" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
                                 </label>
+                                <input 
+                                {...register("idReporte")}
+                                type="text" 
+                                value={idReporte} 
+                                className={Style.idReporte} />
                             </div>
 
                             <div className={`contenedor ${Style.cont_boton}`}>
                                 <button type="submit" className={`btn`} >REPORTAR</button>
                             </div>
-                            
+
                         </form>
                     </div>   
 
