@@ -17,7 +17,7 @@
     /* height: 40%; */
 }
 .cont_Right{
-    width: 40%;
+    width: 20%;
     height: 80%;
 }
 .listaBoton{
@@ -48,38 +48,48 @@
 .cont_tarjetas{
     width: 100%;
     height: auto;
+
+}
+.quieto{
+    overflow-y: hidden;
+    height: 100rem;
 }
 .logo{
-    width: 40%;
-    height: 5rem;
+    width: 30%;
+    height: 6vh;
     margin-left: 2rem;
     margin-top: .5rem;
-    background-image: url(../../../public/logo.png);
-    background-size: cover;
-    background-position: center;
     cursor: pointer;
 }
 
 /* CONTENEDOR DE NOTIFICAION Y BUSQUEDA Y  LISTA DESPLEGABLE */
 
-.notificaciones{
-    display: none;
-}
 
 
 
 .despegableNotificaion{
-    display: none;
+    display: block;
     position: absolute;
-    right: 10%;
-    width: 100px;
-    height: auto;
+    right: 0;
+    width: 100%;
+    height: 90vh;
     border-radius: 6px;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
-    background-color: var(--tercero-color);
+    background-color: var(--tercer-color);
     color: white;
+    padding: 0 10px 0 10px;
+    
 }
+.despegableNotificaion li{
+    text-align: start;
+    font-size: 20px;
+}
+.despegableNotificaion li:hover{
+    background-color: #434b52;
+    cursor: pointer;
+}
+
 .despegableFiltro{
     display: none;
     position: absolute;
@@ -98,22 +108,53 @@
     margin: 10px;
     font-size: 0.8em;
 }
-.li:hover{
-    background-color: var(--tercero-color);
+@media (max-width: 768px) {
+    .peticion {
+      /* Estilos de posicionamiento */
+      position: fixed;
+      bottom: 20px;
+      right: 5px;
+      /* Otros estilos de apariencia */
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .peticiones{
+    width: 3.5rem;
+    height: 3.5rem;
+    }
+  }
+@media (min-width: 280px) {
+    .logo{
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+    .icon{
+        width: .5rem;
+        height: .5rem;
+    }
 }
-.li:hover > .despegableNotificaion {
-    display: flex;
+/* Mq Celular */
+@media(min-width:320px)and (max-width:480px) {
+    .logo{
+        width: 100%;
+        height: auto;
+    }
 }
-.li:hover > .despegableFiltro {
-    display: flex;
-}
-
-
 
 /* VISTA TABLET ----------------------------------------------------------------------------------------------------- */
-
-@media (min-width: 768px){
+/* Mq Tablet peq */
+@media(min-width:481px)and (max-width:767px) {
+    .logo{
+        width: 80%;
+        height: auto;
+    }
+}
+/* Mq Tablet peq */
+@media(min-width:768px)and (max-width:1024px) {
     
+
     .cont_left{
         justify-content: flex-start;
     }
@@ -143,6 +184,11 @@
         margin: 15px;
     }
 
+    .logo{
+        width: 50%;
+        height: auto;
+    }
+
 }
 
 /* VISTA DESKTOP ----------------------------------------------------------------------------------------------------- */
@@ -166,6 +212,15 @@
         height: 87%;
     }
 
+    .notificaciones{
+    display: none;
+    } 
+
+    .logo{
+        height: auto;
+        width: 50%;
+    }
+
 }
 
 
@@ -173,9 +228,107 @@
 
 
 
-.pokemon{
-    width: 200px;
-    height: 100px;
+
+
+
+.fixedDiv{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.258);
+    
+  }
+.open{
+    display: flex;
+}
+.cerrar{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.boton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.iconCerrar{
+    font-size: 2.5rem;
+    color: #B86EFD;
+    background: transparent;
+}
+.modalOpen{
+    position: relative;
+    z-index: 10;
+    width: 20rem;
+    height: 100vh;
+    border-right: solid 3px #B86EFD;
+    border-bottom: solid 3px #B86EFD;
+    border-radius: 20px; 
+    background: var(--segundo-color);
+}
+.tituloReporte{
+    font-size: 2.5rem;
+    color: #B86EFD;
+}
+.parrafoReporte{
+    font-size: 20px;
+    color: white;
     margin: 10px;
-    background-color: aquamarine;
+    text-align: start;
+}
+.cont_checkbox{
+    width: 100%;
+    align-items: start;
+    color: white;   
+}
+.labelCheck{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+}
+.labelResulto{
+    flex-direction: row;
+    color: #00FF19;
+    margin: 10px;
+    gap: 10px;
+}
+.labelTextArea{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textArea{
+    background-color: var(--tercer-color);
+    color: white;
+    font-size: 1em;
+    border: none;
+}
+.checkbox{
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border: 3px solid #B86EFD;
+    cursor: pointer;
+}
+.checkResulto{
+    border: 3px solid #00FF19;
+}
+
+.checkbox:checked {
+    background-image: url('../modalReportes/checksImg/checkReporte.png') ;
+    background-position: center;
+    background-size: cover;
+}
+.checkResulto:checked {
+    background-image: url('../modalReportes/checksImg/checkResulto.png') ;
+    background-position: center;
+    background-size: cover;
+}
+.cont_boton{
+    margin: 20px 0;
 }
