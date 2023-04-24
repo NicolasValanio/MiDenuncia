@@ -5,20 +5,25 @@
     align-items: flex-start;
     flex-wrap: wrap;
     background-color: var(--segundo-color);
+    
 }
 .navLog{
     width: 100%;
     height: 13vh;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 10px;
+    
 }
 .cont_left{
     width: 40%;
     /* height: 40%; */
+    
 }
 .cont_Right{
-    width: 20%;
+    /* width: 20%; */
     height: 80%;
+    
 }
 .listaBoton{
     width: 100%;
@@ -80,6 +85,7 @@
     color: white;
     padding: 0 10px 0 10px;
     
+    
 }
 .despegableNotificaion li{
     text-align: start;
@@ -101,6 +107,7 @@
     border-bottom: solid 3px var(--primer-color);
     background-color: var(--tercero-color);
     color: white;
+    
 }
 .liFiltrados{
     width: 90%;
@@ -118,10 +125,12 @@
       border-radius: 50%;
       font-size: 16px;
       cursor: pointer;
+      
     }
     .peticiones{
     width: 3.5rem;
     height: 3.5rem;
+    
     }
   }
 @media (min-width: 280px) {
@@ -190,11 +199,14 @@
     }
 
 }
+.ocultar{
+    display: none;
+}
 
 /* VISTA DESKTOP ----------------------------------------------------------------------------------------------------- */
 
 @media (min-width: 1024px){
-    
+/*     
     .filtrar{
         height: 87%;
         display: flex;
@@ -205,7 +217,7 @@
 
     .filtrar{
         width: 20%;
-    }
+    } */
 
     .cont_tarjetas{
         width: 80%;
@@ -222,58 +234,34 @@
     }
 
 }
+@media(min-width:992px){
+    .ocultarA{
+        display: block;
+    }
+    .ocultar{
+        display: none;
+    }
+    .ocultarB{
+        display: none;
+    }
+    .cont_tarjetas{
+        width: 70%;
+        height: 87%;
+    }
 
-
-
-
-
-
-
-
-
-.fixedDiv{
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.258);
+}
+@media(max-width:992px){
+    .ocultar{
+        display: block;
+        display:flex;
+        justify-content: center;
+        width: 100%;
+    }
     
-  }
-.open{
-    display: flex;
 }
-.cerrar{
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-}
-.boton{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-.iconCerrar{
-    font-size: 2.5rem;
-    color: #B86EFD;
-    background: transparent;
-}
-.modalOpen{
-    position: relative;
-    z-index: 10;
-    width: 20rem;
-    height: 100vh;
-    border-right: solid 3px #B86EFD;
-    border-bottom: solid 3px #B86EFD;
-    border-radius: 20px; 
-    background: var(--segundo-color);
-}
-.tituloReporte{
-    font-size: 2.5rem;
-    color: #B86EFD;
-}
-.parrafoReporte{
-    font-size: 20px;
-    color: white;
+.pokemon{
+    width: 200px;
+    height: 100px;
     margin: 10px;
     text-align: start;
 }
