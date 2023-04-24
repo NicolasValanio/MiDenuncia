@@ -10,9 +10,10 @@ export async function EnvioLoginBd(envio) {
 
 export function EnvioResgistrarBd(envio) {
 
-    axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+  let respu =  axios.post("https://midenuncia-database-production.up.railway.app/signUp",envio)
+    .then(res => res)
+    .catch(err => err)
+return respu
 
 }
 

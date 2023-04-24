@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './RegistroUsuario.module.css'
 import {EnvioResgistrarBd} from '../baseDeDatos'
 
@@ -9,24 +9,52 @@ import {RiLockPasswordLine} from "react-icons/ri"
 import {BsMailbox} from "react-icons/bs"
 import "animate.css";
 import { Link,useNavigate  } from 'react-router-dom'
-
+import { Toaster, toast } from 'sonner'
+import axios, { AxiosError, HttpStatusCode } from "axios";
 
 function RegistroUsuario() {
 
     const { register, handleSubmit,formState:{errors}} = useForm();
-    const navigate = useNavigate();
+
+    const[pet,setpeti] =useState();
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
 
 //------------------------------------------------------------------------------------------
 
+    function Positivo() {
+        let aprobado= toast.success('Registro Exitoso');
+        return aprobado;
+
+    }
+
+    function Negativo(){
+        let denegado = toast.error('Error en la creación del usuario');
+        return denegado;
+    }
+
     const onSubmit = valor =>{
-        EnvioResgistrarBd(valor) 
-        navigate("/login");
+        EnvioResgistrarBd(valor).then((res) => setpeti(res));
+        console.log(pet)    
+          if (pet.status===201) {
+            
+            Positivo();
+         setTimeout(function() {
+            window.location.href = '/Login';}, 3000);
+        
+        }else{    
+            Negativo();
+            console.log(valor)
+            console.log(HttpStatusCode)
+
+        }
+
+
     }
 
     return (
         <div className={`contenedor ${style.registroUsuarios_contenedor}`}>
+            <Toaster richColors  position="bottom-right" />
             <div  className={`contenedor ${style.registroUsuarios}`}>
 
                 <div className={`contenedor ${style.contenedor_top}`}>
