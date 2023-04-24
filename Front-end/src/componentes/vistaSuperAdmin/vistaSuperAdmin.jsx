@@ -14,7 +14,14 @@ function VistaSuperAdmin() {
 
 
     const [estado, setEstado] = useState(Boolean);
-
+    function goBack() {
+        if (window.history.length <= 1) {
+          alert("No hay vistas anteriores disponibles");
+        } else {
+          window.history.back();
+        }
+      }
+       
     function handleClick() {
         setEstado(!estado);
       }
@@ -66,7 +73,7 @@ function VistaSuperAdmin() {
                        </div>
            </div>
                         
-           <GiReturnArrow className={style.volver}/>
+           <GiReturnArrow  onClick={goBack} className={style.volver}/>
            <div className={style.contenedorFiltrar}>
                     <div className={style.conteInput}>
                        <BiSearchAlt className={style.iconBuscar}/>
