@@ -1,60 +1,56 @@
 .modal {
     position: relative;
     z-index: 10;
-  }
-  
-  /* ease-out duration-300 */
-  .enter {
+}
+
+/* ease-out duration-300 */
+.enter {
     transition: 0.3s ease-out;
-  }
-  
-  /* opacity-0 */
-  .enterLeave {
+}
+
+/* opacity-0 */
+.enterLeave {
     opacity: 0;
-  }
-  
-  /* opacity-100 */
-  .enterTo {
+}
+
+/* opacity-100 */
+.enterTo {
     opacity: 1;
-  }
-  
-  /* ease-in duration-200 */
-  .leave {
+}
+
+/* ease-in duration-200 */
+.leave {
     transition: 0.2s ease-in;
-  }
-  
-  /* fixed inset-0 bg-black bg-opacity-25 */
-  .fixedDiv{
+}
+
+/* fixed inset-0 bg-black bg-opacity-25 */
+.fixedDiv {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.258);
-    
-  }
-  
-  /* flex min-h-full items-center justify-center p-4 text-center */
-  .divChil{
+
+}
+
+/* flex min-h-full items-center justify-center p-4 text-center */
+.divChil {
     display: flex;
     min-height: 100%;
     align-items: center;
     justify-content: center;
+    top: 0rem;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    display: flex;
     padding: 4px;
-    text-align: center;
-  }
-  
-  /* opacity-0 scale-95 */
-  .fromLeavelTo{
-    opacity: 0;
-    transform:scale(0.95) ;
-  }
-  
-  /* opacity-100 scale-100 */
-  .enterToFrom {
-    opacity: 1;
-    transform: scale(1) ;
-  }
-  
-  /* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
-  .modalOpen{
+}
+
+.open {
+    display: none;
+}
+
+/* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
+.modalOpen {
     --tw-translate-x: 0;
     --tw-translate-y: 0;
     --tw-rotate: 0;
@@ -63,23 +59,254 @@
     --tw-scale-x: 1;
     --tw-scale-y: 1;
     transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    overflow: scroll;
     transition: all 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
-    width: 20rem;
-    height: 95vh;
-    border-right: solid 3px #B86EFD;
-    border-bottom: solid 3px #B86EFD;
-    border-radius: 20px; 
+    width: 80vw;
+    height: 98vh;
+    border-right: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
+    border-radius: 20px;
     background: var(--segundo-color);
-  }
-  
-  /* text-lg font-medium leading-6 text-gray-900 */
-  .dialogtitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contedorInfo {
+    display: flex;
+}
+
+.headerModal {
+    margin: 25px;
+}
+
+.bodyModal {
+    height: 100%;
+    width: 95%;
+}
+
+.headerModal h2 {
+    font-size: 38px;
+    color: var(--primer-color);
+}
+
+.headerModal p {
+    font-size: 25px;
+    text-align: justify;
+    color: white;
+}
+
+.explicacion p {
+    font-size: 22px;
+    color: white;
+}
+
+.tituloInfo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 38px;
+    color: var(--primer-color);
+}
+
+.textExpli {
+    margin-left: 1.5rem;
+    text-align: justify;
+}
+
+.footerModal button {
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid var(--primer-color);
+    background: var(--segundo-color);
+    color: white;
+    margin: 30px;
+    font-size: 20px;
+}
+
+.footerModal button:hover {
+    background: var(--primer-color);
+    color: white;
+}
+
+.explicacion {
+    height: 20vh;
+    margin: 10px;
+}
+
+/* Mq Celular */
+@media(min-width:280px) and (max-width:480px) {
+    .modalOpen {
+        display: grid;
+        justify-items: center;
+        height: 90vh;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    .bodyModal {
+        height: 100%;
+    }
+
+    .contedorInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .explicacion {
+        height: auto;
+        margin: 5px;
+    }
+
+    .headerModal h2 {
+        font-size: 15px;
+    }
+
+    .headerModal p {
+        font-size: 12px;
+    }
+
+    .explicacion p {
+        font-size: 12px;
+    }
+
+    .tituloInfo {
+        font-size: 15px;
+    }
+}
+
+@media(min-width:481px) and (max-width:1100px){
+    .modalOpen {
+        display: grid;
+        justify-items: center;
+        height: 90vh;
+        width: 90%;
+        overflow: scroll;
+    }
+
+    .bodyModal {
+        height: 100%;
+    }
+
+    .contedorInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .explicacion {
+        height: auto;
+        margin: 5px;
+    }
+
+    .headerModal h2 {
+        font-size: 20px;
+    }
+
+    .headerModal p {
+        font-size: 15px;
+    }
+
+    .explicacion p {
+        font-size: 15px;
+    }
+
+    .tituloInfo {
+        font-size: 20px;
+    }
+}
+
+@media(min-width:1101px) and (max-width:1200px){
+    .headerModal h2 {
+        font-size: 32px;
+    }
+
+    .headerModal p {
+        font-size: 19px;
+    }
+
+    .explicacion p {
+        font-size: 18px;
+    }
+
+    .tituloInfo {
+        font-size: 32px;
+    }
+}
+
+@media(min-width:1201px) and (max-width:1300px){
+    .headerModal h2 {
+        font-size: 35px;
+    }
+
+    .headerModal p {
+        font-size: 19px;
+    }
+
+    .explicacion p {
+        font-size: 18px;
+    }
+
+    .tituloInfo {
+        font-size: 35px;
+    }
+}
+
+@media(min-width:1301px) and (max-width:1450px){
+    .headerModal h2 {
+        font-size: 35px;
+    }
+
+    .headerModal p {
+        font-size: 20px;
+    }
+
+    .explicacion p {
+        font-size: 20px;
+    }
+
+    .tituloInfo {
+        font-size: 35px;
+    }
+}
+
+@media(min-width:1451px) and (max-width:1600px){
+    .headerModal h2 {
+        font-size: 36px;
+    }
+
+    .headerModal p {
+        font-size: 21px;
+    }
+
+    .explicacion p {
+        font-size: 21px;
+    }
+
+    .tituloInfo {
+        font-size: 36px;
+    }
+}
+
+
+
+/* opacity-0 scale-95 */
+.fromLeavelTo {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* opacity-100 scale-100 */
+.enterToFrom {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* text-lg font-medium leading-6 text-gray-900 */
+.dialogtitle {
     color: #fff;
     text-align: center;
     font-weight: 500;
     font-size: 1.2rem;
-    
-  }
+}
