@@ -55,131 +55,171 @@
   
   /* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
   .modalOpen{
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    overflow: scroll;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
-    width: 20rem;
-    height: 95vh;
+    width: 100%;
+    max-width: 42rem;
     border-right: solid 3px #B86EFD;
     border-bottom: solid 3px #B86EFD;
     border-radius: 20px; 
     background: var(--segundo-color);
+    height: 90vh;
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px 0 15px 0;
   }
   
   /* text-lg font-medium leading-6 text-gray-900 */
   .dialogtitle{
     color: #fff;
     text-align: center;
-    font-weight: 500;
     font-size: 1.2rem;
     
   }
 
 .cerrar{
-    width: 40px;
-    height: 40px;
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
+
 .boton{
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
+
 .iconCerrar{
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #B86EFD;
     background: transparent;
 }
+
+
+
 .tituloReporte{
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #B86EFD;
 }
+
 .parrafoReporte{
-    font-size: 20px;
-    color: white;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.811);
     margin: 10px;
-    text-align: start;
+  
 }
 .cont_checkbox{
-    width: 100%;
-    align-items: start;
+    display: flex;
+    align-items: end;
     color: white;   
+    margin-left: 20px;
+    padding: 20px;
 }
+
+.checkboxdi{
+  display:flex;
+  flex-direction: column;
+  align-items: self-start;
+}
+
+
 .labelCheck{
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     align-items: center;
     justify-content: center;
     margin: 10px;
     gap: 10px;
+    text-align: left;
 }
 .labelResulto{
     flex-direction: row;
     color: #00FF19;
     margin: 10px;
     gap: 10px;
+    text-align: left;
 }
+
+.cont_textarea{
+  padding: 20px;
+}
+
 .labelTextArea{
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
+
 .textArea{
     background-color: var(--tercer-color);
     color: white;
-    font-size: 1em;
+    font-size: 1rem;
     border: none;
 }
+
 .checkbox{
     appearance: none;
-    width: 32px;
-    height: 32px;
-    border: 3px solid #B86EFD;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #B86EFD;
     cursor: pointer;
 }
 .checkResulto{
-    border: 3px solid #00FF19;
+    border: 2px solid #00FF19;
 }
 
 .checkbox:checked {
+  background-size:65% ;
+  background-repeat: no-repeat;
     background-image: url('../modalReportes/checksImg/checkReporte.png') ;
     background-position: center;
-    background-size: cover;
+  
 }
+
 .checkResulto:checked {
+   background-size:65% ;
+    background-repeat: no-repeat;
     background-image: url('../modalReportes/checksImg/checkResulto.png') ;
     background-position: center;
-    background-size: cover;
+ 
 }
-.cont_boton{
-    margin: 20px 0;
-}
+
 /* .checkbox:focus {
     background-color: rgb(94, 94, 94);
 } */
 
+/* boton reportar */
+
+.btn{
+  width: 200px;
+  height: 45px;
+  background-color: transparent;
+  border: 2px solid var(--primer-color);
+  border-radius: 15px;
+  color: white;
+  transition: 0.2s all;
+}
+
+.btn:hover{
+  background-color: var(--primer-color);
+  color: #fff;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+/* responsive */
+
+@media(max-width:480px){
+  .cont_checkbox {
+    display: block;
+  }
+}
+
+@media(max-width:1024px){
+}
 
 @media (min-width: 700px){
-    .modalOpen{
-        left: 4rem;
-        width: 42rem;
-    }
 }
 
-.idReporte{
-  display: none;
-}
 
   

@@ -25,6 +25,12 @@ export async function enviarPeticion(cuerpo, id) {
         .catch(err => console.log(err)) 
 }
 
+export async function envioReporte(reporte,idReporte){
+    return await axios.post(`https://midenuncia-database-production.up.railway.app/createreport/:${idReporte}/:${reporte.textoReporte}/:${reporte.RadioReport}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
 // export async function enviarPeticion(cuerpo, id) {
 //     return await fetch(`https://midenuncia-database-production.up.railway.app/request/${id}`, {
 //         method: 'PUT',

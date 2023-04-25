@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import style from '../usuarioLog/usuarioLog.module.css'
-import FiltrarPor from "../filtrarPor/filtarPor";
+import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ModalReportes from '../modalReportes/modalReportes'
+import { MenuPerfil } from "../MenuPerfil/MenuPerfil";
 
 
 import { Link} from 'react-router-dom'
@@ -98,6 +99,19 @@ function UsuarioLog() {
       setShowNotifications(!showNotifications);
     }
 
+    const [ver, setVer] = useState(false);
+    function handleClickMenuPerfil(){
+        ver ? setVer(false) : setVer(true);
+        setVerFiltro(true);
+
+    }
+
+    const [verFiltro, setVerFiltro] = useState(false);
+    function handleClickVerFiltro(){
+        verFiltro ? setVerFiltro(false) : setVerFiltro(true);
+        setVer(false);
+    }
+  
     return (
         <div className={`contenedor ${style.usuario_log}`}>
 
@@ -110,21 +124,22 @@ function UsuarioLog() {
                 <div className={`contenedor ${style.cont_Right}`}>
                     <ul className={`contenedor ${style.listaBoton}`}>
                     
-                 
-                    <li className={style.li} >
-                        <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
-                        {showNotifications && (
-                            <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`} ref={notificationRef}>
-                                <li>Se ha publicado su petición con éxito</li>
-                                <li>@Luis16 ha apoyado tu petición</li>
-                                <li>@Luis16 ha comentado tu petición</li>
-                            </ul>
-                        )}
-                    </li>
+                    <li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
+                        <li className={style.li} >
+                            <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
+                            {showNotifications && (
+                                <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`} ref={notificationRef}>
+                                    <li>Se ha publicado su petición con éxito</li>
+                                    <li>@Luis16 ha apoyado tu petición</li>
+                                    <li>@Luis16 ha comentado tu petición</li>
+                                </ul>
+                            )}
+                        </li>
 
-                        <li className={`${style.li} ${style.notificaciones}`} >
+                        {/* <li className={`${style.li} ${style.notificaciones}`} onClick={handleClickVerFiltro} > */}
+                        <li className={`${style.li} ${style.ocultarB}`} title="Filtrar por" onClick={handleClickVerFiltro} >
                             <div className={style.a} to="/"> <VscSettings className={`icon ${style.iconsLog}`}/></div>
-                            <ul className={`contenedor ${style.despegableFiltro} ${style.li}`} >
+                            {/* <ul className={`contenedor ${style.despegableFiltro} ${style.li}`} >
                                 <li className={style.liFiltrados} > <AiFillAlert /> Seguridad  </li>
                                 <li className={style.liFiltrados} > <BsSignStopFill /> Malla Vial </li>
                                 <li className={style.liFiltrados} > <BsFillSignNoParkingFill     /> Señalización Vial </li>
@@ -132,18 +147,28 @@ function UsuarioLog() {
                                 <li className={style.liFiltrados} > <GiStreetLight /> Alumbrado Público  </li>
                                 <li className={style.liFiltrados} > <MdOutlineRecycling /> Contaminación Ambiental </li>
                                  
-                            </ul>
+                            </ul> */}
                         </li>
-                        
-                        <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li>
+                        {/* <li className={style.li} title="Tu Perfil"><Link className={style.a} to="/vistaUsuario"> <FaUserCircle className={`icon ${style.iconsLog}`} /> </Link></li> */}
+                        <li className={style.li} style={{position:"relative"}} title="Tu Perfil" >
+                            <FaUserCircle className={`icon ${style.iconsLog}`} onClick={handleClickMenuPerfil}/>
+                            <MenuPerfil mostrar={ver}/> 
+                        </li>
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>
             </div>
 
-            <div className={`contenedor ${style.filtrar}`}>
-                <FiltrarPor/>
+            {/* <div className={`contenedor `} style={verFiltro ? {display:"block"}:{display:"block"}}>*/}
+            
+            <div className={`contenedor ${style.filtrar} ${style.ocultarA}`}>
+                <FiltrarPorA/>
             </div>
+            <div className={`contenedor ${style.filtrar} ${style.ocultar}`}>
+                <FiltrarPor mostrar={verFiltro}/>
+            </div>
+            
+
 
             <div className={`contenedor ${style.cont_tarjetas} ${estadoModal ? style.quieto : null}`}>
 
