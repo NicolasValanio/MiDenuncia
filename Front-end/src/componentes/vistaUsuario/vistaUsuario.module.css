@@ -50,21 +50,14 @@
 }
 
 .Fihome{
-    /* margin-top: 60%; */
     width: 36px;
     height: 33px;
     top: 15%;
     color: #9915EA;
+    cursor: pointer;
 }
 
-.homeIcono{
-    /* margin-top: 70%; */
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #FFFFFF;
 
-}
 .Iconos1{
     background: transparent;
     border: none;

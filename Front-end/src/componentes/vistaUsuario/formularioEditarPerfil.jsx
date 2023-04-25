@@ -8,8 +8,9 @@ import React, { useEffect, useState } from "react";
 
 
 function EditarPerfil({dato}) {
+    console.log(dato);
 
-    let {name,last_name,nickname}=dato
+    // let {name, last_name, nickname} = dato;
        
 
     const [mostraDatos, setMostrarDatos]= useState(false);
@@ -34,7 +35,7 @@ function EditarPerfil({dato}) {
     function closeModal() {
         setMostrarDatos(false);
     }
-    console.log(dato);
+    
 
 
 
@@ -88,12 +89,12 @@ function EditarPerfil({dato}) {
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={name}  className={style.inputdatos} type="text" />
+                            <input placeholder={dato.name}  className={style.inputdatos} type="text" />
                         </label>
                         
 
                         <label htmlFor="">Apellido                           
-                            <input placeholder={last_name} className={style.inputdatos} type="text" />
+                            <input placeholder={0} className={style.inputdatos} type="text" />
                         </label>
                         <div className={style.inputButon}>
                             <button className={`btn ${style.botonGuardar}`}>
@@ -108,7 +109,7 @@ function EditarPerfil({dato}) {
                     <div  className={style.datosFila1}>
                         
                         <label htmlFor="">Usuario
-                            <input placeholder={nickname} className={style.inputdatos} type="text" />
+                            <input placeholder={0} className={style.inputdatos} type="text" />
                         </label>
 
 
@@ -118,10 +119,7 @@ function EditarPerfil({dato}) {
                         
                         </h4>
                         
-                    
-{/* 
 
-                                     */}
 
                     </div>
 

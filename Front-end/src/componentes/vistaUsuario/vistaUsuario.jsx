@@ -37,30 +37,33 @@ function VistaUsuario() {
         
         function llamardatos() {
             
+            
             fetch('https://midenuncia-database-production.up.railway.app/info')
             .then((response) => response.json())
             .then((infor) => {
+                const usuarioActual =  localStorage.getItem('usuarioLogeado')
                 setUsuario(infor);
-                setPerfil(infor.find(x => x.id))
-                // console.log(perfil);      
-                // return "---"+ perfil;
+                setPerfil(infor.find(x => x.id === usuarioActual.id));
+               
+                // console.log(usuarioActual);
             })
+            // .then((infor) => {
+            //     setUsuario(infor);
+            //     setPerfil(infor.find(x => x.id));
+            //     // console.log(perfil);      
+            //     // return "---"+ perfil;
+            // })
             .finally(() => setLoading(false))
         }
+
+        const [verin, setVerin] = useState(false);
 
         useEffect(() => {
             llamardatos()
         }, [])
         
-        if (loading) return <p>Loading...</p>
+        if (loading) return <p>Loading...</p>   
 
-        const [verin, setVerin] = useState(false);
-        
-        function ClickMenuPerfil (){
-            ver ? setVerin(false) : setVer(true);
-            setVerFiltro(true);
-    
-        }
 
         
 
@@ -95,30 +98,30 @@ function VistaUsuario() {
                 </div>  
                 <div className={style.nabiconos}>
                     
-                        <button href="" className={style.Iconos1}>
+                        <button className={style.Iconos1 } onClick={() => setVerin(!verin)}>
                             <FaUserCircle className={style.Fihome} />
-                            <MenuPerfil mostrar={ver}/>
                         </button>
-                        <button  className={style.Iconos1} >
+                        {/* <button  className={style.Iconos1} >
                             <FiHome className={style.Fihome} />
-                        </button>
+                        </button> */}
                     
                 </div>
             </nav>  
         
+                        <MenuPerfil mostrar={verin}/>
             <div className={style.containerEdiPrinipal}>
 
                     <div className={style.infoUsuario}>
                         <h3>
                             {
-                                perfil.nickname
+                                usuario.nickname
                             }
                         </h3>
                      
                     </div>
 
-                    <EditarPefil dato={perfil}/>
-                
+                    <EditarPefil dato={usuario}/>
+                <></>
                 
             </div>
 
