@@ -61,49 +61,53 @@ export default function ModalReportes({estadoModal, setEstadoModal, children}) {
                             <p className={Style.parrafoReporte}>¿ Por que deseas reportar esta publicacion?</p>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className={`contenedor ${Style.cont_checkbox}`}>
-                                <label className={`contenedor ${Style.labelResulto}`}>
 
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    type="radio" className={`${Style.checkbox} ${Style.checkResulto}`} value='solucionado'/> Ya se soluciono el problema
-                                </label>
+                            <div className={Style.cont_checkbox}>
+                                <div className={Style.checkboxdi}>
+                                   <label className={`contenedor ${Style.labelResulto}`}>
 
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                       type="radio" className={`${Style.checkbox} ${Style.checkResulto}`} value='solucionado'/> Ya se soluciono el problema
+                                    </label>
+                                  
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                      className={`${Style.checkbox}`} type="radio"  value='contenidoExplicito' /> Contenido Explícito
+                                  </label>
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                      className={`${Style.checkbox}`} type="radio"  value='expresionOdio' /> Expresión de Odio
+                                  </label>
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                      className={`${Style.checkbox}`}  type="radio"  value='DenunciaFalsa' /> Denuncia Falsa
+                                  </label>
+                                </div>
+
+                                <div className={Style.checkboxdi}>
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                      className={`${Style.checkbox}`} type="radio"  value='abusoVerbal'  /> Abuso Verbal
+                                  </label>
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                      className={`${Style.checkbox}`}  type="radio" value='vueneraDerecho' /> Vulnera algun Derecho
+                                  </label>
+                                  <label className={Style.labelCheck}>
+                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})}  
+                                      className={`${Style.checkbox}`} type="radio"  value='reacismo' />  Racismo
+                                  </label>
+                                </div>
+                            </div>
+                            <div className={Style.cont_textarea}>
+                              <label className={Style.labelTextArea}>
+                                      <textarea {...register("textoReporte")}
+                                      className={Style.textArea} cols="63" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
+                              </label>
                             </div>
 
-                            <div className={`contenedor ${Style.cont_checkbox}`}>
-                                
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${Style.checkbox}`} type="radio"  value='contenidoExplicito' /> Contenido Explícito
-                                </label>
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${Style.checkbox}`} type="radio"  value='expresionOdio' /> Expresión de Odio
-                                </label>
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${Style.checkbox}`}  type="radio"  value='DenunciaFalsa' /> Denuncia Falsa
-                                </label>
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${Style.checkbox}`} type="radio"  value='abusoVerbal'  /> Abuso Verbal
-                                </label>
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                    className={`${Style.checkbox}`}  type="radio" value='vueneraDerecho' /> Vulnera algun Derecho
-                                </label>
-                                <label className={Style.labelCheck}>
-                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})}  
-                                    className={`${Style.checkbox}`} type="radio"  value='reacismo' />  Racismo
-                                </label>
-                                <label className={Style.labelTextArea}>
-                                    <textarea {...register("textoReporte")}
-                                    className={Style.textArea} cols="33" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
-                                </label>
-                            </div>
-
-                            <div className={`contenedor ${Style.cont_boton}`}>
-                                <button type="submit" className={`btn`} >REPORTAR</button>
+                            <div className={Style.cont_boton}>
+                                <button type="submit" className={Style.btn}>REPORTAR</button>
                             </div>
                             
                         </form>
