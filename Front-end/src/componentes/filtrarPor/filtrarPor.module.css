@@ -25,7 +25,7 @@
     margin-left: 1rem;
     margin-top: 3rem;
     position: relative;
-    
+
 }
 
 .filtrarA li{
@@ -77,8 +77,8 @@
     }
 } */
 
-@media(min-width:992px) {
-    .filtrarA{
+@media(max-width:992px) {
+    .filtrar{
         /* display: none; */
         /* border: 2px solid red; */
     }

@@ -3,8 +3,8 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ModalReportes from '../modalReportes/modalReprotes'
-import { MenuPerfil } from '../MenuPerfil/MenuPerfil'
+import ModalReportes from '../modalReportes/modalReportes'
+import { MenuPerfil } from "../MenuPerfil/MenuPerfil";
 
 
 import { Link, redirect} from 'react-router-dom'
