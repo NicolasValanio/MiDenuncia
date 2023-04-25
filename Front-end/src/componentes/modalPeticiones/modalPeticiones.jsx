@@ -48,55 +48,73 @@ export default function ModalReportes({estadoModal, setEstadoModal,}) {
                   </Dialog.Title>
                 <div className={`contenedor ${style.headerModal}`}>
                     <h2>Descripción de cada tipo de Petición</h2>
-                    <p>A continuación puedes ver una breve descripción de cada tipo de petición, esto te puede ayudar a elegir el enfoque del problema que deseas manifestar</p>
+                    <p>A continuación puedes ver una breve descripción de cada tipo de petición, esto te puede ayudar a elegir el enfoque del problema que deseas manifestar.</p>
                 </div>
                 <div className={`contenedor ${style.bodyModal}`}>
-                    <div className={`contenedor ${style.explicacion}`}>
+                    <div className={style.contedorInfo}>
                         <div>
-                            <AiFillAlert /> Seguridad
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                    <AiFillAlert /> Seguridad
+                                </div>
+                                <div>
+                                    <p className={style.textExpli}>
+                                    Cuando tu petición se trata de asuntos que alteran la tranquilidad y seguridad en tu comunidad. JEJEJEJEJEJEJE.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                <TbRoad/> Malla vial
+                                </div>
+                                <div >
+                                    <p className={style.textExpli}>
+                                    Cuando deseas informar sobre el mal estado de alguna vía que requiere ser arreglada para evitar accidentes y/o daños a los vehículos.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                    <BsFillSignStopFill /> Señalización vial
+                                </div>
+                                <div>
+                                    <p className={style.textExpli}>
+                                    Cuando hay problemas que afectan la movilidad vial en tu comunidad. Podría ser por una señal de transito  defectuosa o porque no hay una señal que pueda mitigar el problema.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            Cuando tu petición se trata de asuntos que alteran la tranquilidad y seguridad en tu comunidad.
-                        </div>
-                    </div>
-                    <div className={`contenedor ${style.explicacion}`}>
-                        <div>
-                           <TbRoad/> Malla vial
-                        </div>
-                        <div>
-                            Cuando deseas informar sobre el mal estado de alguna vía que requiere ser arreglada para evitar accidentes y/o daños a los vehículos.
-                        </div>
-                    </div>
-                    <div className={`contenedor ${style.explicacion}`}>
-                        <div>
-                            <BsFillSignStopFill /> Señalización vial
-                        </div>
-                        <div>
-                            Cuando hay problemas que afectan la movilidad vial en tu comunidad. Podría ser por una señal de transito  defectuosa o porque no hay una señal que pueda mitigar el problema.
-                        </div>
-                    </div>
-                    <div className={`contenedor ${style.explicacion}`}>
-                        <div>
-                            <BsFillTreeFill /> Espacio Público
-                        </div>
-                        <div>
-                            Cuando percibas un problema que afecte el uso de lugares públicos como parques, andenes, etc. Podrías solicitar que se arregle algo que se encuentre en mal estado y podría afectar la integridad de las personas que lo usan.
-                        </div>
-                    </div>
-                    <div className={`contenedor ${style.explicacion}`}>
-                        <div>
-                            <GiDoubleStreetLights /> Alumbrado Público
-                        </div>
-                        <div>
-                            Cuando observas que el alumbrado publico en tu comunidad se encuentra en mal estado o si consideras que se debería instalar alumbrado público en algún sector donde no haya para intentar solucionar problemas de inseguridad, movilidad, etc.
-                        </div>
-                    </div>
-                    <div className={`contenedor ${style.explicacion}`}>
-                        <div>
-                            <TbRecycleOff /> Contaminación Ambiental
-                        </div>
-                        <div>
-                            Cuando observas algún problema de tipo ambiental que afecta algún espacio publico de tu comunidad. Podría presentarse por afectaciones a la salud de las personas, solucionar el aspecto de los lugares públicos cuando hay acumulación de basuras, etc.
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                    <BsFillTreeFill /> Espacio Público
+                                </div>
+                                <div>
+                                    <p className={style.textExpli}>
+                                    Cuando percibas un problema que afecte el uso de lugares públicos como parques, andenes, etc. Podrías solicitar que se arregle algo que se encuentre en mal estado y podría afectar la integridad de las personas que lo usan.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                    <GiDoubleStreetLights /> Alumbrado Público
+                                </div>
+                                <div>
+                                    <p className={style.textExpli}>
+                                    Cuando observas que el alumbrado publico en tu comunidad se encuentra en mal estado o si consideras que se debería instalar alumbrado público en algún sector donde no haya para intentar solucionar problemas de inseguridad, movilidad, etc.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={`contenedor ${style.explicacion}`}>
+                                <div className={style.tituloInfo}>
+                                    <TbRecycleOff /> Contaminación Ambiental
+                                </div>
+                                <div>
+                                    <p className={style.textExpli}>
+                                    Cuando observas algún problema de tipo ambiental que afecta algún espacio publico de tu comunidad. Podría presentarse por afectaciones a la salud de las personas, solucionar el aspecto de los lugares públicos cuando hay acumulación de basuras, etc.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
