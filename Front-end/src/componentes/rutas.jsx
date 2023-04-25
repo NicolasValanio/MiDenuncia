@@ -42,7 +42,6 @@ function Rutas() {
                     <Route path="/HabeasData" element={<HabeasData />} />
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
-                    <Route path="/UsuarioLog" element={<UsuarioLog />} />
                     <Route path="/VistaDenunciaX" element={<VistaDenunciaX />} />
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />

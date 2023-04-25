@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./app",
+    "dev": "nodemon ./app index.js",
     "test": "jest --verbose ./routes"
   },
   "jest": {
@@ -16,6 +16,9 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
+    "connect-mongo": "^5.0.0",
+    "cookie-parser": "^1.4.6",
+    "connect-session-sequelize": "^7.1.5",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -23,6 +26,7 @@
     "express-session": "^1.17.3",
     "googleapis": "^114.0.0",
     "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.2.0",
@@ -30,7 +34,9 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.30.0",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jest": "^29.5.0",

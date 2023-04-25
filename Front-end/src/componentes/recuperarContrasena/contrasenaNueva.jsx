@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import {EnvioEmailResetpassword} from '../baseDeDatos'
+import {nuevaContrasena} from '../baseDeDatos'
 
 
 import style from './contrasenaNueva.module.css';
@@ -19,13 +19,14 @@ function ContrasenaNueva() {
     const navigate = useNavigate();
 
     const [mostrarContrasena, setmostrarContrasena] = useState([false,false]);
-    const handleShowPassword = () => {
-        setShowPassword(!mostrarContrasena);
-      };
+    // const handleShowPassword = () => {
+    //     setShowPassword(!mostrarContrasena);
+    //   };
 
     const onSubmit = valor =>{
-          EnvioResgistrarBd(valor) 
-         // navigate("/login");
+
+        nuevaContrasena(valor) 
+         navigate("/login");
       }
       
       return (
@@ -90,6 +91,7 @@ function ContrasenaNueva() {
                           
                           
                       </label>
+                    
                       <button className={style.iconEye} onClick={() => setmostrarContrasena([mostrarContrasena[0],!mostrarContrasena[1]])}>
                               
                                  <FontAwesomeIcon  icon={mostrarContrasena[1] ? faEye : faEyeSlash} />

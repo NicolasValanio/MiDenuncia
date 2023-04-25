@@ -13,7 +13,7 @@ exports.createComment = async (req,res) => {
             res.status(201).json({comment})
         })
 
-        //console.log(comment)
+        console.log(comment)
 
     } catch (error) {
 
