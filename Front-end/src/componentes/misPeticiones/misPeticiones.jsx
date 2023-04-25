@@ -1,24 +1,54 @@
 import style from '../misPeticiones/misPeticiones.module.css'
 import TarjetasPublicacion from '../tarjetasPublicacion/tarjetasPublicacion'
-import InfiniteScroll from 'react-infinite-scroll-component';
+import {llamarInfoMisPeticiones} from '../baseDeDatos'
 
 import { IoMdNotifications } from "react-icons/io";
 import { GoMegaphone } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
+import { useState,useEffect } from 'react';
 
 
 function MisPeticiones() {
 
-    function tarjetasMisPeticiones() {
-        return(
-            <div className={`contenedor ${style.tarjetas}`}>
-                <div className={`contenedor ${style.contBotones}`}>
-                    <button className={`btn ${style.boton}`}>Eliminar</button>
-                    <button className={`btn ${style.boton}`}>Solucionado</button>
-                </div>
-                {/* <TarjetasPublicacion /> */}
-            </div>
-        )
+    const [publicaciones, setPublicaciones] = useState()
+
+    useEffect(()=>{
+        let usuario = JSON.parse(window.localStorage.getItem('usuarioLogeado'))
+        llamarInfoMisPeticiones(usuario.data.id).then(res => setPublicaciones(res.data.requestUser))
+    },[])
+
+    // publicaciones === undefined ? console.log("espere") : publicaciones.map( publica => console.log(publica));
+
+    function tarjetasMisPeticiones(publicacion) {
+
+        console.log(publicacion);
+
+        let resul = publicacion.map((publica)=> {
+            return(
+                <div className={`contenedor ${style.tarjetas}`}>
+                    <div className={`contenedor ${style.contBotones}`}>
+                        <button className={`btn ${style.boton}`}>Eliminar</button>
+                        <button className={`btn ${style.boton}`}>Solucionado</button>
+                    </div>
+                        <TarjetasPublicacion api = {publica} />
+                    </div>
+            )
+        })
+
+        return resul
+
+        // publicacion.map((public) => {
+        //     return(
+        //         <div className={`contenedor ${style.tarjetas}`}>
+        //             <div className={`contenedor ${style.contBotones}`}>
+        //                 <button className={`btn ${style.boton}`}>Eliminar</button>
+        //                 <button className={`btn ${style.boton}`}>Solucionado</button>
+        //             </div>
+        //             <TarjetasPublicacion api = {public} />
+        //         </div>
+        //     )
+        // })
+
     }
 
     return(
@@ -36,15 +66,9 @@ function MisPeticiones() {
                 </div>
             </div>
             <div className={`contenedor ${style.contTarjetas}`}> 
-                {/* <InfiniteScroll
-                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
-                next={()=> {nuevoLlamado(paginaPublicaciones)}} 
-                hasMore={true}
-                >
 
-                </InfiniteScroll> */}
+             { publicaciones === undefined ?  null : tarjetasMisPeticiones(publicaciones) }
 
-                {tarjetasMisPeticiones()}
             </div>
         </div>
     )

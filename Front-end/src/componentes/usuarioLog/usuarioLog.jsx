@@ -40,7 +40,7 @@ function UsuarioLog() {
     }
 
     useEffect(()=>{
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=1`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
         .then(res => setPublicaciones(res.news) )
     },[])
@@ -187,13 +187,13 @@ function UsuarioLog() {
 
 
             { estadoModal ? 
-            <ModalReportes 
-                estadoModal = {estadoModal}
-                setEstadoModal  = {setEstadoModal}
-                idReporte = {idReporte}
-            /> 
-            : null 
-
+                <ModalReportes 
+                    estadoModal = {estadoModal}
+                    setEstadoModal  = {setEstadoModal}
+                    idReporte = {idReporte}
+                /> 
+                : 
+                    null 
             }
 
 

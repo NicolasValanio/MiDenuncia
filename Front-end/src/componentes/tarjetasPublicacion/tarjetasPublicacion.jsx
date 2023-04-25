@@ -1,16 +1,15 @@
-import {React, useEffect, useState} from 'react'
+import {React, useEffect, useState,Fragment} from 'react'
 import style from './tarjetasPublicacion.module.css'
 import Style from './tarjetasPublicacion.module.css'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { userget } from './fetch';
+import { Dialog, Transition } from '@headlessui/react'
 import {HiUserCircle} from 'react-icons/hi'
-import { set } from 'react-hook-form';
 
 
 
 
 
-function TarjetasPublicacion({props,api,setEstadoModal,estadoModal,setIdeReporte,idReporte}) {
+function TarjetasPublicacion({props,api,setEstadoModal,estadoModal,setIdeReporte}) {
   console.log(api);
 
   const [isOpen, setIsOpen] = useState(false);
