@@ -142,7 +142,7 @@ function UsuarioLog() {
                         <li className={style.li} style={{position:"relative"}} title="Tu Perfil" >
                             <FaUserCircle className={`icon ${style.iconsLog}`} onClick={handleClickMenuPerfil}/>
                             <MenuPerfil mostrar={ver}/> 
-                        </li>
+                        </li>   
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>

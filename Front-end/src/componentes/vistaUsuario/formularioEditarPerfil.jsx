@@ -10,15 +10,13 @@ import React, { useEffect, useState } from "react";
 function EditarPerfil({dato}) {
 
     let {name,last_name,nickname}=dato
-    
-    
-    
+       
 
     const [mostraDatos, setMostrarDatos]= useState(false);
     const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
 
-
     
+
     
     function abrirModal(evet) {
         evet.preventDefault()
@@ -27,15 +25,7 @@ function EditarPerfil({dato}) {
     function cerrarModal() {
         setCambiarContrasenia(false);
     }
-
-
-    // function clinContrasenia (contra){
-    //     contra.preventDefault()
-    //     setCambiarContrasenia(true)
-    // }
-
-
-    
+  
 
     function handleClick(e) {
         e.preventDefault()
@@ -124,7 +114,7 @@ function EditarPerfil({dato}) {
 
                         <h4 className={style.cambiarpassword}>
                             Si desea cambiar la contraseña 
-                            <input type="button" value="Haz clic aquí !"  onClick={abrirModal} className={style.clikcontraseña}   />
+                            <input type="button" value="¡Haz clic aquí !"  onClick={abrirModal} className={style.clikcontraseña}   />
                         
                         </h4>
                         

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import EditarPefil from  "./formularioEditarPerfil"
 import {FiHome } from "react-icons/fi";
 import{FaUserCircle} from "react-icons/fa"
+import { MenuPerfil } from "../MenuPerfil/MenuPerfil";
 import style from './vistaUsuario.module.css';
 
 function VistaUsuario() {
@@ -40,7 +41,7 @@ function VistaUsuario() {
             .then((response) => response.json())
             .then((infor) => {
                 setUsuario(infor);
-                setPerfil(infor.find(x => x.id === 49))
+                setPerfil(infor.find(x => x.id))
                 // console.log(perfil);      
                 // return "---"+ perfil;
             })
@@ -53,6 +54,15 @@ function VistaUsuario() {
         
         if (loading) return <p>Loading...</p>
 
+        const [verin, setVerin] = useState(false);
+        
+        function ClickMenuPerfil (){
+            ver ? setVerin(false) : setVer(true);
+            setVerFiltro(true);
+    
+        }
+
+        
 
         // llamardatos();
         // setPerfil(llamardatos());
@@ -75,7 +85,7 @@ function VistaUsuario() {
 
     return(
         
-        <div  >
+        <div>
             
             <nav className={style.nabvarview}>
                 <div className={style.contaImage}> 
@@ -86,9 +96,10 @@ function VistaUsuario() {
                 <div className={style.nabiconos}>
                     
                         <button href="" className={style.Iconos1}>
-                            <FaUserCircle className={style.Fihome}/>
+                            <FaUserCircle className={style.Fihome} />
+                            <MenuPerfil mostrar={ver}/>
                         </button>
-                        <button  className={style.Iconos1}>
+                        <button  className={style.Iconos1} >
                             <FiHome className={style.Fihome} />
                         </button>
                     
