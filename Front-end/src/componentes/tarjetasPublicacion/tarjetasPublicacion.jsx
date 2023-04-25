@@ -149,6 +149,22 @@ console.log(barrio)
    
    
    */
+  const [cora, setCora] = useState(false);
+  const [contLike, setContLike] = useState(0)
+  
+  function ver(){
+
+    if(cora){
+      setCora(false);
+      setContLike(contLike - 1);
+    }
+    else{
+      setContLike(contLike +1);
+      setCora(true);
+    }
+  }
+
+
  
  return (
   
@@ -172,7 +188,7 @@ console.log(barrio)
               <div className={style.modal_comentarios}>
                <div className={style.contenedor_comentarios}>
                <div className={style.contenedor_imagen_comentario}>
-                <HiUserCircle className={style.icono_comentario}/>
+                <HiUserCircle  className={style.icono_comentario}/>
                 <div className={style.usuario_comentario}> usuario</div>
                </div>
                <div className={style.texto_comentario}> comentario</div>
@@ -290,7 +306,7 @@ console.log(barrio)
 								</svg>
                 {api === undefined ? 'espera': <span>{api.location}, {api.neighborhood}</span>}
 							</div>
-							<div className={Style.reactions}>
+							<div className={Style.reactions} onClick={ver}>
 								<div className={Style.likes}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -303,11 +319,15 @@ console.log(barrio)
 										fill="none"
 										stroke-linecap="round"
 										stroke-linejoin="round"
+
+                    className={Style.corazon}
+                    style={cora ? {fill: "red"}:{fill: "none"}}
 									>
 										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 										<path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
 									</svg>
-                  {api === undefined ? 'espera': <span>{api.support}</span>}
+                  {/* {api === undefined ? 'espera': <span>{api.support}</span>} */}
+                  {api === undefined ? 'espera': <span>{contLike}</span>}
                   
 								</div>
 								<div className={Style.numComments}>
