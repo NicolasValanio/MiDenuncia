@@ -174,7 +174,7 @@ console.log(barrio)
         <div className={style.modal_overlay}>
           <div className={style.modal}>
           <div className={style.modal_header}>
-              {api === undefined ? 'espera': <h3 className={style.nickname}>{api.user.nickname} <br/>
+              {api === undefined ? 'espera': <h3 className={style.nickname}>{api?.user?.nickname} <br/>
               {api.types_request.name}</h3>}
               <span className={style.modal_close} onClick={toggleModal}>&times;</span>
               </div>
@@ -271,7 +271,7 @@ console.log(barrio)
 								<img src="https://picsum.photos/200/300" alt="" />
 							</div>
 							<div className={Style.user_info}>
-                {api === undefined ? 'espera': <span className={Style.user_name}>{api.user.nickname}</span>}
+                {api === undefined ? 'espera': <span className={Style.user_name}>{api?.user?.nickname}</span>}
 								<span className={Style.user_status}>Denuncia por: {api.types_request.name}</span>
 							</div>
 						</div>
