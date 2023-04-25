@@ -1,546 +1,198 @@
-.contenedor1{
-    display: grid;
-    grid-template-areas:
-        'nav '
-        'admin'
-        'volver'
-        'filtrar '
-        'barras';
-    /* margin: 20px; */
+
+
+.table{
+    margin-top:10px;
     width: 100%;
-    height: 100%;
-    padding: 10px;
-
-}
-.nav{
-    grid-area: nav;
-   display: grid;
-   grid-template-areas: 
-   'logo user'
-   ;
-}
-.user{
-    grid-area: user;
-    height: 100%;
-    width: 100%;
-    color: blueviolet;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;   
-}
-
-.usuario{
-    width: 50px;
-    height: 50px;
-    margin: 50px;
-}
-.logo{
-    grid-area: logo;
-    margin: 20px;
-}
-
-p{
-    color: white;
-    font-size: 20px;
-    width:100px;
-    margin: 5px;
-    background:  rgba(255, 255, 255, 0.264);
-    border-radius: 30px;
+    text-align: center;
+   
+    border-collapse: collapse;
     
 }
-
-.volver{
-grid-area: volver;
-color: blueviolet;
-width: 40px;
-height: 40px;
+h1{
+    color: #541f90;
+    margin: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.volver:hover{
-    height: 35px;
+.thead{
+    background-color: #541f90;
     color: white;
-}
-.superAdmin{
-    grid-area: admin;
-    display: grid;
-}
-.selectFiltro{
-    grid-area: select;
-display: grid;
-grid-template-columns: repeat(4,2fr);
-grid-area: select;
-text-align: center;
-width: 100px;
-margin-left: -650px;
-}
-.superAdmin h1{
-    color: blueviolet;
-    position: relative;
-    font-size: 30px;    
-}
-.contenedorFiltrar{
-    grid-area: filtrar;
-    display: grid;
-    grid-template-areas: 
-    'contenido filtro';
-    margin-bottom: 10px;
-    align-items: center;
-    grid-template-columns:0.25fr 0.1fr;
+   font-size: 21px;
+   height: 4rem;
+    border-bottom: 5px solid black;
 
+}
+.td{
+   
+    
+    background-color: #302b3bb4;
+    height: 5rem;
+    
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+  
+   
+}
+
+
+
+.tr:hover{
+    background-color: #541f90;
+    cursor: pointer;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.funcionesHead{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    
 }
 
 .conteInput{
-    height: 100%;
-    width: 100%;
-    grid-area: contenido;
-    padding: 10px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-}
-
-.conteBuscar{
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    grid-area:filtro;
-}
-
-.filtrar{
-
-  border: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    font-size: 20px;
-    background: #b86efd79;
-    color: white;
-}
-.filtrar:hover{
-    background: white;
-    color: blueviolet;
-}
-.filtrar:active{
-
-    box-shadow: 2px 2px 5px #9f4dfc;;
-
-
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+    border-radius: 5px;
+  
+    background-color: white;
+    padding: 5px 2px 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
 
 }
-.span{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
-.barras{
-    display: grid;
-    grid-area: barras;
-    gap: 15px;
-    justify-items: center;
-}
+
 .input{
-    height: 100%;
-    width: 100%;
-    border-radius: 80px;
-    /* position: relative; */
-    font-size: 15px;
-    padding: 10px;
-    text-align: center;
-    grid-area: buscar;
     outline: none;
-}
-
-.iconBuscar{
-    width: 33px;
-    height: 28px;
-    /* position: relative; */
-    /* z-index: 2; */
-    display: grid;
-    position: absolute;
-    margin: 10px;
-}
-.iconBuscar:hover{
-    color: blueviolet;
-}
-.filtrar select{
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    position: relative;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight:bolder;
-    grid-area: filtro;
-}
-select{
-    background: #B86EFD;
-    font-size: 20px;
-    width: 90px;
-    height: 40px;
-    border-radius: 50px;
-    color: white;
-}
-.barra1{
-    background:#b86efd79 ;
-    width: 100%;
-    padding: 10px;
-    height: 50px;
-    position: relative;
-    border-radius: 50px;
-}
-.rol{
-    text-align: center;
-    margin: 5px;
-    border-radius: 50px;
-    width: 100px;
-    height: 40px;   
-}
-
-.rol option{
-    border-radius: 20px;
-}
-.configbarra2{
- 
-    width: 100%;
-}
-
-.barra2{
-    background: #b86efd79;
-    position: relative;
-    border-radius: 20px;
-    height: fit-content;
-    margin: 10px;
-    /* width: 100%; */
+    border-radius: 5px;
+    height: 2rem;
+    font-size: 15px;
     padding: 5px;
-}
-
-
-
-
-
-.opciones{
-    list-style: none;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 200px;
+    border: none;
+    cursor:text;
+    margin-right: 3px;
+   
     
 }
- 
-.opciones li{
- background: rgba(255, 255, 255, 0.264);
- border-radius: 50px;
- width: 100px;
- 
+.iconBuscar{
+    color:#541f90;
+    height: 1.5rem;
+
+    width:1.5rem;
 }
 
-
-
-.datos{
-    display: flex;
-    /* justify-content: center; */
-    list-style: none;
-    text-align: center;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    /* margin: 10px; */
-    /* flex-direction: row; */
-    /* align-items: center; */
-    align-content: center;
-    justify-content: center;
-
-align-items: center;
-    gap: 200px;
-}
-
-.datos li{
-    border-radius: 50px;
-    width: 100px;
+.volver{
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-}
-
-.estado{
-
-    border-radius: 10px;
-    font-size: 20px;
-    background: #b86efd79;
-    color: white;
-
-    outline: none;
-
-}
-.rol{
-
-    border-radius: 10px;
-    font-size: 20px;
-    background: #b86efd79;
-    color: white;
-
-    outline: none;
-
-}
-
-
-@media (max-width :768px) {
-
-
-    .contenedor1{
-        display: grid;
-        grid-template-areas:
-            'admin'
-            'filtrar'
-            'barras';
-        /* margin: 20px; */
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    
+    color: blueviolet;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
     }
-    
-    .superAdmin{
-        color: blueviolet;
-        position: relative;
-    
-        font-size: 30px;
-        grid-area: admin;
-    }
-    .contenedorFiltrar{
-        grid-area: filtrar;
-        display: grid;
-        grid-template-areas: 
-        'contenido filtro';
-        margin-bottom: 10px;
-        align-items: center;
-        grid-template-columns:0.25fr 0.1fr;
-    
-    }
-    
-    .conteInput{
-    
-        height: 100%;
-        width: 100%;
-        grid-area: contenido;
+    .volver:hover{
+        height: 35px;
+        color: white;
        
-        padding: 10px;
-     
-        
-        display: flex;
-        align-content: center;
-        align-items: center;
     }
-    
-    .conteBuscar{
-    
-        display: flex;
-        align-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-    
-        padding: 10px;
-        grid-area:filtro ;
-    
-    
-    }
-    
-    .filtrar{
-    
-      
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        font-size: 20px;
-        background: #b86efd79;
-        color: white;
-    }
-    
-    
-    
-    
-    
-    .span{
-    
-        display: grid;
-        align-items: center;
-        justify-content: center;
-    }
-    .barras{
-        display: grid;
-        grid-area: barras;
-        gap: 15px;
-        justify-items: center;
-    }
-    .input{
-        height: 100%;
-        width: 100%;
-        border-radius: 80px;
-        /* position: relative; */
+
+    .p{
+        color:white;
         font-size: 15px;
-        padding: 10px;
-        text-align: center;
-        grid-area: buscar;
-        outline: none;
     }
-    
-    .iconBuscar{
-        width: 33px;
-        height: 28px;
-        /* position: relative; */
-        /* z-index: 2; */
-        display: grid;
-        position: absolute;
-        margin: 10px;
+
+    .p_table{
+        color:white;
+        font-size: 13px;
     }
-    
-    .filtrar select{
-        width: 200px;
-        height: 50px;
-        text-align: center;
-        position: relative;
-        border-radius: 10px;
-        font-size: 20px;
-        font-weight:bolder;
-        grid-area: filtro;
-    }
-    select{
-        background: #B86EFD;
-        font-size: 20px;
-        width: 90px;
-        height: 40px;
-        border-radius: 50px;
-        color: white;
-    }
-    .barra1{
-        background:#b86efd79 ;
-       width: 100%;
-        padding: 10px;
-        height: 50px;
-        position: relative;
-        border-radius: 50px;
-    
-    }
-    
-    
-    
-    
-    .rol{
-        text-align: center;
-        margin: 5px;
-        border-radius: 50px;
-        width: 100px;
-        height: 40px;   
-    }
-    
-    .rol option{
-        border-radius: 20px;
-    }
-    
-    
-    
-    .configbarra2{
-     
+
+    .filtros{
         width: 100%;
+     
+        display: flex;
+        justify-content: space-around;
     }
-    
-    .barra2{
-        background: #b86efd79;
-        position: relative;
-        border-radius: 20px;
-        height: fit-content;
-        margin: 10px;
-        /* width: 100%; */
+
+    .filtros__select{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+      
+        
+    }
+
+    .filtros__select_info{
+        height: 2.5rem;
+        border-radius: 5px;
+        width: 100%;
+        border:none;
+        outline: none;
+        cursor:pointer;
+        margin-left: 5px;
+        font-size:1rem ;
         padding: 5px;
     }
-    
-    
-    
-    
-    
-    .opciones{
-        list-style: none;
-        text-align: center;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        gap: 200px;
+
+    .filtros__select_tabla{
+       
+        border-radius: 5px;
+        width: 60%;
+        border:none;
+        outline: none;
+        cursor:pointer;
         
+        font-size:15px ;
+        padding: 5px;
+
     }
-     
-    .opciones li{
-     background: rgba(255, 255, 255, 0.264);
-     border-radius: 50px;
-     width: 100px;
-     
+
+    .option{
+        font-size: 20px;
+       padding: 5px;       
     }
-    
-    
-    
-    .datos{
-        display: flex;
-        /* justify-content: center; */
-        list-style: none;
-        text-align: center;
-        color: white;
+    .option_tabla{
         font-size: 15px;
-        font-weight: bold;
-        /* margin: 10px; */
-        /* flex-direction: row; */
-        /* align-items: center; */
-        align-content: center;
-        justify-content: center;
-    
-    align-items: center;
-        gap: 200px;
+       padding: 5px;   
     }
-    
-    .datos li{
-        border-radius: 50px;
-        width: 100px;
-        
+
+    .button{
         display: flex;
         justify-content: center;
         align-items: center;
-    
-    
-    }
-    
-    .estado{
-    
-        border-radius: 10px;
-        font-size: 20px;
-        background: #b86efd79;
+        height: 2rem;
+        background-color: #541f90;
         color: white;
-    
-        outline: none;
-    
-    }
-    .rol{
-    
-        border-radius: 10px;
-        font-size: 20px;
-        background: #b86efd79;
-        color: white;
-    
-        outline: none;
-    
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        flex-wrap:no-wrap;
+        margin: 0 auto;
     }
 
+    .buttonEliminar:hover{
+        background-color: red;
+    }
+    .buttonEliminar1{
+        background-color: red;
+    }
+    .buttonRestablecer1{
+        background-color: rgb(4, 29, 75);
+    }
+
+    .buttonRestablecer:hover{
+        background-color: rgb(4, 29, 75);
+    }
+
+    .tdborder{
+        border-right: 1px solid black;
+    }
 
 
-    
-}
