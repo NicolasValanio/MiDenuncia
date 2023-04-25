@@ -49,6 +49,7 @@
     display: none;
 }
 
+/* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
 .modalOpen {
     --tw-translate-x: 0;
     --tw-translate-y: 0;
@@ -85,17 +86,18 @@
 }
 
 .headerModal h2 {
-    font-size: 25px;
+    font-size: 38px;
     color: var(--primer-color);
 }
 
 .headerModal p {
-    font-size: 15px;
+    font-size: 25px;
+    text-align: justify;
     color: white;
 }
 
 .explicacion p {
-    font-size: 13px;
+    font-size: 22px;
     color: white;
 }
 
@@ -104,23 +106,24 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    font-size: 30px;
+    font-size: 38px;
     color: var(--primer-color);
 }
 
 .textExpli {
-    width: 80%;
     margin-left: 1.5rem;
+    text-align: justify;
 }
 
 .footerModal button {
     width: 200px;
-    height: 50px;
+    height: 60px;
     border-radius: 10px;
     border: 1px solid var(--primer-color);
     background: var(--segundo-color);
     color: white;
     margin: 30px;
+    font-size: 20px;
 }
 
 .footerModal button:hover {
@@ -214,6 +217,79 @@
     }
 }
 
+@media(min-width:1101px) and (max-width:1200px){
+    .headerModal h2 {
+        font-size: 32px;
+    }
+
+    .headerModal p {
+        font-size: 19px;
+    }
+
+    .explicacion p {
+        font-size: 18px;
+    }
+
+    .tituloInfo {
+        font-size: 32px;
+    }
+}
+
+@media(min-width:1201px) and (max-width:1300px){
+    .headerModal h2 {
+        font-size: 35px;
+    }
+
+    .headerModal p {
+        font-size: 19px;
+    }
+
+    .explicacion p {
+        font-size: 18px;
+    }
+
+    .tituloInfo {
+        font-size: 35px;
+    }
+}
+
+@media(min-width:1301px) and (max-width:1450px){
+    .headerModal h2 {
+        font-size: 35px;
+    }
+
+    .headerModal p {
+        font-size: 20px;
+    }
+
+    .explicacion p {
+        font-size: 20px;
+    }
+
+    .tituloInfo {
+        font-size: 35px;
+    }
+}
+
+@media(min-width:1451px) and (max-width:1600px){
+    .headerModal h2 {
+        font-size: 36px;
+    }
+
+    .headerModal p {
+        font-size: 21px;
+    }
+
+    .explicacion p {
+        font-size: 21px;
+    }
+
+    .tituloInfo {
+        font-size: 36px;
+    }
+}
+
+
 
 /* opacity-0 scale-95 */
 .fromLeavelTo {
@@ -226,9 +302,6 @@
     opacity: 1;
     transform: scale(1);
 }
-
-/* w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all */
-
 
 /* text-lg font-medium leading-6 text-gray-900 */
 .dialogtitle {
