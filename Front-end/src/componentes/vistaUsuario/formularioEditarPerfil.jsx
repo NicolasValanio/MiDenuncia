@@ -15,7 +15,19 @@ function EditarPerfil({dato}) {
     
 
     const [mostraDatos, setMostrarDatos]= useState(false);
-    // const [cambContrasenia, setCambiarContrasenia] = useState(false)
+    const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
+
+
+    
+    
+    function abrirModal(evet) {
+        evet.preventDefault()
+        setCambiarContrasenia(true)
+    };
+    function cerrarModal() {
+        setCambiarContrasenia(false);
+    }
+
 
     // function clinContrasenia (contra){
     //     contra.preventDefault()
@@ -50,6 +62,27 @@ function EditarPerfil({dato}) {
                     </div>
                 </Modales> 
 
+                <Modales  isOpen={cambiarContrasenia} setIsOpen={setCambiarContrasenia} title = "Ingrese su nueva contraseña" >
+                    <div className={style.modalContainer}>
+
+                    <div className={style.modal2}>
+                        <label htmlFor="">Contraseña
+                        <input className={style.inputdatos} type="text" />
+                        </label>
+                        
+                        <label htmlFor="">Confirmar contraseña
+                        <input className={style.inputdatos} type="text" />
+                        </label>
+                        <div className={style.inputverificar2}>
+                                <input type="button" value="guardar" className={`btn ${style.botonesmodal2}`} />
+                                <input type="button" value="Ir atras" className={`btn ${style.botonesmodal2}`} onClick={cerrarModal} />
+                            </div>
+                    </div>
+                    </div>
+
+
+                </Modales>
+
                 
             
             <div className={style.containerEditarPerfil}>
@@ -73,11 +106,11 @@ function EditarPerfil({dato}) {
                             <input placeholder={last_name} className={style.inputdatos} type="text" />
                         </label>
                         <div className={style.inputButon}>
-                            <button className={style.botonGuardar}>
+                            <button className={`btn ${style.botonGuardar}`}>
                                 Guardar cambios
                             </button>
-                            <button className={style.elimCuenta} onClick={handleClick}>
-                                Elininar cuenta
+                            <button className={`btn ${style.elimCuenta}`} onClick={handleClick}>
+                                Eliminar cuenta
                             </button> 
                         </div>
 
@@ -90,19 +123,14 @@ function EditarPerfil({dato}) {
 
 
                         <h4 className={style.cambiarpassword}>
-                            Si desea cambiar la contraseña de  <h3 onClick={} className={style.clikcontraseña}>
-                                Click aquí
-                            </h3>
+                            Si desea cambiar la contraseña 
+                            <input type="button" value="Haz clic aquí !"  onClick={abrirModal} className={style.clikcontraseña}   />
+                        
                         </h4>
+                        
                     
 {/* 
-                        <label htmlFor="">Contraseña
-                        <input placeholder={password} className={style.inputdatos} type="text" />
-                        </label>
-                        
-                        <label htmlFor="">Confirmar contraseña
-                        <input className={style.inputdatos} type="text" />
-                        </label>
+
                                      */}
 
                     </div>
