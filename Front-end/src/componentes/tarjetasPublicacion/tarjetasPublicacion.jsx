@@ -277,7 +277,7 @@ console.log(barrio)
 							</div>
 						</div>
 						<div className={Style.report} onClick={noModal}>
-              <button className={Style.button}> 
+              <button className={Style.button} onClick={()=> setEstadoModal(!estadoModal)} > 
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="icon icon-tabler icon-tabler-flag-filled"
