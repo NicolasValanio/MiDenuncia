@@ -22,15 +22,8 @@
     "react-hook-form": "^7.43.6",
     "react-icons": "^4.8.0",
     "react-infinite-scroll-component": "^6.1.0",
-<<<<<<< HEAD
     "react-router-dom": "^6.9.0",
-<<<<<<< HEAD
     "vit": "^0.0.1",
-=======
-    "vit": "^0.0.1"
-=======
->>>>>>> ab6c4f6eba8ba978e0f43c46fc1c8f08da825fbd
->>>>>>> desarrollo
     "react-modal": "^3.16.1",
     "sweetalert2": "^11.7.3"
   },
