@@ -2,7 +2,7 @@ import axios from 'axios'
 import clientHTTP from '../config/configAxios'
 
 export async function EnvioLoginBd(envio) {
-       let respuesta = await axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio        )
+       let respuesta = await axios.post("https://midenuncia-database-production.up.railway.app/signIn",envio )
                 .then(res => res)
                 .catch(err => err) 
         return respuesta
