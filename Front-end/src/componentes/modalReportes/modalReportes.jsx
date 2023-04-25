@@ -103,7 +103,7 @@ export default function ModalReportes({estadoModal, setEstadoModal, children,idR
                             </div>
                             <div className={Style.cont_textarea}>
                               <label className={Style.labelTextArea}>
-                                      <textarea {...register("textoReporte")}
+                                      <textarea {...register("description")}
                                       className={Style.textArea} cols="63" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
                               </label>
                             </div>

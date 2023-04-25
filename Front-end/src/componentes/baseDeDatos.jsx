@@ -26,7 +26,7 @@ export async function enviarPeticion(cuerpo, id) {
 }
 
 export async function envioReporte(reporte,idUsuario,idPublicacion){
-    console.log();
+    console.log(reporte);
     console.log(idUsuario);
     console.log(idPublicacion);
     return await axios.post(`https://midenuncia-database-production.up.railway.app/createreport/${idUsuario}/${idPublicacion}/${parseInt(reporte.RadioReporte)}`, reporte )
