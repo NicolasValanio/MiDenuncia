@@ -44,8 +44,10 @@ function VistaUsuario() {
                 const usuarioActual =  localStorage.getItem('usuarioLogeado')
                 setUsuario(infor);
                 setPerfil(infor.find(x => x.id === usuarioActual.id));
+                setUsuario(JSON.parse(usuarioActual));
+                setPerfil(usuarioActual.perfil);
                
-                // console.log(usuarioActual);
+                console.log(usuarioActual);
             })
             // .then((infor) => {
             //     setUsuario(infor);
@@ -114,7 +116,7 @@ function VistaUsuario() {
                     <div className={style.infoUsuario}>
                         <h3>
                             {
-                                usuario.nickname
+                                usuario.data.nickname
                             }
                         </h3>
                      

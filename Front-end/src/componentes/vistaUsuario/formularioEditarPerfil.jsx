@@ -8,9 +8,35 @@ import React, { useEffect, useState } from "react";
 
 
 function EditarPerfil({dato}) {
-    console.log(dato);
+    
+    
+    
+    let {name, last_name, nickname,token} = dato.data;
+    
+    
+    function eliminarCuenta() {
+        fetch('https://midenuncia-database-production.up.railway.app/deleteuser/:{dato.data.id}', {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}` // incluir el token de autenticación en la cabecera de la solicitud
+          }
+        })
+          .then((respon) => {
+            if (respon.ok) {
+              // si la solicitud es exitosa, redirigir al usuario a la página de inicio de sesión
+              history.push('/login');
+            } else {
+              throw new Error('No se pudo eliminar la cuenta');
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            // mostrar un mensaje de error al usuario
+          });
+      }
 
-    // let {name, last_name, nickname} = dato;
+    console.log(dato.data.name);
+
        
 
     const [mostraDatos, setMostrarDatos]= useState(false);
@@ -48,7 +74,7 @@ function EditarPerfil({dato}) {
 
                             <div className={style.inputverificar}>
                                 <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`} onClick={closeModal}/>
-                                <input type="button" value="Aceptar" className={`btn ${style.botonesmodal}`}  />
+                                <input  type="button" value="Aceptar" className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
                             </div>
                     </div>
                 </Modales> 
@@ -89,12 +115,12 @@ function EditarPerfil({dato}) {
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={dato.name}  className={style.inputdatos} type="text" />
+                            <input placeholder={name}  className={style.inputdatos} type="text" />
                         </label>
                         
 
                         <label htmlFor="">Apellido                           
-                            <input placeholder={0} className={style.inputdatos} type="text" />
+                            <input placeholder={last_name} className={style.inputdatos} type="text" />
                         </label>
                         <div className={style.inputButon}>
                             <button className={`btn ${style.botonGuardar}`}>
@@ -109,7 +135,7 @@ function EditarPerfil({dato}) {
                     <div  className={style.datosFila1}>
                         
                         <label htmlFor="">Usuario
-                            <input placeholder={0} className={style.inputdatos} type="text" />
+                            <input placeholder={nickname} className={style.inputdatos} type="text" />
                         </label>
 
 
