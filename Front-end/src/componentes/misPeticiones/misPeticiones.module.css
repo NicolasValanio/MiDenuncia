@@ -1,0 +1,54 @@
+.navbar{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icons{
+    width: 8rem;
+    height: 5rem;
+    flex-direction: row;
+    list-style: none;
+}
+.li{
+    margin: 5px;
+}
+
+.logo{
+    width: 8rem;
+    height: 9vh;
+}
+
+.icon{
+    font-size: 1.7em; 
+    padding: 2px;
+    border-radius: 50px;
+    color: white;
+    background-color: var(--primer-color);
+    cursor: pointer;
+}
+
+.boton{
+    width: 5rem;
+    height: 30px;
+    font-size: .7em;
+}
+
+.contTarjetas{
+    width: 100%;
+}
+
+.tarjetas{
+    width: 17rem ;
+}
+
+.contBotones{
+    width: 100%;
+    flex-direction: row;   
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .boton{
+        background-color: aqua;
+    }
+}
