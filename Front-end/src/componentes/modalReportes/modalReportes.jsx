@@ -1,10 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
 import { useForm} from 'react-hook-form';
 import Style from './modalReportes.module.css'
+import {envioReporte} from '../baseDeDatos'
 
-export default function ModalReportes({estadoModal, setEstadoModal, children}) {
+export default function ModalReportes({estadoModal, setEstadoModal, children,idReporte}) {
 
   function closeModal () {
     setEstadoModal(false)
@@ -14,8 +15,9 @@ export default function ModalReportes({estadoModal, setEstadoModal, children}) {
   const {register,handleSubmit,formState:{errors}} = useForm()
 
   const onSubmit = value => {
-      console.log('si');
-      console.log(value);
+
+      let idUsuario = JSON.parse(window.localStorage.getItem('usuarioLogeado'))
+      envioReporte(value,idUsuario.data.id,idReporte)
   }
 
   return (
@@ -66,42 +68,42 @@ export default function ModalReportes({estadoModal, setEstadoModal, children}) {
                                 <div className={Style.checkboxdi}>
                                    <label className={`contenedor ${Style.labelResulto}`}>
 
-                                      <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                       type="radio" className={`${Style.checkbox} ${Style.checkResulto}`} value='solucionado'/> Ya se soluciono el problema
+                                    <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
+                                       type="radio" className={`${Style.checkbox} ${Style.checkResulto}`} value='1'/> Ya se soluciono el problema
                                     </label>
                                   
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                      className={`${Style.checkbox}`} type="radio"  value='contenidoExplicito' /> Contenido Explícito
+                                      className={`${Style.checkbox}`} type="radio"  value='5' /> Contenido Explícito
                                   </label>
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                      className={`${Style.checkbox}`} type="radio"  value='expresionOdio' /> Expresión de Odio
+                                      className={`${Style.checkbox}`} type="radio"  value='6' /> Expresión de Odio
                                   </label>
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                      className={`${Style.checkbox}`}  type="radio"  value='DenunciaFalsa' /> Denuncia Falsa
+                                      className={`${Style.checkbox}`}  type="radio"  value='7' /> Denuncia Falsa
                                   </label>
                                 </div>
 
                                 <div className={Style.checkboxdi}>
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                      className={`${Style.checkbox}`} type="radio"  value='abusoVerbal'  /> Abuso Verbal
+                                      className={`${Style.checkbox}`} type="radio"  value='4'  /> Abuso Verbal
                                   </label>
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})} 
-                                      className={`${Style.checkbox}`}  type="radio" value='vueneraDerecho' /> Vulnera algun Derecho
+                                      className={`${Style.checkbox}`}  type="radio" value='3' /> Vulnera algun Derecho
                                   </label>
                                   <label className={Style.labelCheck}>
                                       <input {...register("RadioReporte",{required: 'seleccione algun problema'})}  
-                                      className={`${Style.checkbox}`} type="radio"  value='reacismo' />  Racismo
+                                      className={`${Style.checkbox}`} type="radio"  value='2' />  Racismo
                                   </label>
                                 </div>
                             </div>
                             <div className={Style.cont_textarea}>
                               <label className={Style.labelTextArea}>
-                                      <textarea {...register("textoReporte")}
+                                      <textarea {...register("description")}
                                       className={Style.textArea} cols="63" rows="5" placeholder='Cuéntanos mas detalles del por qué consideras inadecuada la publicación'></textarea>
                               </label>
                             </div>
@@ -109,7 +111,7 @@ export default function ModalReportes({estadoModal, setEstadoModal, children}) {
                             <div className={Style.cont_boton}>
                                 <button type="submit" className={Style.btn}>REPORTAR</button>
                             </div>
-                            
+
                         </form>
                     </div>   
 
