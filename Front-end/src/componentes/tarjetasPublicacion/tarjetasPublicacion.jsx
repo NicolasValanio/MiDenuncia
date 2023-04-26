@@ -166,102 +166,134 @@ console.log(barrio)
    
    
    */
+
+     function closeModal () {
+      setIsOpen(false)
+    }
  
  return (
   
    <div className={style.contenedor}>
-   {isOpen && (
-        <div className={style.modal_overlay}>
+    <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className={Style.modal} onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter={Style.enter}
+            enterFrom={Style.enterLeave}
+            enterTo={Style.enterTo}
+            leave={Style.leave}
+            leaveFrom={Style.enterTo}
+            leaveTo={Style.enterLeave}
+          >
+            <div className={Style.fixedDiv} />
+          </Transition.Child>
+
+          <div className={Style.fixedDiv}>
+            <div className={Style.divChil}>
+              <Transition.Child
+                as={Fragment}
+                enter={Style.enter}
+                enterFrom={Style.fromLeaveTo}
+                enterTo={Style.enterToFrom}
+                leave={Style.leave}
+                leaveFrom={Style.enterToFrom}
+                leaveTo={Style.fromLeaveTo}
+              >
+                <Dialog.Panel className={Style.modalOpen}>
+                  <Dialog.Title
+                    as="h3"
+                    className={Style.dialogtitle}
+                  >
+                  </Dialog.Title>
+
+                  <div className={style.modal_overlay}>
           <div className={style.modal}>
-          <div className={style.modal_header}>
-              {api === undefined ? 'espera': <h3 className={style.nickname}>{api?.user?.nickname} <br/>
-              {api.types_request.name}</h3>}
+            <div className={style.modal_header}>
+              {api === undefined ? 'espera': <h3 className={style.nickname}>{api?.user?.nickname} <br/> {api.types_request.name}</h3>}
               <span className={style.modal_close} onClick={toggleModal}>&times;</span>
-              </div>
+            </div>
 
             <div className={style.modal_content}>
-            <div className={style.modal_parte1}>
-           
-              <div className={style.modal_imagen_contenedor}>
-              {api.photos[0]=== undefined ? <img src="https://img.freepik.com/vector-gratis/diseno-plano-letrero-foto_23-2149272417.jpg?w=826&t=st=1682109936~exp=1682110536~hmac=7871fc88487058a1ef2812eea84ca12cd8c027d06a36a9443e681524edecf7be" alt="" className={style.img} />:<img  src={api.photos[0].url} alt=""></img>}
-              </div>
-
-              <div className={style.modal_comentarios}>
-               <div className={style.contenedor_comentarios}>
-               <div className={style.contenedor_imagen_comentario}>
-                <HiUserCircle className={style.icono_comentario}/>
-                <div className={style.usuario_comentario}> usuario</div>
-               </div>
-               <div className={style.texto_comentario}> comentario</div>
-               </div> 
-              </div>
-            </div>
-
-            <div className={style.modal_parte2}>
-            {api === undefined ? 'espera': <h3 className={style.textoFechaModal}>
-            publicado el{api.createdAt}</h3>}
-
-            {api === undefined ? 'espera': <h3 className={style.textoUbicacionModal}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-            </svg>{api.location}, {api.neighborhood}</h3>}
-            
-            <div className={style.flex_apoyo}>
-            {api === undefined ? 'espera': <h5 className={style.modal_apoyo}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#df2727e9" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-            </svg> {api.support}
-            </h5>}
-
-            {api === undefined ? 'espera': <h5 className={style.modal_comentar}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
-            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-            </svg> Comentar 
-            </h5>}
-            </div>
-
-            <div className={style.barra}></div>
-
-            <div className={style.contenedor_textos}>
-            <p className={style.subtitulo}>Localizacion</p>
-            <p className={style.texto_modal}>{api.location}, {api.neighborhood}</p>
-            <p className={style.subtitulo}>Asunto</p>
-            <p className={style.texto_modal}>{api.subject}</p>
-            <p className={style.subtitulo}>descripcion</p>
-            <p className={style.texto_modal}>{api.problem}</p>
-            <p className={style.subtitulo}>solicitud</p>
-            <p className={style.texto_modal}>{api.solution}</p>
-           
-            </div>
-
-            <div className={style.contenedor_textos_modal}>
-            <p className={style.texto_modal}>{api.problem}</p>
-            </div>
-
-            <div className={style.botones_modal}>
-            {api === undefined ? 'espera': <h5 className={style.modal_apoyo}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#df2727e9" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-            </svg> {api.support}
-            </h5>}
-
-            {api === undefined ? 'espera': <span className={style.modal_comentar}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
-            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-            </svg> Comentar 
-            </span>}
-
-            </div>
-            </div>
-
-          
               
+                <div className={style.modal_parte1}>
+            
+                  <div className={style.modal_imagen_contenedor}>
+                    {api.photos[0]=== undefined ? <img src="https://img.freepik.com/vector-gratis/diseno-plano-letrero-foto_23-2149272417.jpg?w=826&t=st=1682109936~exp=1682110536~hmac=7871fc88487058a1ef2812eea84ca12cd8c027d06a36a9443e681524edecf7be" alt="" className={style.img} /> : <img className={style.img} src={api.photos[0].url} alt=""></img>}
+                  </div>
 
-             
+                  <div className={style.modal_comentarios}>
+                    <div className={style.contenedor_comentarios}>
+                      <div className={style.contenedor_imagen_comentario}>
+                        <HiUserCircle className={style.icono_comentario}/>
+                        <div className={style.usuario_comentario}> usuario</div>
+                      </div>
+                      <div className={style.texto_comentario}> comentario</div>
+                    </div> 
+                  </div>
 
-           
+                </div>
 
-      
+              <div className={style.modal_parte2}>
+                {api === undefined ? 'espera': <h3 className={style.textoFechaModal}>publicado el{api.createdAt}</h3>}
+
+                {api === undefined ? 'espera': <h3 className={style.textoUbicacionModal}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>{api.location}, {api.neighborhood}</h3>}
+              
+                <div className={style.flex_apoyo}>
+                  
+                  {api === undefined ? 'espera': <h5 className={style.modal_apoyo}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#df2727e9" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                  </svg> {api.support}
+                  </h5>}
+
+                  {api === undefined ? 'espera': <h5 className={style.modal_comentar}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                  </svg> Comentar 
+                  </h5>}  
+                </div>
+
+                <div className={style.barra}></div>
+
+                <div className={style.contenedor_textos}>
+                  <p className={style.subtitulo}>Localizacion</p>
+                  <p className={style.texto_modal}>{api.location}, {api.neighborhood}</p>
+                  <p className={style.subtitulo}>Asunto</p>
+                  <p className={style.texto_modal}>{api.subject}</p>
+                  <p className={style.subtitulo}>descripcion</p>
+                  <p className={style.texto_modal}>{api.problem}</p>
+                  <p className={style.subtitulo}>solicitud</p>
+                  <p className={style.texto_modal}>{api.solution}</p>
+                </div>
+
+                <div className={style.contenedor_textos_modal}>
+                  <p className={style.texto_modal}>{api.problem}</p>
+                </div>
+
+                <div className={style.botones_modal}>
+                  {api === undefined ? 'espera': <h5 className={style.modal_apoyo}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#df2727e9" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                  </svg> {api.support}
+                  </h5>}
+
+                  {api === undefined ? 'espera': <span className={style.modal_comentar}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                  </svg> Comentar 
+                  </span>}
+
+                </div>
+              </div>  
             </div>
           </div>
         </div>
-      )}
+
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
 
       <div className={Style.container}>
 				<div className={Style.card}>
