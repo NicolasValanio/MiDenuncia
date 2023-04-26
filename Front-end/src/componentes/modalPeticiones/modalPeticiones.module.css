@@ -28,21 +28,24 @@
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.258);
-
+    display: grid;
+    place-items: center;
 }
 
 /* flex min-h-full items-center justify-center p-4 text-center */
 .divChil {
     display: flex;
-    min-height: 100%;
     align-items: center;
     justify-content: center;
     top: 0rem;
     width: 100%;
-    height: 100%;
     backdrop-filter: blur(10px);
     display: flex;
     padding: 4px;
+    height: 90vh;
+    max-height: 700px;
+    overflow: auto;
+
 }
 
 .open {
@@ -61,7 +64,6 @@
     transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transition: all 0.3s ease-in-out;
     width: 80vw;
-    height: 98vh;
     border-right: solid 3px var(--primer-color);
     border-bottom: solid 3px var(--primer-color);
     border-radius: 20px;
@@ -69,7 +71,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    height: 100%;
+    overflow: auto;
+
 }
 
 .contedorInfo {
@@ -81,23 +85,22 @@
 }
 
 .bodyModal {
-    height: 100%;
-    width: 95%;
+   width: 95%;
 }
 
 .headerModal h2 {
-    font-size: 38px;
+    font-size: 30px;
     color: var(--primer-color);
 }
 
 .headerModal p {
-    font-size: 25px;
+    font-size: 18px;
     text-align: justify;
     color: white;
 }
 
 .explicacion p {
-    font-size: 22px;
+    font-size: 18px;
     color: white;
 }
 
@@ -106,7 +109,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    font-size: 38px;
+    font-size: 30px;
     color: var(--primer-color);
 }
 
@@ -132,7 +135,6 @@
 }
 
 .explicacion {
-    height: 20vh;
     margin: 10px;
 }
 
@@ -140,10 +142,7 @@
 @media(min-width:280px) and (max-width:480px) {
     .modalOpen {
         display: grid;
-        justify-items: center;
-        height: 90vh;
         width: 90%;
-        overflow: scroll;
     }
 
     .bodyModal {
@@ -175,13 +174,18 @@
     .tituloInfo {
         font-size: 15px;
     }
+
+    .footerModal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media(min-width:481px) and (max-width:1100px){
     .modalOpen {
         display: grid;
         justify-items: center;
-        height: 90vh;
         width: 90%;
         overflow: scroll;
     }

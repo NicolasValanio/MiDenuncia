@@ -7,7 +7,7 @@ import ModalReportes from '../modalReportes/modalReportes';
 import { MenuPerfil } from '../MenuPerfil/menuPerfil';
 
 
-import { Link, redirect} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { IoMdNotifications } from "react-icons/io";
@@ -16,11 +16,14 @@ import { BsSignStopFill, BsFillSignNoParkingFill } from "react-icons/bs";
 import { MdPark } from "react-icons/md";
 import { MdOutlineRecycling } from "react-icons/md";
 import {GoMegaphone} from "react-icons/go";
-import { BiLogIn, BiLogOut } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
 import {GiStreetLight} from "react-icons/gi";
 
 
 function UsuarioLog() {
+
+    // ID DEL REPORTE
+    const [idReporte, setIdeReporte] = useState(0)
     // ESTADO DEL MODAL
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
@@ -37,7 +40,7 @@ function UsuarioLog() {
     }
 
     useEffect(()=>{
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=1`)
+        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
         .then(res => setPublicaciones(res.news) )
     },[])
@@ -55,7 +58,12 @@ function UsuarioLog() {
 
     function llamarTarjetas (publicaciones) {
         let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
-           return  <TarjetasPublicacion api={publicacion} key={publicaciones[index].id} setEstadoModal={setEstadoModal} />
+           return  <TarjetasPublicacion 
+           api={publicacion} 
+           key={publicaciones[index].id} 
+           setEstadoModal={setEstadoModal} 
+           setIdeReporte={setIdeReporte}
+           />
         })
         return nuevasPublicaciones
     }
@@ -106,6 +114,9 @@ function UsuarioLog() {
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
+
+<li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
+            
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
                 <img src="https://res.cloudinary.com/dwrupo75d/image/upload/v1681503206/logo_t6vkfb.png" alt="logo" className={style.logo} />
@@ -174,10 +185,17 @@ function UsuarioLog() {
 
             {/* MODAL ------------------------------------------ */}
 
-            <ModalReportes 
-                estadoModal = {estadoModal}
-                setEstadoModal  = {setEstadoModal}
-            />
+
+            { estadoModal ? 
+                <ModalReportes 
+                    estadoModal = {estadoModal}
+                    setEstadoModal  = {setEstadoModal}
+                    idReporte = {idReporte}
+                /> 
+                : 
+                    null 
+            }
+
 
 
         </div>

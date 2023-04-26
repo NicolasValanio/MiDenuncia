@@ -5,7 +5,7 @@
 }
 
 .container {
-  width: 100%;
+ width: 45rem;
 }
 
 .card {
@@ -13,15 +13,12 @@
   background-color: #252a2e;
   margin: 30px auto;
   border-radius: 10px;
-  box-shadow: 5px 5px 0 var(--primer-color);
+  -webkit-box-shadow: 5px 5px 0px 5px var(--primer-color); 
+  box-shadow: 5px 5px 0px 5px var(--primer-color);
   padding: 15px;
+
 }
 
-@media screen and (min-width: 768px) {
-  .card {
-      width: 50%;
-  }
-}
 
 .card  .card_header {
   width: 100%;
@@ -165,7 +162,7 @@
 .button{
   background-color: #252a2e00;
   border-radius: 50%;
-  position: relative;
+
   width: 28px;
   height: 28px;
   border: none;
@@ -226,8 +223,17 @@ css del modal*/
   .modal_imagen_contenedor{
     margin-top: 1rem;
     width: 100%;
-    border: solid 2px black;
-    height: 60%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .img{
+    max-width: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
   }
 
   .modal_comentarios{
@@ -331,123 +337,76 @@ css del modal*/
     color: aliceblue;
   }
 
+  .card .cardBody .image img {
+    width: 100%;
+    height: 300px;
+    object-fit: fill;
+    border-radius: 5px;
+  }
 
-/* Mq Celular */
+  .user_modal{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
 
-/*.contenedor{
-    grid-template-areas: 'foto nombre'
-                        'foto descripcion'
-                        'texto texto'
-                        'imagen imagen'
-                        'fecha fecha'
-                        'ubicacion ubicacion'
-                        'apoyo apoyo';
-    border: 0.1rem solid white;
-    margin: 1rem;
-    margin-left: 10%;
-    margin-right: 10%;
-    display: grid;
-    height: 30rem;
-    width: 50rem;
-}
-.iconoUsuario{
-    height: 4rem;
-    width: 4rem;
-    margin-top: -1.5rem;
-    margin-left: -70%;
-    margin-right: 100%;
-    grid-area: foto;
-    border: solid 1px rgb(201, 13, 13);
-}
-.icono{
-    height: 4rem;
-}
-.nombreUsuario{
-    margin-top: 20%;
-    margin-left: -25rem;
-    grid-area: nombre;
-    color: white;
-    border: solid 1px rgb(51, 61, 119);
-}*/
+  .flex_user{
+    display: flex;
+  }
+
+  .datos_user_modal{
+    margin-left: 1rem;
+  }
+
+  .contenedor_textos_modal{
+    display: none;
+  }
+
+  .botones_modal{
+    display: none;
+  }
+
+
 
 /*-------------------------------------------*/
 /*responsive tarjeta*/
 
-@media (max-width :768px) {
 
-    .contenedor{
-      
-        margin: 8rem;
-    
-        display: grid;
-        height: fit-content;
-        min-height: 25rem;
-        width: 80%;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        border-bottom: solid 2px #B86EFD;
-        border-right:solid 2px  #B86EFD;
-        padding: 25px;
-        justify-content: center;
-        gap: 10px;
-    }
-    
+/* responsive celular*/
+@media(min-width:280px)and (max-width:480px){
+.card{
+  width: 15rem;
+  box-shadow: 2px 2px 0px 2px var(--primer-color);
+}
+}
 
-.icono{
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+/* responsive tablet*/
+@media(min-width:481px)and (max-width:767px){
+  .card{
+    width: 40%;
+    box-shadow: 2px 1px 0px 1px var(--primer-color);
+  }
+}
+
+
+/*responsive tablet grande*/
+@media(min-width:768px)and (max-width:1024px){
+.card{
+  width: 55%;
+  box-shadow: 2px 2px 0px 2px var(--primer-color);
+}
 }
 
 
 
+/*--------------------------------------*/
 
-.iconoUsuario{
-    
-    height: fit-content;
-    width: 4rem;
-    grid-area: foto;
-    display: grid;
-    justify-content: center;
-    align-items: center;
+/* responsive modal*/
 
-
-}
-
-
-.nombreUsuario{
-   
-    font-size: 0.6rem;
-    width: 100%;
-    margin-left: -12rem;
-    grid-area: nombre;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding-top: 8px;
-}
-
-
-.textoPublicacion{
-   
-    grid-area:texto;
-  
-    font-size: 0.7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-   
-}
-
-    
-}
+/*responsive celular*/
 
 @media(min-width:280px)and (max-width:480px) {
   .modal {
-    background-color: #c6c6c6;
     width: 100%;
     height: 100%;
   }
@@ -458,13 +417,16 @@ css del modal*/
 
   .modal_content{
     flex-direction: column;
+    width: 95%;
+    padding-left: 1rem;
   }
 
   .modal{
     padding: 0;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-    border-bottom: solid 2px #B86EFD;
-    border-right: solid 2px #B86EFD;
+    border-radius: 0px;
+    border-bottom: solid 2px #b86efd00;
+    border-right: solid 2px #b86efd00;
+    width: 56%;
   }
 
   .modal_imagen_contenedor{
@@ -483,12 +445,29 @@ css del modal*/
   .modal_parte2{
     width: 100%;
     margin-left: 0rem;
-    height: 100%;
+    height: 70%;
+    background-color: #1E2326;
   }
 
   .flex_apoyo{
     display: none;
   }
 
-  
+  .contenedor_textos_modal{
+    padding-top: 1rem;
+    display: block;
+  }
+
+  .contenedor_textos{
+    display: none;
+  }
+
+  .botones_modal{
+    display: flex;
+    margin-top: 66%;
+    align-items: flex-end;
+    justify-content: space-between;
 }
+    
+  }
+
