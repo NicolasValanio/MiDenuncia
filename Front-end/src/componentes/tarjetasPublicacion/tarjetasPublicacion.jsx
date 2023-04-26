@@ -344,7 +344,7 @@ console.log(barrio)
 								</svg>
                 {api === undefined ? 'espera': <span>{api.location}, {api.neighborhood}</span>}
 							</div>
-							<div className={Style.reactions} onClick={ver}>
+							<div className={Style.reactions} >
 								<div className={Style.likes}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -359,6 +359,7 @@ console.log(barrio)
 										stroke-linejoin="round"
 
                     className={Style.corazon}
+                    onClick={ver}
                     style={cora ? {fill: "red"}:{fill: "none"}}
 									>
 										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
