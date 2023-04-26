@@ -459,7 +459,11 @@ css del modal*/
     margin-top: 66%;
     align-items: flex-end;
     justify-content: space-between;
-}
-    
+
   }
 
+}
+
+@media(min-width:768px)and (max-width:1024px){
+  
+}
