@@ -9,7 +9,7 @@
 }
 
 .card {
-  width: 95%;
+  width: 90%;
   background-color: #252a2e;
   margin: 30px auto;
   border-radius: 10px;
@@ -442,27 +442,32 @@ css del modal*/
 
 
 /* responsive celular*/
-@media(min-width:280px)and (max-width:480px){
-.card{
-  width: 15rem;
-  box-shadow: 2px 2px 0px 2px var(--primer-color);
-}
+@media(max-width:480px){
+  .container{
+    width: 100%;
+  }
 }
 
 /* responsive tablet*/
 @media(min-width:481px)and (max-width:767px){
+  .container{
+    width: 100%;
+  }
   .card{
     width: 40%;
-    box-shadow: 2px 1px 0px 1px var(--primer-color);
+   /*  box-shadow: 2px 1px 0px 1px var(--primer-color); */
   }
 }
 
 
 /*responsive tablet grande*/
 @media(min-width:768px)and (max-width:1024px){
+  .container{
+    width: 100%;
+  }
 .card{
   width: 55%;
-  box-shadow: 2px 2px 0px 2px var(--primer-color);
+  /* box-shadow: 2px 2px 0px 2px var(--primer-color); */
 }
 }
 

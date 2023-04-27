@@ -111,8 +111,6 @@ function UsuarioLog() {
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
-
-<li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
             
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
@@ -180,7 +178,7 @@ function UsuarioLog() {
 
             </div>
 
-            {/* MODAL ------------------------------------------ */}
+            {/* MODAL REPORTES */}
 
 
             { estadoModal ? 
