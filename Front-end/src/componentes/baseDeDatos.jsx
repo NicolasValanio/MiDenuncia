@@ -26,12 +26,9 @@ export async function enviarPeticion(cuerpo, id) {
 }
 
 export async function envioReporte(reporte,idUsuario,idPublicacion){
-    console.log(reporte);
-    console.log(idUsuario);
-    console.log(idPublicacion);
     return await axios.post(`https://midenuncia-database-production.up.railway.app/createreport/${idUsuario}/${idPublicacion}/${parseInt(reporte.RadioReporte)}`, reporte )
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    .then(res => res)
+    .catch(err => err)
 }
 
 // export async function enviarPeticion(cuerpo, id) {
@@ -65,5 +62,10 @@ export async function llamarInfoMisPeticiones (idUser) {
     let respuestas = await axios.get(`https://midenuncia-database-production.up.railway.app/inforequestuser/${idUser}`)
                     .then(res => res)
                     .catch(err => err)
+    return respuestas
+}
+
+export async function envioComentarios(idUser,idPublicacion,description){
+    let respuestas = await axios.post(`https://midenuncia-database-production.up.railway.app/crearComments/${idUser}/${idPublicacion}`,description)
     return respuestas
 }

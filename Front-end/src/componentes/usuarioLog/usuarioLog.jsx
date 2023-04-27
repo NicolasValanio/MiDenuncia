@@ -21,29 +21,26 @@ import {GiStreetLight} from "react-icons/gi";
 
 
 function UsuarioLog() {
-
-    // ID DEL REPORTE
+    //ACTUALIZAR PETICINO
+    const [  , setNuevoLlamado] = useState(false)
+    // ID DEL REPORTE 
     const [idReporte, setIdeReporte] = useState(0)
     // ESTADO DEL MODAL
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
-    // EL NUMERO DE LA PUBLICACION QUE SE MUESTRA
-    const [numeroPublicacion, setNumeroPublicacino] = useState(0)
     // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
     const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
-    function cerrarModal() {
-        setEstadoModal(false)
-    }
+    console.log(nuevoLLamado);
 
     useEffect(()=>{
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
         .then(res => setPublicaciones(res.news) )
-    },[])
+    },[nuevoLLamado])
 
     // FUNCIONA LA CUAL HACE LA PETICION Y EL REDNDER DE LAS NUEVAS TARJESTAS
     function nuevoLlamado(page) {
@@ -63,6 +60,8 @@ function UsuarioLog() {
            key={publicaciones[index].id} 
            setEstadoModal={setEstadoModal} 
            setIdeReporte={setIdeReporte}
+           setNuevoLlamado={setNuevoLlamado}
+           nuevoLLamdo={nuevoLLamdo}
            />
         })
         return nuevasPublicaciones
