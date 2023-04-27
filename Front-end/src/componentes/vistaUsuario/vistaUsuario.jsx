@@ -49,7 +49,7 @@ function VistaUsuario() {
                 setUsuario(JSON.parse(usuarioActual));
                 setPerfil(usuarioActual.perfil);
                
-                console.log(usuarioActual);
+                // console.log(usuarioActual);
             })
             // .then((infor) => {
             //     setUsuario(infor);

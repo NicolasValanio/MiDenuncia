@@ -2,6 +2,8 @@ import style from './vistaUsuario.module.css';
 import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
 import { eliminarUser,actualizarUser } from "../baseDeDatos"
+import { useForm } from 'react-hook-form';
+
 
 import {  useNavigate} from "react-router-dom"
 
@@ -11,10 +13,14 @@ import {  useNavigate} from "react-router-dom"
 function EditarPerfil({dato}) {
     
     
-    
+    const [dat, setDat] = useState(dato.data);
+
+
+    console.log(dat);
+
     let {id,name, last_name, nickname,token} = dato.data;
     
- 
+    const { register, handleSubmit,formState:{errors} ,watch} = useForm();
     const navigate=useNavigate();
 
     const [mostraDatos, setMostrarDatos]= useState(false);
@@ -23,9 +29,9 @@ function EditarPerfil({dato}) {
     
 
     
-    const [nick, setNick] = useState("");
-    const [apellido, setApellido] = useState("");
-    const [nombre, setNombre] = useState("");
+    const [nick, setNick] = useState(dato.data.nickname);
+    const [apellido, setApellido] = useState(dato.data.last_name);
+    const [nombre, setNombre] = useState(dato.data.name);
     const [contrasena, setContrasena] = useState("");
 
     
@@ -45,6 +51,18 @@ function EditarPerfil({dato}) {
     function closeModal() {
         setMostrarDatos(false);
     }
+    function cloModal(){
+
+        let clave1 = document.f1.input1.value
+        let clave2 = document.f1.input2.value
+
+
+        if (clave1===clave2) {
+            setCambiarContrasenia(false);
+        }else{
+            alert("as contraseñas ingresadas no coinsiden ")
+        }
+    }
     
     const eliminarCuenta = async () => {
       
@@ -58,7 +76,7 @@ function EditarPerfil({dato}) {
     console.log(res);
     
 
-    navigate('/');//redireccionamos a usuarionolog?
+    navigate('/login');//redireccionamos a usuarionolog?
 
 
 })
@@ -79,7 +97,7 @@ function EditarPerfil({dato}) {
         console.log('paso')  
         
 
-        const idUser=id
+        const idUser=idsandy21
         
 
         
@@ -128,23 +146,36 @@ function EditarPerfil({dato}) {
                 </Modales> 
 
                 <Modales  isOpen={cambiarContrasenia} setIsOpen={setCambiarContrasenia} title = "Ingrese su nueva contraseña" >
-                    <div className={style.modalContainer}>
+                <div className={style.modalContainer}>
 
-                    <div className={style.modal2}>
-                        <label htmlFor="">Contraseña
-                        <input className={style.inputdatos} type="text"
-                         value={contrasena}
-                         onChange={(e) => setContrasena(e.target.value)}/>
-                        </label>
-                        
-                        <label htmlFor="">Confirmar contraseña
-                        <input className={style.inputdatos} type="text" />
-                        </label>
-                        <div className={style.inputverificar2}>
-                                <input type="button" value="guardar" className={`btn ${style.botonesmodal2}`} />
-                                <input type="button" value="Ir atras" className={`btn ${style.botonesmodal2}`} onClick={cerrarModal} />
+                        <form className={style.modal2}>
+                            <label htmlFor="">Contraseña
+                            <input className={style.inputdatos} type="text"
+                                {...register("password2",{
+                                    required:{
+                                    value: true,
+                                    message : "La confirmacion de la contraseña es requerida"
+                                            },
+                                            validate: (value) => {
+                                                if (watch("password") !== value)
+                                                return "Rectifique la contraseña"
+                                            }
+                                
+                                    })} 
+                                    
+
+                                value={contrasena}
+                                onChange={(e) => setContrasena(e.target.value)} id='input1'/>
+                            </label>
+                            
+                            <label htmlFor="">Confirmar contraseña
+                            <input className={style.inputdatos} type="text" id='input2' />
+                            </label>
+                            <div className={style.inputverificar2}>
+                                    <input type="button" value="guardar" className={`btn ${style.botonesmodal2}` } onClick={cloModal} />
+                                    <input type="button" value="Ir atras" className={`btn ${style.botonesmodal2}`} onClick={cerrarModal} />
                             </div>
-                    </div>
+                        </form>
                     </div>
 
 
@@ -165,7 +196,7 @@ function EditarPerfil({dato}) {
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={name}  className={style.inputdatos} type="text" value={nombre}
+                            <input placeholder={dat.name}  className={style.inputdatos} type="text" value={nombre}
                             onChange={(e) => setNombre(e.target.value) }/>
                         </label>
                         
