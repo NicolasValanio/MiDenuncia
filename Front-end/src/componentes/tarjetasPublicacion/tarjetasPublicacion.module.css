@@ -126,11 +126,19 @@
 }
 
 .card .cardFooter .info .reactions .likes svg {
+  /* width: 20px;
+  height: 20px;
+  fill: red; */
+}
+.corazon{
   width: 20px;
   height: 20px;
-  fill: red;
+  cursor: pointer;
+  /* fill: red */
 }
-
+.colorCorazon{
+  fill: red
+}
 .card .cardFooter .info .reactions .numComments {
   display: flex;
   align-items: center;
