@@ -1,7 +1,7 @@
 import style from './vistaUsuario.module.css';
 import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
-
+import { eliminarUser } from "../baseDeDatos"
 
 
 
@@ -11,32 +11,9 @@ function EditarPerfil({dato}) {
     
     
     
-    let {name, last_name, nickname,token} = dato.data;
+    let {id,name, last_name, nickname,token} = dato.data;
     
-    
-    function eliminarCuenta() {
-        fetch('https://midenuncia-database-production.up.railway.app/deleteuser/:{dato.data.id}', {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${token}` // incluir el token de autenticación en la cabecera de la solicitud
-          }
-        })
-          .then((respon) => {
-            if (respon.ok) {
-              // si la solicitud es exitosa, redirigir al usuario a la página de inicio de sesión
-              history.push('/login');
-            } else {
-              throw new Error('No se pudo eliminar la cuenta');
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-            // mostrar un mensaje de error al usuario
-          });
-      }
-
-    console.log(dato.data.name);
-
+ 
        
 
     const [mostraDatos, setMostrarDatos]= useState(false);
@@ -62,7 +39,21 @@ function EditarPerfil({dato}) {
         setMostrarDatos(false);
     }
     
+    const eliminarCuenta = async (id) => {
+      
+        const idUser=id.target.value//traemos toda la info del boton ,luego el target y luego el value ... donde se encuentra el id
+       
 
+     await eliminarUser(idUser)
+     
+   .then(res => console.log(res))
+        .catch(err => console.log(err))
+      
+     
+      }
+
+
+      
 
 
     return(
@@ -74,7 +65,7 @@ function EditarPerfil({dato}) {
 
                             <div className={style.inputverificar}>
                                 <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`} onClick={closeModal}/>
-                                <input  type="button" value="Aceptar" className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
+                                <input  type="button"  value={id} className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
                             </div>
                     </div>
                 </Modales> 

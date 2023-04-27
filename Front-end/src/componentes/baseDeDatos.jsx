@@ -67,3 +67,11 @@ export async function llamarInfoMisPeticiones (idUser) {
                     .catch(err => err)
     return respuestas
 }
+
+
+export async function eliminarUser(id) {
+    console.log(id)
+    return await axios.delete(`https://midenuncia-database-production.up.railway.app/deleteuser/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
