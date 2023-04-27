@@ -22,6 +22,10 @@
     align-items: center;
     gap: 10px;
 }
+.link-style{
+    text-decoration: none;
+    color: red;
+}
 .opcion-menu:hover .ico{
     color: #909294;
 }

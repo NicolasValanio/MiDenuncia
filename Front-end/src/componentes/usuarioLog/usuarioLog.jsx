@@ -3,8 +3,8 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ModalReportes from '../modalReportes/modalReportes'
-import { MenuPerfil } from "../MenuPerfil/MenuPerfil";
+import ModalReportes from '../modalReportes/modalReportes';
+import { MenuPerfil } from '../MenuPerfil/menuPerfil';
 
 
 import { Link} from 'react-router-dom'
@@ -111,8 +111,6 @@ function UsuarioLog() {
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
-
-<li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
             
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
@@ -180,7 +178,7 @@ function UsuarioLog() {
 
             </div>
 
-            {/* MODAL ------------------------------------------ */}
+            {/* MODAL REPORTES */}
 
 
             { estadoModal ? 

@@ -62,6 +62,23 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setAc
         return comentarios
 
   }
+
+  const [cora, setCora] = useState(false);
+  const [contLike, setContLike] = useState(0)
+  
+  function ver(){
+
+    if(cora){
+      setCora(false);
+      setContLike(contLike - 1);
+    }
+    else{
+      setContLike(contLike +1);
+      setCora(true);
+    }
+  }
+
+
  
  return (
   
@@ -254,7 +271,7 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setAc
 								</svg>
                 {api === undefined ? 'espera': <span>{api.location}, {api.neighborhood}</span>}
 							</div>
-							<div className={Style.reactions}>
+							<div className={Style.reactions} >
 								<div className={Style.likes}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -267,11 +284,16 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setAc
 										fill="none"
 										stroke-linecap="round"
 										stroke-linejoin="round"
+
+                    className={Style.corazon}
+                    onClick={ver}
+                    style={cora ? {fill: "red"}:{fill: "none"}}
 									>
 										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 										<path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
 									</svg>
-                  {api === undefined ? 'espera': <span>{api.support}</span>}
+                  {/* {api === undefined ? 'espera': <span>{api.support}</span>} */}
+                  {api === undefined ? 'espera': <span>{contLike}</span>}
                   
 								</div>
 								<div className={Style.numComments}>
