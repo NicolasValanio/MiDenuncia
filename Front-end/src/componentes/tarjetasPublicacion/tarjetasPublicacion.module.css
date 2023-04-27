@@ -189,7 +189,7 @@ css del modal*/
     width: 90%;
     height: 90%;
     border-radius: 8px;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-bottom: solid 2px #B86EFD;
     border-right:solid 2px  #B86EFD
@@ -201,6 +201,7 @@ css del modal*/
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background-color: #B86EFD; */
   }
   
   .modal_title {
@@ -221,27 +222,37 @@ css del modal*/
   }
 
   .modal_imagen_contenedor{
-    margin-top: 1rem;
     width: 100%;
-    height: 70%;
+    height: 65%;
     object-fit: cover;
     border-radius: 5px;
     box-sizing: border-box;
   }
 
   .img{
-    max-width: 100%;
+  max-width: 100%;
   width: 100%;
-  height: 100%;
+  height: 95%;
   border-radius: 5px;
   }
 
   .modal_comentarios{
     background-color: #252A2E;
-    margin-top: 1rem;
-    height: 40%;
+    height: 45%;
     width: 100%;
     display: block;
+    overflow: scroll;
+  }
+
+  .modal_comentarios::-webkit-scrollbar{
+    width: 6px; 
+    height: 0.5px;
+  }
+
+  .modal_comentarios::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
   }
 
   .modal_parte1{
@@ -255,7 +266,6 @@ css del modal*/
     padding: 0.5rem;
     color: white;
     background-color: #252A2E;
-    margin-top: 1rem;
     width: 30%;
     margin-left: 1rem;
     height: 98%;
@@ -307,14 +317,37 @@ css del modal*/
   }
 
   .contenedor_textos{
+    width: 100%;
     margin-top: 1rem;
+    height: 18rem;
+    overflow: scroll;
+  }
+
+  .contenedor_textos::-webkit-scrollbar{
+    width: 6px; 
+    height: 0.5px;
+  }
+
+  .contenedor_textos::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
   }
 
   .contenedor_comentarios{
     background-color: #1E2326;
     margin: 1rem;
     width: 70%;
-    height: 30%;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .textoComentario{ 
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    margin: 5px;
+    margin-left: 20px;
   }
 
   .icono_comentario{
@@ -333,7 +366,8 @@ css del modal*/
   }
 
   .texto_comentario{
-    margin-left: 0.5rem;
+    width: 25rem;
+    margin-left: 0.5  rem;
     color: aliceblue;
   }
 
@@ -364,6 +398,49 @@ css del modal*/
 
   .botones_modal{
     display: none;
+  }
+
+  .modalComentar{
+    width: 100%;
+    height: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .inputComentario{
+    width: 15rem;
+    height: 2.3rem;
+    background-color: var(--segundo-color);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    transition: 0.2s all ease-in;
+    outline: none;
+  }
+
+  .inputComentario:focus{
+    background-color: #b86efd23 ;
+    transition: 0.2s all ease-in;
+
+  }
+
+  .contTextComentar{
+    width: 100%;
+    height: 79%;
+    justify-content: space-between;
+  }
+
+  .enviarComentario{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconEnviar{
+    font-size: 2em;
+    color: var(--primer-color);
   }
 
 
@@ -467,7 +544,13 @@ css del modal*/
     margin-top: 66%;
     align-items: flex-end;
     justify-content: space-between;
-}
-    
+
   }
 
+
+
+}
+
+@media(min-width:768px)and (max-width:1024px){
+  
+}
