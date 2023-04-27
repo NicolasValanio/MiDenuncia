@@ -32,7 +32,7 @@ export function MenuPerfil({mostrar}){
             </li>
             <li className="opcion-menu">
                 <GoFile className="icon ico"/>
-                <NavLink to="/"><span>Mis peticiones</span></NavLink>
+                <NavLink to="/misPeticiones"><span>Mis peticiones</span></NavLink>
                 
             </li>
             <li className="opcion-menu opc-cerrar-sesion">

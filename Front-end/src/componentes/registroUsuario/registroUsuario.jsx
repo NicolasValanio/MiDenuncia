@@ -2,7 +2,7 @@ import React from "react";
 import style from './RegistroUsuario.module.css'
 import {EnvioResgistrarBd} from '../baseDeDatos'
 
-import { useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { AiOutlineUser } from "react-icons/ai"
 import {GiDualityMask} from "react-icons/gi"
 import {RiLockPasswordLine} from "react-icons/ri"
@@ -13,7 +13,7 @@ import { Link,useNavigate  } from 'react-router-dom'
 
 function RegistroUsuario() {
 
-    const { register, handleSubmit,formState:{errors}} = useForm();
+    const { register, handleSubmit,formState:{errors} ,watch} = useForm();
     const navigate = useNavigate();
 
 // FUNCION PARA HACER EN ENVIO DE LOS DATOS 
@@ -116,10 +116,11 @@ function RegistroUsuario() {
                                 value: true,
                                 message : "La confirmacion de la contraseña es requerida"
                             },
-                            minLength: {
-                                value : 6,
-                                message : "La contraseña debe tener mas de 6 caracteres"
+                                validate: (value) => {
+                                    if (watch("password") !== value)
+                                    return "Rectifique la contraseña"
                             }
+                            
                         })} 
                         type="password" className={style.inputRegister} placeholder="Confirmar Contraseña" />
                         {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
