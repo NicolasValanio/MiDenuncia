@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./vistaDenunciaX.module.css";
 import { BiSearchAlt } from "react-icons/bi";
-
 import { handle } from "react";
 import { GiReturnArrow } from "react-icons/gi";
 import { BiUserCircle } from "react-icons/bi";
@@ -9,6 +8,7 @@ import { AiOutlineUserDelete } from 'react-icons/ai';
 import {MdRestore} from 'react-icons/md';
 import axios from 'axios'
 import { AiFillPlusCircle } from 'react-icons/ai';
+
 
 
 function vistaDenunciaX() {
@@ -67,9 +67,29 @@ function vistaDenunciaX() {
     //   });
   };
 
-
-
- 
+ function modal(){
+  
+  const Modal = ({ title, text, onClose }) => {
+    return (
+      <div className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>{title}</h2>
+            <button onClick={onClose} className="modal-close">
+              X
+            </button>
+          </div>
+          <div className="modal-body">{text}</div>
+          <div className="modal-footer">
+            <button onClick={onClose} className="modal-button">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+ }
 
   const handleChange = (event) => {
     setFiltro(event.target.value);
@@ -174,17 +194,24 @@ function vistaDenunciaX() {
           </tr>
         </thead>
         <tbody className={style.tbody}>
-          { data?.map((news) => (
+          { data?.map((news) => {
+
+            {news.user === null || undefined ? null : console.log(news.user.name); }
+            return( 
             <tr key={news.id} className={style.tr}> 
-              <td className={style.td}>{news.id}</td>
-              <td> <AiFillPlusCircle/></td>
-              < td className={style.td}>{news.problem}</td>
-              <td> pendiente </td>
+              <td className={style.td}> {news.user === null || undefined ? null : news.user.name } </td>
+              <td className={style.plus}> 
+                <AiFillPlusCircle onClick={modal} className={style.mas} />
+              </td>
+              < td className={style.td}>{news.types_request.name}</td>
+              <td > pendiente </td>
               <td className={style.td}>{news.deletedAt ?  <button className={`${style.button} ${style.buttonEliminar1}`}> <AiOutlineUserDelete/>Eliminado</button>:<button className={`${style.button} ${style.buttonEliminar}`} value={news.id} onClick={eliminar}> <AiOutlineUserDelete/>Eliminar</button>}</td>
              <td className={style.td}>{news.deletedAt ?<button className={`${style.button} ${style.buttonRestablecer}`} value={news.id} onClick={restore}><MdRestore />restaurar</button>:<button className={`${style.button} ${style.buttonRestablecer1}`} ><MdRestore />restaurar</button>}</td>
             
             </tr>
-          ))}
+            )
+
+          })}
         </tbody>
       </table>
 

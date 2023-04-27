@@ -40,7 +40,9 @@ h1{
     background-color: #541f90;
     cursor: pointer;
 }
-
+.tr{
+    color: white;
+}
 .head{
     display: flex;
     justify-content: space-between;
@@ -195,4 +197,20 @@ h1{
         border-right: 1px solid black;
     }
 
+.mas{
+   height: 30px;
+   width: 30px;
+   color: white;
+}
+.mas:hover{
+    color:#541f90;
+}
 
+.plus:hover{
+
+   background-color: white;
+}
+
+.plus:hover .mas{
+      color:#541f90;
+}
