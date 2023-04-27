@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "./usuarioNoLog.module.css"
 import NavegacionNoLog from "../navegacionNoLog/navegacion";
-import FiltrarPor from "../filtrarPor/filtarPor";
+import FiltrarPor from "../filtrarPor/filtrarPor";
 import Footer from "../footer/footer";
 import Tarjetas from "../tarjetasPublicacion/tarjetasPublicacion";
 
@@ -16,8 +16,8 @@ function UsuarioNoLog() {
     }),[])
 
     function tarjetasNoLog() {
-        let nuevasTarjetas = publicaciones.map(()=>{
-            return <Tarjetas />
+        let nuevasTarjetas = publicaciones.map((publicacion)=>{
+            return <Tarjetas api={publicacion} key={publicacion.id} />
         })
         return nuevasTarjetas
     }

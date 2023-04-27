@@ -7,16 +7,18 @@ import {UseProtegerRutas,EntrarPagina} from './ProtegerRutas'
 import Login from './login/login'
 import UsuarioNoLog from './usuarioNoLog/usuarioNoLog'
 import HabeasData from './habeasData/habeasData'
-import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuarios/peticionesUsuarios'
+import PeticionesUsuarios from './peticionesUsuarios/peticionesUsuario/peticionesUsuarios'
 import RegistroDenuncia from './registroDenuncia/registroDenuncia'
 import RegistroUsuario from './registroUsuario/registroUsuario'
 import UsuarioLog from './usuarioLog/usuarioLog'
 import VistaDenunciaX from './vistaDenunciaX/vistaDenunciaX'
 import VistaSuperAdmin from './vistaSuperAdmin/vistaSuperAdmin'
 import VistaUsuario from './vistaUsuario/vistaUsuario'
-import RecuperarContraseña from './recuperarContraseña/recuperarContraseña'
+import RecuperarContrasena from './recuperarContrasena/recuperarContrasena'
 import Mapa from './mapa/mapa'
 import TarjetaPublicacion from './tarjetasPublicacion/diseñodetarjeta/tarjetaPublicacion'
+import MisPeticiones  from './misPeticiones/misPeticiones'
+
 
 
 
@@ -32,12 +34,13 @@ function Rutas() {
                 
                 <Route path="/login" element={<Login />} />
                 {/* <Route path="/resetPassword" element={<ResetPassword />} /> */}
-                <Route path="/recuperarContrasena" element={<RecuperarContraseña />} />
+                <Route path="/recuperarContrasena" element={<RecuperarContrasena />} />
                 {/* <Route path="/contrasenaNueva" element={<ContrasenaNueva/>} /> */}
                 {/* <Route path="/password" element={<Password />} /> */}
 
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
+                    <Route path="/misPeticiones" element={<MisPeticiones /> } />
                     <Route path="/HabeasData" element={<HabeasData />} />
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
@@ -46,7 +49,7 @@ function Rutas() {
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />
                     <Route path="/TarjetaPublicacion" element={<TarjetaPublicacion />} />
-                    <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
+                    
                 </Route>
                 
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />

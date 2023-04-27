@@ -12,6 +12,7 @@ import { useState } from "react"
 import Loading from "../loading/Loading"
 import TiposSolicitudes from "./TiposSolicitudes"
 import Modales from "../modales/modales"
+import ModalPeticiones from "../modalPeticiones/modalPeticiones"
 
 export default function FormularioPeticion({ user }) {
 	const [open, setOpen] = useState(false)
@@ -140,6 +141,7 @@ export default function FormularioPeticion({ user }) {
 	/* contenedor form */
 	return (
 		<>
+
 			<form
 				action=""
 				className={style.contenedorform}
@@ -553,7 +555,7 @@ export default function FormularioPeticion({ user }) {
 							<label>
 								He leído y acepto las{" "}
 								<span>
-									políticas de Privacidad y tratamiento de Datos Personales.
+								<a href="../../habeasData" className={style.habeas}>políticas de Privacidad y tratamiento de Datos Personales.</a> 
 								</span>
 							</label>
 						</div>

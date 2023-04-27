@@ -6,6 +6,9 @@ const signUpUserController=require('../../controllers/user/singnUpUserController
 const infoUserController=require('../../controllers/user/infoUserController');
 const signInUserController= require('../../controllers/user/signInUserController');
 const infoRequestUser = require('../../controllers/user/infoRequestUserController');
+const changePasswordUserController=require('../../controllers/user/changePasswordUserController')
+
+
 
 
 
@@ -13,6 +16,7 @@ router.post('/signUp',signUpUserController.signUp)
 router.post('/signIn',signInUserController.signIn)
 router.get('/info',infoUserController.infoUser)
 router.get('/infoRequestUser',infoRequestUser.infoRequestUser)
+router.post('/changePassword',changePasswordUserController.changePasswordUser)
 
 
 module.exports=router

@@ -1,5 +1,4 @@
 
-import { useEffect } from "react"
 import {  Navigate,Outlet } from "react-router-dom"
 
 let usuario
@@ -12,7 +11,6 @@ export function llenardatos(userA) {
 }
 
 export const EntrarPagina =() => {
-    console.log('entro');
     let usuarioToken = window.localStorage.getItem('usuarioLogeado')
         if (usuarioToken) {
             const user = JSON.parse(usuarioToken) 
@@ -28,8 +26,7 @@ export const UseProtegerRutas =() => {
     let usuarioToken = window.localStorage.getItem('usuarioLogeado')
 
     if (usuarioToken) {
-        const user = JSON.parse(usuarioToken)
-        console.log(user.status);   
+        const user = JSON.parse(usuarioToken)  
     }else{
         console.log('no existe');
         return   < Navigate to='/login'  />

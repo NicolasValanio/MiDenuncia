@@ -25,6 +25,12 @@ export async function enviarPeticion(cuerpo, id) {
         .catch(err => console.log(err)) 
 }
 
+export async function envioReporte(reporte,idUsuario,idPublicacion){
+    return await axios.post(`https://midenuncia-database-production.up.railway.app/createreport/${idUsuario}/${idPublicacion}/${parseInt(reporte.RadioReporte)}`, reporte )
+    .then(res => res)
+    .catch(err => err)
+}
+
 // export async function enviarPeticion(cuerpo, id) {
 //     return await fetch(`https://midenuncia-database-production.up.railway.app/request/${id}`, {
 //         method: 'PUT',
@@ -45,10 +51,20 @@ export async function enviarEstrellas(data) {
         .catch(err => console.log(err))
 }
 
-/* export async function  EnvioEmailResetpassword (envio){
+export async function  EnvioEmailResetpassword (envio){
 
    return await axios.post("http://localhost:4000/forgot-password",envio)
-    
 
-} */
+} 
 
+export async function llamarInfoMisPeticiones (idUser) {
+    let respuestas = await axios.get(`https://midenuncia-database-production.up.railway.app/inforequestuser/${idUser}`)
+                    .then(res => res)
+                    .catch(err => err)
+    return respuestas
+}
+
+export async function envioComentarios(idUser,idPublicacion,description){
+    let respuestas = await axios.post(`https://midenuncia-database-production.up.railway.app/crearComments/${idUser}/${idPublicacion}`,description)
+    return respuestas
+}

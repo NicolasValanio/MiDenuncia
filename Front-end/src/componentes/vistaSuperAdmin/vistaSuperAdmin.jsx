@@ -131,7 +131,7 @@ function VistaSuperAdmin() {
        </div>
          
       
-           <div className={style.filtros}>
+           {/* <div className={style.filtros}>
            <div className={style.filtros__select}><p className={style.p}>Filtrar por estado :</p>
             <select className={style.filtros__select_info}>
               <option value="1" className={style.option}>activos </option>
@@ -146,7 +146,7 @@ function VistaSuperAdmin() {
             </select>
             </div>
            </div>
-          
+           */}
       
 
         
