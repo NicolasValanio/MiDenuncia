@@ -67,6 +67,18 @@
     position: relative;
     padding: 20px 0 15px 0;
   }
+
+  .modalOpen::-webkit-scrollbar{
+    width: 5px; 
+    height: 0.5px;
+}
+
+.modalOpen::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
+    height: 5px;
+}
   
   /* text-lg font-medium leading-6 text-gray-900 */
   .dialogtitle{
