@@ -1,0 +1,216 @@
+
+
+.table{
+    margin-top:10px;
+    width: 100%;
+    text-align: center;
+   
+    border-collapse: collapse;
+    
+}
+h1{
+    color: #541f90;
+    margin: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.thead{
+    background-color: #541f90;
+    color: white;
+   font-size: 21px;
+   height: 4rem;
+    border-bottom: 5px solid black;
+
+}
+.td{
+   
+    
+    background-color: #302b3bb4;
+    height: 5rem;
+    
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+  
+   
+}
+
+
+
+.tr:hover{
+    background-color: #541f90;
+    cursor: pointer;
+}
+.tr{
+    color: white;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.funcionesHead{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    
+}
+
+.conteInput{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+    border-radius: 5px;
+  
+    background-color: white;
+    padding: 5px 2px 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+
+}
+
+.input{
+    outline: none;
+    border-radius: 5px;
+    height: 2rem;
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    cursor:text;
+    margin-right: 3px;
+   
+    
+}
+.iconBuscar{
+    color:#541f90;
+    height: 1.5rem;
+
+    width:1.5rem;
+}
+
+.volver{
+    
+    color: blueviolet;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+    }
+    .volver:hover{
+        height: 35px;
+        color: white;
+       
+    }
+
+    .p{
+        color:white;
+        font-size: 15px;
+    }
+
+    .p_table{
+        color:white;
+        font-size: 13px;
+    }
+
+    .filtros{
+        width: 100%;
+     
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .filtros__select{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+      
+        
+    }
+
+    .filtros__select_info{
+        height: 2.5rem;
+        border-radius: 5px;
+        width: 100%;
+        border:none;
+        outline: none;
+        cursor:pointer;
+        margin-left: 5px;
+        font-size:1rem ;
+        padding: 5px;
+    }
+
+    .filtros__select_tabla{
+       
+        border-radius: 5px;
+        width: 60%;
+        border:none;
+        outline: none;
+        cursor:pointer;
+        
+        font-size:15px ;
+        padding: 5px;
+
+    }
+
+    .option{
+        font-size: 20px;
+       padding: 5px;       
+    }
+    .option_tabla{
+        font-size: 15px;
+       padding: 5px;   
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+        background-color: #541f90;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        flex-wrap:no-wrap;
+        margin: 0 auto;
+    }
+
+    .buttonEliminar:hover{
+        background-color: red;
+    }
+    .buttonEliminar1{
+        background-color: red;
+    }
+    .buttonRestablecer1{
+        background-color: rgb(4, 29, 75);
+    }
+
+    .buttonRestablecer:hover{
+        background-color: rgb(4, 29, 75);
+    }
+
+    .tdborder{
+        border-right: 1px solid black;
+    }
+
+.mas{
+   height: 30px;
+   width: 30px;
+   color: white;
+}
+.mas:hover{
+    color:#541f90;
+}
+
+.plus:hover{
+
+   background-color: white;
+}
+
+.plus:hover .mas{
+      color:#541f90;
+}
