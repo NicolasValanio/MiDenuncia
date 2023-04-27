@@ -585,8 +585,9 @@ export default function FormularioPeticion({ user }) {
 							/>
 							<label>
 								He leído y acepto las{" "}
-								<span>
-									políticas de Privacidad y tratamiento de Datos Personales.
+								<span >
+									<a className={style.linkhabeas} href="./Habeasdata">políticas de Privacidad y tratamiento de Datos Personales.</a>
+									
 								</span>
 							</label>
 						</div>

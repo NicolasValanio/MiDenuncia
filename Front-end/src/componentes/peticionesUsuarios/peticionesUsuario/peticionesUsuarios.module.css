@@ -3,7 +3,10 @@
     color: #f73131;
 }
 
-
+.linkhabeas{
+    text-decoration: none;
+    color: aqua;
+}
 .contenedor{
     width: 100%;
     max-width: 1200px;
