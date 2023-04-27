@@ -46,6 +46,7 @@ function Rutas() {
                     <Route path="/VistaUsuario" element={<VistaUsuario />} /> 
                     <Route path="/Mapa" element={<Mapa />} />
                     <Route path="/TarjetaPublicacion" element={<TarjetaPublicacion />} />
+                    <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
                 </Route>
                 
                 <Route path="/VistaSuperAdmin" element={<VistaSuperAdmin />} />
