@@ -50,22 +50,85 @@ function VistaSuperAdmin() {
        
    }
 
-   const handleChangeSelect = (event) => {
-    setSelect(event.target.value);
-    // console.log(event.target.value)
-   
-   
 
-    // fetch(
-    //   `https://midenuncia-database-production.up.railway.app/info?filtro=${event.target.value}`
-    // )
-    //   .then((response) => response.json())
-    //   .then((info) => {
-    //     setData(info);
-    //     //console.log(info)
-    //   });
-  };
 
+
+
+///ENVIAR ESTADO
+const [selectEstado,setSelectEstado]=useState("")
+const [selectEstado1,setSelectEstado1]=useState("")
+
+const handleChangeSelectEstado=(event)=>{
+  setSelectEstado(event.target.value)
+ 
+  fetch(`https://midenuncia-database-production.up.railway.app/info?estado=${event.target.value}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        if(data.message){
+          
+          setSelectEstado1(data.message)
+        }else{
+          setData(data)
+          setSelectEstado1("")
+        }
+       
+       
+      });
+}
+
+
+
+   ///ENVIAR CONSULTA D EROL
+
+   const handleChangeSelectRol = (event) => {
+   // setSelect(event.target.value);
+    //console.log(event.target.value)
+    setSelect(event.target.value)
+  
+   
+      fetch(
+        `https://midenuncia-database-production.up.railway.app/info?rol=${event.target.value}`
+      )
+      .then((response) => response.json())
+      .then((data) => {
+       
+        if(data.message){
+          fetch(
+            `https://midenuncia-database-production.up.railway.app/info`
+          )
+          .then((response) => response.json())
+          .then((data) => {
+          
+            setData(data)
+            setSelectEstado1("")
+          })
+
+        }else{
+          setData(data)
+          setSelectEstado1("")
+
+        }
+       
+      });
+
+    
+    }
+ 
+  ///termina aqui
+
+
+  //AQUI SOLICITO LOS ROLES
+ useEffect(() => {
+    fetch("https://midenuncia-database-production.up.railway.app/inforol")
+      .then((response) => response.json())
+      .then((data) => {
+       
+        setRol(data)
+        setSelectEstado1("")
+      });
+      
+  }, []);
 
 
  
@@ -73,12 +136,14 @@ function VistaSuperAdmin() {
   const handleChange = (event) => {
     setFiltro(event.target.value);
     // console.log(event.target.value)
+    
 
     fetch(
       `https://midenuncia-database-production.up.railway.app/info?filtro=${event.target.value}`
     )
       .then((response) => response.json())
       .then((info) => {
+        setSelectEstado1("")
         setData(info);
         //console.log(info)
       });
@@ -87,9 +152,31 @@ function VistaSuperAdmin() {
   useEffect(() => {
     fetch("https://midenuncia-database-production.up.railway.app/info")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data)
+    
+      });
+      
       
   }, [estado]);
+
+
+  //CAMBIO DE ROLES
+  const [formData, setFormData] = useState({
+    userId: '',
+    selectOption: ''
+  });
+
+
+  const handleChangeRol = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  
+    // Aquí puedes hacer el envío de datos al backend usando formData.userId y formData.selectOption
+  };
 
   return (
     <div className={style.contenedor1}>
@@ -106,7 +193,7 @@ function VistaSuperAdmin() {
 
         <div className={style.user}>
             
-            <p>Perfil</p>
+            Perfil
             <BiUserCircle className={style.usuario} />
    
             
@@ -131,22 +218,36 @@ function VistaSuperAdmin() {
        </div>
          
       
-           {/* <div className={style.filtros}>
-           <div className={style.filtros__select}><p className={style.p}>Filtrar por estado :</p>
-            <select className={style.filtros__select_info}>
+           <div className={style.filtros}>
+
+            <div  className={style.filtros__select}>
+            <p className={style.p}>Filtrar por Rol :</p>
+            <select className={style.filtros__select_info} value={select} onChange={handleChangeSelectRol}>
+            <option value="0"   className={style.option} selected> Todos</option>
+           
+           
+          
+              {rol ? rol.map((rol)=>{
+                
+                
+                  return <option value={rol.id}  className={style.option} key={rol.id}  selected>{rol.name} </option>
+
+              }): ""}
+              
+            
+             
+            </select>
+            </div>
+
+
+            <div className={style.filtros__select}><p className={style.p}>Filtrar por estado :</p>
+            <select className={style.filtros__select_info} value={selectEstado} onChange={handleChangeSelectEstado}>
+            <option value="" className={style.option}>Estado...</option>
               <option value="1" className={style.option}>activos </option>
               <option value="0" className={style.option}>inactivos</option>
             </select></div>
-            <div  className={style.filtros__select}>
-            <p className={style.p}>Filtrar por Rol :</p>
-            <select className={style.filtros__select_info} value={select} onChange={handleChangeSelect}>
-              <option value="5"  className={style.option}>Superadmin </option>
-              <option value="2" className={style.option}>admin</option>
-              <option value="3" className={style.option}>visitante</option>
-            </select>
-            </div>
            </div>
-           */}
+          
       
 
         
@@ -160,43 +261,50 @@ function VistaSuperAdmin() {
           <tr>
             <th className={style.th}>Name</th>
             <th className={style.th}>Nickname</th>
-            <th className={style.th}>Direccion</th>
+            <th className={style.th}>Barrio</th>
             <th className={style.th}>Correo</th>
             <th className={style.th}>Rol</th>
             <th className={style.th}>Estado </th>
           
 
-            <th colSpan={4}>Funcionalidades</th>
+            <th colSpan={2}>Funcionalidades</th>
             <th></th>
             <th></th>
             <th></th>
           </tr>
         </thead>
-        <tbody className={style.tbody}>
-          {data?.map((user) => (
+        {
+          !selectEstado1  ? <tbody className={style.tbody}>
+          {data  ? data?.map((user) => (
             <tr key={user.id} className={style.tr}>
               <td className={style.td}> {user.name}</td>
               <td className={style.td}>{user.nickname}</td>
               <td className={style.td}>
-                {user.address ? user.address : "dato vacio "}
+                {user.staff_neighborhood ? user.staff_neighborhood:" "}
               </td>
               <td className={style.td}>{user.email}</td>
-              <td className={style.td}>{user.role.name} </td>
+              <td className={style.td}>{user.role ? user.role.name:""} </td>
               <td className={`${style.td} ${style.tdborder}`}>{user.deletedAt ?<span>Inactivo</span>:<span>Activo</span>}</td>
 
-              <td className={style.td}><p className={style.p_table}>convertir usuario en:</p><select className={style.filtros__select_tabla}>
-              <option  className={style.option_tabla} value={user.role.id} selected>{user.role.name}</option>
-              <option value="1" className={style.option_tabla}>Superadmin </option>
-              <option value="2" className={style.option_tabla}>admin</option>
-              <option value="3" className={style.option_tabla}>visitante</option>
-            </select> </td>
-            <td className={style.td}>{user.deletedAt ?  <button className={`${style.button} ${style.buttonEliminar1}`}> <AiOutlineUserDelete/>Eliminado</button>:<button className={`${style.button} ${style.buttonEliminar}`} value={user.id} onClick={eliminar}> <AiOutlineUserDelete/>Eliminar</button>}</td>
-             <td className={style.td}>{user.deletedAt ?<button className={`${style.button} ${style.buttonRestablecer}`} value={user.id} onClick={restore}><MdRestore />restaurar</button>:<button className={`${style.button} ${style.buttonRestablecer1}`} ><MdRestore />restaurar</button>}</td>
+             
+            <td className={`${style.td} ${style.tdButton}`}>{user.deletedAt ?  <button className={`${style.button} ${style.buttonEliminar1}`}> <AiOutlineUserDelete/>Eliminado</button>:<button className={`${style.button} ${style.buttonEliminar}`} value={user.id} onClick={eliminar}> <AiOutlineUserDelete/>Eliminar</button>}</td>
+             <td className={`${style.td} ${style.tdButton}`}>{user.deletedAt ?<button className={`${style.button} ${style.buttonRestablecer}`} value={user.id} onClick={restore}><MdRestore />restaurar</button>:<button className={`${style.button} ${style.buttonRestablecer1}`} ><MdRestore />restaurar</button>}</td>
             
              
             </tr>
-          ))}
-        </tbody>
+          )):""  }
+        </tbody>: <tbody><tr>
+          <td colSpan={10}><h2 className={style.h2found}>{selectEstado1}</h2></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr></tbody>  
+        }
+       
       </table>
 
      
