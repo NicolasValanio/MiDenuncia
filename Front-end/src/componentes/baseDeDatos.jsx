@@ -75,3 +75,14 @@ export async function eliminarUser(id) {
     .then(res => console.log(res))
     .catch(err => console.log(err))
 }
+
+export async function actualizarUser(datos,id) {
+
+    console.log(id)
+    console.log(datos)
+
+
+    return await axios.put(`https://midenuncia-database-production.up.railway.app/UpdateUser/${id}`,datos)
+    .then(res => console.log('exitoooo'))
+    .catch(err => console.log(err))
+}

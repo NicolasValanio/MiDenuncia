@@ -1,7 +1,7 @@
 import style from './vistaUsuario.module.css';
 import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
-import { eliminarUser } from "../baseDeDatos"
+import { eliminarUser,actualizarUser } from "../baseDeDatos"
 
 import {  useNavigate} from "react-router-dom"
 
@@ -21,6 +21,12 @@ function EditarPerfil({dato}) {
     const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
 
     
+
+    
+    const [nick, setNick] = useState("");
+    const [apellido, setApellido] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [contrasena, setContrasena] = useState("");
 
     
     function abrirModal(evet) {
@@ -52,7 +58,7 @@ function EditarPerfil({dato}) {
     console.log(res);
     
 
-    navigate('/');//redireccionamos a usuarionolog
+    navigate('/Login');//redireccionamos a usuarionolog
 
 
 })
@@ -62,7 +68,48 @@ function EditarPerfil({dato}) {
       }
 
 
+
+
+        
+    const actualizarCuenta = async (e) => {
+
+
+        e.preventDefault()
+  
+        console.log('paso')  
+        
+
+        const idUser=id
+
+        
+        const datos={
+         nick,
+         nombre,
+         apellido,
+         contrasena
+
+        }
       
+        await actualizarUser(datos,idUser).then((res) => {
+    
+          
+            
+        
+        navigate('/');//redireccionamos 
+
+        
+        
+        
+        })
+                .catch(err => console.log(err))
+
+      
+     
+      }
+
+
+      
+
 
 
     return(
@@ -84,7 +131,9 @@ function EditarPerfil({dato}) {
 
                     <div className={style.modal2}>
                         <label htmlFor="">Contraseña
-                        <input className={style.inputdatos} type="text" />
+                        <input className={style.inputdatos} type="text"
+                         value={contrasena}
+                         onChange={(e) => setContrasena(e.target.value)}/>
                         </label>
                         
                         <label htmlFor="">Confirmar contraseña
@@ -115,17 +164,18 @@ function EditarPerfil({dato}) {
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={name}  className={style.inputdatos} type="text" />
+                            <input placeholder={name}  className={style.inputdatos} type="text" value={nombre}
+                            onChange={(e) => setNombre(e.target.value) }/>
                         </label>
                         
 
                         <label htmlFor="">Apellido                           
-                            <input placeholder={last_name} className={style.inputdatos} type="text" />
+                            <input placeholder={last_name} className={style.inputdatos} type="text"
+                             value={apellido}
+                             onChange={(e) => setApellido(e.target.value)} />
                         </label>
                         <div className={style.inputButon}>
-                            <button className={`btn ${style.botonGuardar}`}>
-                                Guardar cambios
-                            </button>
+                            <button className={`btn ${style.botonGuardar}`} onClick={actualizarCuenta}> Guardar cambios</button>
                             <button className={`btn ${style.elimCuenta}`} onClick={handleClick}>
                                 Eliminar cuenta
                             </button> 
@@ -135,7 +185,9 @@ function EditarPerfil({dato}) {
                     <div  className={style.datosFila1}>
                         
                         <label htmlFor="">Usuario
-                            <input placeholder={nickname} className={style.inputdatos} type="text" />
+                            <input placeholder={nickname} className={style.inputdatos} type="text"
+                             value={nick}
+                             onChange={(e) => setNick(e.target.value)} />
                         </label>
 
 
