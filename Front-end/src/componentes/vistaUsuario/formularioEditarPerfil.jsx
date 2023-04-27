@@ -3,6 +3,7 @@ import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
 import { eliminarUser } from "../baseDeDatos"
 
+import {  useNavigate} from "react-router-dom"
 
 
 
@@ -14,7 +15,7 @@ function EditarPerfil({dato}) {
     let {id,name, last_name, nickname,token} = dato.data;
     
  
-       
+    const navigate=useNavigate();
 
     const [mostraDatos, setMostrarDatos]= useState(false);
     const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
@@ -39,14 +40,22 @@ function EditarPerfil({dato}) {
         setMostrarDatos(false);
     }
     
-    const eliminarCuenta = async (id) => {
+    const eliminarCuenta = async () => {
       
-        const idUser=id.target.value//traemos toda la info del boton ,luego el target y luego el value ... donde se encuentra el id
+        const idUser=id//traemos toda la info del boton ,luego el target y luego el value ... donde se encuentra el id
        
 
      await eliminarUser(idUser)
      
-   .then(res => console.log(res))
+   .then((res) => {
+    
+    console.log(res);
+    
+
+    navigate('/');//redireccionamos a usuarionolog
+
+
+})
         .catch(err => console.log(err))
       
      
@@ -65,7 +74,7 @@ function EditarPerfil({dato}) {
 
                             <div className={style.inputverificar}>
                                 <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`} onClick={closeModal}/>
-                                <input  type="button"  value={id} className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
+                                <input  type="button"  value="Aceptar" className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
                             </div>
                     </div>
                 </Modales> 
