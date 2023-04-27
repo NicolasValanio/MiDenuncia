@@ -17,6 +17,7 @@ import VistaUsuario from './vistaUsuario/vistaUsuario'
 import RecuperarContrasena from './recuperarContrasena/recuperarContrasena'
 import Mapa from './mapa/mapa'
 import TarjetaPublicacion from './tarjetasPublicacion/diseñodetarjeta/tarjetaPublicacion'
+import MisPeticiones  from './misPeticiones/misPeticiones'
 
 
 
@@ -39,6 +40,7 @@ function Rutas() {
 
                 <Route path="/RegistroUsuario" element={<RegistroUsuario />} />
                 <Route element={<UseProtegerRutas />}>
+                    <Route path="/misPeticiones" element={<MisPeticiones /> } />
                     <Route path="/HabeasData" element={<HabeasData />} />
                     <Route path="/PeticionesUsuarios" element={<PeticionesUsuarios />} />
                     <Route path="/RegistroDenuncia" element={<RegistroDenuncia />} />
