@@ -22,7 +22,7 @@ import {GiStreetLight} from "react-icons/gi";
 
 function UsuarioLog() {
     //ACTUALIZAR PETICINO
-    const [  , setNuevoLlamado] = useState(false)
+    const [ actualizarDatos , setActualizarDatos] = useState(false)
     // ID DEL REPORTE 
     const [idReporte, setIdeReporte] = useState(0)
     // ESTADO DEL MODAL
@@ -34,13 +34,11 @@ function UsuarioLog() {
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
-    console.log(nuevoLLamado);
-
     useEffect(()=>{
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
-        .then(res => setPublicaciones(res.news) )
-    },[nuevoLLamado])
+        .then(res => setPublicaciones(res.news))
+    },[actualizarDatos])
 
     // FUNCIONA LA CUAL HACE LA PETICION Y EL REDNDER DE LAS NUEVAS TARJESTAS
     function nuevoLlamado(page) {
@@ -60,8 +58,8 @@ function UsuarioLog() {
            key={publicaciones[index].id} 
            setEstadoModal={setEstadoModal} 
            setIdeReporte={setIdeReporte}
-           setNuevoLlamado={setNuevoLlamado}
-           nuevoLLamdo={nuevoLLamdo}
+           setActualizarDatos={setActualizarDatos}
+           actualizarDatos={actualizarDatos}
            />
         })
         return nuevasPublicaciones

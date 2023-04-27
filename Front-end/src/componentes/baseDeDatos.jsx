@@ -58,7 +58,6 @@ export async function  EnvioEmailResetpassword (envio){
 } 
 
 export async function llamarInfoMisPeticiones (idUser) {
-    console.log(idUser);
     let respuestas = await axios.get(`https://midenuncia-database-production.up.railway.app/inforequestuser/${idUser}`)
                     .then(res => res)
                     .catch(err => err)

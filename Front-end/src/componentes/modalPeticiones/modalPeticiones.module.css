@@ -73,7 +73,17 @@
     align-items: center;
     height: 100%;
     overflow: auto;
+}
 
+.modalOpen::-webkit-scrollbar{
+    width: 6px; 
+    height: 0.5px;
+}
+
+.modalOpen::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
 }
 
 .contedorInfo {

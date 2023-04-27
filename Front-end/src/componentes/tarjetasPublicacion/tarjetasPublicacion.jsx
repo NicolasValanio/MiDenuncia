@@ -4,16 +4,16 @@ import Style from './tarjetasPublicacion.module.css'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Dialog, Transition } from '@headlessui/react'
 import {HiUserCircle} from 'react-icons/hi'
+import {AiOutlineSend} from 'react-icons/ai'
 import {envioComentarios} from '../baseDeDatos'
 
 
 
 
 
-function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setNuevoLlamado,nuevoLLamdo}) {
+function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setActualizarDatos,actualizarDatos}) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [comentarios , setComentarios] = useState()
 
   const toggleModal = () => {
 	setIsOpen(!isOpen);
@@ -27,11 +27,17 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setNu
     setIsOpen(false)
   }
 
-  function onSubmit(comentarios) {
+  async function onSubmit(comentarios) {
 
-    let comentario = { description : comentarios }
-    let idUsuario = JSON.parse(window.localStorage.getItem('usuarioLogeado'))
-    envioComentarios(idUsuario.data.id , api.id , comentario).then(res => console.log(res))
+    if (comentarios.length !== 0 ) {
+      let comentario = { description : comentarios }
+      let idUsuario = JSON.parse(window.localStorage.getItem('usuarioLogeado'))
+      await envioComentarios(idUsuario.data.id , api.id , comentario).then(res => res)
+      setActualizarDatos(!actualizarDatos)
+    }else{
+      console.log('no enviar');
+    }
+
 
   }
 
@@ -39,12 +45,16 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setNu
 
         let comentarios = api.comments.map((comentario) => {
           return(
-          <div className={style.contenedor_comentarios}>
+          <div className={`contenedor ${style.contenedor_comentarios}`}>
             <div className={style.contenedor_imagen_comentario}>
               <HiUserCircle className={style.icono_comentario}/>
-              <div className={style.usuario_comentario}> {comentario.user.nickname} </div>
+              <div className={style.usuario_comentario}> 
+                <p>{comentario.user.nickname}</p> 
+              </div>
             </div>
-            <div className={style.texto_comentario}>{comentario.description}</div>
+            <div className={`contenedor ${style.texto_comentario}`}>
+              <p className={style.textoComentario}>{comentario.description}</p>  
+            </div>
           </div> 
           )
         })
@@ -109,7 +119,7 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setNu
 
                 </div>
 
-              <div className={style.modal_parte2}>
+              <div className={ style.modal_parte2}>
                 {api === undefined ? 'espera': <h3 className={style.textoFechaModal}>publicado el{api.createdAt}</h3>}
 
                 {api === undefined ? 'espera': <h3 className={style.textoUbicacionModal}>
@@ -132,34 +142,27 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setNu
 
                 <div className={style.barra}></div>
 
-                <div className={style.contenedor_textos}>
-                  <p className={style.subtitulo}>Localizacion</p>
-                  <p className={style.texto_modal}>{api.location}, {api.neighborhood}</p>
-                  <p className={style.subtitulo}>Asunto</p>
-                  <p className={style.texto_modal}>{api.subject}</p>
-                  <p className={style.subtitulo}>descripcion</p>
-                  <p className={style.texto_modal}>{api.problem}</p>
-                  <p className={style.subtitulo}>solicitud</p>
-                  <p className={style.texto_modal}>{api.solution}</p>
+                <div className={`contenedor ${style.contTextComentar}`}>
+
+                  <div className={style.contenedor_textos}>
+                    <p className={style.subtitulo}>Localizacion</p>
+                    <p className={style.texto_modal}>{api.location}, {api.neighborhood}</p>
+                    <p className={style.subtitulo}>Asunto</p>
+                    <p className={style.texto_modal}>{api.subject}</p>
+                    <p className={style.subtitulo}>descripcion</p>
+                    <p className={style.texto_modal}>{api.problem}</p>
+                    <p className={style.subtitulo}>solicitud</p>
+                    <p className={style.texto_modal}>{api.solution}</p>
+                  </div>
+
+ 
+                  <div className={`contenedor ${style.modalComentar}`}>
+                    <input type="text" className={style.inputComentario} id='enviarComentario' placeholder='Comenta Aqui' />
+                    <button className={style.enviarComentario} onClick={()=> onSubmit(document.querySelector('#enviarComentario').value) }> <AiOutlineSend className={style.iconEnviar} /> </button>
+                  </div> 
+
                 </div>
 
-                <div className={style.contenedor_textos_modal}>
-                  <p className={style.texto_modal}>{api.problem}</p>                    <div className={style.contenedor_comentarios}>
-                      <div className={style.contenedor_imagen_comentario}>
-                        <HiUserCircle className={style.icono_comentario}/>
-                        <div className={style.usuario_comentario}> usuario</div>
-                      </div>
-                      <div className={style.texto_comentario}> comentario</div>
-                    </div> 
-                </div>
-
-                <div className={`contenedor ${style.modalComentar}`}>
-                  <input type="text" className='enviar' />
-                  <button onClick={()=>{ 
-                    onSubmit(document.querySelector('.enviar').value) 
-                    setNuevoLlamado(!nuevoLLamdo)
-                    }} >enviar</button>
-                </div>
 
                 <div className={style.botones_modal}>
 

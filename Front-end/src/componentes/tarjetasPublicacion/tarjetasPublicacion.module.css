@@ -236,6 +236,17 @@ css del modal*/
     overflow: scroll;
   }
 
+  .modal_comentarios::-webkit-scrollbar{
+    width: 6px; 
+    height: 0.5px;
+  }
+
+  .modal_comentarios::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
+  }
+
   .modal_parte1{
     width: 70%;
     height: 100%;
@@ -298,17 +309,37 @@ css del modal*/
   }
 
   .contenedor_textos{
+    width: 100%;
     margin-top: 1rem;
-    margin-bottom: 0.5rem;
     height: 18rem;
     overflow: scroll;
+  }
+
+  .contenedor_textos::-webkit-scrollbar{
+    width: 6px; 
+    height: 0.5px;
+  }
+
+  .contenedor_textos::-webkit-scrollbar-thumb{
+    background-color: var(--primer-color);
+    border-radius: 10px ;
+    width: 5px;
   }
 
   .contenedor_comentarios{
     background-color: #1E2326;
     margin: 1rem;
     width: 70%;
-    height: 30%;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .textoComentario{ 
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    margin: 5px;
+    margin-left: 20px;
   }
 
   .icono_comentario{
@@ -327,7 +358,8 @@ css del modal*/
   }
 
   .texto_comentario{
-    margin-left: 0.5rem;
+    width: 25rem;
+    margin-left: 0.5  rem;
     color: aliceblue;
   }
 
@@ -364,6 +396,43 @@ css del modal*/
     width: 100%;
     height: 3rem;
     flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .inputComentario{
+    width: 15rem;
+    height: 2.3rem;
+    background-color: var(--segundo-color);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    transition: 0.2s all ease-in;
+    outline: none;
+  }
+
+  .inputComentario:focus{
+    background-color: #b86efd23 ;
+    transition: 0.2s all ease-in;
+
+  }
+
+  .contTextComentar{
+    width: 100%;
+    height: 79%;
+    justify-content: space-between;
+  }
+
+  .enviarComentario{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconEnviar{
+    font-size: 2em;
+    color: var(--primer-color);
   }
 
 
@@ -469,6 +538,8 @@ css del modal*/
     justify-content: space-between;
 
   }
+
+
 
 }
 
