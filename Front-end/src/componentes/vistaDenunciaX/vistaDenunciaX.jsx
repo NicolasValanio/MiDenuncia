@@ -171,7 +171,6 @@ function vistaDenunciaX() {
       
 
         
-
         
       </div>
       
@@ -204,7 +203,7 @@ function vistaDenunciaX() {
                 <AiFillPlusCircle onClick={modal} className={style.mas} />
               </td>
               < td className={style.td}>{news.types_request.name}</td>
-              <td > pendiente </td>
+              <td > Activa </td>
               <td className={style.td}>{news.deletedAt ?  <button className={`${style.button} ${style.buttonEliminar1}`}> <AiOutlineUserDelete/>Eliminado</button>:<button className={`${style.button} ${style.buttonEliminar}`} value={news.id} onClick={eliminar}> <AiOutlineUserDelete/>Eliminar</button>}</td>
              <td className={style.td}>{news.deletedAt ?<button className={`${style.button} ${style.buttonRestablecer}`} value={news.id} onClick={restore}><MdRestore />restaurar</button>:<button className={`${style.button} ${style.buttonRestablecer1}`} ><MdRestore />restaurar</button>}</td>
             
