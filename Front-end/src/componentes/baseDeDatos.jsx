@@ -67,3 +67,22 @@ export async function llamarInfoMisPeticiones (idUser) {
                     .catch(err => err)
     return respuestas
 }
+
+
+export async function eliminarUser(id) {
+    console.log(id)
+    return await axios.delete(`https://midenuncia-database-production.up.railway.app/deleteuser/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
+export async function actualizarUser(datos,id) {
+
+    console.log(id)
+    console.log(datos)
+
+
+    return await axios.put(`https://midenuncia-database-production.up.railway.app/UpdateUser/${id}`,datos)
+    .then(res => console.log('exitoooo'))
+    .catch(err => console.log(err))
+}

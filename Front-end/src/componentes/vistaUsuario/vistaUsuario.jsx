@@ -34,6 +34,8 @@ function VistaUsuario() {
         const [loading, setLoading] = useState(true);
         
 
+
+
         
         function llamardatos() {
             
@@ -42,7 +44,7 @@ function VistaUsuario() {
             .then((response) => response.json())
             .then((infor) => {
                 const usuarioActual =  localStorage.getItem('usuarioLogeado')
-                setUsuario(infor);
+                
                 setPerfil(infor.find(x => x.id === usuarioActual.id));
                 setUsuario(JSON.parse(usuarioActual));
                 setPerfil(usuarioActual.perfil);

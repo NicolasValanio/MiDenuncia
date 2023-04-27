@@ -1,8 +1,9 @@
 import style from './vistaUsuario.module.css';
 import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
+import { eliminarUser,actualizarUser } from "../baseDeDatos"
 
-
+import {  useNavigate} from "react-router-dom"
 
 
 
@@ -11,38 +12,21 @@ function EditarPerfil({dato}) {
     
     
     
-    let {name, last_name, nickname,token} = dato.data;
+    let {id,name, last_name, nickname,token} = dato.data;
     
-    
-    function eliminarCuenta() {
-        fetch('https://midenuncia-database-production.up.railway.app/deleteuser/:{dato.data.id}', {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${token}` // incluir el token de autenticación en la cabecera de la solicitud
-          }
-        })
-          .then((respon) => {
-            if (respon.ok) {
-              // si la solicitud es exitosa, redirigir al usuario a la página de inicio de sesión
-              history.push('/login');
-            } else {
-              throw new Error('No se pudo eliminar la cuenta');
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-            // mostrar un mensaje de error al usuario
-          });
-      }
-
-    console.log(dato.data.name);
-
-       
+ 
+    const navigate=useNavigate();
 
     const [mostraDatos, setMostrarDatos]= useState(false);
     const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
 
     
+
+    
+    const [nick, setNick] = useState("");
+    const [apellido, setApellido] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [contrasena, setContrasena] = useState("");
 
     
     function abrirModal(evet) {
@@ -62,6 +46,69 @@ function EditarPerfil({dato}) {
         setMostrarDatos(false);
     }
     
+    const eliminarCuenta = async () => {
+      
+        const idUser=id//traemos toda la info del boton ,luego el target y luego el value ... donde se encuentra el id
+       
+
+     await eliminarUser(idUser)
+     
+   .then((res) => {
+    
+    console.log(res);
+    
+
+    navigate('/Login');//redireccionamos a usuarionolog
+
+
+})
+        .catch(err => console.log(err))
+      
+     
+      }
+
+
+
+
+        
+    const actualizarCuenta = async (e) => {
+
+
+        e.preventDefault()
+  
+        console.log('paso')  
+        
+
+        const idUser=id
+
+        
+        const datos={
+         nick,
+         nombre,
+         apellido,
+         contrasena
+
+        }
+      
+        await actualizarUser(datos,idUser).then((res) => {
+    
+          
+            
+        
+        navigate('/');//redireccionamos 
+
+        
+        
+        
+        })
+                .catch(err => console.log(err))
+
+      
+     
+      }
+
+
+      
 
 
 
@@ -74,7 +121,7 @@ function EditarPerfil({dato}) {
 
                             <div className={style.inputverificar}>
                                 <input type="button" value="Cancelar" className={`btn ${style.botonesmodal}`} onClick={closeModal}/>
-                                <input  type="button" value="Aceptar" className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
+                                <input  type="button"  value="Aceptar" className={`btn ${style.botonesmodal}`} onClick={eliminarCuenta} />
                             </div>
                     </div>
                 </Modales> 
@@ -84,7 +131,9 @@ function EditarPerfil({dato}) {
 
                     <div className={style.modal2}>
                         <label htmlFor="">Contraseña
-                        <input className={style.inputdatos} type="text" />
+                        <input className={style.inputdatos} type="text"
+                         value={contrasena}
+                         onChange={(e) => setContrasena(e.target.value)}/>
                         </label>
                         
                         <label htmlFor="">Confirmar contraseña
@@ -115,17 +164,18 @@ function EditarPerfil({dato}) {
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={name}  className={style.inputdatos} type="text" />
+                            <input placeholder={name}  className={style.inputdatos} type="text" value={nombre}
+                            onChange={(e) => setNombre(e.target.value) }/>
                         </label>
                         
 
                         <label htmlFor="">Apellido                           
-                            <input placeholder={last_name} className={style.inputdatos} type="text" />
+                            <input placeholder={last_name} className={style.inputdatos} type="text"
+                             value={apellido}
+                             onChange={(e) => setApellido(e.target.value)} />
                         </label>
                         <div className={style.inputButon}>
-                            <button className={`btn ${style.botonGuardar}`}>
-                                Guardar cambios
-                            </button>
+                            <button className={`btn ${style.botonGuardar}`} onClick={actualizarCuenta}> Guardar cambios</button>
                             <button className={`btn ${style.elimCuenta}`} onClick={handleClick}>
                                 Eliminar cuenta
                             </button> 
@@ -135,7 +185,9 @@ function EditarPerfil({dato}) {
                     <div  className={style.datosFila1}>
                         
                         <label htmlFor="">Usuario
-                            <input placeholder={nickname} className={style.inputdatos} type="text" />
+                            <input placeholder={nickname} className={style.inputdatos} type="text"
+                             value={nick}
+                             onChange={(e) => setNick(e.target.value)} />
                         </label>
 
 
