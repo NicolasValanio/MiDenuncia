@@ -166,6 +166,9 @@ console.log(barrio)
    
    
    */
+
+  console.log(localStorage.getItem('usuarioLogeado'));
+
   const [cora, setCora] = useState(false);
   const [contLike, setContLike] = useState(0)
   
