@@ -58,7 +58,7 @@ function EditarPerfil({dato}) {
     console.log(res);
     
 
-    navigate('/Login');//redireccionamos a usuarionolog
+    navigate('/');//redireccionamos a usuarionolog?
 
 
 })
@@ -80,13 +80,14 @@ function EditarPerfil({dato}) {
         
 
         const idUser=id
+        
 
         
         const datos={
-         nick,
-         nombre,
-         apellido,
-         contrasena
+            nickname:nick,
+            name:nombre,
+            last_name:apellido,
+            password:contrasena
 
         }
       
@@ -95,7 +96,7 @@ function EditarPerfil({dato}) {
           
             
         
-        navigate('/');//redireccionamos 
+         navigate('/');//redireccionamos 
 
         
         
