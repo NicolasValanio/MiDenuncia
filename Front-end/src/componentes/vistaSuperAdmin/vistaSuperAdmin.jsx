@@ -106,7 +106,7 @@ function VistaSuperAdmin() {
 
         <div className={style.user}>
             
-            Perfil
+            <p>Perfil</p>
             <BiUserCircle className={style.usuario} />
    
             

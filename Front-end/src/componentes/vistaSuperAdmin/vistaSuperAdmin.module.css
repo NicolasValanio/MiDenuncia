@@ -34,7 +34,27 @@ h1{
    
 }
 
-
+.user{
+    color: #541f90;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 130px 30px 0px;
+    font-size: 30px;
+    flex-direction: column;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.373);
+    cursor: pointer;
+}
+.user:hover{
+color: white;
+}
+.usuario{
+    height: 50px;
+    width: 60px;
+}
 
 .tr:hover{
     background-color: #541f90;
