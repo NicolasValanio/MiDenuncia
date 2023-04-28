@@ -48,7 +48,7 @@ export async function traeTodoTipoSolicitudes() {
 }
 
 export async function enviarEstrellas(data) {
-    return await axios.post(`https://midenuncia-database-production.up.railway.app/rating/1`, data)
+    return await axios.post(`https://midenuncia-database-production.up.railway.app/rating/${data.user_id}`, data)
         .catch(err => console.log(err))
 }
 

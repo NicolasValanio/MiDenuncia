@@ -64,8 +64,8 @@
     transform: translateX(0) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transition: all 0.3s ease-in-out;
     width: 80vw;
-    border-right: solid 3px #B86EFD;
-    border-bottom: solid 3px #B86EFD;
+    border-right: solid 3px var(--primer-color);
+    border-bottom: solid 3px var(--primer-color);
     border-radius: 20px;
     background: var(--segundo-color);
     display: flex;
@@ -81,7 +81,7 @@
 }
 
 .modalOpen::-webkit-scrollbar-thumb{
-    background-color: #B86EFD;
+    background-color: var(--primer-color);
     border-radius: 10px ;
     width: 5px;
 }
@@ -100,7 +100,7 @@
 
 .headerModal h2 {
     font-size: 30px;
-    color: #B86EFD;
+    color: var(--primer-color);
 }
 
 .headerModal p {
@@ -120,7 +120,7 @@
     justify-content: flex-start;
     width: 100%;
     font-size: 30px;
-    color: #B86EFD;
+    color: var(--primer-color);
 }
 
 .textExpli {
@@ -132,7 +132,7 @@
     width: 200px;
     height: 60px;
     border-radius: 10px;
-    border: 1px solid #B86EFD;
+    border: 1px solid var(--primer-color);
     background: var(--segundo-color);
     color: white;
     margin: 30px;
@@ -140,7 +140,7 @@
 }
 
 .footerModal button:hover {
-    background: #B86EFD;
+    background: var(--primer-color);
     color: white;
 }
 

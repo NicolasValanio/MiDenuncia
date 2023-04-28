@@ -73,7 +73,7 @@ width: 100px;
 margin-left: -650px;
 }
 .superAdmin h1{
-    color: blueviolet;
+    /* color: blueviolet; */
     position: relative;
     font-size: 30px;    
 }
