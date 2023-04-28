@@ -7,6 +7,24 @@
     position: relative;
 }
 
+.requestName {
+    padding: 5px 8px;
+    width: max-content;
+    margin: 20px;
+    font-size: 14px;
+    background-color: rgba(21, 21, 21, 0.402);
+    border-radius: 3rem;
+    color: white;
+}
+
+.limpiarFiltros {
+    padding: 0px 6px;
+    border-radius: 50%;
+    background-color: rgba(21, 21, 21, 0.833);
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 .filtrar li{
     width: 100%;
     display: flex;
@@ -19,13 +37,17 @@
 }
 
 .filtrarA{
-    color: white;
+    color: white !important;
     width: fit-content;
     /* float: left; */
     margin-left: 1rem;
     margin-top: 3rem;
     position: relative;
 
+}
+
+.filtrarA h1 {
+    color: white !important;
 }
 
 .filtrarA li{

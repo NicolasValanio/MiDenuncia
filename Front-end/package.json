@@ -26,7 +26,8 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
     "soccer": "^1.0.0",
-    "sweetalert2": "^11.4.8",
+    "sonner": "^0.3.2",
+    "sweetalert2": "^11.7.3",
     "vit": "^0.0.1"
   },
   "devDependencies": {
