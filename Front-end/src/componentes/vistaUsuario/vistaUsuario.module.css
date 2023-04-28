@@ -77,6 +77,10 @@
 .cambiarpassword{
     margin-top: 60px;
 }
+.error{
+    color: red;
+    font-size: 17px;
+}
 .clikcontraseña{
     color: #9915EA;
     cursor: pointer;

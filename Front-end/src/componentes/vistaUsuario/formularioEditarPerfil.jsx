@@ -2,6 +2,8 @@ import style from './vistaUsuario.module.css';
 import Modales from '../modales/modales'
 import React, { useEffect, useState } from "react";
 import { eliminarUser,actualizarUser } from "../baseDeDatos"
+import { useForm } from 'react-hook-form';
+
 
 import {  useNavigate} from "react-router-dom"
 
@@ -11,23 +13,26 @@ import {  useNavigate} from "react-router-dom"
 function EditarPerfil({dato}) {
     
     
-    
-    let {id,name, last_name, nickname,token} = dato.data;
-    
- 
-    const navigate=useNavigate();
+    const [dat, setDat] = useState(dato.data);
 
+
+    console.log(dat);
+
+    let {id,name, last_name, nickname,} = dato.data;
+    
+    const navigate=useNavigate();
+    
     const [mostraDatos, setMostrarDatos]= useState(false);
     const [cambiarContrasenia, setCambiarContrasenia] = useState(false)
-
     
-
     
-    const [nick, setNick] = useState("");
-    const [apellido, setApellido] = useState("");
-    const [nombre, setNombre] = useState("");
-    const [contrasena, setContrasena] = useState("");
-
+    
+    
+    const [nick, setNick] = useState(dato.data.nickname);
+    const [apellido, setApellido] = useState(dato.data.last_name);
+    const [nombre, setNombre] = useState(dato.data.name);
+    const [contrasena, setContrasena] = useState(dato.data.password);
+    
     
     function abrirModal(evet) {
         evet.preventDefault()
@@ -36,8 +41,8 @@ function EditarPerfil({dato}) {
     function cerrarModal() {
         setCambiarContrasenia(false);
     }
-  
-
+    
+    
     function handleClick(e) {
         e.preventDefault()
         setMostrarDatos(true)
@@ -45,7 +50,26 @@ function EditarPerfil({dato}) {
     function closeModal() {
         setMostrarDatos(false);
     }
+
+    const { register, handleSubmit,formState:{errors} ,watch} = useForm();
+
+    function cloModal(){
+        setCambiarContrasenia(false);
+    }
+        
+        
+
+    //     if (clave1===clave2) {
+    //         
+    //     }else{
+    //         alert("as contraseñas ingresadas no coinsiden ")
+    //     }
+    // 
     
+    const onSubmit = valor =>{
+        navigate("/VistaUsuario");
+    }
+
     const eliminarCuenta = async () => {
       
         const idUser=id//traemos toda la info del boton ,luego el target y luego el value ... donde se encuentra el id
@@ -58,7 +82,7 @@ function EditarPerfil({dato}) {
     console.log(res);
     
 
-    navigate('/Login');//redireccionamos a usuarionolog
+    navigate('/login');//redireccionamos a usuarionolog?
 
 
 })
@@ -80,13 +104,14 @@ function EditarPerfil({dato}) {
         
 
         const idUser=id
+        
 
         
         const datos={
-         nick,
-         nombre,
-         apellido,
-         contrasena
+            nickname:nick,
+            name:nombre,
+            last_name:apellido,
+            password:contrasena
 
         }
       
@@ -94,8 +119,9 @@ function EditarPerfil({dato}) {
     
           
             
-        
-        navigate('/Vistausuario');//redireccionamos 
+
+        navigate('/Vistausuario');//redireccionamos
+         navigate('/Login');//redireccionamo
 
         
         
@@ -129,23 +155,50 @@ function EditarPerfil({dato}) {
                 </Modales> 
 
                 <Modales  isOpen={cambiarContrasenia} setIsOpen={setCambiarContrasenia} title = "Ingrese su nueva contraseña" >
-                    <div className={style.modalContainer}>
+                <div className={style.modalContainer}>
 
-                    <div className={style.modal2}>
-                        <label htmlFor="">Contraseña
-                        <input className={style.inputdatos} type="text"
-                         value={contrasena}
-                         onChange={(e) => setContrasena(e.target.value)}/>
-                        </label>
-                        
-                        <label htmlFor="">Confirmar contraseña
-                        <input className={style.inputdatos} type="text" />
-                        </label>
-                        <div className={style.inputverificar2}>
-                                <input type="button" value="guardar" className={`btn ${style.botonesmodal2}`} />
-                                <input type="button" value="Ir atras" className={`btn ${style.botonesmodal2}`} onClick={cerrarModal} />
+                        <form onSubmit={handleSubmit(onSubmit)} className={style.modal2}>
+                            <label htmlFor="">Contraseña
+                            <input className={style.inputdatos} type="password" 
+
+                                {...register("password",{ 
+                                    required: {
+                                    value: true,
+                                    message : "La contrasea es requerida"
+                                },
+                                minLength: {
+                                    value : 6,
+                                    message : "La contraseña debe tener mas de 6 caracteres"
+                                }
+                                })} 
+                                    
+
+                                value={contrasena}
+                                onChange={(e) => setContrasena(e.target.value)}  placeholder='Contraseña'/>
+                                {errors.password && <span className={style.error}> {errors.password.message} </span>}
+                            </label>
+                            
+                            <label htmlFor="">Confirmar contraseña
+                            <input className={style.inputdatos} type="password"  placeholder='Confirmar contraseña'
+                                {...register("password2",{
+                                    required: {
+                                      value: true,
+                                      message : "La confirmacion de la contraseña es requerida"
+                                  },
+                                      validate: (value) => {
+                                          if (watch("password") !== value)
+                                          return "Rectifique la contraseña"
+                                          
+                                  }
+                                  
+                              })}/>
+                            {errors.password2 && <span className={style.error}> {errors.password2.message} </span>}
+                            </label>
+                            <div className={style.inputverificar2}>
+                                    <input type="submit" value="guardar" className={`btn ${style.botonesmodal2}` }/>
+                                    <input type="button" value="Ir atras" className={`btn ${style.botonesmodal2}`} onClick={cerrarModal} />
                             </div>
-                    </div>
+                        </form>
                     </div>
 
 
@@ -161,26 +214,53 @@ function EditarPerfil({dato}) {
 
 
 
-                <form  className={style.formulario}>
+                <form  onSubmit={handleSubmit(onSubmit)} className={style.formulario}>
                     <div className={style.datosFila1}>
             
 
                         <label htmlFor="">Nombre
-                            <input placeholder={name}  className={style.inputdatos} type="text" value={nombre}
+                            <input placeholder={dat.name}  className={style.inputdatos} type="text" value={nombre}
+                                {...register("name",{
+                                    required: {
+
+                                    value: true,
+                                    message : "El nombre es requerido"
+                                },
+                                pattern: {
+                                    value : /[a-zA-Z]\d*/,
+                                    message : "El nombre debe tener letras"
+                                }
+                                })}
+
                             onChange={(e) => setNombre(e.target.value) }/>
+                            {errors.name && <span className={style.error}> {errors.name.message} </span>}
                         </label>
                         
 
                         <label htmlFor="">Apellido                           
                             <input placeholder={last_name} className={style.inputdatos} type="text"
                              value={apellido}
-                             onChange={(e) => setApellido(e.target.value)} />
+
+                             {...register("last_name",{
+                                required: {
+                                  value: true,
+                                  message : "El apellido es requerido"
+                              },
+                              pattern: {
+                                  value : /[a-zA-Z]\d*/,
+                                  message : "El apellido debe tener letras"
+                              }
+                          })} 
+                        
+                          
+                          onChange={(e) => setApellido(e.target.value)} />
+                          {errors.last_name && <span className={style.error}> {errors.last_name.message} </span>}
                         </label>
                         <div className={style.inputButon}>
-                            <button className={`btn ${style.botonGuardar}`} onClick={actualizarCuenta}> Guardar cambios</button>
-                            <button className={`btn ${style.elimCuenta}`} onClick={handleClick}>
-                                Eliminar cuenta
-                            </button> 
+                            
+                            <input type="submit" value="Guardar cambios" className={`btn ${style.botonGuardar}`} onClick={actualizarCuenta} />
+                            <input type="button" value="Eliminar cuenta" className={`btn ${style.elimCuenta}`} onClick={handleClick}/>
+         
                         </div>
 
                     </div>
@@ -188,8 +268,21 @@ function EditarPerfil({dato}) {
                         
                         <label htmlFor="">Usuario
                             <input placeholder={nickname} className={style.inputdatos} type="text"
-                             value={nick}
-                             onChange={(e) => setNick(e.target.value)} />
+                                value={nick}
+                                {...register("nickname",{
+                                    required: {
+                                      value: true,
+                                      message : "El usuario es requerido"
+                                  },
+                                  pattern: {
+                                      value : true,
+                                      message : "El usuario es requerido"
+                                  }
+                              })} 
+                                onChange={(e) => setNick(e.target.value)} />
+
+                            {errors.nickname && <span className={style.error}> {errors.nickname.message} </span>}
+
                         </label>
 
 
