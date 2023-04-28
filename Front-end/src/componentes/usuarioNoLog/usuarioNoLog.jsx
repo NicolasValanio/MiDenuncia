@@ -26,7 +26,9 @@ function UsuarioNoLog() {
             <div>
                 <NavegacionNoLog/>
                 <div className={Style.main}>
-                <FiltrarPor/>    
+                <div className={Style.filtrado}>
+                    <FiltrarPor/>
+                </div>    
                     <div className={`contenedor ${Style.contTarjetas}`}>
 
                     { publicaciones === undefined ? null : tarjetasNoLog()}
