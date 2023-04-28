@@ -31,7 +31,7 @@ function UsuarioLog() {
     const [publicaciones, setPublicaciones] = useState()
     const [ultimasPublicaciones, setUltimasPublicaciones] = useState()
     // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
-    const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(1)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
@@ -42,8 +42,8 @@ function UsuarioLog() {
     },[actualizarDatos])
 
     // FUNCIONA LA CUAL HACE LA PETICION Y EL REDNDER DE LAS NUEVAS TARJESTAS
-    function nuevoLlamado(page) {
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
+    async function nuevoLlamado(page) {
+        await fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
         .then(res => {
             let nuevaPublicaiones = ultimasPublicaciones.concat(res.news)
