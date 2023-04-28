@@ -244,11 +244,18 @@
     }
 
 }
+
+.mostrarResponsive {
+    display: block;
+}
 @media(min-width:992px){
     .ocultarA{
         display: block;
     }
     .ocultar{
+        display: none;
+    }
+    .mostrarResponsive {
         display: none;
     }
     .ocultarB{

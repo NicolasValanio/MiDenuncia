@@ -83,7 +83,7 @@ function Login() {
                     </div>
                     <div className={`contenedor ${style.iniciar_google}`}> 
                         <AiFillGoogleCircle className={style.google}/>
-                        <p><a className={style.a} href="https://midenuncia-database-production.up.railway.app/google ">Iniciar sesión con Google</a></p> 
+                        <p><a className={style.a} href="https://midenuncia-database-production.up.railway.app/google">Iniciar sesión con Google</a></p> 
                     </div>
 
                 </div>
