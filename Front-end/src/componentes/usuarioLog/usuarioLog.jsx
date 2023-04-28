@@ -135,16 +135,7 @@ function UsuarioLog() {
                     <ul className={`contenedor ${style.listaBoton}`}>
                     
                     <li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
-                        <li className={style.li} >
-                            <div className={style.a} onClick={toggleNotifications}> <IoMdNotifications className={`icon ${style.iconsLog}`}/></div>
-                            {showNotifications && (
-                                <ul className={`contenedor ${style.despegableNotificaion} ${style.li}`} ref={notificationRef}>
-                                    <li>Se ha publicado su petición con éxito</li>
-                                    <li>@Luis16 ha apoyado tu petición</li>
-                                    <li>@Luis16 ha comentado tu petición</li>
-                                </ul>
-                            )}
-                        </li>
+                       
 
                         {/* <li className={`${style.li} ${style.notificaciones}`} onClick={handleClickVerFiltro} > */}
                         <li className={`${style.li} ${style.ocultarB}`} title="Filtrar por" onClick={handleClickVerFiltro} >
