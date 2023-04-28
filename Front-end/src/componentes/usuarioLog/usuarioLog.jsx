@@ -4,7 +4,7 @@ import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ModalReportes from '../modalReportes/modalReportes';
-import { MenuPerfil } from '../MenuPerfil/menuPerfil';
+import { MenuPerfil } from '../MenuPerfil/MenuPerfil';
 
 
 import { Link} from 'react-router-dom'
@@ -163,7 +163,7 @@ function UsuarioLog() {
                         <li className={style.li} style={{position:"relative"}} title="Tu Perfil" >
                             <FaUserCircle className={`icon ${style.iconsLog}`} onClick={handleClickMenuPerfil}/>
                             <MenuPerfil mostrar={ver}/> 
-                        </li>
+                        </li>   
                         <li className={style.li} title="Salir"> <Link rel="stylesheet" onClick={Logout} > <BiLogOut className={`icon ${style.iconsLog}`}/> </Link> </li>
                     </ul>
                 </div>

@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import Style from './modales.module.css'
 
-export default function Modales({isOpen, setIsOpen, children}) {
+export default function Modales({isOpen, setIsOpen, children, title = 'Ayúdanos a mejorar nuestra aplicación'}) {
 
   function closeModal () {
     setIsOpen(false)
@@ -40,7 +40,7 @@ export default function Modales({isOpen, setIsOpen, children}) {
                     as="h3"
                     className={Style.dialogtitle}
                   >
-                    Ayúdanos a mejorar nuestra aplicación
+                    {title}
                   </Dialog.Title>
                   {children}
                 </Dialog.Panel>
