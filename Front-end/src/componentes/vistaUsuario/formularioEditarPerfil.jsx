@@ -95,7 +95,7 @@ function EditarPerfil({dato}) {
           
             
         
-        navigate('/');//redireccionamos 
+        navigate('/Vistausuario');//redireccionamos 
 
         
         
@@ -107,6 +107,8 @@ function EditarPerfil({dato}) {
      
       }
 
+
+      
 
       
 
