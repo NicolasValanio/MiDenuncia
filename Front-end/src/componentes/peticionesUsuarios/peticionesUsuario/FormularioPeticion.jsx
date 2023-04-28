@@ -95,8 +95,6 @@ export default function FormularioPeticion({ user }) {
 				enviarPeticion(request, user.id).then(async (userUpdate) => {
 					
 					const user = userUpdate
-				//	console.log(user)
-				//	console.log(user)
 					setLoading(false)
 					if (user.user.id) {
 						const oldUser = JSON.parse(localStorage.getItem("usuarioLogeado"))
@@ -134,6 +132,7 @@ export default function FormularioPeticion({ user }) {
     setLoading(true)
     const respuesta = await enviarEstrellas(data)
     setLoading(false)
+		console.log(data)
     if (respuesta.data) {
       Swal.fire({title: 'Envio exitoso', text:'Gracias por puntuarnos', confirmButtonText: 'Continuar'})
       navigate('/usuarioLog')
