@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,Fragment } from "react";
+import { Dialog, Transition } from '@headlessui/react'
 import style from "./vistaDenunciaX.module.css";
 import { BiSearchAlt } from "react-icons/bi";
 import { handle } from "react";
@@ -21,6 +22,16 @@ function vistaDenunciaX() {
   const [select, setSelect] = useState("");
 
   const [estado, setEstado] = useState([]);
+
+  // ESTADO MODAL
+  const [estadoModal, setEstadoModal] = useState(false)
+  function closeModal (){
+    setEstadoModal(!estadoModal)
+  }
+
+
+
+
   function goBack() {
     if (window.history.length <= 1) {
       alert("No hay vistas anteriores disponibles");
@@ -200,7 +211,7 @@ function vistaDenunciaX() {
             <tr key={news.id} className={style.tr}> 
               <td className={style.td}> {news.user === null || undefined ? null : news.user.name } </td>
               <td className={style.plus}> 
-                <AiFillPlusCircle onClick={modal} className={style.mas} />
+                <button className={style.botonModal} onClick={() => closeModal()}> <AiFillPlusCircle className={style.mas} /> </button> 
               </td>
               < td className={style.td}>{news.types_request.name}</td>
               <td > Activa </td>
@@ -214,7 +225,54 @@ function vistaDenunciaX() {
         </tbody>
       </table>
 
-     
+          
+          {/* MODAL */}
+
+          <Transition appear show={estadoModal} as={Fragment}>
+        <Dialog as="div" className={style.modal} onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter={style.enter}
+            enterFrom={style.enterLeave}
+            enterTo={style.enterTo}
+            leave={style.leave}
+            leaveFrom={style.enterTo}
+            leaveTo={style.enterLeave}
+          >
+            <div className={style.fixedDiv} />
+          </Transition.Child>
+
+          <div className={style.fixedDiv}>
+            <div className={style.divChil}>
+              <Transition.Child
+                as={Fragment}
+                enter={style.enter}
+                enterFrom={style.fromLeaveTo}
+                enterTo={style.enterToFrom}
+                leave={style.leave}
+                leaveFrom={style.enterToFrom}
+                leaveTo={style.fromLeaveTo}
+              >
+                <Dialog.Panel className={style.modalOpen}>
+                  <Dialog.Title
+                    as="h3"
+                    className={style.dialogtitle}
+                  >
+                  </Dialog.Title>
+
+                    <h1>SU MODAL PERRA</h1>
+
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+
+
+
+
+
     </div>
   );
           }
