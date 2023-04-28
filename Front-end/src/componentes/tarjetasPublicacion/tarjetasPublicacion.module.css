@@ -9,12 +9,12 @@
 }
 
 .card {
-  width: 95%;
+  width: 90%;
   background-color: #252a2e;
   margin: 30px auto;
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 0px 5px var(--primer-color); 
-  box-shadow: 5px 5px 0px 5px var(--primer-color);
+  box-shadow: 3px 3px var(--primer-color);
   padding: 15px;
 
 }
@@ -125,12 +125,15 @@
   color: red;
 }
 
-.card .cardFooter .info .reactions .likes svg {
+.corazon{
   width: 20px;
   height: 20px;
-  fill: red;
+  cursor: pointer;
+  /* fill: red */
 }
-
+.colorCorazon{
+  fill: red
+}
 .card .cardFooter .info .reactions .numComments {
   display: flex;
   align-items: center;
@@ -154,15 +157,16 @@
 .button{
   background-color: #252a2e00;
   border-radius: 50%;
-
+  cursor: pointer;
   width: 28px;
   height: 28px;
   border: none;
 }
 
+
+
 /*------------------------------------
 css del modal*/
-
   
   .modal_overlay {
     position: fixed;
@@ -435,6 +439,18 @@ css del modal*/
     color: var(--primer-color);
   }
 
+  .iconsApoyo{
+    font-size: 1.5em;
+  }
+
+  .iconsComentario{
+    font-size: 1.5em;
+  }
+
+  .comentariosMovil{
+    display: none;
+  }
+
 
 
 /*-------------------------------------------*/
@@ -442,27 +458,33 @@ css del modal*/
 
 
 /* responsive celular*/
-@media(min-width:280px)and (max-width:480px){
-.card{
-  width: 15rem;
-  box-shadow: 2px 2px 0px 2px var(--primer-color);
-}
+@media(max-width:480px){
+  .container{
+    width: 100%;
+  }
+
 }
 
 /* responsive tablet*/
 @media(min-width:481px)and (max-width:767px){
+  .container{
+    width: 100%;
+  }
   .card{
     width: 40%;
-    box-shadow: 2px 1px 0px 1px var(--primer-color);
+   /*  box-shadow: 2px 1px 0px 1px var(--primer-color); */
   }
 }
 
 
 /*responsive tablet grande*/
 @media(min-width:768px)and (max-width:1024px){
+  .container{
+    width: 100%;
+  }
 .card{
   width: 55%;
-  box-shadow: 2px 2px 0px 2px var(--primer-color);
+  /* box-shadow: 2px 2px 0px 2px var(--primer-color); */
 }
 }
 
@@ -474,10 +496,13 @@ css del modal*/
 
 /*responsive celular*/
 
-@media(min-width:280px)and (max-width:480px) {
+@media (max-width:480px) {
   .modal {
     width: 100%;
     height: 100%;
+    overflow: scroll;
+    border: none;
+    padding: 0;
   }
 
   .nickname{
@@ -487,15 +512,8 @@ css del modal*/
   .modal_content{
     flex-direction: column;
     width: 95%;
+    height: auto;
     padding-left: 1rem;
-  }
-
-  .modal{
-    padding: 0;
-    border-radius: 0px;
-    border-bottom: solid 2px #b86efd00;
-    border-right: solid 2px #b86efd00;
-    width: 56%;
   }
 
   .modal_imagen_contenedor{
@@ -505,16 +523,21 @@ css del modal*/
 
   .modal_parte1{
     width: 100%;
+    height: 80vh;
   }
 
   .modal_comentarios{
     display: none;
   }
 
+  .modalComentar{
+    display: none;
+  }
+
   .modal_parte2{
     width: 100%;
+    height: 40vh;
     margin-left: 0rem;
-    height: 70%;
     background-color: #1E2326;
   }
 
@@ -528,17 +551,42 @@ css del modal*/
   }
 
   .contenedor_textos{
-    display: none;
+    display: block;
+    height: 30vh;
   }
 
   .botones_modal{
+    height: 8vh;
     display: flex;
-    margin-top: 66%;
     align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-
+  }
+  .comentariosMovil{
+    display: flex;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+  .modalComentarMovil{
+    width: 100%;
+    height: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
+  .modal_comentariosMovil{
+    background-color: #252A2E;
+    height: 70%;
+    width: 100%;
+    display: block;
+    overflow: scroll;
+  }
+  .texto_comentario{
+    width: 10rem;
+  }
 
 
 }

@@ -18,26 +18,26 @@ export function MenuPerfil({mostrar}){
         <ul className="lista">
             <li  className="opcion-menu">
                 <BsHouseDoor className="icon ico"/>
-               <NavLink to="/usuarioLog"><span>Inicio</span></NavLink> 
+               <NavLink to="/usuarioLog" style={{color: "white", textDecoration: 'none' }}><span>Inicio</span></NavLink> 
             </li> 
             <li className="opcion-menu">
                 <AiOutlineUser className="icon ico"/>
         
-                <NavLink to="/VistaUsuario"><span>Mi perfil</span></NavLink>
+                <NavLink to="/VistaUsuario" style={{color: "white", textDecoration: 'none' }}><span>Mi perfil</span></NavLink>
             </li>
             <li className="opcion-menu">
                 <BsQuestion className="icon ico"/>
-                <NavLink to="/PeticionesUsuarios"><span>Hacer petición</span></NavLink>
+                <NavLink to="/PeticionesUsuarios" style={{color: "white", textDecoration: 'none' }}><span>Hacer petición</span></NavLink>
                 
             </li>
             <li className="opcion-menu">
                 <GoFile className="icon ico"/>
-                <NavLink to="/misPeticiones"><span>Mis peticiones</span></NavLink>
+                <NavLink to="/misPeticiones" style={{color: "white", textDecoration: 'none' }}><span>Mis peticiones</span></NavLink>
                 
             </li>
             <li className="opcion-menu opc-cerrar-sesion">
                 <BiExit className="icon ico"/>
-                <NavLink onClick={Logout}><span>Cerrar sesión</span></NavLink>
+                <NavLink  onClick={Logout} style={{color: "white", textDecoration: 'none' }} ><span>Cerrar sesión</span></NavLink>
             </li>
         </ul>
         

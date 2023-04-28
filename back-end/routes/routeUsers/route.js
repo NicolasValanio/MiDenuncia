@@ -14,7 +14,7 @@ const changePasswordUserController=require('../../controllers/user/changePasswor
 
 router.post('/signUp',signUpUserController.signUp)
 router.post('/signIn',signInUserController.signIn)
-router.get('/info',authMiddleware,infoUserController.infoUser)
+router.get('/info',infoUserController.infoUser)
 router.get('/infoRequestUser',infoRequestUser.infoRequestUser)
 router.post('/changePassword',changePasswordUserController.changePasswordUser)
 

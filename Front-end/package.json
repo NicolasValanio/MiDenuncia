@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -26,7 +27,10 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
-    "sweetalert2": "^11.7.3"
+    "soccer": "^1.0.0",
+    "sonner": "^0.3.2",
+    "sweetalert2": "^11.7.3",
+    "vit": "^0.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

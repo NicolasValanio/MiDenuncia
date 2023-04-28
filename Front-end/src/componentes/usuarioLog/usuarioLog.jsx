@@ -3,8 +3,8 @@ import style from '../usuarioLog/usuarioLog.module.css'
 import FiltrarPor, {FiltrarPorA} from "../filtrarPor/filtrarPor";
 import TarjetasPublicacion from "../tarjetasPublicacion/tarjetasPublicacion";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ModalReportes from '../modalReportes/modalReportes'
-import { MenuPerfil } from "../MenuPerfil/MenuPerfil";
+import ModalReportes from '../modalReportes/modalReportes';
+import { MenuPerfil } from '../MenuPerfil/MenuPerfil';
 
 
 import { Link} from 'react-router-dom'
@@ -29,40 +29,55 @@ function UsuarioLog() {
     const [estadoModal , setEstadoModal] = useState(false)
     // ESTADO DE LAS PUBLICACIONES
     const [publicaciones, setPublicaciones] = useState()
+    const [ultimasPublicaciones, setUltimasPublicaciones] = useState()
     // NUMERO DE LA PAGINACION EN LA QUE VA LA PETICION
-    const [paginaPublicaciones , setPaginaPublicaciones] = useState(2)
+    const [paginaPublicaciones , setPaginaPublicaciones] = useState(1)
     const [showNotifications, setShowNotifications] = useState(false);
     const notificationRef = useRef(null);
 
     useEffect(()=>{
         fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=0`)
         .then(res => res.json())
-        .then(res => setPublicaciones(res.news))
+        .then(res => setUltimasPublicaciones(res.news))
     },[actualizarDatos])
 
     // FUNCIONA LA CUAL HACE LA PETICION Y EL REDNDER DE LAS NUEVAS TARJESTAS
-    function nuevoLlamado(page) {
-        fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
+    async function nuevoLlamado(page) {
+        await fetch(`https://midenuncia-database-production.up.railway.app/infoRequestUser?limit=5&offset=${page}`)
         .then(res => res.json())
-        .then(res => {  
-            let nuevaPublicaiones = publicaciones.concat(res.news)
-            setPublicaciones(nuevaPublicaiones)
+        .then(res => {
+            let nuevaPublicaiones = ultimasPublicaciones.concat(res.news)
+            setUltimasPublicaciones(nuevaPublicaiones)
             setPaginaPublicaciones( paginaPublicaciones + 1)
         })
     }
 
-    function llamarTarjetas (publicaciones) {
-        let nuevasPublicaciones = publicaciones.map( (publicacion,index) =>{   
+    function llamarTarjetas (publications) {
+        if (publicaciones) {
+            const returnPublicaciones = publicaciones.map((publicacion,index) =>{   
+                return  <TarjetasPublicacion 
+                api={publicacion} 
+                key={publicaciones[index].id} 
+                setEstadoModal={setEstadoModal} 
+                setIdeReporte={setIdeReporte}
+                setActualizarDatos={setActualizarDatos}
+                actualizarDatos={actualizarDatos}
+                />
+             })
+             return returnPublicaciones
+        }
+
+        const returnPublicaciones = publications.map( (publicacion,index) =>{   
            return  <TarjetasPublicacion 
            api={publicacion} 
-           key={publicaciones[index].id} 
+           key={ultimasPublicaciones[index].id} 
            setEstadoModal={setEstadoModal} 
            setIdeReporte={setIdeReporte}
            setActualizarDatos={setActualizarDatos}
            actualizarDatos={actualizarDatos}
            />
         })
-        return nuevasPublicaciones
+        return returnPublicaciones
     }
     
     function Logout(){
@@ -111,8 +126,6 @@ function UsuarioLog() {
   
     return (
         <div className={`contenedor ${style.usuario_log}`}>
-
-<li className={`${style.li} ${style.peticion}`} title="¡Publica una nueva petición!"><Link className={style.a} to="/PeticionesUsuarios"><GoMegaphone className={`icon ${style.peticiones} ${style.iconsLog}`}/></Link></li>
             
             <div className={`contenedor ${style.navLog}`}>
                 <div className={` ${style.cont_left}`}>
@@ -159,28 +172,29 @@ function UsuarioLog() {
             {/* <div className={`contenedor `} style={verFiltro ? {display:"block"}:{display:"block"}}>*/}
             
             <div className={`contenedor ${style.filtrar} ${style.ocultarA}`}>
-                <FiltrarPorA/>
+                <FiltrarPorA publicaciones={ultimasPublicaciones} ultimas={publicaciones} setPublicaciones={setPublicaciones}/>
             </div>
-            <div className={`contenedor ${style.filtrar} ${style.ocultar}`}>
+            {verFiltro && <div className={style.mostrarResponsive}><FiltrarPorA publicaciones={ultimasPublicaciones} setPublicaciones={setPublicaciones}/></div>}
+            {/* <div className={`contenedor ${style.filtrar} ${style.ocultar}`}>
                 <FiltrarPor mostrar={verFiltro}/>
-            </div>
+            </div> */}
             
 
 
             <div className={`contenedor ${style.cont_tarjetas} ${estadoModal ? style.quieto : null}`}>
 
                 <InfiniteScroll 
-                dataLength={publicaciones === undefined ? 5 : publicaciones.length} 
+                dataLength={ultimasPublicaciones === undefined ? 5 : ultimasPublicaciones.length} 
                 next={()=> {nuevoLlamado(paginaPublicaciones)}} 
                 hasMore={true} >
         
-                { publicaciones === undefined ?  null : llamarTarjetas(publicaciones) }
+                { ultimasPublicaciones === undefined ?  null : llamarTarjetas(ultimasPublicaciones) }
         
                 </ InfiniteScroll>  
 
             </div>
 
-            {/* MODAL ------------------------------------------ */}
+            {/* MODAL REPORTES */}
 
 
             { estadoModal ? 

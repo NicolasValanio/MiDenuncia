@@ -5,7 +5,7 @@ function tarjetaPublicacion() {
 	return (
 		
 			<div className={Style.container}>
-				<div className={Style.card}>
+				{/* <div className={Style.card}>
 					<div className={Style.card_header}>
 						<div className={Style.user}>
 							<div className={Style.userImage}>
@@ -133,7 +133,7 @@ function tarjetaPublicacion() {
 							</svg>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 	
 	);

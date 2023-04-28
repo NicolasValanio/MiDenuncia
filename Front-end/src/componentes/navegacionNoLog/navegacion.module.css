@@ -173,7 +173,7 @@ body{
     .contenedorBtns{
         width: fit-content;
      display: flex;
-      margin-right: -15px; 
+      margin-right: -10px; 
      gap: 0rem; 
      align-items: center;
      
