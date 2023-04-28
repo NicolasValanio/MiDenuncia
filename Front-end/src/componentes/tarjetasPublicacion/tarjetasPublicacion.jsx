@@ -59,7 +59,7 @@ function TarjetasPublicacion({api,setEstadoModal,estadoModal,setIdeReporte,setAc
               </div>
             </div>
             <div className={`contenedor ${style.texto_comentario}`}>
-              <p className={style.textoComentario}>{comentario.description}</p>  
+              <p className={style.textoComentario}>{comentario?.description}</p>  
             </div>
           </div> 
           )
