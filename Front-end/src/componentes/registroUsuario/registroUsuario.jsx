@@ -35,7 +35,7 @@ function RegistroUsuario() {
     const onSubmit = valor =>{
         EnvioResgistrarBd(valor).then((res) => setpeti(res));
         console.log(pet)    
-          if (pet.status===201) {
+          if (res.ok) {
             
             Positivo();
          setTimeout(function() {
