@@ -14,7 +14,7 @@ import axios, { AxiosError, HttpStatusCode } from "axios";
 
 function RegistroUsuario() {
 
-    const { register, handleSubmit,formState:{errors}} = useForm();
+    const { register, handleSubmit,formState:{errors}, watch} = useForm();
 
     const[pet,setpeti] =useState();
 
